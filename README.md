@@ -1,11 +1,3 @@
-# teqfw-app-sample
+# pwa_ap
 
-This is sample TeqFW application.
-
-
-
-# Run application
-
-```
-$ ./bin/tequila.js
-```
+PWA Alus Pils
