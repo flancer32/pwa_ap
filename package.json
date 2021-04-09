@@ -1,0 +1,47 @@
+{
+  "name": "@vendor/project",
+  "version": "0.1.0",
+  "description": "Sample TeqFW based application.",
+  "homepage": "https://your.project.com/",
+  "bugs": {
+    "url": "https://github.com/vendor/project/issues",
+    "email": "alex@flancer32.com"
+  },
+  "license": "AGPL-3.0-only",
+  "author": {
+    "name": "Alex Gusev",
+    "email": "alex@flancer64.com",
+    "url": "https://github.com/flancer64"
+  },
+  "repository": "github:vendor/project",
+  "scripts": {
+    "db-upgrade": "node ./bin/tequila.mjs app-db-reset",
+    "docs": "./node_modules/jsdoc/jsdoc.js --debug -p -c ./jsdoc.conf.json",
+    "rebuild": "rm -fr node_modules package-lock.json && npm install",
+    "start": "node ./bin/tequila.mjs http2-start",
+    "stop": "node ./bin/tequila.mjs http2-stop",
+    "test": "./node_modules/mocha/bin/mocha --require esm --recursive './test/**/*.test.js'",
+    "version": "node ./bin/tequila.mjs core-version"
+  },
+  "dependencies": {
+    "@flancer32/teq_user": "github:flancer32/teq_user",
+    "mysql2": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/eslint-plugin": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "eslint": "^7.13.0",
+    "esm": "^3.2.25",
+    "jest": "*",
+    "jsdoc": "*"
+  },
+  "teqfw": {
+    "autoload": {
+      "ns": "Vendor_Project",
+      "path": "./src"
+    }
+  }
+}
