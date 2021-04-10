@@ -27,7 +27,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzvO"
           SOURCE: "/"
-          TARGET: "/home/github/${{PRJ}}.new/"
+          TARGET: "/home/github/${{env.PRJ}}.new/"
 
       - name: Replace old backend files with new ones on Remote Server.
         uses: appleboy/ssh-action@master
@@ -36,14 +36,14 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /home/github/${{PRJ}}.new/
-            cp ~/cfg/${{PRJ}}.local.json ./cfg/local.json
+            cd /home/github/${{env.PRJ}}.new/
+            cp ~/cfg/${{env.PRJ}}.local.json ./cfg/local.json
             npm install
-            cd /home/github/${{PRJ}}/
+            cd /home/github/${{env.PRJ}}/
             npm stop
             cd /home/github/
-            rm -fr ./${{PRJ}}
-            mv ./${{PRJ}}.new ./${{PRJ}}
-            cd ./${{PRJ}}/
+            rm -fr ./${{env.PRJ}}
+            mv ./${{env.PRJ}}.new ./${{env.PRJ}}
+            cd ./${{env.PRJ}}/
             npm run db-reset
             nohup npm start > ./output.log 2>&1 &
