@@ -2,9 +2,9 @@ const template = `
 <p>{{out}}</p>
 `;
 
-export default function Vendor_Project_Front_App(spec) {
-    /** @type {Vendor_Project_Defaults} */
-    const DEF = spec['Vendor_Project_Defaults$'];    // instance singleton
+export default function Fl32_Ap_Front_App(spec) {
+    /** @type {Fl32_Ap_Defaults} */
+    const DEF = spec['Fl32_Ap_Defaults$'];    // instance singleton
     /** @type {TeqFw_Di_Container} */
     const container = spec[DEF.DI_CONTAINER]; // named singleton
     /** @type {Fl32_Teq_User_Front_App_Session} */
@@ -20,8 +20,8 @@ export default function Vendor_Project_Front_App(spec) {
     app.component('LayoutCentered', layoutCentered);
 
     // setup application routes
-    // router.addRoute({path: '/', component: () => container.get('Vendor_Project_Front_Route_Home$')});
-    // router.addRoute({path: '/sign/in', component: () => container.get('Vendor_Project_Front_Route_Sign_In$')});
+    // router.addRoute({path: '/', component: () => container.get('Fl32_Ap_Front_Route_Home$')});
+    // router.addRoute({path: '/sign/in', component: () => container.get('Fl32_Ap_Front_Route_Sign_In$')});
     app.use(router);
 
     return {
@@ -30,7 +30,7 @@ export default function Vendor_Project_Front_App(spec) {
         components: {},
         data: function () {
             return {
-                out: 'Vendor_Project_Front_App',
+                out: 'Fl32_Ap_Front_App',
             };
         },
         computed: {},
