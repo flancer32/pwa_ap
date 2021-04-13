@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "ns": "Fl32_Ap",
+    "path": "./src"
+  },
+  "http2": {
+    "realms": [
+      "pub",
+      "sign"
+    ]
+  }
+}

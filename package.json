@@ -37,11 +37,5 @@
     "esm": "^3.2.25",
     "jest": "*",
     "jsdoc": "*"
-  },
-  "teqfw": {
-    "autoload": {
-      "ns": "Vendor_Project",
-      "path": "./src"
-    }
   }
 }
