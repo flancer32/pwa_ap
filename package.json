@@ -1,10 +1,10 @@
 {
-  "name": "@vendor/project",
+  "name": "@flancer32/pwa_ap",
   "version": "0.1.0",
-  "description": "Sample TeqFW based application.",
-  "homepage": "https://your.project.com/",
+  "description": "PWA Alus Pils.",
+  "homepage": "https://ap.wiredgeese.com/",
   "bugs": {
-    "url": "https://github.com/vendor/project/issues",
+    "url": "https://github.com/@flancer32/pwa_ap/issues",
     "email": "alex@flancer32.com"
   },
   "license": "AGPL-3.0-only",
@@ -13,7 +13,7 @@
     "email": "alex@flancer64.com",
     "url": "https://github.com/flancer64"
   },
-  "repository": "github:vendor/project",
+  "repository": "github:@flancer32/pwa_ap",
   "scripts": {
     "db-upgrade": "node ./bin/tequila.mjs app-db-reset",
     "docs": "./node_modules/jsdoc/jsdoc.js --debug -p -c ./jsdoc.conf.json",
@@ -24,8 +24,9 @@
     "version": "node ./bin/tequila.mjs core-version"
   },
   "dependencies": {
-    "@flancer32/teq_user": "github:flancer32/teq_user",
-    "mysql2": "*"
+    "@flancer32/teq_user": "github:flancer32/mod_ap_user",
+    "mysql2": "*",
+    "pg": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
