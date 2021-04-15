@@ -24,7 +24,7 @@
     "version": "node ./bin/tequila.mjs core-version"
   },
   "dependencies": {
-    "@flancer32/teq_user": "github:flancer32/mod_ap_user",
+    "@flancer32/mod_ap_user": "github:flancer32/mod_ap_user",
     "mysql2": "*",
     "pg": "*"
   },
