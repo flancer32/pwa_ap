@@ -13,7 +13,7 @@ export default class Fl32_Ap_Defaults {
 
     constructor(spec) {
         this.MOD_CORE = spec['TeqFw_Core_App_Defaults$'];    // instance singleton
-        this.MOD_USER = spec['Fl32_Teq_User_Defaults$'];    // instance singleton
+        this.MOD_USER = spec['Fl32_Ap_User_Defaults$'];    // instance singleton
         this.MOD_VUE = spec['TeqFw_Vue_Defaults$'];    // instance singleton
         Object.freeze(this);
     }

@@ -9,8 +9,8 @@ export default class Fl32_Ap_Cli_Db_Reset {
         // CONSTRUCTOR INJECTED DEPS
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$'];   // instance singleton
-        /** @type {Fl32_Teq_User_Defaults} */
-        const DEF_USER = spec['Fl32_Teq_User_Defaults$'];   // instance singleton
+        /** @type {Fl32_Ap_User_Defaults} */
+        const DEF_USER = spec['Fl32_Ap_User_Defaults$'];   // instance singleton
         /** @type {typeof TeqFw_Core_App_Cli_Command_Data} */
         const DCommand = spec['TeqFw_Core_App_Cli_Command#Data'];    // class constructor
         /** @type {TeqFw_Core_App_Db_Connector} */
