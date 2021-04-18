@@ -1,12 +1,13 @@
 export default class Fl32_Ap_Defaults {
     BACK_REALM = 'app';  // realm for API services ('/api/app/...') and CLI commands ('app-...')
-    DATA_USER_ID_ADMIN = 1; // app's sample data
-    DATA_USER_ID_CUST = 2;
 
+    DATA_USER_ADMIN_EMAIL = 'alex@flancer64.com'; // app's sample data
+    DATA_USER_ADMIN_ID = 1;
+    DATA_USER_ADMIN_NAME = 'El Jefe';
 
     /** @type {TeqFw_Core_App_Defaults} */
     MOD_CORE;
-    /** @type {Fl32_Teq_User_Defaults} */
+    /** @type {Fl32_Ap_User_Defaults} */
     MOD_USER;
     /** @type {TeqFw_Vue_Defaults} */
     MOD_VUE;
