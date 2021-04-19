@@ -12,6 +12,9 @@ export default class Fl32_Ap_Defaults {
     /** @type {TeqFw_Vue_Defaults} */
     MOD_VUE;
 
+    REALM_PUB_ROUTE_HOME = '/';
+    REALM_PUB_ROUTE_SIGNIN = '/signIn';
+
     constructor(spec) {
         this.MOD_CORE = spec['TeqFw_Core_App_Defaults$'];    // instance singleton
         this.MOD_USER = spec['Fl32_Ap_User_Defaults$'];    // instance singleton

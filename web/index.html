@@ -103,18 +103,22 @@
              * @param {Object} Vuex
              */
             async function initVuex(app, container, DEF, Vuex) {
-                /** @type {Fl32_Ap_Front_State} */
-                const state = await container.get('Fl32_Ap_Front_State$'); // object singleton
+                /** @type {Fl32_Ap_Front_Realm_Pub_State} */
+                const state = await container.get('Fl32_Ap_Front_Realm_Pub_State$'); // object singleton
                 const store = Vuex.createStore(state);
                 container.set(DEF.DI_STORE, store);
                 app.use(store);
             }
 
+            /**
+             * @param {TeqFw_Di_Container} container
+             * @param {Fl32_Ap_Defaults} DEF
+             */
             async function initSession(container, DEF) {
                 // setup session (load user permissions from server)
-                /** @type {Fl32_Teq_User_Front_App_Session} */
-                const session = await container.get('Fl32_Teq_User_Front_App_Session$'); // instance singleton
-                session.setRouteToSignIn(DEF.ROUTE_SIGN_IN);
+                /** @type {Fl32_Ap_User_Front_Model_Session} */
+                const session = await container.get('Fl32_Ap_User_Front_Model_Session$'); // instance singleton
+                session.setRouteToSignIn(DEF.REALM_PUB_ROUTE_SIGNIN);
                 await session.init();
                 container.set(DEF.MOD_USER.DI_SESSION, session);    // TMP: put into container as singleton
             }
@@ -145,7 +149,7 @@
                 await initVuex(app, container, DEF, self.Vuex);
                 await initSession(container, DEF);
                 // load root component and mount frontend application to DOM
-                const appRoot = await container.get('Fl32_Ap_Front_App$$');   // new component
+                const appRoot = await container.get('Fl32_Ap_Front_Realm_Pub_App$$');   // new component
                 app.component('appRoot', appRoot);
                 // mount Vue application to the page
                 app.mount('BODY > DIV');
@@ -189,7 +193,7 @@
 </head>
 <body>
 <div>
-    <app-root>TeqFW App</app-root>
+    <app-root>TeqFW App is loading...</app-root>
 </div>
 <!-- These scripts are not ESM ready for loading with ES6 'import'. Use old style loading.  -->
 <script type="application/javascript" src="./src/vue/vue.global.js"></script>
