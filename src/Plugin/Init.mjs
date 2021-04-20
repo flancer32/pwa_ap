@@ -13,7 +13,15 @@ export default class Fl32_Ap_Plugin_Init {
                 'Fl32_Ap_Cli_Db_Reset$',
             ];
         };
-
+        // TODO: move it to teqfw.json
+        this.getI18nResources = function () {
+            return {
+                [DEF.MOD_CORE.I18N_FRONT]: [
+                    './i18n/front.lv.json',
+                    './i18n/front.ru.json'
+                ],
+            };
+        };
         /**
          * Realm for plugin's services in the integrated API.
          *

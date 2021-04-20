@@ -23,7 +23,7 @@
 
                 // DEFINE INNER FUNCTIONS
                 /**
-                 * @returns {Promise<TeqFw_Core_App_Shared_Api_Route_Load_Namespaces_Response>}
+                 * @returns {Promise<TeqFw_Core_App_Shared_Service_Route_Load_Namespaces_Response>}
                  */
                 async function loadNamespaces() {
                     // load frontend configuration and user profile
@@ -66,20 +66,28 @@
              * Initialize 'i18next' library to use internationalization and add translate function '$t' to Vue app's
              * global properties.
              *
+             * @param {TeqFw_Di_Container} container
              * @param {Object} app Vue application
-             * @param {Object} i18next
-             * @param {Function} i18nBld browser language detection function
              * @returns {Promise<Object>}
              */
-            async function initI18n(app, i18next, i18nBld) {
-                i18next.use(i18nBld);
-                await i18next.init({});
+            async function initI18n(container, app) {
+                const gate = await container.get('TeqFw_Core_App_Front_Gate_Load_I18n$');
+                /** @type {typeof TeqFw_Core_App_Shared_Service_Route_Load_I18n_Request} */
+                const Request = await container.get('TeqFw_Core_App_Shared_Service_Route_Load_I18n#Request');
+                const resources = await gate(new Request());
+                // self.i18next - see "./src/i18next/i18next.min.js"
+                // see "./src/i18next-detect/i18nextBrowserLanguageDetector.js"
+                self.i18next.use(self.i18nextBrowserLanguageDetector);
+                await self.i18next.init({
+                    resources, defaultNS: 'app',
+                    supportedLngs: ['lv', 'ru'],
+                });
+                // config options after 'init'
+                self.i18next.options.fallbackLng = 'ru';
                 // add '$t' translation function to Vue app
                 const appProps = app.config.globalProperties;
-                appProps.$t = (key, options) => {
-                    return i18next.t(key, options);
-                };
-                return i18next;
+                appProps.$t = (key, options) => self.i18next.t(key, options);
+                return self.i18next;
             }
 
             /**
@@ -118,7 +126,7 @@
                 // setup session (load user permissions from server)
                 /** @type {Fl32_Ap_User_Front_Model_Session} */
                 const session = await container.get('Fl32_Ap_User_Front_Model_Session$'); // instance singleton
-                session.setRouteToSignIn(DEF.REALM_PUB_ROUTE_SIGNIN);
+                session.setRouteToSignIn(DEF.REALM_PUB_ROUTE_signIn_emailGet);
                 await session.init();
                 container.set(DEF.MOD_USER.DI_SESSION, session);    // TMP: put into container as singleton
             }
@@ -129,27 +137,29 @@
                 const container = await initDiContainer();
                 /** @type {Fl32_Ap_Defaults} */
                 const DEF = await container.get('Fl32_Ap_Defaults$');  // instance singleton
-                // load configuration from server and place it into DI container
-                const config = await loadConfig(container);
-                container.set(DEF.MOD_CORE.DI_CONFIG, config);
-                container.set('config', config); // TODO: for user module compatibility (need to change in future)
                 // save old-style loaded JS objects into DI container (see <script src="..."> at the end of HTML)
                 container.set(DEF.MOD_VUE.DI_VUE, self.Vue);
                 container.set(DEF.MOD_VUE.DI_VUEX, self.Vuex);
+                // TODO: place it into 'initConfig' function
+                // load configuration from server and place it into DI container
+                const config = await loadConfig(container);
+                container.set(DEF.MOD_CORE.DI_CONFIG, config);
+                container.set('config', config);
                 // create vue application, init router and i18n
                 const app = self.Vue.createApp({});
+                container.set(DEF.MOD_VUE.DI_APP, app);
                 const router = initRouter(self.VueRouter);
                 container.set(DEF.MOD_VUE.DI_ROUTER, router);
-                const i18next = await initI18n(app, self.i18next, self.i18nextBrowserLanguageDetector);
-                container.set(DEF.MOD_CORE.DI_APP, app);
+                const i18next = await initI18n(container, app);
                 container.set(DEF.MOD_CORE.DI_I18N, i18next);
+                // init quasar framework
                 app.use(self.Quasar, {config: {}});
                 self.Quasar.iconSet.set(self.Quasar.iconSet.svgMaterialIcons);
                 container.set(DEF.MOD_CORE.DI_QUASAR, self.Quasar);
                 await initVuex(app, container, DEF, self.Vuex);
                 await initSession(container, DEF);
                 // load root component and mount frontend application to DOM
-                const appRoot = await container.get('Fl32_Ap_Front_Realm_Pub_App$$');   // new component
+                const appRoot = await container.get('Fl32_Ap_Front_Realm_Pub_App$'); // vue comp tmpl
                 app.component('appRoot', appRoot);
                 // mount Vue application to the page
                 app.mount('BODY > DIV');

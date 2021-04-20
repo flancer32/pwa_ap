@@ -26,6 +26,7 @@
     }
   },
   "web": {
+    "realmDef": "pub",
     "urlBase": "project.com"
   }
 }

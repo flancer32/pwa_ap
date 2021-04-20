@@ -22,7 +22,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION];  // named singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton
-    const app = spec[DEF.MOD_CORE.DI_APP];  // named singleton
+    const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
     /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
     const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$'];    // Vue component singleton
     const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
@@ -39,12 +39,16 @@ function Factory(spec) {
 
     // setup application routes
     router.addRoute({
-        path: DEF.REALM_PUB_ROUTE_HOME,
+        path: DEF.REALM_PUB_ROUTE_home,
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Home$')
     });
     router.addRoute({
-        path: DEF.REALM_PUB_ROUTE_SIGNIN,
-        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn$')
+        path: DEF.REALM_PUB_ROUTE_signIn_codeCheck,
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck$')
+    });
+    router.addRoute({
+        path: DEF.REALM_PUB_ROUTE_signIn_emailGet,
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet$')
     });
     app.use(router);
 
