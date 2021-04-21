@@ -8,6 +8,7 @@
     <link rel="manifest" href="pwa.webmanifest">
     <link href="./web/@teqfw/ui-quasar/styles.css" rel="stylesheet" type="text/css">
     <link href="./src/quasar/quasar.prod.css" rel="stylesheet" type="text/css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
 
     <script>
         async function bootstrap() {
@@ -203,7 +204,9 @@
 </head>
 <body>
 <div>
-    <app-root>TeqFW App is loading...</app-root>
+    <app-root>
+        <div class="launchpad">"Alus Pils" PWA is loading...</div>
+    </app-root>
 </div>
 <!-- These scripts are not ESM ready for loading with ES6 'import'. Use old style loading.  -->
 <script type="application/javascript" src="./src/vue/vue.global.js"></script>
@@ -218,6 +221,6 @@
 
 <!-- load application styles -->
 <!--<link rel="stylesheet" href="./src/quasar/quasar.prod.css">-->
-<link rel="stylesheet" href="styles.css">
+<!--<link rel="stylesheet" href="styles.css">-->
 </body>
 </html>

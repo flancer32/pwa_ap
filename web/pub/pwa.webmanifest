@@ -3,7 +3,7 @@
   "short_name": "Alus Pils",
   "theme_color": "#FB9902",
   "background_color": "#FB9902",
-  "display": "minimal-ui",
+  "display": "standalone",
   "scope": "./",
   "start_url": "./",
   "icons": [

@@ -24,7 +24,11 @@ function Factory(spec) {
     const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton
     const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
     /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
-    const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$'];    // Vue component singleton
+    const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Layout_Base} */
+    const layoutBase = spec['Fl32_Ap_Front_Layout_Base$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Layout_Blank} */
+    const layoutBlank = spec['Fl32_Ap_Front_Layout_Blank$']; // vue comp tmpl
     const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
 
     // DEFINE WORKING VARS
@@ -35,6 +39,8 @@ function Factory(spec) {
     // MAIN FUNCTIONALITY
 
     // add global available components
+    app.component('LayoutBase', layoutBase);
+    app.component('LayoutBlank', layoutBlank);
     app.component('LayoutCentered', layoutCentered);
 
     // setup application routes

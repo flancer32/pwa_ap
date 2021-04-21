@@ -22,7 +22,7 @@ function Factory(spec) {
 
     // DEFINE WORKING VARS
     const template = `
-<div>HOME</div>
+<layout-base>HOME</layout-base>
 `;
 
     // DEFINE INNER FUNCTIONS

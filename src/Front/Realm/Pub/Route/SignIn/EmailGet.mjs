@@ -26,6 +26,7 @@ function Factory(spec) {
 
     // DEFINE WORKING VARS
     const template = `
+<layout-blank>
 <layout-centered>
   <div class="t-grid rows gutter-md" style="padding: var(--padding-grid);" v-show="!displayMsg">
         <div>{{$t('pub:route.signIn.code.get.title')}}</div>
@@ -53,6 +54,7 @@ function Factory(spec) {
         <div>{{msg}}</div>
     </div>
 </layout-centered>
+</layout-blank>
 `;
 
     // DEFINE INNER FUNCTIONS
