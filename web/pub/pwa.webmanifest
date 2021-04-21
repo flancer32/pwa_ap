@@ -1,6 +1,6 @@
 {
-  "name": "TeqFW App",
-  "short_name": "TeqFW App",
+  "name": "Alus Pils",
+  "short_name": "Alus Pils",
   "theme_color": "#FB9902",
   "background_color": "#FB9902",
   "display": "minimal-ui",
@@ -8,8 +8,8 @@
   "start_url": "./",
   "icons": [
       {
-        "src": "./favicon.png",
-        "sizes": "128x128",
+        "src": "./favicon-192x192.png",
+        "sizes": "192x192",
         "type": "image/png"
       }
   ],

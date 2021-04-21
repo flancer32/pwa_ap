@@ -5,8 +5,7 @@
   },
   "http2": {
     "realms": [
-      "pub",
-      "sign"
+      "pub"
     ]
   }
 }

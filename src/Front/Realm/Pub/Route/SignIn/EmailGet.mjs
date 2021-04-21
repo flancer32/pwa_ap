@@ -5,6 +5,7 @@
  */
 // MODULE'S VARS
 const NS = 'Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet';
+const TIMEOUT = 3000;
 
 // MODULE'S FUNCTIONS
 /**
@@ -89,10 +90,15 @@ function Factory(spec) {
                 const opts = {email: this.fldEmail};
                 if (res.isSent) {
                     this.msg = this.$t('pub:route.signIn.code.get.msg.success', opts);
+
                 } else {
                     this.msg = this.$t('pub:route.signIn.code.get.msg.failure', opts);
                 }
                 this.displayMsg = true;
+                setTimeout(() => {
+                    this.displayMsg = false;
+                    this.fldEmail = null
+                }, TIMEOUT);
             },
         },
         created() {

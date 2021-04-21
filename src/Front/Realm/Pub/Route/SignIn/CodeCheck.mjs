@@ -66,7 +66,6 @@ function Factory(spec) {
             if (res.constructor.name === 'TeqFw_Core_App_Front_Gate_Response_Error') {
                 this.error = res.message;
             } else {
-                debugger
                 await session.init();
                 const route = session.getRouteToRedirect();
                 this.$router.push(route);
