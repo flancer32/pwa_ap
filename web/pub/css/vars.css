@@ -1,9 +1,9 @@
 /* Overwrite CSS variables from plugins */
 :root {
-    --color-base: #CBE432;
-    --color-darker: #8C9E15;
-    --color-darkest: #2E3409;
-    --color-lighter: #E3F08E;
-    --color-lightest: #F7FBDF;
+    --color-base: #EA202C;
+    --color-darker: #950E17;
+    --color-darkest: #34090C;
+    --color-lighter: #F37C84;
+    --color-lightest: #FCDEE0;
     --padding-grid: 10px;
 }

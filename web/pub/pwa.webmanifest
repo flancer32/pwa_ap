@@ -1,8 +1,8 @@
 {
   "name": "Alus Pils",
   "short_name": "Alus Pils",
-  "theme_color": "#FB9902",
-  "background_color": "#FB9902",
+  "theme_color": "#950E17",
+  "background_color": "#950E17",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
