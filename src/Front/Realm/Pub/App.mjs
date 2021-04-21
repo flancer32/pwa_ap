@@ -39,16 +39,17 @@ function Factory(spec) {
 
     // setup application routes
     router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Home$'),
         path: DEF.REALM_PUB_ROUTE_home,
-        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Home$')
     });
     router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck$'),
         path: DEF.REALM_PUB_ROUTE_signIn_codeCheck,
-        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck$')
+        props: true,
     });
     router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet$'),
         path: DEF.REALM_PUB_ROUTE_signIn_emailGet,
-        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet$')
     });
     app.use(router);
 

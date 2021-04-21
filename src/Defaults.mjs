@@ -13,7 +13,7 @@ export default class Fl32_Ap_Defaults {
     MOD_VUE;
 
     REALM_PUB_ROUTE_home = '/';
-    REALM_PUB_ROUTE_signIn_codeCheck = '/signIn/codeCheck';
+    REALM_PUB_ROUTE_signIn_codeCheck = '/signIn/codeCheck/:code';
     REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';
 
     constructor(spec) {
