@@ -1,5 +1,5 @@
 /**
- * Baselayout widget.
+ * Base layout widget (requires user authentication).
  *
  * @namespace Fl32_Ap_Front_Layout_Base
  */
@@ -22,11 +22,13 @@ function Factory(spec) {
     /** @type {TeqFw_Di_Container} */
     const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
     const i18next = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
+    /** @type {Fl32_Ap_User_Front_Model_Session} */
+    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     const {ref} = spec[DEF.MOD_VUE.DI_VUE];    // named singleton destructuring
 
     // DEFINE WORKING VARS
     const template = `
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="hHh lpR fFf" v-if="isAuthenticated">
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
@@ -66,12 +68,20 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        setup () {
+        data() {
+            return {
+                isAuthenticated: false,
+            };
+        },
+        async created() {
+            this.isAuthenticated = session.checkUserAuthenticated(this.$router);
+        },
+        setup() {
             const rightDrawerOpen = ref(false)
 
             return {
                 rightDrawerOpen,
-                toggleRightDrawer () {
+                toggleRightDrawer() {
                     rightDrawerOpen.value = !rightDrawerOpen.value
                 }
             }
