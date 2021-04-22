@@ -134,7 +134,7 @@
                 }
 
                 // MAIN FUNCTIONALITY
-                const baseUrl = location.origin;
+                const baseUrl = `${location.origin}/${REALM}`;
                 // create and setup DI Container
                 const modContainer = await import('./src/@teqfw/di/Container.mjs');
                 /** @type {TeqFw_Di_Container} */

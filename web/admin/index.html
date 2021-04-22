@@ -74,7 +74,7 @@
                  */
                 async function initVuex(app, container, DEF, Vuex) {
                     /** @type {Fl32_Ap_Front_Realm_Pub_State} */
-                    const state = await container.get('Fl32_Ap_Front_Realm_Pub_State$'); // object singleton
+                    const state = await container.get('Fl32_Ap_Front_Realm_Admin_State$'); // object singleton
                     const store = Vuex.createStore(state);
                     container.set(DEF.DI_STORE, store);
                     app.use(store);
@@ -134,7 +134,7 @@
                 }
 
                 // MAIN FUNCTIONALITY
-                const baseUrl = location.origin;
+                const baseUrl = `${location.origin}/${REALM}`;
                 // create and setup DI Container
                 const modContainer = await import('./src/@teqfw/di/Container.mjs');
                 /** @type {TeqFw_Di_Container} */
