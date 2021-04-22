@@ -1,3 +1,6 @@
+/**
+ * Application level constants (hardcoded configuration).
+ */
 export default class Fl32_Ap_Defaults {
     BACK_REALM = 'app';  // realm for API services ('/api/app/...') and CLI commands ('app-...')
 
@@ -12,14 +15,26 @@ export default class Fl32_Ap_Defaults {
     /** @type {TeqFw_Vue_Defaults} */
     MOD_VUE;
 
+    REALM_ADM = 'admin';
+    REALM_ADM_ROUTE_home = '/';
+    REALM_ADM_ROUTE_signIn_codeCheck = 'SET IN CONSTRUCTOR';
+    REALM_ADM_ROUTE_signIn_emailGet = '/signIn/emailGet';
+    REALM_PUB = 'pub';
     REALM_PUB_ROUTE_home = '/';
-    REALM_PUB_ROUTE_signIn_codeCheck = '/signIn/codeCheck/:code';
+    REALM_PUB_ROUTE_signIn_codeCheck = 'SET IN CONSTRUCTOR';
     REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';
 
     constructor(spec) {
-        this.MOD_CORE = spec['TeqFw_Core_App_Defaults$'];    // instance singleton
-        this.MOD_USER = spec['Fl32_Ap_User_Defaults$'];    // instance singleton
-        this.MOD_VUE = spec['TeqFw_Vue_Defaults$'];    // instance singleton
+        // EXTRACT DEPS
+        this.MOD_CORE = spec['TeqFw_Core_App_Defaults$']; // instance singleton
+        this.MOD_USER = spec['Fl32_Ap_User_Defaults$']; // instance singleton
+        this.MOD_VUE = spec['TeqFw_Vue_Defaults$']; // instance singleton
+
+        // INIT PROPS, DEFINE WORKING VARS
+        this.REALM_ADM_ROUTE_signIn_codeCheck = this.MOD_USER.REALM_DEF_ROUTE_signIn_codeCheck;
+        this.REALM_PUB_ROUTE_signIn_codeCheck = this.MOD_USER.REALM_DEF_ROUTE_signIn_codeCheck;
+
+        // MAIN FUNCTIONALITY
         Object.freeze(this);
     }
 }

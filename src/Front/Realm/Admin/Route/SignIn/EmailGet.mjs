@@ -1,18 +1,18 @@
 /**
  * Route widget to enter email to get one-time link for sign-in.
  *
- * @namespace Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet
+ * @namespace Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet';
+const NS = 'Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet';
 const TIMEOUT = 3000;
 
 // MODULE'S FUNCTIONS
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet
- * @returns {Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet
+ * @returns {Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet.vueCompTmpl}
  */
 function Factory(spec) {
     // EXTRACT DEPS
@@ -70,7 +70,7 @@ function Factory(spec) {
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Realm_Pub_Route_SignIn_EmailGet
+     * @memberOf Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet
      */
     return {
         name: NS,

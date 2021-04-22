@@ -1,0 +1,17 @@
+{
+  "name": "Alus Pils",
+  "short_name": "Alus Pils",
+  "theme_color": "#950E17",
+  "background_color": "#950E17",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+      {
+        "src": "./favicon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+  ],
+  "splash_pages": null
+}

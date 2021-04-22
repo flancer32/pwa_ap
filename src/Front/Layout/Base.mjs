@@ -34,7 +34,7 @@ function Factory(spec) {
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="/pub/favicon-192x192.png" alt="logo">
+            <img src="favicon-192x192.png" alt="logo">
           </q-avatar>
           Title
         </q-toolbar-title>
@@ -74,7 +74,7 @@ function Factory(spec) {
             };
         },
         async created() {
-            this.isAuthenticated = session.checkUserAuthenticated(this.$router);
+            this.isAuthenticated = await session.checkUserAuthenticated(this.$router);
         },
         setup() {
             const rightDrawerOpen = ref(false)

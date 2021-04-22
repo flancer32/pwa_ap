@@ -1,17 +1,17 @@
 /**
  * Route widget for user's sign in with one-time code.
  *
- * @namespace Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck
+ * @namespace Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeCheck
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck';
+const NS = 'Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeCheck';
 
 // MODULE'S FUNCTIONS
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck
- * @returns {Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeCheck
+ * @returns {Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeCheck.vueCompTmpl}
  */
 function Factory(spec) {
     // EXTRACT DEPS
@@ -46,7 +46,7 @@ function Factory(spec) {
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck
+     * @memberOf Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeCheck
      */
     return {
         name: NS,
