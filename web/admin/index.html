@@ -33,19 +33,32 @@
                  * @returns {Promise<Object>}
                  */
                 async function initI18n(container, app) {
-                    const gate = await container.get('TeqFw_Core_App_Front_Gate_Load_I18n$');
-                    /** @type {typeof TeqFw_Core_App_Shared_Service_Route_Load_I18n_Request} */
-                    const Request = await container.get('TeqFw_Core_App_Shared_Service_Route_Load_I18n#Request');
-                    const resources = await gate(new Request());
+                    // PARSE INPUT & DEFINE WORKING VARS
+                    const defaultNS = 'front';
+                    const supportedLngs = ['lv', 'ru'];
+                    const fallbackLng = 'ru';
+
+                    // MAIN FUNCTIONALITY
                     // self.i18next - see "./src/i18next/i18next.min.js"
                     // see "./src/i18next-detect/i18nextBrowserLanguageDetector.js"
                     self.i18next.use(self.i18nextBrowserLanguageDetector);
-                    await self.i18next.init({
-                        resources, defaultNS: 'app',
-                        supportedLngs: ['lv', 'ru'],
-                    });
+                    await self.i18next.init({defaultNS, supportedLngs, fallbackLng});
+                    const lng = self.i18next.language;
+                    // load i18n resources for current language
+                    const gate = await container.get('TeqFw_I18n_Front_Gate_Load$');
+                    /** @type {TeqFw_I18n_Shared_Service_Route_Load.Request} */
+                    const req = await container.get('TeqFw_I18n_Shared_Service_Route_Load#Request$$'); // new instance
+                    req.lang = lng;
+                    req.namespace = defaultNS;
+                    const res = await gate(req);
+                    self.i18next.addResourceBundle(lng, defaultNS, res, true, true);
+                    // load resources for fallback language
+                    if (lng !== fallbackLng) {
+                        req.lang = fallbackLng;
+                        const res = await gate(req);
+                        self.i18next.addResourceBundle(fallbackLng, defaultNS, res, true, true);
+                    }
                     // config options after 'init'
-                    self.i18next.options.fallbackLng = 'ru';
                     // add '$t' translation function to Vue app
                     const appProps = app.config.globalProperties;
                     appProps.$t = (key, options) => self.i18next.t(key, options);

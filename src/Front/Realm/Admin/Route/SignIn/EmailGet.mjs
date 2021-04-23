@@ -33,11 +33,11 @@ function Factory(spec) {
 <layout-blank>
 <layout-centered>
   <div class="t-grid rows gutter-md" style="padding: var(--padding-grid);" v-show="!displayMsg">
-        <div>{{$t('pub:route.signIn.code.get.title')}}</div>
+        <div>{{$t('route.signIn.code.get.title')}}</div>
         <div>
             <q-input class="id-email"
-                     :hint="$t('pub:route.signIn.code.get.email.hint')"
-                     :label="$t('pub:route.signIn.code.get.email.label')"
+                     :hint="$t('route.signIn.code.get.email.hint')"
+                     :label="$t('route.signIn.code.get.email.label')"
                      :loading="loading"
                      :stack-label="true"
                      autocomplete="email"
@@ -46,7 +46,7 @@ function Factory(spec) {
                      v-model="fldEmail"
             ></q-input>
             <div class="actions">
-                <q-btn :label="$t('shared:btn.submit')"
+                <q-btn :label="$t('btn.submit')"
                        :disabled="loading"
                        color="primary"
                        v-on:click="onSubmit"
@@ -96,10 +96,10 @@ function Factory(spec) {
                 this.loading = false;
                 const opts = {email: this.fldEmail};
                 if (res.isSent) {
-                    this.msg = this.$t('pub:route.signIn.code.get.msg.success', opts);
+                    this.msg = this.$t('route.signIn.code.get.msg.success', opts);
 
                 } else {
-                    this.msg = this.$t('pub:route.signIn.code.get.msg.failure', opts);
+                    this.msg = this.$t('route.signIn.code.get.msg.failure', opts);
                 }
                 this.displayMsg = true;
                 setTimeout(() => {

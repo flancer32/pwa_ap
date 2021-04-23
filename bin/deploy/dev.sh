@@ -24,6 +24,7 @@ git clone git@github.com:teqfw/core-app.git "${DIR_ROOT}/own_modules/@teqfw/core
 git clone git@github.com:teqfw/di.git "${DIR_ROOT}/own_modules/@teqfw/di"
 git clone git@github.com:teqfw/email.git "${DIR_ROOT}/own_modules/@teqfw/email"
 git clone git@github.com:teqfw/http2.git "${DIR_ROOT}/own_modules/@teqfw/http2"
+git clone git@github.com:teqfw/i18n.git "${DIR_ROOT}/own_modules/@teqfw/i18n"
 git clone git@github.com:teqfw/ui-quasar.git "${DIR_ROOT}/own_modules/@teqfw/ui-quasar"
 git clone git@github.com:teqfw/vue.git "${DIR_ROOT}/own_modules/@teqfw/vue"
 
@@ -38,6 +39,8 @@ cd "${DIR_ROOT}/own_modules/@teqfw/email" || exit 255
 sudo npm link
 cd "${DIR_ROOT}/own_modules/@teqfw/http2" || exit 255
 sudo npm link
+cd "${DIR_ROOT}/own_modules/@teqfw/i18n" || exit 255
+sudo npm link
 cd "${DIR_ROOT}/own_modules/@teqfw/ui-quasar" || exit 255
 sudo npm link
 cd "${DIR_ROOT}/own_modules/@teqfw/vue" || exit 255
@@ -51,6 +54,7 @@ npm link \
   "@teqfw/di" \
   "@teqfw/email" \
   "@teqfw/http2" \
+  "@teqfw/i18n" \
   "@teqfw/ui-quasar" \
   "@teqfw/vue" \
 
