@@ -1,43 +1,41 @@
 /**
- * Route widget to enter email to get one-time link for sign-in.
+ * Widget to enter email to get sign-in link.
  *
- * @namespace Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet
+ * @namespace Fl32_Ap_Front_Widget_Sign_In_Code_Get
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet';
+const NS = 'Fl32_Ap_Front_Widget_Sign_In_Code_Get';
 const TIMEOUT = 3000;
+
+// MODULE'S CLASSES
 
 // MODULE'S FUNCTIONS
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet
- * @returns {Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Widget_Sign_In_Code_Get
+ * @returns {Fl32_Ap_Front_Widget_Sign_In_Code_Get.vueCompTmpl}
  */
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_Defaults$'];
     /** @type {TeqFw_Core_App_Front_Data_Config} */
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
-    /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     /** @function {@type Fl32_Ap_User_Front_Gate_SignIn_Code_Send.gate} */
     const gateSend = spec['Fl32_Ap_User_Front_Gate_SignIn_Code_Send$']; // function singleton
     /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Request} */
     const ReqSend = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send#Request']; // class
-    const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX]; // ES6 module
 
     // DEFINE WORKING VARS
     const template = `
-<layout-blank>
 <layout-centered>
-  <div class="t-grid rows gutter-md" style="padding: var(--padding-grid);" v-show="!displayMsg">
-        <div>{{$t('route.signIn.code.get.title')}}</div>
+  <div class="t-grid rows gutter-md" style="padding: var(--padding-grid); min-width: 80vw;" v-show="!displayMsg">
+        <div>{{$t('wg.sign.in.code.get.title')}}</div>
         <div>
             <q-input class="id-email"
-                     :hint="$t('route.signIn.code.get.email.hint')"
-                     :label="$t('route.signIn.code.get.email.label')"
+                     :hint="$t('wg.sign.in.code.get.email.hint')"
+                     :label="$t('wg.sign.in.code.get.email.label')"
                      :loading="loading"
                      :stack-label="true"
                      autocomplete="email"
@@ -58,25 +56,19 @@ function Factory(spec) {
         <div>{{msg}}</div>
     </div>
 </layout-centered>
-</layout-blank>
 `;
-
-    // DEFINE INNER FUNCTIONS
-
-    // MAIN FUNCTIONALITY
 
     // COMPOSE RESULT
     /**
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet
+     * @memberOf Fl32_Ap_Front_Widget_Sign_In_Code_Get
      */
     return {
         name: NS,
         template,
-        components: {},
-        data: function () {
+        data() {
             return {
                 displayMsg: false,
                 fldEmail: null,
@@ -84,7 +76,6 @@ function Factory(spec) {
                 msg: null,
             };
         },
-        computed: {},
         methods: {
             async onSubmit() {
                 this.loading = true;
@@ -96,10 +87,10 @@ function Factory(spec) {
                 this.loading = false;
                 const opts = {email: this.fldEmail};
                 if (res.isSent) {
-                    this.msg = this.$t('route.signIn.code.get.msg.success', opts);
+                    this.msg = this.$t('wg.sign.in.code.get.msg.success', opts);
 
                 } else {
-                    this.msg = this.$t('route.signIn.code.get.msg.failure', opts);
+                    this.msg = this.$t('wg.sign.in.code.get.msg.failure', opts);
                 }
                 this.displayMsg = true;
                 setTimeout(() => {
@@ -107,15 +98,6 @@ function Factory(spec) {
                     this.fldEmail = null
                 }, TIMEOUT);
             },
-        },
-        beforeCreate() {
-            // redirect to home route if user is authenticated
-            if (session.getUser() !== null) {
-                const route = (config.realm === DEF.REALM_ADM)
-                    ? DEF.REALM_ADM_ROUTE_home
-                    : DEF.REALM_PUB_ROUTE_home;
-                this.$router.push(route);
-            }
         },
     };
 }

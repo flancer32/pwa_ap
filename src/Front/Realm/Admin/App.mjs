@@ -54,7 +54,7 @@ function Factory(spec) {
         props: true,
     });
     router.addRoute({
-        component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_SignIn_EmailGet$'),
+        component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeGet$'),
         path: DEF.REALM_ADM_ROUTE_signIn_emailGet,
     });
     app.use(router);
