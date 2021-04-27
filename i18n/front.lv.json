@@ -1,5 +1,25 @@
 {
   "btn": {
     "submit": "Nosūtīt"
+  },
+  "route": {
+    "signIn": {
+      "code": {
+        "check": {
+          "title": "Pārbauda pieteikšanās kodu..."
+        },
+        "get": {
+          "email": {
+            "hint": "",
+            "label": "E-pasts"
+          },
+          "msg": {
+            "failure": "Neizdevās.",
+            "success": "Saite, lai ievadītu pieteikumu, ir nosūtīta uz'{{email}}'."
+          },
+          "title": "Ievadiet savu e-pasta adresi, lai saņemtu vienreizēju pieteikšanās saiti."
+        }
+      }
+    }
   }
 }
