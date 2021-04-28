@@ -176,7 +176,7 @@
                 // setup session (load user permissions from server)
                 /** @type {Fl32_Ap_User_Front_Model_Session} */
                 const session = await container.get('Fl32_Ap_User_Front_Model_Session$'); // instance singleton
-                session.setRouteToSignIn(DEF.REALM_PUB_ROUTE_signIn_emailGet);
+                session.setRouteToSignIn(DEF.REALM_ADM_ROUTE_signIn_emailGet);
                 await session.init();
                 container.set(DEF.MOD_USER.DI_SESSION, session);    // TMP: put into container as singleton
             }

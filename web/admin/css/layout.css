@@ -7,3 +7,6 @@
     justify-items: center;
 }
 
+.layoutBase .layoutCentered {
+    min-height: calc(100vh - var(--layout-control-height));
+}

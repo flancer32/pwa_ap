@@ -11,7 +11,11 @@
 }
 
 .text-white {
-    color: var(--color-lightest)!important;
+    color: var(--color-lightest) !important;
+}
+
+.bg-white {
+    background: var(--color-lightest) !important;
 }
 
 .q-drawer {
