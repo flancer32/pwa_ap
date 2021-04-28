@@ -25,8 +25,8 @@ function Factory(spec) {
     const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
     /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
     const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$']; // vue comp tmpl
-    /** @type {Fl32_Ap_Front_Layout_Base} */
-    const layoutBase = spec['Fl32_Ap_Front_Layout_Base$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Admin_Layout_Base} */
+    const layoutBase = spec['Fl32_Ap_Front_Realm_Admin_Layout_Base$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Layout_Blank} */
     const layoutBlank = spec['Fl32_Ap_Front_Layout_Blank$']; // vue comp tmpl
     const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
@@ -56,6 +56,10 @@ function Factory(spec) {
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeGet$'),
         path: DEF.REALM_ADM_ROUTE_signIn_emailGet,
+    });
+    router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_User_Invite$'),
+        path: DEF.REALM_ADM_ROUTE_user_invite,
     });
     app.use(router);
 

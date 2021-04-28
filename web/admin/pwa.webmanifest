@@ -1,6 +1,6 @@
 {
-  "name": "Alus Pils Admin",
-  "short_name": "Alus Pils Admin",
+  "name": "AP Control",
+  "short_name": "AP Control",
   "theme_color": "#950E17",
   "background_color": "#950E17",
   "display": "standalone",
