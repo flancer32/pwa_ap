@@ -32,6 +32,8 @@ function Factory(spec) {
     const setupUser = spec['Fl32_Ap_User_Plugin_Store_RDb_Setup$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
     const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+    /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
+    const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Tree} */
     const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
@@ -67,6 +69,13 @@ function Factory(spec) {
                     {
                         [ETree.A_USER_REF]: DEF.DATA_USER_ADMIN_ID,
                         [ETree.A_PARENT_REF]: DEF.DATA_USER_ADMIN_ID,
+                    }
+                ]);
+                // user_session
+                await trx(ESession.ENTITY).insert([
+                    {
+                        [ESession.A_USER_REF]: DEF.DATA_USER_ADMIN_ID,
+                        [ESession.A_SESSION_ID]: DEF.DATA_USER_ADMIN_SESS_ID,
                     }
                 ]);
             }

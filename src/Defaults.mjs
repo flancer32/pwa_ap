@@ -6,6 +6,7 @@ export default class Fl32_Ap_Defaults {
 
     DATA_USER_ADMIN_EMAIL = 'flancer64@gmail.com'; // app's sample data
     DATA_USER_ADMIN_ID = 1;
+    DATA_USER_ADMIN_SESS_ID = 'sessIdForTests';
     DATA_USER_ADMIN_NAME = 'El Jefe';
 
     /** @type {TeqFw_Core_App_Defaults} */
