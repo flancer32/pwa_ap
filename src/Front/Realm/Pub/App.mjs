@@ -57,6 +57,12 @@ function Factory(spec) {
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeGet$'),
         path: DEF.REALM_PUB_ROUTE_signIn_emailGet,
     });
+    router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignUp_CodeCheck$'),
+        path: DEF.REALM_PUB_ROUTE_signUp_codeCheck,
+        props: true,
+    });
+    // add routes before this line
     app.use(router);
 
     // COMPOSE RESULT

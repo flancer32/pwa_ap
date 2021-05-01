@@ -20,13 +20,15 @@ export default class Fl32_Ap_Defaults {
 
     REALM_ADM = 'admin';
     REALM_ADM_ROUTE_home = '/';
-    REALM_ADM_ROUTE_signIn_codeCheck = 'SET IN CONSTRUCTOR';
+    REALM_ADM_ROUTE_signIn_codeCheck = 'WILL BE SET IN CONSTRUCTOR BELOW';
     REALM_ADM_ROUTE_signIn_emailGet = '/signIn/emailGet';
     REALM_ADM_ROUTE_user_invite = '/user/invite';
     REALM_PUB = 'pub';
     REALM_PUB_ROUTE_home = '/';
-    REALM_PUB_ROUTE_signIn_codeCheck = 'SET IN CONSTRUCTOR';
+    REALM_PUB_ROUTE_signIn_codeCheck = 'WILL BE SET IN CONSTRUCTOR BELOW';
     REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';
+    REALM_PUB_ROUTE_signUp_codeCheck = '/signUp/codeCheck/:code';
+
 
     constructor(spec) {
         // EXTRACT DEPS
