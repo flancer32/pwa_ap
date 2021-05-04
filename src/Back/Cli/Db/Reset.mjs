@@ -1,11 +1,10 @@
 /**
- * @namespace Fl32_Ap_Cli_Db_Reset
+ * @namespace Fl32_Ap_Back_Cli_Db_Reset
  */
 // MODULE'S IMPORT
-import $bcrypt from 'bcrypt';
 
 // DEFINE WORKING VARS
-const NS = 'Fl32_Ap_Cli_Db_Reset';
+const NS = 'Fl32_Ap_Back_Cli_Db_Reset';
 
 // DEFINE MODULE'S FUNCTIONS
 /**
@@ -14,20 +13,19 @@ const NS = 'Fl32_Ap_Cli_Db_Reset';
  * @param {TeqFw_Di_SpecProxy} spec
  * @returns {TeqFw_Core_App_Cli_Command_Data}
  * @constructor
- * @memberOf Fl32_Ap_Cli_Db_Reset
+ * @memberOf Fl32_Ap_Back_Cli_Db_Reset
  */
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$'];   // instance singleton
-    /** @type {Fl32_Ap_User_Defaults} */
-    const DEF_USER = spec['Fl32_Ap_User_Defaults$'];   // instance singleton
     /** @type {typeof TeqFw_Core_App_Cli_Command_Data} */
     const DCommand = spec['TeqFw_Core_App_Cli_Command#Data'];    // class constructor
     /** @type {TeqFw_Core_App_Db_Connector} */
     const connector = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
     /** @type {TeqFw_Core_App_Logger} */
     const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
+    const {isPostgres} = spec['TeqFw_Core_App_Back_Util_RDb']; // ES6 destruct
     /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
     const setupUser = spec['Fl32_Ap_User_Plugin_Store_RDb_Setup$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
@@ -53,11 +51,17 @@ function Factory(spec) {
          * @param trx
          */
         async function populateWithData(trx) {
+            // PARSE INPUT & DEFINE WORKING VARS
+            const isPg = isPostgres(trx.client);
+
             // DEFINE INNER FUNCTIONS
             async function insertUsers(trx) {
                 // user
                 await trx(EUser.ENTITY).insert([
-                    {[EUser.A_ID]: DEF.DATA_USER_ADMIN_ID, [EUser.A_NAME]: DEF.DATA_USER_ADMIN_NAME},
+                    {
+                        [EUser.A_ID]: isPg ? undefined : DEF.DATA_USER_ADMIN_ID,
+                        [EUser.A_NAME]: DEF.DATA_USER_ADMIN_NAME
+                    },
                 ]);
                 // user_id_email
                 await trx(EIdEmail.ENTITY).insert({
@@ -115,7 +119,7 @@ function Factory(spec) {
             logger.error(`${e.toString()}`);
         }
         await connector.disconnect();
-    };
+    }
 
     // COMPOSE RESULT
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
