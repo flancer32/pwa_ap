@@ -33,8 +33,8 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
         const EProdUnitAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
         const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
-        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price_List} */
-        const EProdUnitPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price_List#']; // class
+        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
+        const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
 
 
         /**
@@ -58,7 +58,7 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
             schemaBuilder.dropTableIfExists(EAttrValueInt.ENTITY);
             schemaBuilder.dropTableIfExists(EAttrValue.ENTITY);
             schemaBuilder.dropTableIfExists(EProdUnitPrice.ENTITY);
-            schemaBuilder.dropTableIfExists(EProdUnitPriceList.ENTITY);
+            schemaBuilder.dropTableIfExists(EPriceList.ENTITY);
             schemaBuilder.dropTableIfExists(EProdUnit.ENTITY);
         };
 
@@ -277,11 +277,11 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
                         .comment('Price value in the currency of the price list.');
                     table.primary([EProdUnitPrice.A_LIST_REF, EProdUnitPrice.A_UNIT_REF]);
                     table.foreign(EProdUnitPrice.A_LIST_REF)
-                        .references(EProdUnitPriceList.A_ID).inTable(EProdUnitPriceList.ENTITY)
+                        .references(EPriceList.A_ID).inTable(EPriceList.ENTITY)
                         .onDelete('CASCADE').onUpdate('CASCADE')
                         .withKeyName(nameFK(
                             EProdUnitPrice.ENTITY, EProdUnitPrice.A_LIST_REF,
-                            EProdUnitPriceList.ENTITY, EProdUnitPriceList.A_ID
+                            EPriceList.ENTITY, EPriceList.A_ID
                         ));
                     table.foreign(EProdUnitPrice.A_UNIT_REF)
                         .references(EProdUnit.A_ID).inTable(EProdUnit.ENTITY)
@@ -295,15 +295,15 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
             }
 
             function createTblProdUnitPriceList(schemaBuilder, knex) {
-                schemaBuilder.createTable(EProdUnitPriceList.ENTITY, (table) => {
-                    table.increments(EProdUnitPriceList.A_ID);
-                    table.string(EProdUnitPriceList.A_NAME).notNullable()
+                schemaBuilder.createTable(EPriceList.ENTITY, (table) => {
+                    table.increments(EPriceList.A_ID);
+                    table.string(EPriceList.A_NAME).notNullable()
                         .comment('Name for the price list.');
-                    table.string(EProdUnitPriceList.A_CURRENCY).notNullable()
+                    table.string(EPriceList.A_CURRENCY).notNullable()
                         .comment('Currency for the price list.');
                     table.unique(
-                        EProdUnitPriceList.A_NAME,
-                        nameUQ(EProdUnitPriceList.ENTITY, EProdUnitPriceList.A_NAME)
+                        EPriceList.A_NAME,
+                        nameUQ(EPriceList.ENTITY, EPriceList.A_NAME)
                     );
                     table.comment('Price list can be bound to group, store, date range, etc.');
                 });

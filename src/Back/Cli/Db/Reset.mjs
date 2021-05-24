@@ -28,15 +28,6 @@ function Factory(spec) {
     const {isPostgres} = spec['TeqFw_Core_App_Back_Util_RDb']; // ES6 destruct
     /** @type {Fl32_Ap_Plugin_Store_RDb_Setup} */
     const setupApp = spec['Fl32_Ap_Plugin_Store_RDb_Setup$']; // instance singleton
-    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card} */
-    const EProdCard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#']; // class
-    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit} */
-    const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#']; // class
-    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
-    const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
-    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price_List} */
-    const EProdUnitPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price_List#']; // class
-
     /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
     const setupUser = spec['Fl32_Ap_User_Plugin_Store_RDb_Setup$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
@@ -47,6 +38,9 @@ function Factory(spec) {
     const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
     const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+
+    const {addAttributes} = spec['Fl32_Ap_Back_Cli_Db_Reset_A_Attrs$']; // destruct of factory's returned result
+    const {addProducts} = spec['Fl32_Ap_Back_Cli_Db_Reset_A_Prods$']; // destruct of factory's returned result
 
     // DEFINE INNER FUNCTIONS
 
@@ -66,56 +60,6 @@ function Factory(spec) {
             const isPg = isPostgres(trx.client);
 
             // DEFINE INNER FUNCTIONS
-            async function insertProducts(trx) {
-                // product cards
-                await trx(EProdCard.ENTITY).insert([
-                    {[EProdCard.A_ID]: isPg ? undefined : 1},
-                    {[EProdCard.A_ID]: isPg ? undefined : 2},
-                ]);
-
-                // product units
-                await trx(EProdUnit.ENTITY).insert([
-                    {
-                        [EProdUnit.A_ID]: isPg ? undefined : 1,
-                        [EProdUnit.A_CARD_REF]: 1,
-                        [EProdUnit.A_SKU]: 'sku1_10',
-                    }, {
-                        [EProdUnit.A_ID]: isPg ? undefined : 2,
-                        [EProdUnit.A_CARD_REF]: 1,
-                        [EProdUnit.A_SKU]: 'sku1_20',
-                    }, {
-                        [EProdUnit.A_ID]: isPg ? undefined : 3,
-                        [EProdUnit.A_CARD_REF]: 2,
-                        [EProdUnit.A_SKU]: 'sku2_10',
-                    },
-                ]);
-
-                // price lists
-                await trx(EProdUnitPriceList.ENTITY).insert([
-                    {
-                        [EProdUnitPriceList.A_ID]: isPg ? undefined : 1,
-                        [EProdUnitPriceList.A_NAME]: 'base',
-                        [EProdUnitPriceList.A_CURRENCY]: 'EUR',
-                    },
-                ]);
-
-                // prices
-                await trx(EProdUnitPrice.ENTITY).insert([
-                    {
-                        [EProdUnitPrice.A_LIST_REF]: 1,
-                        [EProdUnitPrice.A_UNIT_REF]: 1,
-                        [EProdUnitPrice.A_PRICE]: 3.57,
-                    }, {
-                        [EProdUnitPrice.A_LIST_REF]: 1,
-                        [EProdUnitPrice.A_UNIT_REF]: 2,
-                        [EProdUnitPrice.A_PRICE]: 6.20,
-                    }, {
-                        [EProdUnitPrice.A_LIST_REF]: 1,
-                        [EProdUnitPrice.A_UNIT_REF]: 3,
-                        [EProdUnitPrice.A_PRICE]: 3.74,
-                    },
-                ]);
-            }
 
             async function insertUsers(trx) {
                 // user
@@ -148,7 +92,8 @@ function Factory(spec) {
 
             // MAIN FUNCTIONALITY
             await insertUsers(trx);
-            await insertProducts(trx);
+            await addAttributes({trx});
+            await addProducts({trx});
         }
 
         // MAIN FUNCTIONALITY

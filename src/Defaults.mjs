@@ -2,12 +2,42 @@
  * Application level constants (hardcoded configuration).
  */
 export default class Fl32_Ap_Defaults {
+    ATTR = {
+        PROD: {
+            CARD: {
+                ALCOHOL_PERCENT: 'alcohol_percent',
+                BEAR_TYPE: 'bear_type',
+                LIQUID_TYPE: 'liquid_type',
+                NAME: 'product_name',
+            },
+            UNIT: {
+                VOLUME: 'volume',
+            },
+        },
+    };
+
     BACK_REALM = 'app';  // realm for API services ('/api/app/...') and CLI commands ('app-...')
 
     DATA_USER_ADMIN_EMAIL = 'flancer64@gmail.com'; // app's sample data
     DATA_USER_ADMIN_ID = 1;
     DATA_USER_ADMIN_SESS_ID = 'sessIdForTests';
     DATA_USER_ADMIN_NAME = 'El Jefe';
+    DATA = {
+        PRICE: {LIST: {DEFAULT: 'default'}},
+        PROD: {
+            TYPE: {
+                BEAR: {
+                    LIGHT: 'light',
+                    DARK: 'dark',
+                },
+                LIQUID: {
+                    BEAR: 'bear',
+                    KVAS: 'kvas',
+                    VINE: 'vine',
+                }
+            }
+        }
+    };
 
     /** @type {TeqFw_Core_App_Defaults} */
     MOD_CORE;
