@@ -12,6 +12,7 @@ Fl32_Ap_Back_Store_RDb_Schema_Product_Card.A_DATE_CREATED = 'date_created';
 Fl32_Ap_Back_Store_RDb_Schema_Product_Card.A_ID = 'id';
 Fl32_Ap_Back_Store_RDb_Schema_Product_Card.A_TYPE = 'type';
 Fl32_Ap_Back_Store_RDb_Schema_Product_Card.DATA_TYPE_SIMPLE = 'simple';
+Fl32_Ap_Back_Store_RDb_Schema_Product_Card.DATA_TYPE_DRAFT = 'draft';
 Fl32_Ap_Back_Store_RDb_Schema_Product_Card.ENTITY = 'prod_card';
 
 // freeze class to deny attributes changes

@@ -5,10 +5,10 @@ export default class Fl32_Ap_Defaults {
     ATTR = {
         PROD: {
             CARD: {
-                ALCOHOL_PERCENT: 'alcohol_percent',
-                BEAR_TYPE: 'bear_type',
-                LIQUID_TYPE: 'liquid_type',
-                NAME: 'product_name',
+                ALCOHOL_PERCENT: 'alcoholPercent',
+                BEAR_TYPE: 'bearType',
+                LIQUID_TYPE: 'liquidType',
+                NAME: 'name',
             },
             UNIT: {
                 VOLUME: 'volume',
@@ -39,6 +39,8 @@ export default class Fl32_Ap_Defaults {
         }
     };
 
+    I18N = {LOCALE: {RU: 'ru'}};
+
     /** @type {TeqFw_Core_App_Defaults} */
     MOD_CORE;
     /** @type {TeqFw_Ui_Quasar_Defaults} */
@@ -59,6 +61,8 @@ export default class Fl32_Ap_Defaults {
     REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';
     REALM_PUB_ROUTE_signUp_codeCheck = '/signUp/codeCheck/:code';
 
+    // SERVICES ROUTES
+    SERV_product_list = '/product/list';
 
     constructor(spec) {
         // EXTRACT DEPS

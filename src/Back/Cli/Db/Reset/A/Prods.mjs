@@ -21,12 +21,14 @@ function Factory(spec) {
     const EAttrValTxt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#']; // class
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card} */
     const EProdCard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#']; // class
-    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit} */
-    const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#']; // class
-    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
-    const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value} */
     const EProdCardAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#']; // class
+    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit} */
+    const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#']; // class
+    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value} */
+    const EProdUnitAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value#']; // class
+    /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
+    const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
     const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
 
@@ -150,7 +152,9 @@ function Factory(spec) {
 
         async function addProductCard(trx, name, liquidType, bearType, alcohol) {
             const qReg = trx(EProdCard.ENTITY)
-                .insert({});
+                .insert({
+                    [EProdCard.A_TYPE]: EProdCard.DATA_TYPE_DRAFT
+                });
             if (isPg) qReg.returning(EProdCard.A_ID);
             const rs = await qReg;
             const [cardId] = rs;
@@ -179,7 +183,12 @@ function Factory(spec) {
             // add alcohol
             if (alcohol) {
                 const attrIdAlco = attrs[ATTR.CARD.ALCOHOL_PERCENT];
-                await addValueDec(trx, attrIdAlco, alcohol);
+                const valueIdAlco = await addValueDec(trx, attrIdAlco, alcohol);
+                await trx(EProdCardAttrValue.ENTITY)
+                    .insert({
+                        [EProdCardAttrValue.A_CARD_REF]: cardId,
+                        [EProdCardAttrValue.A_VALUE_REF]: valueIdAlco,
+                    });
             }
             return cardId;
         }
@@ -192,7 +201,12 @@ function Factory(spec) {
             const [unitId] = rs;
             // add 'volume' attribute
             const attrIdVolume = attrs[ATTR.UNIT.VOLUME];
-            await addValueDec(trx, attrIdVolume, volume);
+            const valueIdVolume = await addValueDec(trx, attrIdVolume, volume);
+            await trx(EProdUnitAttrValue.ENTITY)
+                .insert({
+                    [EProdUnitAttrValue.A_UNIT_REF]: unitId,
+                    [EProdUnitAttrValue.A_VALUE_REF]: valueIdVolume,
+                });
             // add price
             await trx(EProdUnitPrice.ENTITY)
                 .insert({

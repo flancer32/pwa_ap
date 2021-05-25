@@ -25,6 +25,7 @@ function Factory(spec) {
         const isPg = isPostgres(trx.client);
         const ATTR = DEF.ATTR.PROD; // link to product attributes codes
         const DATA = DEF.DATA.PROD.TYPE; // link to test data
+        const RU = DEF.I18N.LOCALE.RU; // link to language code
 
         // DEFINE INNER FUNCTIONS
         async function loadAttrIds(trx) {
@@ -77,13 +78,13 @@ function Factory(spec) {
         const attrs = await loadAttrIds(trx);
         // add values for bear types
         const bearTypeId = attrs[ATTR.CARD.BEAR_TYPE];
-        await addValueTxt(trx, bearTypeId, DATA.BEAR.LIGHT, {['ru-RU']: 'светлое'});
-        await addValueTxt(trx, bearTypeId, DATA.BEAR.DARK, {['ru-RU']: 'тёмное'});
+        await addValueTxt(trx, bearTypeId, DATA.BEAR.LIGHT, {[RU]: 'светлое'});
+        await addValueTxt(trx, bearTypeId, DATA.BEAR.DARK, {[RU]: 'тёмное'});
         // add values for liquid types
         const liquidTypeId = attrs[ATTR.CARD.LIQUID_TYPE];
-        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.BEAR, {['ru-RU']: 'пиво'});
-        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.VINE, {['ru-RU']: 'вино'});
-        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.KVAS, {['ru-RU']: 'квас'});
+        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.BEAR, {[RU]: 'пиво'});
+        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.VINE, {[RU]: 'вино'});
+        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.KVAS, {[RU]: 'квас'});
     }
 
     // MAIN FUNCTIONALITY

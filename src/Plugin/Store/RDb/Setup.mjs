@@ -195,7 +195,8 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
                     table.dateTime(EProdCard.A_DATE_CREATED).notNullable().defaultTo(knex.fn.now())
                         .comment('Date-time for registration of the product card.');
                     table.enu(EProdCard.A_TYPE, [
-                        EProdCard.DATA_TYPE_SIMPLE
+                        EProdCard.DATA_TYPE_DRAFT,
+                        EProdCard.DATA_TYPE_SIMPLE,
                     ]).notNullable().defaultTo(EProdCard.DATA_TYPE_SIMPLE)
                         .comment('Product type (simple, grouped, configurable, ...).');
                     table.comment('Product cards registry.');

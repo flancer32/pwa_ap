@@ -4,8 +4,9 @@
     "path": "./src"
   },
   "http2": {
-    "realms": [
-      "pub"
+    "realm": "app",
+    "services": [
+      "Fl32_Ap_Back_Service_Product_List$"
     ]
   }
 }
