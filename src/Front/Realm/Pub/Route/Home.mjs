@@ -17,6 +17,9 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
+    /** @type {Fl32_Ap_Front_DataSource_Product_Cards} */
+    const ds = spec['Fl32_Ap_Front_DataSource_Product_Cards$']; // instance singleton
 
     const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
 
@@ -50,8 +53,10 @@ function Factory(spec) {
         },
         computed: {},
         methods: {},
-        created() {
-
+        async created() {
+            // const lang = i18n.language;
+            // /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
+            // const products = await ds.getData({lang});
         },
     };
 }
