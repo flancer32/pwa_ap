@@ -54,9 +54,9 @@ function Factory(spec) {
         computed: {},
         methods: {},
         async created() {
-            // const lang = i18n.language;
-            // /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
-            // const products = await ds.getData({lang});
+            const lang = i18n.language;
+            /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
+            const products = await ds.getData({lang});
         },
     };
 }

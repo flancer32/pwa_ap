@@ -1,5 +1,5 @@
 /**
- * Connector to Indexed DB.
+ * Application level connector to Indexed DB. Contains code to upgrade IDB stores.
  *
  * @namespace Fl32_Ap_Front_Idb
  */
@@ -16,54 +16,49 @@ class Fl32_Ap_Front_Idb {
 
     constructor(spec) {
         // EXTRACT DEPS
+        /** @type {TeqFw_Core_App_Front_Idb_Connect} */
+        const conn = spec['TeqFw_Core_App_Front_Idb_Connect$$']; // new instance
         /** @type {typeof Fl32_Ap_Front_Idb_Store_DataSource} */
         const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
 
-        this.open = function () {
-            return new Promise(function (resolve, reject) {
-                const openRequest = indexedDB.open(IDB_NAME, IDB_VERSION);
+        // DEFINE INNER FUNCTIONS
 
-                openRequest.onupgradeneeded = function () {
-                    const db = openRequest.result;
-                    if (!db.objectStoreNames.contains(EDataSource.ENTITY)) {
-                        db.createObjectStore(EDataSource.ENTITY, {keyPath: EDataSource.KEY});
-                    }
-                };
+        /**
+         * Connect to IDB if not connected yet, upgrade DB structure if not upgraded yet.
+         * @return {Promise<void>}
+         */
+        async function open() {
+            // DEFINE INNER FUNCTIONS
+            /**
+             * Function to run on 'IDBOpenDBRequest.onupgradeneeded'
+             */
+            function fnUpgrade() {
+                /** @type {IDBOpenDBRequest} */
+                const me = this;
+                const db = me.result;
+                if (!db.objectStoreNames.contains(EDataSource.ENTITY)) {
+                    db.createObjectStore(EDataSource.ENTITY, {keyPath: EDataSource.KEY});
+                }
+            }
 
-                openRequest.onerror = function () {
-                    console.error("Error", openRequest.error);
-                    reject(openRequest.error);
-                };
-
-                openRequest.onsuccess = function () {
-                    resolve(openRequest.result);
-                };
-            });
+            // MAIN FUNCTIONALITY
+            await conn.openDb(IDB_NAME, IDB_VERSION, fnUpgrade);
         }
 
-        this.put = function (store, value, key) {
-            return new Promise(function (resolve, reject) {
-                const request = store.put(value, key);
-                request.onerror = function () {
-                    reject(request.error);
-                };
-                request.onsuccess = function () {
-                    resolve(request.result);
-                };
-            });
+        // DEFINE INSTANCE METHODS
+
+        /**
+         * Wrapper to open (and upgrade) DB on transaction request.
+         *
+         * @param stores
+         * @param {string} type transaction type (readonly, readwrite, )
+         * @return {Promise<TeqFw_Core_App_Front_Idb_Connect.Transaction>}
+         */
+        this.transaction = async function (stores, type) {
+            if (!conn.isConnected()) await open();
+            return conn.trans(stores, type);
         }
 
-        this.getByKey = function (store, key) {
-            return new Promise(function (resolve, reject) {
-                const request = store.get(key);
-                request.onerror = function () {
-                    reject(request.error);
-                };
-                request.onsuccess = function () {
-                    resolve(request.result);
-                };
-            });
-        }
     }
 }
 

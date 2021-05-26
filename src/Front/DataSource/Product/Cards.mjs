@@ -8,7 +8,7 @@ class Fl32_Ap_Front_DataSource_Product_Cards {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Idb} */
-        const conn = spec['Fl32_Ap_Front_Idb$']; // instance singleton
+        const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
         /** @function {@type Fl32_Ap_Front_Gate_Product_List.gate} */
         const gate = spec['Fl32_Ap_Front_Gate_Product_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Request} */
@@ -32,11 +32,9 @@ class Fl32_Ap_Front_DataSource_Product_Cards {
          */
         this.getData = async function ({lang}) {
             let result;
-            const db = await conn.open();
-            const trn = db.transaction([EDataSource.ENTITY], "readonly");
-            const store = trn.objectStore(EDataSource.ENTITY);
-            /** @type {Fl32_Ap_Front_Idb_Store_DataSource} */
-            const found = await conn.getByKey(store, TYPE);
+            const trn = await idb.transaction([EDataSource.ENTITY], "readonly");
+            const store = trn.getStore(EDataSource.ENTITY);
+            const found = await store.getByKey(TYPE);
             if (found && (found.request.lang === lang)) {
                 result = found.data;
             } else {
@@ -57,14 +55,13 @@ class Fl32_Ap_Front_DataSource_Product_Cards {
             req.lang = lang;
             const res = await gate(req);
             // save data to IDB
-            const db = await conn.open();
-            const trn = db.transaction([EDataSource.ENTITY], "readwrite");
-            const store = trn.objectStore(EDataSource.ENTITY);
-            const ds = new EDataSource();
-            ds.type = TYPE;
-            ds.data = res;
-            ds.request = {lang};
-            await conn.put(store, ds);
+            const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
+            const store = trn.getStore(EDataSource.ENTITY);
+            const item = new EDataSource();
+            item.type = TYPE;
+            item.data = res;
+            item.request = {lang};
+            await store.put(item);
             // return data from the source
             return res;
         }
