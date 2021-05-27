@@ -20,12 +20,18 @@ function Factory(spec) {
     const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
     /** @type {Fl32_Ap_Front_DataSource_Product_Cards} */
     const ds = spec['Fl32_Ap_Front_DataSource_Product_Cards$']; // instance singleton
-
-    const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
+    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Product_Card.vueCompTmpl} */
+    const productCard = spec['Fl32_Ap_Front_Realm_Pub_Widget_Product_Card$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `
-<layout-base>HOME</layout-base>
+<layout-base>
+    <div class="q-pa-xs q-gutter-xs">
+        <product-card v-for="card in cards"
+            :card="card"
+        ></product-card>
+    </div>
+</layout-base>
 `;
 
     // DEFINE INNER FUNCTIONS
@@ -42,13 +48,10 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {},
+        components: {productCard},
         data: function () {
             return {
-                displayMsg: false,
-                fldEmail: null,
-                loading: false,
-                msg: null,
+                cards: [],
             };
         },
         computed: {},
@@ -57,6 +60,7 @@ function Factory(spec) {
             const lang = i18n.language;
             /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
             const products = await ds.getData({lang});
+            this.cards = Object.values(products.cards);
         },
     };
 }

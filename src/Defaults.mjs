@@ -7,6 +7,7 @@ export default class Fl32_Ap_Defaults {
             CARD: {
                 ALCOHOL_PERCENT: 'alcoholPercent',
                 BEAR_TYPE: 'bearType',
+                IMAGE: 'image',
                 LIQUID_TYPE: 'liquidType',
                 NAME: 'name',
             },
@@ -33,6 +34,7 @@ export default class Fl32_Ap_Defaults {
                 LIQUID: {
                     BEAR: 'bear',
                     KVAS: 'kvas',
+                    CIDER: 'cider',
                     VINE: 'vine',
                 }
             }

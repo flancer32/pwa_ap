@@ -2,12 +2,12 @@
 :root {
     --q-dark: #34090C;
     --q-primary: #950E17;
-    /*--q-accent: #9C27B0;*/
-    /*--q-info: #31CCEC;*/
-    /*--q-negative: #C10015;*/
-    /*--q-positive: #21BA45;*/
-    /*--q-secondary: #26A69A;*/
-    /*--q-warning: #F2C037;*/
+    --q-accent: #9C27B0;
+    --q-info: #31CCEC;
+    --q-negative: #C10015;
+    --q-positive: #21BA45;
+    --q-secondary: var(--color-lightest);
+    --q-warning: #F2C037;
 }
 
 .text-white {

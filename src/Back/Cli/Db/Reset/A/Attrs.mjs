@@ -70,6 +70,7 @@ function Factory(spec) {
             .insert([
                 {[EAttr.A_CODE]: ATTR.CARD.ALCOHOL_PERCENT, [EAttr.A_TYPE]: EAttr.DATA_TYPE_DECIMAL},
                 {[EAttr.A_CODE]: ATTR.CARD.BEAR_TYPE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_OPTION},
+                {[EAttr.A_CODE]: ATTR.CARD.IMAGE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_TEXT},
                 {[EAttr.A_CODE]: ATTR.CARD.LIQUID_TYPE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_OPTION},
                 {[EAttr.A_CODE]: ATTR.CARD.NAME, [EAttr.A_TYPE]: EAttr.DATA_TYPE_TEXT},
                 {[EAttr.A_CODE]: ATTR.UNIT.VOLUME, [EAttr.A_TYPE]: EAttr.DATA_TYPE_DECIMAL},
@@ -85,6 +86,7 @@ function Factory(spec) {
         await addValueTxt(trx, liquidTypeId, DATA.LIQUID.BEAR, {[RU]: 'пиво'});
         await addValueTxt(trx, liquidTypeId, DATA.LIQUID.VINE, {[RU]: 'вино'});
         await addValueTxt(trx, liquidTypeId, DATA.LIQUID.KVAS, {[RU]: 'квас'});
+        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.CIDER, {[RU]: 'сидр'});
     }
 
     // MAIN FUNCTIONALITY

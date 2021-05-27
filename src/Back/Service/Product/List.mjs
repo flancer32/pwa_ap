@@ -33,10 +33,16 @@ class Fl32_Ap_Back_Service_Product_List {
         const qProdUnitList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
         const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class
+        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
+        const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
+        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
+        const EUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
         /** @type {typeof Fl32_Ap_Shared_Service_Data_Product_Card} */
         const DCard = spec['Fl32_Ap_Shared_Service_Data_Product_Card#']; // class
         /** @type {typeof Fl32_Ap_Shared_Service_Data_Product_Unit} */
         const DUnit = spec['Fl32_Ap_Shared_Service_Data_Product_Unit#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Data_Price} */
+        const DPrice = spec['Fl32_Ap_Shared_Service_Data_Price#']; // class
 
         // DEFINE INNER FUNCTIONS
 
@@ -123,6 +129,48 @@ class Fl32_Ap_Back_Service_Product_List {
 
                 /**
                  * @param trx
+                 * @return {Promise<Object.<number, Fl32_Ap_Shared_Service_Data_Price>>}
+                 */
+                async function selectPrices(trx) {
+                    // PARSE INPUT & DEFINE WORKING VARS
+                    const AS_UNIT_ID = 'unitId';
+                    const AS_PRICE = 'price';
+                    const AS_CURRENCY = 'currency';
+                    const T_PL = 'pl';
+                    const T_UP = 'up';
+
+                    // MAIN FUNCTIONALITY
+                    const result = {};
+                    // select from main table
+                    const query = trx.from({[T_PL]: EPriceList.ENTITY});
+                    query.select([
+                        {[AS_CURRENCY]: `${T_PL}.${EPriceList.A_CURRENCY}`},
+                    ]);
+                    // join prod_unit_price
+                    query.leftOuterJoin(
+                        {[T_UP]: EUnitPrice.ENTITY},
+                        `${T_UP}.${EUnitPrice.A_LIST_REF}`,
+                        `${T_PL}.${EPriceList.A_ID}`);
+                    query.select([
+                        {[AS_UNIT_ID]: `${T_UP}.${EUnitPrice.A_UNIT_REF}`},
+                        {[AS_PRICE]: `${T_UP}.${EUnitPrice.A_PRICE}`},
+                    ]);
+                    // WHERE
+                    query.where(`${T_PL}.${EPriceList.A_NAME}`, DEF.DATA.PRICE.LIST.DEFAULT);
+                    //
+                    /** @type {Array} */
+                    const rs = await query;
+                    for (const one of rs) {
+                        const item = new DPrice();
+                        item.value = one[AS_PRICE];
+                        item.currency = one[AS_CURRENCY];
+                        result[one[AS_UNIT_ID]] = item;
+                    }
+                    return result;
+                }
+
+                /**
+                 * @param trx
                  * @param {string} lang
                  * @return {Promise<Object.<number, Fl32_Ap_Shared_Service_Data_Product_Unit>>}
                  */
@@ -168,15 +216,17 @@ class Fl32_Ap_Back_Service_Product_List {
                  *
                  * @param {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Card>} cards
                  * @param {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Unit>} units
+                 * @param {Object.<number, Fl32_Ap_Shared_Service_Data_Price>} prices
                  * @return {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Card>}
                  */
-                function placeUnitsToCards(cards, units) {
+                function placeUnitsToCards(cards, units, prices) {
                     for (
                         /** @type {Fl32_Ap_Shared_Service_Data_Product_Unit} */
                         const unit of Object.values(units)
                         ) {
                         const cardId = unit.cardId;
                         const unitId = unit.id;
+                        unit.price = prices[unitId];
                         if (!cards[cardId].units) cards[cardId].units = {}
                         cards[cardId].units[unitId] = unit;
                     }
@@ -196,7 +246,8 @@ class Fl32_Ap_Back_Service_Product_List {
                     const lang = apiReq.lang;
                     const cards = await selectCards(trx, lang);
                     const units = await selectUnits(trx, lang);
-                    response.cards = placeUnitsToCards(cards, units);
+                    const prices = await selectPrices(trx);
+                    response.cards = placeUnitsToCards(cards, units, prices);
                     await trx.commit();
                 } catch (error) {
                     await trx.rollback();

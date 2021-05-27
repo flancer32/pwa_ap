@@ -11,6 +11,8 @@ class Fl32_Ap_Shared_Service_Data_Product_Unit {
      * @type {number}
      */
     id;
+    /** @type {Fl32_Ap_Shared_Service_Data_Price} */
+    price;
     /** @type {string} */
     sku;
 }
