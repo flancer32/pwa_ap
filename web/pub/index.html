@@ -91,6 +91,14 @@
                     const store = Vuex.createStore(state);
                     container.set(DEF.DI_STORE, store);
                     app.use(store);
+                    //
+                    // TODO: init app state somewhere else
+                    //
+                    const {reactive} = await container.get(DEF.MOD_VUE.DI_VUE);
+                    const items = reactive({});
+                    const totals = reactive({liters: 10, amount: 23.54});
+                    const cart = reactive({items, totals});
+                    container.set(DEF.DI.SHOPPING_CART, cart);
                 }
 
                 // MAIN FUNCTIONALITY

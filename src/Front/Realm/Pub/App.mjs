@@ -29,7 +29,6 @@ function Factory(spec) {
     const layoutBase = spec['Fl32_Ap_Front_Layout_Base$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Layout_Blank} */
     const layoutBlank = spec['Fl32_Ap_Front_Layout_Blank$']; // vue comp tmpl
-    const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
 
     // DEFINE WORKING VARS
     const template = `
@@ -85,7 +84,7 @@ function Factory(spec) {
         },
         computed: {},
         methods: {},
-        mounted() {
+        setup(props, context) {
         },
     }
 }

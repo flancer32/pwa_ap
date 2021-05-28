@@ -41,6 +41,10 @@ export default class Fl32_Ap_Defaults {
         }
     };
 
+    DI = {
+        SHOPPING_CART: 'appShoppingCart'
+    };
+
     I18N = {LOCALE: {RU: 'ru'}};
 
     /** @type {TeqFw_Core_App_Defaults} */

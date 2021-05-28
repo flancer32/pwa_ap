@@ -19,12 +19,11 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$'];
-    /** @type {TeqFw_Di_Container} */
-    const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
-    const i18next = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     const {ref} = spec[DEF.MOD_VUE.DI_VUE];    // named singleton destructuring
+    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini.vueCompTmpl} */
+    const miniCart = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `
@@ -36,9 +35,8 @@ function Factory(spec) {
           <q-avatar>
             <img src="favicon-192x192.png" alt="logo">
           </q-avatar>
-          Title
         </q-toolbar-title>
-
+        <mini-cart/>
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
@@ -71,6 +69,7 @@ function Factory(spec) {
     return {
         name: NS,
         template,
+        components: {miniCart},
         data() {
             return {
                 isAuthenticated: false,

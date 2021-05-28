@@ -1,18 +1,18 @@
 /**
- * Aggregated state for default realm.
+ * Aggregated state for 'pub' realm.
  *
  * @param {TeqFw_Di_SpecProxy} spec
  * @return {Object}
  */
 function Fl32_Ap_Front_Realm_Pub_State(spec) {
-    /** @type {Fl32_Ap_User_Front_State} */
-    // const user = spec['Fl32_Ap_User_Front_State$'];   // singleton object
+
 
     return {
         namespaced: true,
         state: {
             lang: 'en-US',
             title: 'TeqFW App',
+            cart: {},
         },
         // modules: {user},
     };
