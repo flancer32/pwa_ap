@@ -17,9 +17,8 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$'];
-    const cart = spec[DEF.DI.SHOPPING_CART]; // named singleton
+    /** @type {Fl32_Ap_Front_Model_Cart} */
+    const mCart = spec['Fl32_Ap_Front_Model_Cart$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
@@ -52,23 +51,21 @@ function Factory(spec) {
         props: {},
         computed: {
             totalAmount() {
+                const cart = mCart.getData();
                 const val = cart.totals.amount;
                 const formatted = Number.parseFloat(val).toFixed(2);
                 return `${formatted} EUR`;
             },
 
             totalLiters() {
+                const cart = mCart.getData();
                 const val = cart.totals.liters;
                 const formatted = Number.parseFloat(val).toFixed(1);
                 return `${formatted} L`;
             }
         },
         methods: {},
-        mounted() {
-            setTimeout(() => {
-                cart.totals.liters = 20;
-            }, 2000);
-        },
+        mounted() { },
     };
 }
 

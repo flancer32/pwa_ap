@@ -162,7 +162,7 @@ class Fl32_Ap_Back_Service_Product_List {
                     const rs = await query;
                     for (const one of rs) {
                         const item = new DPrice();
-                        item.value = one[AS_PRICE];
+                        item.value = Number.parseFloat(one[AS_PRICE]);
                         item.currency = one[AS_CURRENCY];
                         result[one[AS_UNIT_ID]] = item;
                     }

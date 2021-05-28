@@ -19,15 +19,31 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    // const cart = spec[DEF.DI.SHOPPING_CART]; // named singleton
+    /** @type {Fl32_Ap_Front_Model_Cart} */
+    const mCart = spec['Fl32_Ap_Front_Model_Cart$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
-<div class="t-grid cols" style="grid-template-columns: 1fr 1fr auto; margin-top: 5px;">
+<div class="t-grid cols gutter-sm" style="grid-template-columns: 1fr 1fr auto auto; margin-top: 5px;">
     <div style="text-align: center">{{volume}} L</div>
     <div>{{price}}</div>
-    <div>
-        <q-avatar text-color="secondary" color="primary" icon="add"/>
-    </div>
+        <q-avatar
+                color="primary"
+                :disabled="disabledRemove"
+                icon="navigate_before"
+                text-color="secondary"
+                v-on:click="removeUnit"
+        />
+
+        <q-avatar
+                color="primary"
+                :disabled="disabledAdd"
+                icon="navigate_next"
+                text-color="secondary"
+                v-on:click="addUnit"
+        />
+
 </div>
 `;
 
@@ -53,6 +69,12 @@ function Factory(spec) {
             unit: null,
         },
         computed: {
+            disabledRemove() {
+                return mCart.hasUnit(this.unit) && null;
+            },
+            disabledAdd() {
+                return null; // always enabled
+            },
             price() {
                 const val = this.unit?.price?.value;
                 const cur = this.unit?.price?.currency;
@@ -65,7 +87,14 @@ function Factory(spec) {
                 return Number.parseFloat(val).toFixed(1);
             }
         },
-        methods: {},
+        methods: {
+            addUnit() {
+                mCart.unitAdd(this.unit);
+            },
+            removeUnit() {
+                mCart.unitRemove(this.unit);
+            }
+        },
         watch: {},
     };
 }

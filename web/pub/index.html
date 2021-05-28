@@ -94,11 +94,13 @@
                     //
                     // TODO: init app state somewhere else
                     //
-                    const {reactive} = await container.get(DEF.MOD_VUE.DI_VUE);
-                    const items = reactive({});
-                    const totals = reactive({liters: 10, amount: 23.54});
-                    const cart = reactive({items, totals});
-                    container.set(DEF.DI.SHOPPING_CART, cart);
+                    // const {reactive} = await container.get(DEF.MOD_VUE.DI_VUE);
+                    // const items = reactive({});
+                    // const totals = reactive({liters: 0, amount: 0});
+                    // const cart = reactive({items, totals});
+                    // container.set(DEF.DI.SHOPPING_CART, cart);
+                    //
+                    // const model = container.get('Fl32_Ap_Front_Model_Cart$');
                 }
 
                 // MAIN FUNCTIONALITY

@@ -59,17 +59,8 @@ class Fl32_Ap_Front_Idb {
             return conn.trans(stores, type);
         }
 
-        this.delete = function () {
-            return new Promise(function (resolve, reject) {
-                const req = indexedDB.deleteDatabase(IDB_NAME);
-                req.onerror = function () {
-                    reject(req.error);
-                };
-                req.onsuccess = function () {
-                    resolve();
-                };
-            });
-
+        this.delete = async function () {
+            return conn.delete(IDB_NAME);
         }
 
     }
