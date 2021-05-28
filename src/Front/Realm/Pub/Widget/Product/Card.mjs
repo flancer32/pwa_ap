@@ -29,11 +29,11 @@ function Factory(spec) {
                 <img :src="imageUrl">
             </q-avatar>
             <div class="t-grid rows">
-                <div style="font-size: larger; color: var(--color-darker);">{{ card?.attrs?.name }}</div>
+                <div style="font-size: larger; color: var(--color-darker); padding-left: 10px;">{{ card?.attrs?.name }}</div>
                 <div>
-                    <q-chip color="secondary">{{ card?.attrs?.liquidType }}</q-chip>
-                    <q-chip color="secondary">{{ card?.attrs?.bearType }}</q-chip>
-                    <q-chip color="secondary">{{ card?.attrs?.alcoholPercent }}%</q-chip>
+                    <q-chip color="secondary" v-if="card?.attrs?.liquidType">{{ card?.attrs?.liquidType }}</q-chip>
+                    <q-chip color="secondary" v-if="card?.attrs?.bearType">{{ card?.attrs?.bearType }}</q-chip>
+                    <q-chip color="secondary" v-if="card?.attrs?.alcoholPercent">{{ card?.attrs?.alcoholPercent }}%</q-chip>
                 </div>    
             </div>
             <q-avatar v-if="!displayUnits" v-on:click="displayUnits=!displayUnits"
@@ -53,10 +53,6 @@ function Factory(spec) {
     </q-card-section>
 </q-card>
 `;
-
-    // DEFINE INNER FUNCTIONS
-
-    // MAIN FUNCTIONALITY
 
     // COMPOSE RESULT
     /**

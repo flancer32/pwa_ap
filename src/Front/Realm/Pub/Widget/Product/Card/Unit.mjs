@@ -25,24 +25,25 @@ function Factory(spec) {
 
     // DEFINE WORKING VARS
     const template = `
-<div class="t-grid cols gutter-sm" style="grid-template-columns: 1fr 1fr auto auto; margin-top: 5px;">
-    <div style="text-align: center">{{volume}} L</div>
-    <div>{{price}}</div>
-        <q-avatar
-                color="primary"
-                :disabled="disabledRemove"
-                icon="navigate_before"
-                text-color="secondary"
-                v-on:click="removeUnit"
-        />
+<div class="t-grid cols gutter-sm"
+     style="grid-template-columns: 1fr 1fr auto auto; margin-top: 5px; align-items: center;">
+    <div style="text-align: right; font-size: larger;">{{volume}} L</div>
+    <div style="text-align: right; font-size: larger; padding-right: 10px;">{{price}}</div>
+    <q-avatar
+            color="primary"
+            :disabled="disabledRemove"
+            icon="navigate_before"
+            text-color="secondary"
+            v-on:click="removeUnit"
+    />
 
-        <q-avatar
-                color="primary"
-                :disabled="disabledAdd"
-                icon="navigate_next"
-                text-color="secondary"
-                v-on:click="addUnit"
-        />
+    <q-avatar
+            color="primary"
+            :disabled="disabledAdd"
+            icon="navigate_next"
+            text-color="secondary"
+            v-on:click="addUnit"
+    />
 
 </div>
 `;

@@ -27,32 +27,36 @@ function Factory(spec) {
 
     // DEFINE WORKING VARS
     const template = `
-  <q-layout view="hHh lpR fFf" v-if="isAuthenticated">
+<q-layout view="hHh lpR fFf" v-if="isAuthenticated">
 
     <q-header elevated class="bg-primary text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="favicon-192x192.png" alt="logo">
-          </q-avatar>
-        </q-toolbar-title>
-        <mini-cart/>
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-      </q-toolbar>
+        <q-toolbar>
+            <q-avatar>
+                <img src="favicon-192x192.png" alt="logo">
+            </q-avatar>
+            <q-toolbar-title>
+                <mini-cart/>
+            </q-toolbar-title>
+            <q-btn dense flat round icon="menu" @click="toggleRightDrawer"/>
+        </q-toolbar>
     </q-header>
 
     <q-drawer v-model="rightDrawerOpen" side="right" overlay behavior="mobile" bordered>
-       <ul>
-       <li><router-link to="/">Home</router-link></li>
-       <li><router-link to="/cfg/clean">Cfg / Clean</router-link></li>
-      </ul>
+        <ul>
+            <li>
+                <router-link to="/">Home</router-link>
+            </li>
+            <li>
+                <router-link to="/cfg/clean">Cfg / Clean</router-link>
+            </li>
+        </ul>
     </q-drawer>
 
     <q-page-container>
-      <slot />
+        <slot/>
     </q-page-container>
 
-  </q-layout>
+</q-layout>
 `;
 
     // DEFINE INNER FUNCTIONS

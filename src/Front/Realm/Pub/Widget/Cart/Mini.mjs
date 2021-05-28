@@ -25,6 +25,7 @@ function Factory(spec) {
 <q-chip icon="shopping_cart"
     text-color="primary"
     color="secondary"
+    style="left: 50%; transform: translate(-50%, 0);"
 >
     {{totalLiters}} / {{totalAmount}}
 </q-chip>
