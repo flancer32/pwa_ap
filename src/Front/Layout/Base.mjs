@@ -44,7 +44,10 @@ function Factory(spec) {
     </q-header>
 
     <q-drawer v-model="rightDrawerOpen" side="right" overlay behavior="mobile" bordered>
-      <!-- drawer content -->
+       <ul>
+       <li><router-link to="/">Home</router-link></li>
+       <li><router-link to="/cfg/clean">Cfg / Clean</router-link></li>
+      </ul>
     </q-drawer>
 
     <q-page-container>
