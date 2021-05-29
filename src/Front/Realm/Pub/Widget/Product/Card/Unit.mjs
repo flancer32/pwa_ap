@@ -20,8 +20,8 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     // const cart = spec[DEF.DI.SHOPPING_CART]; // named singleton
-    /** @type {Fl32_Ap_Front_Model_Cart} */
-    const mCart = spec['Fl32_Ap_Front_Model_Cart$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
+    const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `

@@ -17,8 +17,8 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Front_Model_Cart} */
-    const mCart = spec['Fl32_Ap_Front_Model_Cart$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
+    const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
