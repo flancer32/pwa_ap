@@ -31,7 +31,7 @@ function Factory(spec) {
 
     <q-header elevated class="bg-primary text-white">
         <q-toolbar>
-            <q-avatar>
+            <q-avatar v-on:click="$router.push('/')">
                 <img src="favicon-192x192.png" alt="logo">
             </q-avatar>
             <q-toolbar-title>

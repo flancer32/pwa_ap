@@ -19,7 +19,6 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    // const cart = spec[DEF.DI.SHOPPING_CART]; // named singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
 
@@ -30,17 +29,17 @@ function Factory(spec) {
     <div style="text-align: right; font-size: larger;">{{volume}} L</div>
     <div style="text-align: right; font-size: larger; padding-right: 10px;">{{price}}</div>
     <q-avatar
-            color="primary"
             :disabled="disabledRemove"
-            icon="navigate_before"
+            color="primary"
+            icon="remove"
             text-color="secondary"
             v-on:click="removeUnit"
     />
 
     <q-avatar
-            color="primary"
             :disabled="disabledAdd"
-            icon="navigate_next"
+            color="primary"
+            icon="add"
             text-color="secondary"
             v-on:click="addUnit"
     />

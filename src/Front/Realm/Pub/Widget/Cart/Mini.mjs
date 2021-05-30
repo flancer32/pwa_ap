@@ -17,15 +17,19 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Defaults} */
+    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
 <q-chip icon="shopping_cart"
-    text-color="primary"
+    clickable
+    @click="gotoCart"
     color="secondary"
     style="left: 50%; transform: translate(-50%, 0);"
+    text-color="primary"
 >
     {{totalLiters}} / {{totalAmount}}
 </q-chip>
@@ -65,7 +69,11 @@ function Factory(spec) {
                 return `${formatted} L`;
             }
         },
-        methods: {},
+        methods: {
+            gotoCart() {
+                this.$router.push(DEF.REALM_PUB_ROUTE_cart);
+            }
+        },
         mounted() { },
     };
 }

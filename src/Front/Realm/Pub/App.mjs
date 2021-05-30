@@ -44,6 +44,10 @@ function Factory(spec) {
 
     // setup application routes
     router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Cart$'),
+        path: DEF.REALM_PUB_ROUTE_cart,
+    });
+    router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Cfg_Clean$'),
         path: DEF.REALM_PUB_ROUTE_cfg_clean,
     });

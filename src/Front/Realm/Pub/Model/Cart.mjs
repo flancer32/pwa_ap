@@ -72,6 +72,15 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             return !!(cart.items[unitId]);
         }
         /**
+         * Clean current cart.
+         */
+        this.clean = async function () {
+            const keys = Object.keys(cart.items);
+            for (const key of keys) delete cart.items[key];
+            cart.totals.liters = 0;
+            cart.totals.amount = 0;
+        }
+        /**
          * @param {Fl32_Ap_Shared_Service_Data_Product_Unit} unit
          */
         this.unitAdd = function (unit) {

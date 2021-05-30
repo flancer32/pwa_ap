@@ -36,14 +36,16 @@ function Factory(spec) {
                     <q-chip color="secondary" v-if="card?.attrs?.alcoholPercent">{{ card?.attrs?.alcoholPercent }}%</q-chip>
                 </div>    
             </div>
-            <q-avatar v-if="!displayUnits" v-on:click="displayUnits=!displayUnits"
-                size="50px" text-color="secondary" 
-                color="primary" icon="sports_bar"
-            />
-            <q-avatar v-if="displayUnits" v-on:click="displayUnits=!displayUnits"
-                size="50px" text-color="secondary"
-                color="primary" icon="open_in_browser"
-            />
+            <div>
+                <q-avatar v-if="!displayUnits" v-on:click="displayUnits=!displayUnits"
+                    size="50px" text-color="secondary" 
+                    color="primary" icon="sports_bar"
+                />
+                <q-avatar v-if="displayUnits" v-on:click="displayUnits=!displayUnits"
+                    size="50px" text-color="secondary"
+                    color="primary" icon="open_in_browser"
+                />
+            </div>
         </div>
     </q-card-section>
     <q-card-section v-if="displayUnits">

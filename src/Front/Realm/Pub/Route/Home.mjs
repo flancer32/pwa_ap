@@ -19,7 +19,7 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
     /** @type {Fl32_Ap_Front_DataSource_Product_Cards} */
-    const ds = spec['Fl32_Ap_Front_DataSource_Product_Cards$']; // instance singleton
+    const dsProds = spec['Fl32_Ap_Front_DataSource_Product_Cards$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Product_Card.vueCompTmpl} */
     const productCard = spec['Fl32_Ap_Front_Realm_Pub_Widget_Product_Card$']; // vue comp tmpl
 
@@ -59,7 +59,7 @@ function Factory(spec) {
         async created() {
             const lang = i18n.language;
             /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
-            const products = await ds.getData({lang});
+            const products = await dsProds.getData({lang});
             this.cards = Object.values(products.cards);
         },
     };
