@@ -18,12 +18,23 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
+    const {round} = spec['TeqFw_Core_App_Shared_Util']; // ES6 destruct
     /** @type {Fl32_Ap_Front_DataSource_Product_Cards} */
     const dsProd = spec['Fl32_Ap_Front_DataSource_Product_Cards$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Item.vueCompTmpl} */
     const cartItem = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Item$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Submit.vueCompTmpl} */
+    const dialogSubmit = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Submit$']; // vue comp tmpl
+    /** @function {@type Fl32_Ap_Front_Gate_Sale_Add.gate} */
+    const gateAdd = spec['Fl32_Ap_Front_Gate_Sale_Add$']; // function singleton
+    /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
+    const ReqAdd = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Request']; // class
+    /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale} */
+    const DSale = spec['Fl32_Ap_Shared_Service_Data_Sale#']; // class
+    /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale_Item} */
+    const DSaleItem = spec['Fl32_Ap_Shared_Service_Data_Sale_Item#']; // class
 
     // DEFINE WORKING VARS
     const template = `
@@ -38,7 +49,7 @@ function Factory(spec) {
                     >{{$t('btn.clean')}}</q-btn>
                     <q-btn 
                         color="primary"
-                        v-on:click="onSubmit"
+                        v-on:click="dialogSubmitDisplay=true"
                     >{{$t('btn.submit')}}</q-btn>
                 </q-card-actions>
             </q-card-section>
@@ -47,6 +58,11 @@ function Factory(spec) {
             :item="item"
         />
     </div>
+    <dialog-submit
+        :display="dialogSubmitDisplay"
+        @onHide="dialogSubmitDisplay=false"
+        @onSubmit="onDialogSubmit"
+    ></dialog-submit>
 </layout-base>
 `;
 
@@ -64,11 +80,12 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {cartItem},
+        components: {cartItem, dialogSubmit},
         data: function () {
             return {
-                products: null,
                 cart: null,
+                dialogSubmitDisplay: false,
+                products: null,
             };
         },
         computed: {},
@@ -76,7 +93,33 @@ function Factory(spec) {
             onClean() {
                 mCart.clean();
             },
-            onSubmit() {},
+            async onDialogSubmit(date) {
+                const cart = mCart.getData();
+                const req = new ReqAdd();
+                const sale = new DSale();
+                sale.dateReceiving = date;
+                sale.currency = cart.totals.currency;
+                sale.amountTotal = round(cart.totals.amount, 2);
+                const items = [];
+                for (
+                    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item} */
+                    const one of Object.values(cart.items)
+                    ) {
+                    const item = new DSaleItem();
+                    item.qty = one.count;
+                    item.unitId = one.unit.id;
+                    item.unitPrice = one.unit.price.value;
+                    item.amountTotal = round(item.qty * item.unitPrice, 2);
+                    items.push(item);
+                }
+                sale.items = items;
+                req.sale = sale;
+                /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
+                const res = await gateAdd(req);
+                if (res.success) {
+                    mCart.clean();
+                }
+            },
         },
         async created() {
             const lang = i18n.language;

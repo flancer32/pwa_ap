@@ -8,7 +8,7 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Cart';
 class Fl32_Ap_Front_Realm_Pub_Dto_Cart {
     /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item>} */
     items;
-    /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Cart>} */
+    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals} */
     totals;
 }
 

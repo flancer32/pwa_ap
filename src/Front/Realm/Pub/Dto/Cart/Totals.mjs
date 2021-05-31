@@ -7,12 +7,15 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals';
 class Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals {
     /** @type {number} */
     amount = 0;
+    /** @type {string} */
+    currency = 'EUR';
     /** @type {number} */
     liters = 0;
 }
 
 // attributes names
 Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals.AMOUNT = 'amount';
+Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals.CURRENCY = 'currency';
 Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals.LITERS = 'liters';
 
 /**
@@ -21,8 +24,6 @@ Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals.LITERS = 'liters';
  */
 class Factory {
     constructor() {
-        // EXTRACT DEPS
-
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals}
          */

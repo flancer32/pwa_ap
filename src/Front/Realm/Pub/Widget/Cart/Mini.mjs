@@ -58,8 +58,9 @@ function Factory(spec) {
             totalAmount() {
                 const cart = mCart.getData();
                 const val = cart.totals.amount;
+                const cur = cart.totals.currency;
                 const formatted = Number.parseFloat(val).toFixed(2);
-                return `${formatted} EUR`;
+                return `${formatted} ${cur}`;
             },
 
             totalLiters() {

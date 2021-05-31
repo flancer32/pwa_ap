@@ -61,7 +61,9 @@ class Fl32_Ap_Back_Service_Sale_Add {
                 /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
                 const result = Object.assign(new Request(), body.data);
                 result.sale = Object.assign(new DSale(), result.sale);
-                result.sale.dateCreated = new Date(result.sale.dateCreated);
+                result.sale.dateCreated = (result.sale.dateCreated)
+                    ? new Date(result.sale.dateCreated)
+                    : new Date();
                 result.sale.dateReceiving = new Date(result.sale.dateReceiving);
                 const items = [];
                 if (Array.isArray(result.sale.items)) {
