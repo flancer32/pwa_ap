@@ -71,6 +71,7 @@ export default class Fl32_Ap_Defaults {
 
     // SERVICES ROUTES
     SERV_product_list = '/product/list';
+    SERV_sale_add = '/sale/add';
 
     constructor(spec) {
         // EXTRACT DEPS
