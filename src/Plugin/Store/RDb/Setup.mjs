@@ -35,6 +35,12 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
         const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
         const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
+        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
+        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
+        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
+        const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#']; // class
+        /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
+        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
 
 
         /**
@@ -59,7 +65,9 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
             schemaBuilder.dropTableIfExists(EAttrValue.ENTITY);
             schemaBuilder.dropTableIfExists(EProdUnitPrice.ENTITY);
             schemaBuilder.dropTableIfExists(EPriceList.ENTITY);
+            schemaBuilder.dropTableIfExists(ESaleItem.ENTITY);
             schemaBuilder.dropTableIfExists(EProdUnit.ENTITY);
+            schemaBuilder.dropTableIfExists(ESale.ENTITY);
         };
 
         /**
@@ -310,6 +318,56 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
                 });
             }
 
+            function createTblSale(schemaBuilder, knex) {
+                schemaBuilder.createTable(ESale.ENTITY, (table) => {
+                    table.increments(ESale.A_ID);
+                    table.integer(ESale.A_USER_REF).unsigned().notNullable()
+                        .comment('Reference to user that created the sale.');
+                    table.dateTime(ESale.A_DATE_CREATED).notNullable().defaultTo(knex.fn.now())
+                        .comment('Date-time for sale registration.');
+                    table.dateTime(ESale.A_DATE_RECEIVING).notNullable().defaultTo(knex.fn.now())
+                        .comment('Date-time for sale receiving.');
+                    table.enu(ESale.A_STATE, [
+                        ESale.DATA_STATE_NEW,
+                        ESale.DATA_STATE_COLLECTED,
+                        ESale.DATA_STATE_COMPLETE,
+                        ESale.DATA_STATE_CANCELLED,
+                    ]).notNullable()
+                        .comment('Current state of the sale order.');
+                    table.decimal(ESale.A_AMOUNT_TOTAL, 20, 6).unsigned().notNullable()
+                        .comment('Total amount of the sale order.');
+                    table.string(ESale.A_CURRENCY).notNullable()
+                        .comment('Currency for the sale order.');
+                    table.foreign(ESale.A_USER_REF).references(EUser.A_ID).inTable(EUser.ENTITY)
+                        .onDelete('CASCADE').onUpdate('CASCADE')
+                        .withKeyName(nameFK(ESale.ENTITY, ESale.A_USER_REF, EUser.ENTITY, EUser.A_ID));
+                    table.comment('Registry for sales orders.');
+                });
+            }
+
+            function createTblSaleItem(schemaBuilder, knex) {
+                schemaBuilder.createTable(ESaleItem.ENTITY, (table) => {
+                    table.increments(ESaleItem.A_ID);
+                    table.integer(ESaleItem.A_SALE_REF).unsigned().notNullable()
+                        .comment('Reference to the sale.');
+                    table.integer(ESaleItem.A_UNIT_REF).unsigned().notNullable()
+                        .comment('Reference to the product unit.');
+                    table.integer(ESaleItem.A_QTY).unsigned().notNullable()
+                        .comment('Product unit quantity.');
+                    table.decimal(ESaleItem.A_UNIT_PRICE, 20, 6).unsigned().notNullable()
+                        .comment('Product unit price.');
+                    table.decimal(ESale.A_AMOUNT_TOTAL, 20, 6).unsigned().notNullable()
+                        .comment('Total amount of the sale item.');
+                    table.foreign(ESaleItem.A_SALE_REF).references(ESale.A_ID).inTable(ESale.ENTITY)
+                        .onDelete('CASCADE').onUpdate('CASCADE')
+                        .withKeyName(nameFK(ESaleItem.ENTITY, ESaleItem.A_SALE_REF, ESale.ENTITY, ESale.A_ID));
+                    table.foreign(ESaleItem.A_UNIT_REF).references(EProdUnit.A_ID).inTable(EProdUnit.ENTITY)
+                        .onDelete('CASCADE').onUpdate('CASCADE')
+                        .withKeyName(nameFK(ESaleItem.ENTITY, ESaleItem.A_UNIT_REF, EProdUnit.ENTITY, EProdUnit.A_ID));
+                    table.comment('Registry for sales orders.');
+                });
+            }
+
 
             // MAIN FUNCTIONALITY
             // compose queries to create main tables (registries)
@@ -327,7 +385,8 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
             createTblProdUnitAttrValue(schemaBuilder, knex);
             createTblProdUnitPriceList(schemaBuilder, knex);
             createTblProdUnitPrice(schemaBuilder, knex);
-
+            createTblSale(schemaBuilder, knex);
+            createTblSaleItem(schemaBuilder, knex);
         };
     }
 }
