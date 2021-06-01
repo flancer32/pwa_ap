@@ -58,6 +58,7 @@ export default class Fl32_Ap_Defaults {
 
     REALM_ADM = 'admin';
     REALM_ADM_ROUTE_home = '/';
+    REALM_ADM_ROUTE_sale_list = '/sale/list';
     REALM_ADM_ROUTE_signIn_codeCheck = 'WILL BE SET IN CONSTRUCTOR BELOW';
     REALM_ADM_ROUTE_signIn_emailGet = '/signIn/emailGet';
     REALM_ADM_ROUTE_user_invite = '/user/invite';

@@ -19,9 +19,6 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$'];
-    /** @type {TeqFw_Di_Container} */
-    const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
-    const i18next = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     const navigator = spec['Fl32_Ap_Front_Realm_Admin_Layout_Navigator$']; // vue comp tmpl
@@ -33,12 +30,11 @@ function Factory(spec) {
 
     <q-header elevated class="bg-primary text-white">
         <q-toolbar>
-            <q-toolbar-title>
-                <q-avatar>
-                    <img src="favicon-192x192.png" alt="logo">
-                </q-avatar>
-                Title
-            </q-toolbar-title>
+            <q-avatar v-on:click="$router.push('/sale/list')">
+                <img src="favicon-192x192.png" alt="logo">
+            </q-avatar>
+
+            <q-toolbar-title></q-toolbar-title>
 
             <q-btn dense flat round icon="menu" @click="toggleRightDrawer"/>
         </q-toolbar>

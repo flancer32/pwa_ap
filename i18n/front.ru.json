@@ -38,6 +38,21 @@
           }
         }
       }
+    },
+    "wg": {
+      "sale": {
+        "list": {
+          "sale": {
+            "amountTotal": "Общая сумма",
+            "dateCreated": "Дата создания",
+            "dateReceiving": "Время получения",
+            "itemsTotal": "Кол-во позиций",
+            "saleId": "Номер заказа",
+            "state": "Статус",
+            "user": "Клиент"
+          }
+        }
+      }
     }
   },
   "pub": {

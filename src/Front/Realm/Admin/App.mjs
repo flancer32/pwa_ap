@@ -19,8 +19,6 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$'];    // instance singleton
     /** @type {TeqFw_Di_Container} */
     const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
-    /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton
     const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
     /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
@@ -29,7 +27,6 @@ function Factory(spec) {
     const layoutBase = spec['Fl32_Ap_Front_Realm_Admin_Layout_Base$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Layout_Blank} */
     const layoutBlank = spec['Fl32_Ap_Front_Layout_Blank$']; // vue comp tmpl
-    const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
 
     // DEFINE WORKING VARS
     const template = `
@@ -47,6 +44,10 @@ function Factory(spec) {
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_Home$'),
         path: DEF.REALM_ADM_ROUTE_home,
+    });
+    router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_Sale_List$'),
+        path: DEF.REALM_ADM_ROUTE_sale_list,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Admin_Route_SignIn_CodeCheck$'),

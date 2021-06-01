@@ -17,12 +17,6 @@ const NS = 'Fl32_Ap_Front_Realm_Admin_Layout_Navigator';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$'];
-    /** @type {TeqFw_Di_Container} */
-    const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
-    const i18next = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-    const {ref} = spec[DEF.MOD_VUE.DI_VUE];    // named singleton destructuring
 
     // DEFINE WORKING VARS
     const template = `
@@ -31,8 +25,9 @@ function Factory(spec) {
         <div><q-btn flat round icon="settings" /></div>
         <div><q-btn flat round icon="logout" /></div>
     </div>
-    <div>
+    <div class="t-grid rows">
          <router-link to="/user/invite">Invite User</router-link>
+         <router-link to="/sale/list">Sales</router-link>
     </div>
 </div>
 `;
