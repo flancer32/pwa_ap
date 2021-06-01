@@ -7,7 +7,8 @@
     "realm": "app",
     "services": [
       "Fl32_Ap_Back_Service_Product_List$",
-      "Fl32_Ap_Back_Service_Sale_Add$"
+      "Fl32_Ap_Back_Service_Sale_Add$",
+      "Fl32_Ap_Back_Service_Sale_List$"
     ]
   }
 }

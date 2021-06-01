@@ -21,7 +21,7 @@ export default class Fl32_Ap_Defaults {
 
     DATA_USER_ADMIN_EMAIL = 'flancer64@gmail.com'; // app's sample data
     DATA_USER_ADMIN_ID = 1;
-    DATA_USER_ADMIN_SESS_ID = 'sessIdForTests';
+    DATA_USER_ADMIN_SESS_ID = 'sessIdForAdmin';
     DATA_USER_ADMIN_NAME = 'El Jefe';
     DATA = {
         PRICE: {LIST: {DEFAULT: 'default'}},
@@ -72,6 +72,7 @@ export default class Fl32_Ap_Defaults {
     // SERVICES ROUTES
     SERV_product_list = '/product/list';
     SERV_sale_add = '/sale/add';
+    SERV_sale_list = '/sale/list';
 
     constructor(spec) {
         // EXTRACT DEPS
