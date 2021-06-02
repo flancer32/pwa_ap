@@ -25,10 +25,10 @@ function Factory(spec) {
     const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
     /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
     const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$']; // vue comp tmpl
-    /** @type {Fl32_Ap_Front_Layout_Base} */
-    const layoutBase = spec['Fl32_Ap_Front_Layout_Base$']; // vue comp tmpl
-    /** @type {Fl32_Ap_Front_Layout_Blank} */
-    const layoutBlank = spec['Fl32_Ap_Front_Layout_Blank$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base} */
+    const layoutBase = spec['Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Widget_Layout_Blank} */
+    const layoutBlank = spec['Fl32_Ap_Front_Widget_Layout_Blank$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `
@@ -54,6 +54,10 @@ function Factory(spec) {
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Home$'),
         path: DEF.REALM_PUB_ROUTE_home,
+    });
+    router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Sales$'),
+        path: DEF.REALM_PUB_ROUTE_sales,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_SignIn_CodeCheck$'),

@@ -1,9 +1,9 @@
 /**
  * Data source for products cards.
  *
- * @namespace Fl32_Ap_Front_DataSource_Product_Cards
+ * @namespace Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards
  */
-class Fl32_Ap_Front_DataSource_Product_Cards {
+class Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards {
 
     constructor(spec) {
         // EXTRACT DEPS
@@ -17,7 +17,7 @@ class Fl32_Ap_Front_DataSource_Product_Cards {
         const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
 
         // DEFINE WORKING VARS
-        const TYPE = Fl32_Ap_Front_DataSource_Product_Cards.TYPE;
+        const TYPE = Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards.TYPE;
 
         // DEFINE INSTANCE METHODS
 
@@ -68,7 +68,7 @@ class Fl32_Ap_Front_DataSource_Product_Cards {
     }
 }
 
-Fl32_Ap_Front_DataSource_Product_Cards.TYPE = 'product/card';
+Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards.TYPE = 'product/card';
 
 // MODULE'S EXPORT
-export default Fl32_Ap_Front_DataSource_Product_Cards;
+export default Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards;

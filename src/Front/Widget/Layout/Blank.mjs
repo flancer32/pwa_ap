@@ -1,10 +1,10 @@
 /**
  * Blank layout widget.
  *
- * @namespace Fl32_Ap_Front_Layout_Blank
+ * @namespace Fl32_Ap_Front_Widget_Layout_Blank
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Layout_Blank';
+const NS = 'Fl32_Ap_Front_Widget_Layout_Blank';
 
 // MODULE'S CLASSES
 
@@ -12,8 +12,8 @@ const NS = 'Fl32_Ap_Front_Layout_Blank';
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Layout_Blank
- * @returns {Fl32_Ap_Front_Layout_Blank.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Widget_Layout_Blank
+ * @returns {Fl32_Ap_Front_Widget_Layout_Blank.vueCompTmpl}
  */
 function Factory() {
     // DEFINE WORKING VARS
@@ -32,7 +32,7 @@ function Factory() {
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Layout_Blank
+     * @memberOf Fl32_Ap_Front_Widget_Layout_Blank
      */
     return {
         name: NS,

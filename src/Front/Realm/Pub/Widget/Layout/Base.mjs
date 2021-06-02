@@ -1,10 +1,10 @@
 /**
  * Base layout widget (requires user authentication).
  *
- * @namespace Fl32_Ap_Front_Layout_Base
+ * @namespace Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Layout_Base';
+const NS = 'Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base';
 
 // MODULE'S CLASSES
 
@@ -12,8 +12,8 @@ const NS = 'Fl32_Ap_Front_Layout_Base';
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Layout_Base
- * @returns {Fl32_Ap_Front_Layout_Base.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base
+ * @returns {Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base.vueCompTmpl}
  */
 function Factory(spec) {
     // EXTRACT DEPS
@@ -49,6 +49,9 @@ function Factory(spec) {
             <li>
                 <router-link to="/cfg/clean">Cfg / Clean</router-link>
             </li>
+            <li>
+                <router-link to="/sales">Sales</router-link>
+            </li>
         </ul>
     </q-drawer>
 
@@ -68,7 +71,7 @@ function Factory(spec) {
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Layout_Base
+     * @memberOf Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base
      */
     return {
         name: NS,

@@ -60,7 +60,8 @@ class Fl32_Ap_Front_Idb {
         }
 
         this.delete = async function () {
-            return conn.delete(IDB_NAME);
+            await conn.delete(IDB_NAME);
+            await open();
         }
 
     }

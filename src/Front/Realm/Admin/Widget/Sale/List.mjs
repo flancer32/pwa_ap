@@ -64,7 +64,6 @@ function Factory(spec) {
                 // order sales descending by saleId.
                 this.sales = res.items.sort((a, b) => b.id - a.id);
             }
-
         }
     };
 }

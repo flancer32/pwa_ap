@@ -1,21 +1,28 @@
 /**
- * Data source for shopping cart in 'pub' realm.
+ * Data source for customer sales in 'pub' realm.
  *
- * @namespace Fl32_Ap_Front_Realm_Pub_DataSource_Cart
+ * @namespace Fl32_Ap_Front_Realm_Pub_DataSource_Sales
  */
-class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
+class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
 
     constructor(spec) {
         // EXTRACT DEPS
+        /** @type {Fl32_Ap_Defaults} */
+        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+        const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
         /** @type {Fl32_Ap_Front_Idb} */
         const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
         /** @type {typeof Fl32_Ap_Front_Idb_Store_DataSource} */
         const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Realm_Pub_Dto_Cart#Factory$']; // instance singleton
+        /** @function {@type Fl32_Ap_Front_Gate_Sale_List.gate} */
+        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$']; // function singleton
+        /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
+        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request']; // class
 
         // DEFINE WORKING VARS
-        const TYPE = Fl32_Ap_Front_Realm_Pub_DataSource_Cart.TYPE;
+        const TYPE = Fl32_Ap_Front_Realm_Pub_DataSource_Sales.TYPE;
 
         // DEFINE INSTANCE METHODS
 
@@ -52,29 +59,29 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
         /**
          * Load data from remote server then save it to IDB.
          *
-         * @param {string} lang
          * @return {Promise<Fl32_Ap_Shared_Service_Route_Product_List.Response>}
          */
-        this.loadData = async function ({lang}) {
+        this.loadData = async function ({}) {
+            debugger
             // load data from remote server
-            const req = new Req();
-            req.lang = lang;
-            const res = await gate(req);
+            const req = new ReqList();
+            /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Response} */
+            const res = await gateList(req);
             // save data to IDB
-            const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
-            const store = trn.getStore(EDataSource.ENTITY);
-            const item = new EDataSource();
-            item.type = TYPE;
-            item.data = res;
-            item.request = {lang};
-            await store.put(item);
+            // const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
+            // const store = trn.getStore(EDataSource.ENTITY);
+            // const item = new EDataSource();
+            // item.type = TYPE;
+            // item.data = res;
+            // item.request = {lang};
+            // await store.put(item);
             // return data from the source
             return res;
         }
     }
 }
 
-Fl32_Ap_Front_Realm_Pub_DataSource_Cart.TYPE = 'cart';
+Fl32_Ap_Front_Realm_Pub_DataSource_Sales.TYPE = 'sales';
 
 // MODULE'S EXPORT
-export default Fl32_Ap_Front_Realm_Pub_DataSource_Cart;
+export default Fl32_Ap_Front_Realm_Pub_DataSource_Sales;

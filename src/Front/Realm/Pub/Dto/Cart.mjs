@@ -1,5 +1,5 @@
 /**
- * Shopping cart DTO for the 'pub' realm'.
+ * Shopping cart DTO for the 'pub' realm.
  */
 // MODULE'S VARS
 const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Cart';
