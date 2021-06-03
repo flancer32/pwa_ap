@@ -7,13 +7,13 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item';
 class Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item {
     /** @type {number} */
     count = 0;
-    /** @type {Fl32_Ap_Shared_Service_Data_Product_Unit} */
+    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit} */
     unit;
 }
 
 // attributes names
-Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.A_COUNT = 'count';
-Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.A_UNIT = 'unit';
+Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.COUNT = 'count';
+Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.UNIT = 'unit';
 
 /**
  * Factory to create new DTOs.
@@ -22,14 +22,15 @@ Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.A_UNIT = 'unit';
 class Factory {
     constructor(spec) {
         // EXTRACT DEPS
-        const DUnit = spec['Fl32_Ap_Shared_Service_Data_Product_Unit#']; // class
+        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit.Factory} */
+        const fUnit = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit#Factory$']; // instance singleton
 
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item}
          */
         this.create = function () {
             const result = new Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item();
-            result.unit = new DUnit();
+            result.unit = fUnit.create();
             return result;
         }
     }

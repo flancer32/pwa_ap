@@ -17,8 +17,6 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Widget_Sales_List';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale.vueCompTmpl} */
     const listSale = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale$']; // vue comp tmpl
 
@@ -26,7 +24,10 @@ function Factory(spec) {
     const template = `
 <div class="t-grid rows gutter-xs">
     <div v-for="sale of sales">
-     BOO
+        <div>ID: {{sale.id}} / {{sale.state}}</div>
+        <div>Totals: {{sale.totals.amount}} {{sale.totals.currency}}</div>
+        <div>Created: {{sale.dateCreated}}</div>
+        <div>Receiving: {{sale.dateReceiving}}</div>
     </div>
 </div>
 `;

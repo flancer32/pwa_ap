@@ -19,8 +19,8 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
     const {round} = spec['TeqFw_Core_App_Shared_Util']; // ES6 destruct
-    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards} */
-    const dsProd = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Catalog} */
+    const dsProd = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Item.vueCompTmpl} */

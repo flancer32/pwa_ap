@@ -27,9 +27,7 @@ class Factory {
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals}
          */
-        this.create = function () {
-            return new Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals();
-        }
+        this.create = () => new Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals();
     }
 
 }

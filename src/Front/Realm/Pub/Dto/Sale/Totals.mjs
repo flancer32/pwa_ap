@@ -9,14 +9,11 @@ class Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals {
     amount = 0;
     /** @type {string} */
     currency = 'EUR';
-    /** @type {number} */
-    liters = 0;
 }
 
 // attributes names
 Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals.AMOUNT = 'amount';
 Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals.CURRENCY = 'currency';
-Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals.LITERS = 'liters';
 
 /**
  * Factory to create new DTOs.
@@ -27,9 +24,7 @@ class Factory {
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals}
          */
-        this.create = function () {
-            return new Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals();
-        }
+        this.create = () => new Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals();
     }
 
 }

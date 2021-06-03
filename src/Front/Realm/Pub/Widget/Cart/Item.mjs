@@ -20,8 +20,8 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards} */
-    const dsProds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Catalog} */
+    const dsProds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
 

@@ -1,0 +1,108 @@
+/**
+ * Model object for sales list in 'pub' realm.
+ *
+ * @namespace Fl32_Ap_Front_Realm_Pub_Model_Sales
+ */
+
+// MODULE'S CLASSES
+class Fl32_Ap_Front_Realm_Pub_Model_Sales {
+
+    constructor(spec) {
+        // EXTRACT DEPS
+        /** @type {Fl32_Ap_Defaults} */
+        const DEF = spec['Fl32_Ap_Defaults$'];
+        const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Sales} */
+        const ds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Sales$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Sale.Factory} */
+        const fSale = spec['Fl32_Ap_Front_Realm_Pub_Dto_Sale#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.Factory} */
+        const fSaleItem = spec['Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item#Factory$']; // instance singleton
+
+        // DEFINE WORKING VARS
+        /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>} */
+        let modelData = reactive({});
+        const me = this;
+
+        // DEFINE INNER FUNCTIONS
+        async function init() {
+            const res = await ds.loadData({});
+            me.parseDataSource(res);
+        }
+
+        // DEFINE INSTANCE METHODS
+        /**
+         * Return model data (reactive DTO).
+         *
+         * @return {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>}
+         */
+        this.getData = function () {
+            return modelData;
+        }
+        /**
+         * Convert service DTO to model DTO and make it reactive.
+         *
+         * @param {Fl32_Ap_Shared_Service_Route_Sale_List.Response} data
+         */
+        this.parseDataSource = function (data) {
+            for (const sSale of data.items) {
+                const mSale = fSale.create();
+                mSale.id = sSale.id;
+                mSale.state = sSale.state;
+                mSale.dateCreated = new Date(sSale.dateCreated);
+                mSale.dateReceiving = new Date(sSale.dateReceiving);
+                const mTotals = mSale.totals;
+                mTotals.amount = sSale.amountTotal;
+                mTotals.currency = sSale.currency;
+                modelData[mSale.id] = reactive(mSale);
+                // TODO: should we have reactivity here???
+                const mItems = reactive({});
+                for (const sItem of sSale.items) {
+                    const mItem = fSaleItem.create();
+                    mItem.id = sItem.id;
+                    mItem.saleId = sItem.saleId;
+                    mItem.qty = sItem.qty;
+                    mItem.unitPrice = sItem.unitPrice;
+                    mItems.amountTotal = sItem.amountTotal;
+                }
+
+            }
+            // const cartDto = fCart.create();
+            // cart = reactive(cartDto);
+            // // reactivate 'totals'
+            // const totalsDto = Object.assign(cartDto.totals, data?.totals);
+            // cart.totals = reactive(totalsDto);
+            // // reactivate 'items'
+            // const items = reactive({});
+            // if (typeof data?.items === 'object') {
+            //     for (const key of Object.keys(data.items)) {
+            //         const itemDto = Object.assign(fItem.create(), data.items[key]);
+            //         items[key] = reactive(itemDto);
+            //     }
+            // }
+            // cart.items = items;
+        }
+
+        this.idbGet = async function () {
+            const dto = await ds.getData();
+            this.setData(dto);
+        }
+
+        /**
+         * Clean current cart.
+         */
+        this.clean = async function () {
+            const keys = Object.keys(cart.items);
+            for (const key of keys) delete cart.items[key];
+            cart.totals.liters = 0;
+            cart.totals.amount = 0;
+        }
+
+        // MAIN FUNCTIONALITY
+        // init as empty model then load data from DataSource
+        init();
+    }
+}
+
+// MODULE'S EXPORT
+export default Fl32_Ap_Front_Realm_Pub_Model_Sales;

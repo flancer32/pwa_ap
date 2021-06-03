@@ -1,12 +1,15 @@
 /**
- * Data source for products cards.
+ * Data source for products catalog.
  *
- * @namespace Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards
+ * @namespace Fl32_Ap_Front_Realm_Pub_DataSource_Catalog
  */
-class Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards {
+class Fl32_Ap_Front_Realm_Pub_DataSource_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
+        /** @type {Fl32_Ap_Defaults} */
+        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+        const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
         /** @type {Fl32_Ap_Front_Idb} */
         const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
         /** @function {@type Fl32_Ap_Front_Gate_Product_List.gate} */
@@ -17,12 +20,12 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards {
         const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
 
         // DEFINE WORKING VARS
-        const TYPE = Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards.TYPE;
+        const TYPE = Fl32_Ap_Front_Realm_Pub_DataSource_Catalog.TYPE;
 
         // DEFINE INSTANCE METHODS
 
-        this.clearData = async function ({}) {
-            // delete data from IDB
+        this.clearCache = async function ({}) {
+            // delete cached data from IDB
             return {}
         }
         /**
@@ -32,6 +35,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards {
          */
         this.getData = async function ({lang}) {
             let result;
+            if (!lang) lang = i18n.language;
             const trn = await idb.transaction([EDataSource.ENTITY], "readonly");
             const store = trn.getStore(EDataSource.ENTITY);
             const found = await store.getByKey(TYPE);
@@ -68,7 +72,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards {
     }
 }
 
-Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards.TYPE = 'product/card';
+Fl32_Ap_Front_Realm_Pub_DataSource_Catalog.TYPE = 'product/card';
 
 // MODULE'S EXPORT
-export default Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards;
+export default Fl32_Ap_Front_Realm_Pub_DataSource_Catalog;

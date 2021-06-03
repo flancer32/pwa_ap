@@ -23,6 +23,7 @@ Fl32_Ap_Front_Realm_Pub_Dto_Cart.TOTALS = 'totals';
 class Factory {
     constructor(spec) {
         // EXTRACT DEPS
+        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals.Factory} */
         const fTotals = spec['Fl32_Ap_Front_Realm_Pub_Dto_Cart_Totals#Factory$']; // instance singleton
 
         /**

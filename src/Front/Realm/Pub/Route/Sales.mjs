@@ -15,13 +15,10 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Route_Sales';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Sales} */
-    const dsSales = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Sales$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Sales_List.vueCompTmpl} */
     const salesList = spec['Fl32_Ap_Front_Realm_Pub_Widget_Sales_List$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Sales} */
+    const mSaleList = spec['Fl32_Ap_Front_Realm_Pub_Model_Sales$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
@@ -48,18 +45,18 @@ function Factory(spec) {
         components: {salesList},
         data: function () {
             return {
-                sales: [],
+                saleList: {},
             };
         },
-        computed: {},
+        computed: {
+            sales() {
+                return Object.values(this.saleList);
+            }
+        },
         methods: {},
         async created() {
-            const lang = i18n.language;
-            await dsSales.loadData({lang});
-            this.sales.push(1);
-            this.sales.push(1);
-            this.sales.push(1);
-            this.sales.push(1);
+            // connect reactive DTO from model to the widget
+            this.saleList = mSaleList.getData();
         },
     };
 }

@@ -59,21 +59,22 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
         /**
          * Load data from remote server then save it to IDB.
          *
-         * @return {Promise<Fl32_Ap_Shared_Service_Route_Product_List.Response>}
+         * @return {Promise<Fl32_Ap_Shared_Service_Route_Sale_List.Response>}
          */
         this.loadData = async function ({}) {
-            debugger
             // load data from remote server
             const req = new ReqList();
             /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Response} */
             const res = await gateList(req);
             // save data to IDB
+            // TODO: remove 'await' someday
+            await this.putData(res);
             // const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
             // const store = trn.getStore(EDataSource.ENTITY);
             // const item = new EDataSource();
             // item.type = TYPE;
             // item.data = res;
-            // item.request = {lang};
+            // item.request = {};
             // await store.put(item);
             // return data from the source
             return res;

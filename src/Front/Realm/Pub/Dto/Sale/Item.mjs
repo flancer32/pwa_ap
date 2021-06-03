@@ -6,14 +6,29 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item';
 
 class Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item {
     /** @type {number} */
-    count = 0;
-    /** @type {Fl32_Ap_Shared_Service_Data_Product_Unit} */
+    amountTotal;
+    /** @type {number} */
+    id;
+    /** @type {number} */
+    qty = 0;
+    /**
+     * TODO: should we have sale id here? We have sale id in the parent DTO.
+     * @type {number}
+     */
+    saleId;
+    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit} */
     unit;
+    /** @type {number} */
+    unitPrice;
 }
 
 // attributes names
-Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.A_COUNT = 'count';
-Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.A_UNIT = 'unit';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.AMOUNT_TOTAL = 'amountTotal';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.ID = 'id';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.QTY = 'qty';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.SALE_ID = 'saleId';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.UNIT = 'unit';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.UNIT_PRICE = 'unitPrice';
 
 /**
  * Factory to create new DTOs.
@@ -22,14 +37,15 @@ Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.A_UNIT = 'unit';
 class Factory {
     constructor(spec) {
         // EXTRACT DEPS
-        const DUnit = spec['Fl32_Ap_Shared_Service_Data_Product_Unit#']; // class
+        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit.Factory} */
+        const fUnit = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit#Factory$']; // class
 
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item}
          */
         this.create = function () {
             const result = new Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item();
-            result.unit = new DUnit();
+            result.unit = fUnit.create();
             return result;
         }
     }

@@ -15,11 +15,8 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Route_Home';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards} */
-    const dsProds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Product_Cards$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Catalog} */
+    const mCatalog = spec['Fl32_Ap_Front_Realm_Pub_Model_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Product_Card.vueCompTmpl} */
     const productCard = spec['Fl32_Ap_Front_Realm_Pub_Widget_Product_Card$']; // vue comp tmpl
 
@@ -51,16 +48,21 @@ function Factory(spec) {
         components: {productCard},
         data: function () {
             return {
-                cards: [],
+                catalog: {},
             };
         },
-        computed: {},
+        computed: {
+            cards() {
+                return Object.values(this.catalog);
+            }
+        },
         methods: {},
         async created() {
-            const lang = i18n.language;
-            /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
-            const products = await dsProds.getData({lang});
-            this.cards = Object.values(products.cards);
+            // const lang = i18n.language;
+            // /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
+            // const products = await dsCatalog.getData({lang});
+            this.catalog = mCatalog.getData();
+            // this.cards = Object.values(products.cards);
         },
     };
 }

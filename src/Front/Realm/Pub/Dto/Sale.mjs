@@ -6,12 +6,27 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Sale';
 
 // MODULE'S CLASSES
 class Fl32_Ap_Front_Realm_Pub_Dto_Sale {
+    /** @type {Date} */
+    dateCreated;
+    /** @type {Date} */
+    dateReceiving;
+    /** @type {number} */
+    id;
     /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item>} */
     items;
+    /** @type {string} */
+    state;
+    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Sale_Totals} */
+    totals;
 }
 
 // attributes names
+Fl32_Ap_Front_Realm_Pub_Dto_Sale.DATE_CREATED = 'dateCreated';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale.DATE_RECEIVING = 'dateReceiving';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale.ID = 'id';
 Fl32_Ap_Front_Realm_Pub_Dto_Sale.ITEMS = 'items';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale.STATE = 'state';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale.TOTALS = 'totals';
 
 /**
  * Factory to create new DTOs.
