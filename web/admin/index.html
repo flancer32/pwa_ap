@@ -237,7 +237,16 @@
     <app-root>
         <div class="launchpad">"Alus Pils" PWA is loading...</div>
     </app-root>
+    <div id="errorDisplay" style="z-index: 9999999;"></div>
 </div>
+<!-- error handler -->
+<script>
+    window.onerror = function (message, source, lineno, colno, error) {
+        const display = document.getElementById('errorDisplay');
+        display.textContent = message + ' / ' + source + ' / ' + error;
+    }
+</script>
+
 <!-- These scripts are not ESM ready for loading with ES6 'import'. Use old style loading.  -->
 <script type="application/javascript" src="./src/vue/vue.global.js"></script>
 <script type="application/javascript" src="./src/vue-router/vue-router.global.js"></script>
