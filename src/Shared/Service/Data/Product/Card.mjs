@@ -2,7 +2,7 @@
  * Product card data in Service API.
  */
 class Fl32_Ap_Shared_Service_Data_Product_Card {
-    /** @type {Object.<string, *>} */
+    /** @type {Object<string, *>} */
     attrs;
     /** @type {Date} */
     dateCreated;
@@ -13,7 +13,7 @@ class Fl32_Ap_Shared_Service_Data_Product_Card {
     id;
     /** @type {string} */
     type;
-    /** @type {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Unit>} */
+    /** @type {Object<number, Fl32_Ap_Shared_Service_Data_Product_Unit>} */
     units;
 }
 

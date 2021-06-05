@@ -45,7 +45,7 @@ function Factory(spec) {
         components: {salesList},
         data: function () {
             return {
-                saleList: {},
+                saleList: {}, // reactive DTO from model
             };
         },
         computed: {

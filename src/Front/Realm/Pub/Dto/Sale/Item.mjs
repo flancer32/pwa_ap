@@ -11,13 +11,10 @@ class Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item {
     id;
     /** @type {number} */
     qty = 0;
-    /**
-     * TODO: should we have sale id here? We have sale id in the parent DTO.
-     * @type {number}
-     */
+    /** @type {number} */
     saleId;
-    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit} */
-    unit;
+    /** @type {number} */
+    unitId;
     /** @type {number} */
     unitPrice;
 }
@@ -27,7 +24,7 @@ Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.AMOUNT_TOTAL = 'amountTotal';
 Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.ID = 'id';
 Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.QTY = 'qty';
 Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.SALE_ID = 'saleId';
-Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.UNIT = 'unit';
+Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.UNIT_ID = 'unitId';
 Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.UNIT_PRICE = 'unitPrice';
 
 /**
@@ -35,19 +32,11 @@ Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item.UNIT_PRICE = 'unitPrice';
  * @memberOf Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item
  */
 class Factory {
-    constructor(spec) {
-        // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit.Factory} */
-        const fUnit = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit#Factory$']; // class
-
+    constructor() {
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item}
          */
-        this.create = function () {
-            const result = new Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item();
-            result.unit = fUnit.create();
-            return result;
-        }
+        this.create = () => new Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item();
     }
 
 }

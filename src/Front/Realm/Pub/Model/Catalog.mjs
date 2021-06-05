@@ -20,7 +20,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
         const ds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Catalog$']; // instance singleton
 
         // DEFINE WORKING VARS
-        /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Cart>} */
+        /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Card>} */
         let modelData = reactive({});
         const me = this;
 
@@ -32,20 +32,12 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
 
         // DEFINE INSTANCE METHODS
         /**
-         * Return model data as DTO.
+         * Return model data as reactive DTO.
          *
-         * @return {Fl32_Ap_Front_Realm_Pub_Dto_Cart}
+         * @return {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Card>}
          */
         this.getData = function () {
             return modelData;
-        }
-        /**
-         * Set DTO to model and make it reactive.
-         *
-         * @param {Fl32_Ap_Front_Realm_Pub_Dto_Cart} data
-         */
-        this.setData = function (data) {
-
         }
 
         /**
@@ -82,6 +74,11 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
             }
         }
 
+        this.getUnitData = function (unitId) {
+            let result = null;
+            if (true) {}
+            return result;
+        }
         // MAIN FUNCTIONALITY
         // init as empty model then load data from DataSource
         init();

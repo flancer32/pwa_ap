@@ -91,9 +91,7 @@ function Factory(spec) {
         template,
         components: {},
         data() {
-            return {
-                items: [],
-            };
+            return {};
         },
         props: {
             /** @type {Fl32_Ap_Shared_Service_Data_Sale} */
@@ -111,7 +109,7 @@ function Factory(spec) {
             },
             totalItems() {
                 return this.sale.items.length;
-            }
+            },
         },
         methods: {},
         async created() {

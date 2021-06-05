@@ -88,7 +88,7 @@ class Fl32_Ap_Back_Service_Product_List {
                 /**
                  * @param trx
                  * @param {string} lang
-                 * @return {Promise<Object.<number, Fl32_Ap_Shared_Service_Data_Product_Card>>}
+                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>>}
                  */
                 async function selectCards(trx, lang) {
                     const result = {};
@@ -129,7 +129,7 @@ class Fl32_Ap_Back_Service_Product_List {
 
                 /**
                  * @param trx
-                 * @return {Promise<Object.<number, Fl32_Ap_Shared_Service_Data_Price>>}
+                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Data_Price>>}
                  */
                 async function selectPrices(trx) {
                     // PARSE INPUT & DEFINE WORKING VARS
@@ -172,7 +172,7 @@ class Fl32_Ap_Back_Service_Product_List {
                 /**
                  * @param trx
                  * @param {string} lang
-                 * @return {Promise<Object.<number, Fl32_Ap_Shared_Service_Data_Product_Unit>>}
+                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Data_Product_Unit>>}
                  */
                 async function selectUnits(trx, lang) {
                     const result = {};
@@ -214,10 +214,10 @@ class Fl32_Ap_Back_Service_Product_List {
                 /**
                  * Modify 'cards', put 'units' inside.
                  *
-                 * @param {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Card>} cards
-                 * @param {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Unit>} units
-                 * @param {Object.<number, Fl32_Ap_Shared_Service_Data_Price>} prices
-                 * @return {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Card>}
+                 * @param {Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>} cards
+                 * @param {Object<number, Fl32_Ap_Shared_Service_Data_Product_Unit>} units
+                 * @param {Object<number, Fl32_Ap_Shared_Service_Data_Price>} prices
+                 * @return {Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>}
                  */
                 function placeUnitsToCards(cards, units, prices) {
                     for (

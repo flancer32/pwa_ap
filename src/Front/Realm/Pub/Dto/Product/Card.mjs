@@ -6,7 +6,7 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Product_Card';
 
 // MODULE'S CLASSES
 class Fl32_Ap_Front_Realm_Pub_Dto_Product_Card {
-    /** @type {Object.<string, *>} */
+    /** @type {Object<string, *>} */
     attrs = {};
     /** @type {Date} */
     dateCreated;
@@ -14,7 +14,7 @@ class Fl32_Ap_Front_Realm_Pub_Dto_Product_Card {
     id;
     /** @type {string} */
     type;
-    /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit>} */
+    /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit>} */
     units = {};
 }
 

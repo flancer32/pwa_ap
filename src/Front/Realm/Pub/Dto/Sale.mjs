@@ -12,7 +12,7 @@ class Fl32_Ap_Front_Realm_Pub_Dto_Sale {
     dateReceiving;
     /** @type {number} */
     id;
-    /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item>} */
+    /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item>} */
     items;
     /** @type {string} */
     state;

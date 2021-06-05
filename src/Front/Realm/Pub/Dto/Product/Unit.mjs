@@ -6,7 +6,7 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit';
 
 // MODULE'S CLASSES
 class Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit {
-    /** @type {Object.<string, *>} */
+    /** @type {Object<string, *>} */
     attrs = {};
     /** @type {number} */
     cardId;

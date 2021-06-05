@@ -19,7 +19,7 @@ class Request {
  * @memberOf Fl32_Ap_Shared_Service_Route_Product_List
  */
 class Response {
-    /** @type {Object.<number, Fl32_Ap_Shared_Service_Data_Product_Card>} */
+    /** @type {Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>} */
     cards;
 }
 

@@ -17,8 +17,6 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Widget_Sales_List';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale.vueCompTmpl} */
-    const listSale = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `
@@ -28,6 +26,7 @@ function Factory(spec) {
         <div>Totals: {{sale.totals.amount}} {{sale.totals.currency}}</div>
         <div>Created: {{sale.dateCreated}}</div>
         <div>Receiving: {{sale.dateReceiving}}</div>
+        <div>UNIT: {{getUnit(sale)}}</div>
     </div>
 </div>
 `;
@@ -46,15 +45,27 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {listSale},
+        components: {},
         data() {
             return {};
         },
         props: {
-            sales: Array,
+            /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Sale[]} */
+            sales: [],
         },
         computed: {},
-        methods: {},
+        methods: {
+            /**
+             * @param {Fl32_Ap_Front_Realm_Pub_Dto_Sale} sale
+             */
+            getUnit(sale) {
+                const result = [];
+                for (const one of Object.values(sale.items)) {
+                    result.push(one.unitId);
+                }
+                return result;
+            }
+        },
     };
 }
 

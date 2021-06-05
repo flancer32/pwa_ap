@@ -2,7 +2,7 @@
  * Product unit data in Service API.
  */
 class Fl32_Ap_Shared_Service_Data_Product_Unit {
-    /** @type {Object.<string, *>} */
+    /** @type {Object<string, *>} */
     attrs;
     /** @type {number} */
     cardId;

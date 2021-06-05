@@ -20,7 +20,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
         const fSaleItem = spec['Fl32_Ap_Front_Realm_Pub_Dto_Sale_Item#Factory$']; // instance singleton
 
         // DEFINE WORKING VARS
-        /** @type {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>} */
+        /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>} */
         let modelData = reactive({});
         const me = this;
 
@@ -34,7 +34,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
         /**
          * Return model data (reactive DTO).
          *
-         * @return {Object.<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>}
+         * @return {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>}
          */
         this.getData = function () {
             return modelData;
@@ -62,40 +62,13 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
                     mItem.id = sItem.id;
                     mItem.saleId = sItem.saleId;
                     mItem.qty = sItem.qty;
+                    mItem.unitId = sItem.unitId;
                     mItem.unitPrice = sItem.unitPrice;
-                    mItems.amountTotal = sItem.amountTotal;
+                    mItem.amountTotal = sItem.amountTotal;
+                    mItems[mItem.id] = mItem;
                 }
-
+                mSale.items = mItems;
             }
-            // const cartDto = fCart.create();
-            // cart = reactive(cartDto);
-            // // reactivate 'totals'
-            // const totalsDto = Object.assign(cartDto.totals, data?.totals);
-            // cart.totals = reactive(totalsDto);
-            // // reactivate 'items'
-            // const items = reactive({});
-            // if (typeof data?.items === 'object') {
-            //     for (const key of Object.keys(data.items)) {
-            //         const itemDto = Object.assign(fItem.create(), data.items[key]);
-            //         items[key] = reactive(itemDto);
-            //     }
-            // }
-            // cart.items = items;
-        }
-
-        this.idbGet = async function () {
-            const dto = await ds.getData();
-            this.setData(dto);
-        }
-
-        /**
-         * Clean current cart.
-         */
-        this.clean = async function () {
-            const keys = Object.keys(cart.items);
-            for (const key of keys) delete cart.items[key];
-            cart.totals.liters = 0;
-            cart.totals.amount = 0;
         }
 
         // MAIN FUNCTIONALITY
