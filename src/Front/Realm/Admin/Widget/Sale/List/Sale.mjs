@@ -94,7 +94,7 @@ function Factory(spec) {
             return {};
         },
         props: {
-            /** @type {Fl32_Ap_Shared_Service_Data_Sale} */
+            /** @type {Fl32_Ap_Shared_Service_Dto_Sale} */
             sale: null,
         },
         computed: {

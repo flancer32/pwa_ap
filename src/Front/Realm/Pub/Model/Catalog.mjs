@@ -46,7 +46,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
          * @param {Fl32_Ap_Shared_Service_Route_Product_List.Response} data
          */
         this.parseDataSource = function (data) {
-            /** @type {Fl32_Ap_Shared_Service_Data_Product_Card[]} */
+            /** @type {Fl32_Ap_Shared_Service_Dto_Product_Card[]} */
             const cards = Array.isArray(data.cards) ? data.cards : Object.values(data.cards);
             for (const sCard of cards) {
                 const mCard = fCard.create();
@@ -56,7 +56,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
                 mCard.attrs = sCard.attrs;
                 // TODO: should we have reactivity here???
                 const mUnits = reactive({});
-                /** @type {Fl32_Ap_Shared_Service_Data_Product_Unit[]} */
+                /** @type {Fl32_Ap_Shared_Service_Dto_Product_Unit[]} */
                 const units = Array.isArray(sCard.units) ? sCard.units : Object.values(sCard.units);
                 for (const sUnit of units) {
                     const mUnit = fUnit.create();

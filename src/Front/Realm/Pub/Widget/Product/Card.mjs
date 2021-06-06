@@ -73,7 +73,7 @@ function Factory(spec) {
             };
         },
         props: {
-            /** @type {Fl32_Ap_Shared_Service_Data_Product_Card} */
+            /** @type {Fl32_Ap_Shared_Service_Dto_Product_Card} */
             card: null,
         },
         computed: {

@@ -11,7 +11,7 @@ const NS = 'Fl32_Ap_Shared_Service_Route_Sale_Add';
  * @memberOf Fl32_Ap_Shared_Service_Route_Sale_Add
  */
 class Request {
-    /** @type {Fl32_Ap_Shared_Service_Data_Sale} */
+    /** @type {Fl32_Ap_Shared_Service_Dto_Sale} */
     sale;
 }
 

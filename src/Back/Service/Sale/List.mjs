@@ -32,10 +32,10 @@ class Fl32_Ap_Back_Service_Sale_List {
         const qbSaleList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_List$']; // instance singleton
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List} */
         const qbSaleItemList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List$']; // instance singleton
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale} */
-        const DSale = spec['Fl32_Ap_Shared_Service_Data_Sale#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale_Item} */
-        const DSaleItem = spec['Fl32_Ap_Shared_Service_Data_Sale_Item#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
+        const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
+        const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
 
         // DEFINE INSTANCE METHODS
 

@@ -31,10 +31,10 @@ function Factory(spec) {
     const gateAdd = spec['Fl32_Ap_Front_Gate_Sale_Add$']; // function singleton
     /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
     const ReqAdd = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Request']; // class
-    /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale} */
-    const DSale = spec['Fl32_Ap_Shared_Service_Data_Sale#']; // class
-    /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale_Item} */
-    const DSaleItem = spec['Fl32_Ap_Shared_Service_Data_Sale_Item#']; // class
+    /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
+    const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#']; // class
+    /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
+    const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
 
     // DEFINE WORKING VARS
     const template = `

@@ -64,7 +64,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             this.setData(dto);
         }
         /**
-         * @param {Fl32_Ap_Shared_Service_Data_Product_Unit} unit
+         * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
          * @return {boolean}
          */
         this.hasUnit = function (unit) {
@@ -81,7 +81,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             cart.totals.amount = 0;
         }
         /**
-         * @param {Fl32_Ap_Shared_Service_Data_Product_Unit} unit
+         * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
          */
         this.unitAdd = function (unit) {
             const items = cart.items;
@@ -99,7 +99,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             ds.putData(cart);
         }
         /**
-         * @param {Fl32_Ap_Shared_Service_Data_Product_Unit} unit
+         * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
          */
         this.unitRemove = function (unit) {
             const items = cart.items;

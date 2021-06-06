@@ -65,7 +65,7 @@ function Factory(spec) {
             return {};
         },
         props: {
-            /** @type {Fl32_Ap_Shared_Service_Data_Product_Unit} */
+            /** @type {Fl32_Ap_Shared_Service_Dto_Product_Unit} */
             unit: null,
         },
         computed: {

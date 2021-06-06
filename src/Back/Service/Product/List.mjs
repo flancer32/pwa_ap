@@ -37,12 +37,12 @@ class Fl32_Ap_Back_Service_Product_List {
         const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
         const EUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Product_Card} */
-        const DCard = spec['Fl32_Ap_Shared_Service_Data_Product_Card#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Product_Unit} */
-        const DUnit = spec['Fl32_Ap_Shared_Service_Data_Product_Unit#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Price} */
-        const DPrice = spec['Fl32_Ap_Shared_Service_Data_Price#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Product_Card} */
+        const DCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Product_Unit} */
+        const DUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Price} */
+        const DPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#']; // class
 
         // DEFINE INNER FUNCTIONS
 
@@ -88,7 +88,7 @@ class Fl32_Ap_Back_Service_Product_List {
                 /**
                  * @param trx
                  * @param {string} lang
-                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>>}
+                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Dto_Product_Card>>}
                  */
                 async function selectCards(trx, lang) {
                     const result = {};
@@ -129,7 +129,7 @@ class Fl32_Ap_Back_Service_Product_List {
 
                 /**
                  * @param trx
-                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Data_Price>>}
+                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Dto_Price>>}
                  */
                 async function selectPrices(trx) {
                     // PARSE INPUT & DEFINE WORKING VARS
@@ -172,7 +172,7 @@ class Fl32_Ap_Back_Service_Product_List {
                 /**
                  * @param trx
                  * @param {string} lang
-                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Data_Product_Unit>>}
+                 * @return {Promise<Object<number, Fl32_Ap_Shared_Service_Dto_Product_Unit>>}
                  */
                 async function selectUnits(trx, lang) {
                     const result = {};
@@ -214,21 +214,21 @@ class Fl32_Ap_Back_Service_Product_List {
                 /**
                  * Modify 'cards', put 'units' inside.
                  *
-                 * @param {Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>} cards
-                 * @param {Object<number, Fl32_Ap_Shared_Service_Data_Product_Unit>} units
-                 * @param {Object<number, Fl32_Ap_Shared_Service_Data_Price>} prices
-                 * @return {Object<number, Fl32_Ap_Shared_Service_Data_Product_Card>}
+                 * @param {Object<number, Fl32_Ap_Shared_Service_Dto_Product_Card>} cards
+                 * @param {Object<number, Fl32_Ap_Shared_Service_Dto_Product_Unit>} units
+                 * @param {Object<number, Fl32_Ap_Shared_Service_Dto_Price>} prices
+                 * @return {Object<number, Fl32_Ap_Shared_Service_Dto_Product_Card>}
                  */
                 function placeUnitsToCards(cards, units, prices) {
                     for (
-                        /** @type {Fl32_Ap_Shared_Service_Data_Product_Unit} */
+                        /** @type {Fl32_Ap_Shared_Service_Dto_Product_Unit} */
                         const unit of Object.values(units)
                         ) {
                         const cardId = unit.cardId;
                         const unitId = unit.id;
                         unit.price = prices[unitId];
-                        if (!cards[cardId].units) cards[cardId].units = {}
-                        cards[cardId].units[unitId] = unit;
+                        if (!cards[cardId].units) cards[cardId].units = [];
+                        cards[cardId].units.push(unit);
                     }
                     return cards;
                 }

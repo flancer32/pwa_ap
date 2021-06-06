@@ -29,10 +29,10 @@ class Fl32_Ap_Back_Service_Sale_Add {
             /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
             Response
         } = spec['Fl32_Ap_Shared_Service_Route_Sale_Add']; // ES6 module
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale} */
-        const DSale = spec['Fl32_Ap_Shared_Service_Data_Sale#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Data_Sale_Item} */
-        const DSaleItem = spec['Fl32_Ap_Shared_Service_Data_Sale_Item#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
+        const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#']; // class
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
+        const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
         const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
@@ -98,7 +98,7 @@ class Fl32_Ap_Back_Service_Sale_Add {
 
                 /**
                  * @param trx
-                 * @param {Fl32_Ap_Shared_Service_Data_Sale} sale
+                 * @param {Fl32_Ap_Shared_Service_Dto_Sale} sale
                  * @param {boolean} isPg
                  * @return {Promise<number>}
                  */
@@ -120,7 +120,7 @@ class Fl32_Ap_Back_Service_Sale_Add {
 
                 /**
                  * @param trx
-                 * @param {Fl32_Ap_Shared_Service_Data_Sale_Item} item
+                 * @param {Fl32_Ap_Shared_Service_Dto_Sale_Item} item
                  * @param {boolean} isPg
                  * @return {Promise<number>}
                  */

@@ -18,7 +18,7 @@ class Request {
  * @memberOf Fl32_Ap_Shared_Service_Route_Sale_List
  */
 class Response {
-    /** @type {Fl32_Ap_Shared_Service_Data_Sale[]} */
+    /** @type {Fl32_Ap_Shared_Service_Dto_Sale[]} */
     items;
 }
 
