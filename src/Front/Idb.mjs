@@ -1,5 +1,5 @@
 /**
- * Application level connector to Indexed DB. Contains code to upgrade IDB stores.
+ * Application level connector to Indexed DB. Contains db name and version and code to upgrade IDB stores.
  *
  * @namespace Fl32_Ap_Front_Idb
  */
@@ -46,19 +46,29 @@ class Fl32_Ap_Front_Idb {
         }
 
         // DEFINE INSTANCE METHODS
-
         /**
-         * Wrapper to open (and upgrade) DB on transaction request.
-         *
-         * @param stores
-         * @param {string} type transaction type (readonly, readwrite, )
-         * @return {Promise<TeqFw_Core_App_Front_Idb_Connect.Transaction>}
+         * Connect to IDB if not connected, return Store object to handle data (get, put).
+         * @param {string} name
+         * @return {Promise<TeqFw_Core_App_Front_Idb_Connect.Store>}
          */
-        this.transaction = async function (stores, type) {
-            if (!conn.isConnected()) await open();
-            return conn.trans(stores, type);
+        this.store = async function (name) {
+            await this.connect();
+            return conn.store(name);
         }
 
+        /**
+         * Connect to IDB if not connected then return connection.
+         * @return {Promise<TeqFw_Core_App_Front_Idb_Connect>}
+         */
+        this.connect = async function () {
+            if (!conn.isConnected()) await open();
+            return conn;
+        }
+
+        /**
+         * Delete database then re-open it with data upgrade.
+         * @return {Promise<void>}
+         */
         this.delete = async function () {
             await conn.delete(IDB_NAME);
             await open();

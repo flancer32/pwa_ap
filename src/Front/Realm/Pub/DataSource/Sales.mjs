@@ -7,9 +7,6 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-        const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
         /** @type {Fl32_Ap_Front_Idb} */
         const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
         /** @type {typeof Fl32_Ap_Front_Idb_Store_DataSource} */
@@ -32,8 +29,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
          */
         this.getData = async function () {
             let result;
-            const trn = await idb.transaction([EDataSource.ENTITY], "readonly");
-            const store = trn.getStore(EDataSource.ENTITY);
+            const store = await idb.store(EDataSource.ENTITY);
             const found = await store.getByKey(TYPE);
             if (found) {
                 result = found.data;
@@ -47,8 +43,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
 
         this.putData = async function (data) {
             // save data to IDB
-            const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
-            const store = trn.getStore(EDataSource.ENTITY);
+            const store = await idb.store(EDataSource.ENTITY);
             const item = new EDataSource();
             item.type = TYPE;
             item.data = data;

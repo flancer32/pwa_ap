@@ -25,8 +25,8 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
          */
         this.getData = async function () {
             let result;
-            const trn = await idb.transaction([EDataSource.ENTITY], "readonly");
-            const store = trn.getStore(EDataSource.ENTITY);
+            // const trn = await idb.transaction([EDataSource.ENTITY], "readonly");
+            const store = await idb.store(EDataSource.ENTITY);
             const found = await store.getByKey(TYPE);
             if (found) {
                 result = found.data;
@@ -40,8 +40,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
 
         this.putData = async function (data) {
             // save data to IDB
-            const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
-            const store = trn.getStore(EDataSource.ENTITY);
+            const store = await idb.store(EDataSource.ENTITY);
             const item = new EDataSource();
             item.type = TYPE;
             item.data = data;
@@ -61,8 +60,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
             req.lang = lang;
             const res = await gate(req);
             // save data to IDB
-            const trn = await idb.transaction([EDataSource.ENTITY], "readwrite");
-            const store = trn.getStore(EDataSource.ENTITY);
+            const store = await idb.store(EDataSource.ENTITY);
             const item = new EDataSource();
             item.type = TYPE;
             item.data = res;
