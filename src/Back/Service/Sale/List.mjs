@@ -32,10 +32,10 @@ class Fl32_Ap_Back_Service_Sale_List {
         const qbSaleList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_List$']; // instance singleton
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List} */
         const qbSaleItemList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List$']; // instance singleton
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
-        const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
-        const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
+        /** @type {Fl32_Ap_Shared_Service_Dto_Sale.Factory} */
+        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
+        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$']; // instance singleton
 
         // DEFINE INSTANCE METHODS
 
@@ -82,7 +82,7 @@ class Fl32_Ap_Back_Service_Sale_List {
                     const querySale = qbSaleList.build({trx});
                     const rsSales = await querySale;
                     for (const one of rsSales) {
-                        const sale = new DSale();
+                        const sale = fSale.create();
                         sale.amountTotal = one[qbSaleList.A_AMOUNT_TOTAL];
                         sale.currency = one[qbSaleList.A_CURRENCY];
                         sale.dateCreated = new Date(one[qbSaleList.A_DATE_CREATED]);
@@ -97,7 +97,7 @@ class Fl32_Ap_Back_Service_Sale_List {
                     const queryItem = qbSaleItemList.build({trx});
                     const rsItems = await queryItem;
                     for (const one of rsItems) {
-                        const item = new DSaleItem();
+                        const item = fSaleItem.create();
                         item.amountTotal = one[qbSaleItemList.A_AMOUNT_TOTAL];
                         item.id = one[qbSaleItemList.A_ITEM_ID];
                         item.qty = one[qbSaleItemList.A_QTY];

@@ -35,16 +35,26 @@ Fl32_Ap_Shared_Service_Dto_Product_Card.UNITS = 'units';
 class Factory {
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
-        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$']; // instance singleton
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Product_Unit} */
+        const DUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#']; // class
+        /** @type {Fl32_Ap_Shared_Service_Dto_Product_Unit.Factory} */
+        const fUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#Factory$']; // instance singleton
 
         /**
+         * @param {Object|null} data
          * @return {Fl32_Ap_Shared_Service_Dto_Product_Card}
          */
         this.create = function (data = null) {
             const result = new Fl32_Ap_Shared_Service_Dto_Product_Card();
-            result.units = [];
-            result.price = fPrice.create(data?.price);
+            result.attrs = data?.attrs ?? {};
+            result.dateCreated = data?.dateCreated
+                ? (data.dateCreated instanceof Date) ? data.dateCreated : new Date(data.dateCreated)
+                : null;
+            result.id = data?.id;
+            result.type = data?.type;
+            result.units = Array.isArray(data?.units)
+                ? data.units.map((one) => (one instanceof DUnit) ? one : fUnit.create(one))
+                : [];
             return result;
         }
     }

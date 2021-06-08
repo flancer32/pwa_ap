@@ -35,9 +35,19 @@ Fl32_Ap_Shared_Service_Dto_Sale_Item.UNIT_PRICE = 'unitPrice';
 class Factory {
     constructor() {
         /**
+         * @param {Object|null} data
          * @return {Fl32_Ap_Shared_Service_Dto_Sale_Item}
          */
-        this.create = () => new Fl32_Ap_Shared_Service_Dto_Sale_Item();
+        this.create = function (data = null) {
+            const result = new Fl32_Ap_Shared_Service_Dto_Sale_Item();
+            result.amountTotal = data?.amountTotal ?? 0;
+            result.id = data?.id;
+            result.qty = data?.qty ?? 0;
+            result.saleId = data?.saleId;
+            result.unitId = data?.unitId;
+            result.unitPrice = data?.unitPrice ?? 0;
+            return result;
+        }
     }
 }
 

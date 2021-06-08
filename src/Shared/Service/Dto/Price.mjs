@@ -30,6 +30,7 @@ class Factory {
             const result = new Fl32_Ap_Shared_Service_Dto_Price();
             result.currency = data?.currency;
             result.value = data?.value;
+            return result;
         }
     }
 }

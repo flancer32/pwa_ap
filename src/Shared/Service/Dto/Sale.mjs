@@ -39,13 +39,34 @@ Fl32_Ap_Shared_Service_Dto_Sale.USER_ID = 'userId';
  * @memberOf Fl32_Ap_Shared_Service_Dto_Sale
  */
 class Factory {
-    constructor() {
+    constructor(spec) {
+        // EXTRACT DEPS
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
+        const DItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
+        /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
+        const fItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$']; // instance singleton
+
+
         /**
+         * @param {Object|null} data
          * @return {Fl32_Ap_Shared_Service_Dto_Sale}
          */
-        this.create = function () {
+        this.create = function (data = null) {
             const result = new Fl32_Ap_Shared_Service_Dto_Sale();
-            result.items = [];
+            result.amountTotal = data?.amountTotal ?? 0;
+            result.currency = data?.currency;
+            result.dateCreated = data?.dateCreated
+                ? (data.dateCreated instanceof Date) ? data.dateCreated : new Date(data.dateCreated)
+                : null;
+            result.dateReceiving = data?.dateReceiving
+                ? (data.dateReceiving instanceof Date) ? data.dateReceiving : new Date(data.dateReceiving)
+                : null;
+            result.id = data?.id;
+            result.items = Array.isArray(data?.items)
+                ? data.items.map((one) => (one instanceof DItem) ? one : fItem.create(one))
+                : [];
+            result.state = data?.state;
+            result.userId = data?.userId;
             return result;
         }
     }

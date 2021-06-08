@@ -37,12 +37,13 @@ class Factory {
         /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
         const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$']; // instance singleton
         /**
+         * @param {Object|null} data
          * @return {Fl32_Ap_Shared_Service_Dto_Product_Unit}
          */
-        this.create = function () {
+        this.create = function (data = null) {
             const result = new Fl32_Ap_Shared_Service_Dto_Product_Unit();
-            result.attrs = {};
-            result.price = fPrice.create();
+            result.attrs = data?.attrs ?? {};
+            result.price = fPrice.create(data?.price);
             return result;
         }
     }

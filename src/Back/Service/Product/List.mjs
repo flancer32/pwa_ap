@@ -37,12 +37,12 @@ class Fl32_Ap_Back_Service_Product_List {
         const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
         const EUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Product_Card} */
-        const DCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Product_Unit} */
-        const DUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Price} */
-        const DPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#']; // class
+        /** @type {Fl32_Ap_Shared_Service_Dto_Product_Card.Factory} */
+        const fCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Shared_Service_Dto_Product_Unit.Factory} */
+        const fUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
+        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$']; // instance singleton
 
         // DEFINE INNER FUNCTIONS
 
@@ -97,7 +97,7 @@ class Fl32_Ap_Back_Service_Product_List {
                     for (const one of rs) {
                         const id = one[qProdCardList.A_CARD_ID];
                         if (!result[id]) {
-                            const item = new DCard();
+                            const item = fCard.create();
                             item.id = one[qProdCardList.A_CARD_ID];
                             item.dateCreated = new Date(one[qProdCardList.A_DATE_CREATED]);
                             item.type = one[qProdCardList.A_TYPE];
@@ -161,7 +161,7 @@ class Fl32_Ap_Back_Service_Product_List {
                     /** @type {Array} */
                     const rs = await query;
                     for (const one of rs) {
-                        const item = new DPrice();
+                        const item = fPrice.create();
                         item.value = Number.parseFloat(one[AS_PRICE]);
                         item.currency = one[AS_CURRENCY];
                         result[one[AS_UNIT_ID]] = item;
@@ -181,7 +181,7 @@ class Fl32_Ap_Back_Service_Product_List {
                     for (const one of rs) {
                         const id = one[qProdUnitList.A_UNIT_ID];
                         if (!result[id]) {
-                            const item = new DUnit();
+                            const item = fUnit.create();
                             item.id = one[qProdUnitList.A_UNIT_ID];
                             item.cardId = one[qProdUnitList.A_CARD_ID];
                             item.sku = one[qProdUnitList.A_SKU];

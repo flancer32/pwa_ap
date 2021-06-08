@@ -29,10 +29,10 @@ class Fl32_Ap_Back_Service_Sale_Add {
             /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
             Response
         } = spec['Fl32_Ap_Shared_Service_Route_Sale_Add']; // ES6 module
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
-        const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#']; // class
-        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
-        const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
+        /** @type {Fl32_Ap_Shared_Service_Dto_Sale.Factory} */
+        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
+        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$']; // instance singleton
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
         const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
@@ -60,7 +60,7 @@ class Fl32_Ap_Back_Service_Sale_Add {
                 // clone HTTP body into API request object and cast nested objects
                 /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
                 const result = Object.assign(new Request(), body.data);
-                result.sale = Object.assign(new DSale(), result.sale);
+                result.sale = fSale.create(result.sale);
                 result.sale.dateCreated = (result.sale.dateCreated)
                     ? new Date(result.sale.dateCreated)
                     : new Date();
@@ -68,7 +68,7 @@ class Fl32_Ap_Back_Service_Sale_Add {
                 const items = [];
                 if (Array.isArray(result.sale.items)) {
                     for (const one of result.sale.items) {
-                        const item = Object.assign(new DSaleItem(), one);
+                        const item = fSaleItem.create(one);
                         items.push(item);
                     }
                 } else {
