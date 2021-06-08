@@ -25,25 +25,39 @@ class Response {
 
 /**
  * Factory to create new DTOs.
- * @memberOf Fl32_Ap_Shared_Service_Dto_Sale
+ * @memberOf Fl32_Ap_Shared_Service_Route_Product_List
  */
 class Factory {
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
-        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$']; // instance singleton
+        /** @type {typeof Fl32_Ap_Shared_Service_Dto_Product_Card} */
+        const DCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#']; // class
+        /** @type {Fl32_Ap_Shared_Service_Dto_Product_Card.Factory} */
+        const fCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#Factory$']; // instance singleton
+
         /**
+         * @param {Object|null} data
          * @return {Fl32_Ap_Shared_Service_Route_Product_List.Request}
          */
-        this.createReq = () => new Request();
-
-        this.createRes = function () {
+        this.createReq = function (data = null) {
+            const result = new Request();
+            result.lang = data?.lang;
+            return result;
+        }
+        /**
+         * @param {Object|null} data
+         * @return {Fl32_Ap_Shared_Service_Route_Product_List.Response}
+         */
+        this.createRes = function (data = null) {
             const result = new Response();
-            result.cards = [];
+            result.cards = Array.isArray(data?.cards)
+                ? data.cards.map((one) => (one instanceof DCard) ? one : fCard.create(one))
+                : [];
             return result;
         }
     }
 }
+
 // MODULE'S EXPORT
 Object.defineProperty(Request, 'name', {value: `${NS}.${Request.name}`});
 Object.defineProperty(Response, 'name', {value: `${NS}.${Response.name}`});

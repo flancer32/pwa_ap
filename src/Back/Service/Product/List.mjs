@@ -21,12 +21,8 @@ class Fl32_Ap_Back_Service_Product_List {
         const rdb = spec['TeqFw_Core_App_Db_Connector$'];  // instance singleton
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
         const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
-        const {
-            /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Request} */
-            Request,
-            /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Response} */
-            Response
-        } = spec['Fl32_Ap_Shared_Service_Route_Product_List']; // ES6 module
+        /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Factory} */
+        const frProdList = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$']; // instance singleton
         /** @function {@type Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List.queryBuilder} */
         const qProdCardList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List$']; // function singleton
         /** @function {@type Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List.queryBuilder} */
@@ -63,7 +59,7 @@ class Fl32_Ap_Back_Service_Product_List {
              */
             function parse(context) {
                 const body = JSON.parse(context.body);
-                return Object.assign(new Request(), body.data);
+                return frProdList.createReq(body.data);
             }
 
             // COMPOSE RESULT
@@ -217,7 +213,7 @@ class Fl32_Ap_Back_Service_Product_List {
                  * @param {Object<number, Fl32_Ap_Shared_Service_Dto_Product_Card>} cards
                  * @param {Object<number, Fl32_Ap_Shared_Service_Dto_Product_Unit>} units
                  * @param {Object<number, Fl32_Ap_Shared_Service_Dto_Price>} prices
-                 * @return {Object<number, Fl32_Ap_Shared_Service_Dto_Product_Card>}
+                 * @return {Fl32_Ap_Shared_Service_Dto_Product_Card[]}
                  */
                 function placeUnitsToCards(cards, units, prices) {
                     for (
@@ -230,12 +226,12 @@ class Fl32_Ap_Back_Service_Product_List {
                         if (!cards[cardId].units) cards[cardId].units = [];
                         cards[cardId].units.push(unit);
                     }
-                    return cards;
+                    return Object.values(cards);
                 }
 
                 // MAIN FUNCTIONALITY
                 const result = new ApiResult();
-                const response = new Response();
+                const response = frProdList.createRes();
                 result.response = response;
                 /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Request} */
                 const apiReq = apiCtx.request;
@@ -262,7 +258,6 @@ class Fl32_Ap_Back_Service_Product_List {
         };
     }
 
-    // DEFINE PROTO METHODS
 }
 
 export default Fl32_Ap_Back_Service_Product_List;

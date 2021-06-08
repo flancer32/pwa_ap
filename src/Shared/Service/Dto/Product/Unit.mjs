@@ -10,10 +10,7 @@ class Fl32_Ap_Shared_Service_Dto_Product_Unit {
     attrs;
     /** @type {number} */
     cardId;
-    /**
-     * Internal id for the card. Can be omitted for new entities (not saved yet).
-     * @type {number}
-     */
+    /** @type {number} */
     id;
     /** @type {Fl32_Ap_Shared_Service_Dto_Price} */
     price;
@@ -25,6 +22,7 @@ class Fl32_Ap_Shared_Service_Dto_Product_Unit {
 Fl32_Ap_Shared_Service_Dto_Product_Unit.ATTRS = 'attrs';
 Fl32_Ap_Shared_Service_Dto_Product_Unit.CARD_ID = 'cardId';
 Fl32_Ap_Shared_Service_Dto_Product_Unit.ID = 'id';
+Fl32_Ap_Shared_Service_Dto_Product_Unit.PRICE = 'price';
 Fl32_Ap_Shared_Service_Dto_Product_Unit.SKU = 'sku';
 
 /**
@@ -43,7 +41,10 @@ class Factory {
         this.create = function (data = null) {
             const result = new Fl32_Ap_Shared_Service_Dto_Product_Unit();
             result.attrs = data?.attrs ?? {};
+            result.cardId = data?.cardId;
+            result.id = data?.id;
             result.price = fPrice.create(data?.price);
+            result.sku = data?.sku;
             return result;
         }
     }
