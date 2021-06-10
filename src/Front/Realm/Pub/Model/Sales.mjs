@@ -12,6 +12,8 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        /** @type {TeqFw_Core_App_Logger} */
+        const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
         /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Sales} */
         const ds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Sales$']; // instance singleton
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Sale.Factory} */
@@ -22,13 +24,6 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
         // DEFINE WORKING VARS
         /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Sale>} */
         let modelData = reactive({});
-        const me = this;
-
-        // DEFINE INNER FUNCTIONS
-        async function init() {
-            const res = await ds.loadData({});
-            me.parseDataSource(res);
-        }
 
         // DEFINE INSTANCE METHODS
         /**
@@ -71,9 +66,16 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
             }
         }
 
+        this.reload = async function () {
+            const res = await ds.loadData({});
+            this.parseDataSource(res);
+        }
         // MAIN FUNCTIONALITY
         // init as empty model then load data from DataSource
-        init();
+        this.reload().catch(function (e) {
+            debugger
+            logger.error('Cannot reload sales list: ' + e);
+        });
     }
 }
 

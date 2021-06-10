@@ -27,7 +27,7 @@ function Factory(spec) {
 
     // DEFINE WORKING VARS
     const template = `
-<q-card class="">
+<q-card>
     <q-card-section>
         <div class="t-grid cols" style="grid-template-columns: auto 1fr auto">
             <q-avatar size="50px">

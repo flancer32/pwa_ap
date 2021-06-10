@@ -22,6 +22,8 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
         // DEFINE WORKING VARS
         /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Card>} */
         let modelData = reactive({});
+        /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit>} */
+        let mapUnits = {};
         const me = this;
 
         // DEFINE INNER FUNCTIONS
@@ -48,6 +50,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
         this.parseDataSource = function (data) {
             /** @type {Fl32_Ap_Shared_Service_Dto_Product_Card[]} */
             const cards = Array.isArray(data.cards) ? data.cards : Object.values(data.cards);
+            const mapUnitsTmp = {};
             for (const sCard of cards) {
                 const mCard = fCard.create();
                 mCard.id = sCard.id;
@@ -67,18 +70,23 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
                     mUnit.sku = sUnit.sku;
                     mUnit.attrs = sUnit.attrs;
                     mUnits[mUnit.id] = mUnit;
+                    // put unit to "id-to-unit" map
+                    mapUnitsTmp[mUnit.id] = mUnit;
                 }
                 mCard.units = mUnits;
-                //
+                // set data to model
                 modelData[mCard.id] = reactive(mCard);
+                mapUnits = mapUnitsTmp;
             }
         }
-
+        /**
+         * @param {number} unitId
+         * @return {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit}
+         */
         this.getUnitData = function (unitId) {
-            let result = null;
-            if (true) {}
-            return result;
+            return mapUnits[unitId];
         }
+
         // MAIN FUNCTIONALITY
         // init as empty model then load data from DataSource
         init();

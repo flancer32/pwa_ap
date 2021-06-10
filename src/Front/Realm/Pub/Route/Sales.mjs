@@ -15,16 +15,29 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Route_Sales';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Sales_List.vueCompTmpl} */
-    const salesList = spec['Fl32_Ap_Front_Realm_Pub_Widget_Sales_List$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Sales_Item.vueCompTmpl} */
+    const saleItem = spec['Fl32_Ap_Front_Realm_Pub_Widget_Sales_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Sales} */
     const mSaleList = spec['Fl32_Ap_Front_Realm_Pub_Model_Sales$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
-<layout-base>
-    <div>ACTIONS & FILTERS</div>
-    <sales-list :sales="sales"></sales-list>
+<layout-base >
+    <div class="q-pa-xs q-gutter-xs">
+        <q-card>
+            <q-card-section>
+                <q-card-actions align="center">
+                    <q-btn 
+                        color="primary"
+                        v-on:click="onRefresh"
+                    >{{$t('btn.refresh')}}</q-btn>
+                </q-card-actions>
+            </q-card-section>
+        </q-card>
+        <sale-item v-for="sale in sales"
+                :sale="sale"
+        />
+    </div>
 </layout-base>
 `;
 
@@ -42,7 +55,7 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {salesList},
+        components: {saleItem},
         data: function () {
             return {
                 saleList: {}, // reactive DTO from model
@@ -50,10 +63,18 @@ function Factory(spec) {
         },
         computed: {
             sales() {
-                return Object.values(this.saleList);
+                /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Sale[]} */
+                const items = Object.values(this.saleList);
+                // sort items by date receiving desc
+                items.sort((a, b) => b.dateReceiving - a.dateReceiving);
+                return items;
             }
         },
-        methods: {},
+        methods: {
+            async onRefresh() {
+                await mSaleList.reload();
+            },
+        },
         async created() {
             // connect reactive DTO from model to the widget
             this.saleList = mSaleList.getData();
