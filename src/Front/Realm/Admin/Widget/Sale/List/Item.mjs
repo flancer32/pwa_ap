@@ -1,10 +1,10 @@
 /**
  * Widget to display one item in the list of sales in 'admin' realm.
  *
- * @namespace Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale
+ * @namespace Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale';
+const NS = 'Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item';
 
 // MODULE'S CLASSES
 
@@ -12,12 +12,14 @@ const NS = 'Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale';
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale
- * @returns {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item
+ * @returns {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item.vueCompTmpl}
  */
 function Factory(spec) {
     // EXTRACT DEPS
     const {formatAmount, formatDateTime} = spec['TeqFw_Core_App_Shared_Util']; // ES6 destruct
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Catalog} */
+    const mCatalog = spec['Fl32_Ap_Front_Realm_Pub_Model_Catalog$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
@@ -25,13 +27,13 @@ function Factory(spec) {
     <q-card-section class="t-grid rows">
         <div class="t-grid cols">
             <q-input v-model="sale.id"
-                :label="$t('admin.wg.sale.list.sale.saleId')"
+                :label="$t('admin.wg.sale.list.item.saleId')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker)"
                 readonly
             />
             <q-input v-model="dateReceiving"
-                :label="$t('admin.wg.sale.list.sale.dateReceiving')"
+                :label="$t('admin.wg.sale.list.item.dateReceiving')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker)"
                 readonly
@@ -39,33 +41,45 @@ function Factory(spec) {
         </div>
         <div class="t-grid cols">
             <q-input v-model="amount"
-                :label="$t('admin.wg.sale.list.sale.amountTotal')"
+                :label="$t('admin.wg.sale.list.item.totalAmount')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker)"
                 readonly
             />
             <q-input v-model="totalItems"
-                :label="$t('admin.wg.sale.list.sale.itemsTotal')"
+                :label="$t('admin.wg.sale.list.item.itemsTotal')"
                 borderless
-                input-style="font-size: larger; color: var(--color-darker)"
+                input-style="font-size: larger; color: var(--color-darker); text-align:center;"
+                readonly
+            />
+            <q-input v-model="totalBottles"
+                :label="$t('admin.wg.sale.list.item.totalBottles')"
+                borderless
+                input-style="font-size: larger; color: var(--color-darker); text-align:center;"
+                readonly
+            />
+            <q-input v-model="totalLiters"
+                :label="$t('admin.wg.sale.list.item.totalLiters')"
+                borderless
+                input-style="font-size: larger; color: var(--color-darker); text-align:center;"
                 readonly
             />
         </div>
         <div class="t-grid cols" style="grid-template-columns: 1fr 1fr auto;">
             <q-input v-model="sale.state"
-                :label="$t('admin.wg.sale.list.sale.state')"
+                :label="$t('admin.wg.sale.list.item.state')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker)"
                 readonly
             />
             <q-input v-model="sale.userId"
-                :label="$t('admin.wg.sale.list.sale.user')"
+                :label="$t('admin.wg.sale.list.item.user')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker)"
                 readonly
             />
             <q-input v-model="dateCreated"
-                :label="$t('admin.wg.sale.list.sale.dateCreated')"
+                :label="$t('admin.wg.sale.list.item.dateCreated')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker)"
                 readonly
@@ -84,7 +98,7 @@ function Factory(spec) {
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale
+     * @memberOf Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item
      */
     return {
         name: NS,
@@ -94,12 +108,14 @@ function Factory(spec) {
             return {};
         },
         props: {
-            /** @type {Fl32_Ap_Shared_Service_Dto_Sale} */
+            /** @type {Fl32_Ap_Front_Realm_Admin_Dto_Sale} */
             sale: null,
         },
         computed: {
             amount() {
-                return formatAmount(this.sale.amountTotal, this.sale.currency);
+                /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Amount} */
+                const amount = this.sale.totals;
+                return formatAmount(amount.value, amount.currency);
             },
             dateCreated() {
                 return formatDateTime(this.sale.dateCreated, false);
@@ -107,13 +123,26 @@ function Factory(spec) {
             dateReceiving() {
                 return formatDateTime(this.sale.dateReceiving, false);
             },
+            totalBottles() {
+                let result = 0;
+                const items = Object.values(this.sale.items);
+                items.forEach((one) => result += one.qty);
+                return result;
+            },
             totalItems() {
-                return this.sale.items.length;
+                return Object.values(this.sale.items).length;
+            },
+            totalLiters() {
+                let result = 0;
+                const items = Object.values(this.sale.items);
+                items.forEach((item) => {
+                    const unit = mCatalog.getUnitData(item.unitId);
+                    if (unit.attrs?.volume) result += (unit.attrs?.volume * item.qty);
+                });
+                result = Number.parseFloat(result).toFixed(1);
+                return `${result} L`
             },
         },
-        methods: {},
-        async created() {
-        }
     };
 }
 

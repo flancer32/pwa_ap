@@ -36,6 +36,8 @@ class Fl32_Ap_Back_Service_Sale_List {
         const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$']; // instance singleton
         /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
         const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$']; // instance singleton
+        /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
+        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
 
         // DEFINE INSTANCE METHODS
 
@@ -76,10 +78,19 @@ class Fl32_Ap_Back_Service_Sale_List {
             async function service(apiCtx) {
                 // DEFINE INNER FUNCTIONS
 
-                async function selectItems(trx) {
+                /**
+                 * @param trx
+                 * @param {number} userId
+                 * @param {boolean} isAdmin
+                 * @return {Promise<unknown[]>}
+                 */
+                async function selectItems(trx, userId, isAdmin = false) {
                     const registry = {};
                     // select sales data and compose DTO for response
                     const querySale = qbSaleList.build({trx});
+                    if (!isAdmin) {
+                        querySale.where(`${qbSaleList.T_S}.${ESale.A_USER_REF}`, userId);
+                    }
                     const rsSales = await querySale;
                     for (const one of rsSales) {
                         const sale = fSale.create();
@@ -95,6 +106,9 @@ class Fl32_Ap_Back_Service_Sale_List {
                     }
                     // select sales items data and put it into DTO for response
                     const queryItem = qbSaleItemList.build({trx});
+                    if (!isAdmin) {
+                        queryItem.where(`${qbSaleItemList.T_S}.${ESale.A_USER_REF}`, userId);
+                    }
                     const rsItems = await queryItem;
                     for (const one of rsItems) {
                         const item = fSaleItem.create();
@@ -123,7 +137,7 @@ class Fl32_Ap_Back_Service_Sale_List {
                     // don't start transaction if not required
                     const trx = await rdb.startTransaction();
                     try {
-                        response.items = await selectItems(trx);
+                        response.items = await selectItems(trx, user.id, user.isAdmin);
                         await trx.commit();
                     } catch (error) {
                         await trx.rollback();

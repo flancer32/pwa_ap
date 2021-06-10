@@ -10,11 +10,12 @@ class Fl32_Ap_Back_Store_RDb_Query_Sale_List {
     A_CURRENCY = 'currency';
     A_DATE_CREATED = 'dateCreated';
     A_DATE_RECEIVING = 'dateReceiving';
+    A_IS_ADMIN = 'isAdmin';
     A_SALE_ID = 'saleId';
     A_STATE = 'state';
     A_USER_DATE_CREATED = 'userDateCreated';
-    A_USER_NAME = 'userName';
     A_USER_ID = 'userId';
+    A_USER_NAME = 'userName';
     T_S = 's';
     T_U = 'u';
 
@@ -46,6 +47,7 @@ class Fl32_Ap_Back_Store_RDb_Query_Sale_List {
                 `${this.T_S}.${ESale.A_USER_REF}`);
             query.select([
                 {[this.A_USER_DATE_CREATED]: `${this.T_U}.${EUser.A_DATE_CREATED}`},
+                {[this.A_IS_ADMIN]: `${this.T_U}.${EUser.A_IS_ADMIN}`},
                 {[this.A_USER_NAME]: `${this.T_U}.${EUser.A_NAME}`},
             ]);
             // COMPOSE RESULT

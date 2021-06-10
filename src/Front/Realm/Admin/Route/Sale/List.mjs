@@ -19,14 +19,27 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
-    /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List.vueCompTmpl} */
-    const saleList = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item.vueCompTmpl} */
+    const saleItem = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Admin_Model_Sales} */
+    const mSales = spec['Fl32_Ap_Front_Realm_Admin_Model_Sales$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
 <layout-base>
-    <div>ACTIONS & FILTERS</div>
-    <sale-list></sale-list>
+    <div class="q-pa-xs q-gutter-xs">
+        <q-card>
+            <q-card-section>
+                <q-card-actions align="center">
+                    <q-btn
+                            color="primary"
+                            v-on:click="onRefresh"
+                    >{{$t('btn.refresh')}}</q-btn>
+                </q-card-actions>
+            </q-card-section>
+        </q-card>
+        <sale-item v-for="sale in sales" :sale="sale"/>
+    </div>
 </layout-base>
 `;
 
@@ -44,15 +57,33 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {saleList},
+        components: {saleItem},
         data: function () {
-            return {};
+            return {
+                saleList: {}, // reactive DTO from model
+            };
         },
-        computed: {},
-        methods: {},
+        computed: {
+            sales() {
+                /** @type {Fl32_Ap_Front_Realm_Admin_Dto_Sale[]} */
+                const items = Object.values(this.saleList);
+                // sort items by ID desc
+                items.sort((a, b) => b.id - a.id);
+                return items;
+            }
+        },
+        methods: {
+            async onRefresh() {
+                await mSales.reload();
+            },
+        },
         beforeCreate() {
             // redirect anonymous to sign-in route
             session.checkUserAuthenticated(this.$router);
+        },
+        async created() {
+            // connect reactive DTO from model to the widget
+            this.saleList = mSales.getData();
         },
     };
 }

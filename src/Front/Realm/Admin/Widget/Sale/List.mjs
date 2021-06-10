@@ -21,16 +21,14 @@ function Factory(spec) {
     const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$']; // function singleton
     /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
     const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request']; // class
-    /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale.vueCompTmpl} */
-    const listSale = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Sale$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item.vueCompTmpl} */
+    const listSale = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `
-<div class="t-grid rows gutter-xs">
-    <list-sale v-for="sale of sales"
-        :sale="sale"
-    ></list-sale>
-</div>
+<list-sale v-for="sale of sales"
+    :sale="sale"
+></list-sale>
 `;
 
     // DEFINE INNER FUNCTIONS

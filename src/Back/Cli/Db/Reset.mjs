@@ -66,6 +66,7 @@ function Factory(spec) {
                 await trx(EUser.ENTITY).insert([
                     {
                         [EUser.A_ID]: isPg ? undefined : DEF.DATA_USER_ADMIN_ID,
+                        [EUser.A_IS_ADMIN]: true,
                         [EUser.A_NAME]: DEF.DATA_USER_ADMIN_NAME
                     },
                 ]);
