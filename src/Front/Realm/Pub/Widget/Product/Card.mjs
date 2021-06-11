@@ -32,7 +32,7 @@ function Factory(spec) {
                 <div style="font-size: larger; color: var(--color-darker); padding-left: 10px;">{{ card?.attrs?.name }}</div>
                 <div>
                     <q-chip color="secondary" v-if="card?.attrs?.liquidType">{{ card?.attrs?.liquidType }}</q-chip>
-                    <q-chip color="secondary" v-if="card?.attrs?.bearType">{{ card?.attrs?.bearType }}</q-chip>
+                    <q-chip color="secondary" v-if="card?.attrs?.beerType">{{ card?.attrs?.beerType }}</q-chip>
                     <q-chip color="secondary" v-if="card?.attrs?.alcoholPercent">{{ card?.attrs?.alcoholPercent }}%</q-chip>
                 </div>    
             </div>

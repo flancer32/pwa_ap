@@ -69,7 +69,7 @@ function Factory(spec) {
         await trx(EAttr.ENTITY)
             .insert([
                 {[EAttr.A_CODE]: ATTR.CARD.ALCOHOL_PERCENT, [EAttr.A_TYPE]: EAttr.DATA_TYPE_DECIMAL},
-                {[EAttr.A_CODE]: ATTR.CARD.BEAR_TYPE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_OPTION},
+                {[EAttr.A_CODE]: ATTR.CARD.BEER_TYPE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_OPTION},
                 {[EAttr.A_CODE]: ATTR.CARD.IMAGE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_TEXT},
                 {[EAttr.A_CODE]: ATTR.CARD.LIQUID_TYPE, [EAttr.A_TYPE]: EAttr.DATA_TYPE_OPTION},
                 {[EAttr.A_CODE]: ATTR.CARD.NAME, [EAttr.A_TYPE]: EAttr.DATA_TYPE_TEXT},
@@ -77,13 +77,13 @@ function Factory(spec) {
             ]);
         // get attrs codifier
         const attrs = await loadAttrIds(trx);
-        // add values for bear types
-        const bearTypeId = attrs[ATTR.CARD.BEAR_TYPE];
-        await addValueTxt(trx, bearTypeId, DATA.BEAR.LIGHT, {[RU]: 'светлое'});
-        await addValueTxt(trx, bearTypeId, DATA.BEAR.DARK, {[RU]: 'тёмное'});
+        // add values for beer types
+        const beerTypeId = attrs[ATTR.CARD.BEER_TYPE];
+        await addValueTxt(trx, beerTypeId, DATA.BEER.LIGHT, {[RU]: 'светлое'});
+        await addValueTxt(trx, beerTypeId, DATA.BEER.DARK, {[RU]: 'тёмное'});
         // add values for liquid types
         const liquidTypeId = attrs[ATTR.CARD.LIQUID_TYPE];
-        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.BEAR, {[RU]: 'пиво'});
+        await addValueTxt(trx, liquidTypeId, DATA.LIQUID.BEER, {[RU]: 'пиво'});
         await addValueTxt(trx, liquidTypeId, DATA.LIQUID.VINE, {[RU]: 'вино'});
         await addValueTxt(trx, liquidTypeId, DATA.LIQUID.KVAS, {[RU]: 'квас'});
         await addValueTxt(trx, liquidTypeId, DATA.LIQUID.CIDER, {[RU]: 'сидр'});

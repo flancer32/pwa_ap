@@ -6,7 +6,7 @@ export default class Fl32_Ap_Defaults {
         PROD: {
             CARD: {
                 ALCOHOL_PERCENT: 'alcoholPercent',
-                BEAR_TYPE: 'bearType',
+                BEER_TYPE: 'beerType',
                 IMAGE: 'image',
                 LIQUID_TYPE: 'liquidType',
                 NAME: 'name',
@@ -27,12 +27,12 @@ export default class Fl32_Ap_Defaults {
         PRICE: {LIST: {DEFAULT: 'default'}},
         PROD: {
             TYPE: {
-                BEAR: {
+                BEER: {
                     LIGHT: 'light',
                     DARK: 'dark',
                 },
                 LIQUID: {
-                    BEAR: 'bear',
+                    BEER: 'beer',
                     KVAS: 'kvas',
                     CIDER: 'cider',
                     VINE: 'vine',

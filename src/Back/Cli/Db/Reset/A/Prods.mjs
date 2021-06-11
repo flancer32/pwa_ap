@@ -150,7 +150,7 @@ function Factory(spec) {
             return valueId;
         }
 
-        async function addProductCard(trx, name, img, liquidType, bearType, alcohol) {
+        async function addProductCard(trx, name, img, liquidType, beerType, alcohol) {
             const qReg = trx(EProdCard.ENTITY)
                 .insert({
                     [EProdCard.A_TYPE]: EProdCard.DATA_TYPE_DRAFT
@@ -180,12 +180,12 @@ function Factory(spec) {
                     [EProdCardAttrValue.A_CARD_REF]: cardId,
                     [EProdCardAttrValue.A_VALUE_REF]: options[ATTR.CARD.LIQUID_TYPE][liquidType],
                 });
-            // add bear type
-            if (bearType) {
+            // add beer type
+            if (beerType) {
                 await trx(EProdCardAttrValue.ENTITY)
                     .insert({
                         [EProdCardAttrValue.A_CARD_REF]: cardId,
-                        [EProdCardAttrValue.A_VALUE_REF]: options[ATTR.CARD.BEAR_TYPE][bearType],
+                        [EProdCardAttrValue.A_VALUE_REF]: options[ATTR.CARD.BEER_TYPE][beerType],
                     });
             }
             // add alcohol
@@ -230,25 +230,25 @@ function Factory(spec) {
         options = await loadOptions(trx);
         priceListId = await addPriceList(trx);
         //
-        let cardId = await addProductCard(trx, 'Valmiermuiža gaišais', 'vml.png', TYPE.LIQUID.BEAR, TYPE.BEAR.LIGHT, 5.2);
+        let cardId = await addProductCard(trx, 'Valmiermuiža gaišais', 'vml.png', TYPE.LIQUID.BEER, TYPE.BEER.LIGHT, 5.2);
         await addProductUnit(trx, cardId, 'VML_10', 1.0, 4.31);
         await addProductUnit(trx, cardId, 'VML_15', 1.5, 6.38);
         await addProductUnit(trx, cardId, 'VML_20', 2.0, 7.50);
         await addProductUnit(trx, cardId, 'VML_30', 3.0, 11.25);
         //
-        cardId = await addProductCard(trx, 'Piebalga', 'pbl.png', TYPE.LIQUID.BEAR, TYPE.BEAR.LIGHT, 5.7);
+        cardId = await addProductCard(trx, 'Piebalga', 'pbl.png', TYPE.LIQUID.BEER, TYPE.BEER.LIGHT, 5.7);
         await addProductUnit(trx, cardId, 'PBL_10', 1.0, 2.47);
         await addProductUnit(trx, cardId, 'PBL_15', 1.5, 3.66);
         await addProductUnit(trx, cardId, 'PBL_20', 2.0, 4.30);
         await addProductUnit(trx, cardId, 'PBL_30', 3.0, 6.45);
         //
-        cardId = await addProductCard(trx, 'Cesvaines tumšais alus', 'cst.png', TYPE.LIQUID.BEAR, TYPE.BEAR.DARK, 5.2);
+        cardId = await addProductCard(trx, 'Cesvaines tumšais alus', 'cst.png', TYPE.LIQUID.BEER, TYPE.BEER.DARK, 5.2);
         await addProductUnit(trx, cardId, 'CST_10', 1.0, 3.05);
         await addProductUnit(trx, cardId, 'CST_15', 1.5, 4.51);
         await addProductUnit(trx, cardId, 'CST_20', 2.0, 5.30);
         await addProductUnit(trx, cardId, 'CST_30', 3.0, 7.95);
         //
-        cardId = await addProductCard(trx, 'Krāslavas gaišais', 'krl.png', TYPE.LIQUID.BEAR, TYPE.BEAR.LIGHT, 4.8);
+        cardId = await addProductCard(trx, 'Krāslavas gaišais', 'krl.png', TYPE.LIQUID.BEER, TYPE.BEER.LIGHT, 4.8);
         await addProductUnit(trx, cardId, 'KRL_10', 1.0, 2.19);
         await addProductUnit(trx, cardId, 'KRL_15', 1.5, 3.32);
         await addProductUnit(trx, cardId, 'KRL_20', 2.0, 3.80);
