@@ -24,6 +24,8 @@ function Factory(spec) {
     const {ref} = spec[DEF.MOD_VUE.DI_VUE];    // named singleton destructuring
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini.vueCompTmpl} */
     const miniCart = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Mini$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Layout_Navigator.vueCompTmpl} */
+    const navigator = spec['Fl32_Ap_Front_Realm_Pub_Widget_Layout_Navigator$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `
@@ -42,17 +44,7 @@ function Factory(spec) {
     </q-header>
 
     <q-drawer v-model="rightDrawerOpen" side="right" overlay behavior="mobile" bordered>
-        <ul>
-            <li>
-                <router-link to="/">Home</router-link>
-            </li>
-            <li>
-                <router-link to="/cfg/clean">Cfg / Clean</router-link>
-            </li>
-            <li>
-                <router-link to="/sales">Sales</router-link>
-            </li>
-        </ul>
+        <navigator/>
     </q-drawer>
 
     <q-page-container>
@@ -76,7 +68,7 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {miniCart},
+        components: {miniCart, navigator},
         data() {
             return {
                 isAuthenticated: false,
