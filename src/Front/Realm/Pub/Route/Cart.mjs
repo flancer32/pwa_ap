@@ -23,6 +23,8 @@ function Factory(spec) {
     const dsProd = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Sales} */
+    const mSales = spec['Fl32_Ap_Front_Realm_Pub_Model_Sales$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Item.vueCompTmpl} */
     const cartItem = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Submit.vueCompTmpl} */
@@ -42,7 +44,8 @@ function Factory(spec) {
     <div class="q-pa-xs q-gutter-xs">
         <q-card>
             <q-card-section>
-                <q-card-actions align="center">
+                <div v-if="emptyCart" style="text-align: center">{{$t('pub.route.cart.empty')}}</div>
+                <q-card-actions align="center" v-if="!emptyCart">
                     <q-btn 
                         color="primary"
                         v-on:click="onClean"
@@ -88,10 +91,16 @@ function Factory(spec) {
                 products: null,
             };
         },
-        computed: {},
+        computed: {
+            emptyCart() {
+                const items = this.cart?.items;
+                const result = !((typeof items === 'object') && (Object.values(items).length > 0));
+                return result;
+            },
+        },
         methods: {
-            onClean() {
-                mCart.clean();
+            async onClean() {
+                await mCart.clean();
             },
             async onDialogSubmit(date) {
                 const cart = mCart.getData();
@@ -117,7 +126,9 @@ function Factory(spec) {
                 /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
                 const res = await gateAdd(req);
                 if (res.success) {
-                    mCart.clean();
+                    await mCart.clean();
+                    await mSales.reload();
+                    this.$router.push(DEF.REALM_PUB_ROUTE_sales);
                 }
             },
         },

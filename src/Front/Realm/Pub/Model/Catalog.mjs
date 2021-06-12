@@ -11,6 +11,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$'];
+        const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Card.Factory} */
         const fCard = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Card#Factory$']; // instance singleton
@@ -28,7 +29,8 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
 
         // DEFINE INNER FUNCTIONS
         async function init() {
-            const res = await ds.loadData({});
+            const lang = i18n.language;
+            const res = await ds.loadData({lang});
             me.parseDataSource(res);
         }
 
@@ -79,6 +81,15 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
                 mapUnits = mapUnitsTmp;
             }
         }
+
+        /**
+         * @param {number} cardId
+         * @return {Fl32_Ap_Front_Realm_Pub_Dto_Product_Card}
+         */
+        this.getCardData = function (cardId) {
+            return modelData[cardId];
+        }
+
         /**
          * @param {number} unitId
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit}

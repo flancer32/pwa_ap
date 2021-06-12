@@ -19,11 +19,10 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-    /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Catalog} */
-    const dsProds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Catalog} */
+    const mCatalog = spec['Fl32_Ap_Front_Realm_Pub_Model_Catalog$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
@@ -72,9 +71,7 @@ function Factory(spec) {
         template,
         components: {},
         data() {
-            return {
-                cards: null,
-            };
+            return {};
         },
         props: {
             /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item} */
@@ -89,13 +86,8 @@ function Factory(spec) {
                 return result;
             },
             card() {
-                let result;
-                if (this.cards) {
-                    const cardId = this.item?.unit?.cardId;
-                    const keys = Object.keys(this.cards);
-                    if (keys.includes(cardId.toString())) result = this.cards[cardId];
-                }
-                return result;
+                const cardId = this.item?.unit?.cardId;
+                return mCatalog.getCardData(cardId);
             },
             count() {
                 return this.item.count;
@@ -118,13 +110,6 @@ function Factory(spec) {
             removeUnit() {
                 mCart.unitRemove(this.item.unit);
             },
-        },
-        async created() {
-            const lang = i18n.language;
-            /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
-            const data = await dsProds.getData({lang});
-            this.cards = data.cards;
-
         },
     };
 }

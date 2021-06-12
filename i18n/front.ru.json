@@ -68,6 +68,9 @@
       "sales": "Заказы"
     },
     "route": {
+      "cart": {
+        "empty": "Корзина пуста."
+      },
       "signIn": {
         "code": {
           "check": {

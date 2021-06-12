@@ -15,6 +15,8 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
         /** @type {TeqFw_Di_Container} */
         const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        /** @type {TeqFw_Core_App_Logger} */
+        const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Realm_Pub_Dto_Cart#Factory$']; // instance singleton
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.Factory} */
@@ -79,6 +81,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             for (const key of keys) delete cart.items[key];
             cart.totals.liters = 0;
             cart.totals.amount = 0;
+            await ds.putData(cart);
         }
         /**
          * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
@@ -96,7 +99,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             }
             totals.liters += Number.parseFloat(unit.attrs[DEF.ATTR.PROD.UNIT.VOLUME]);
             totals.amount += Number.parseFloat(unit.price.value);
-            ds.putData(cart);
+            ds.putData(cart).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
         }
         /**
          * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
@@ -116,7 +119,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
                 // prevent "-0.00"
                 if (totals.liters < 0.000001) totals.liters = 0;
                 if (totals.amount < 0.000001) totals.amount = 0;
-                ds.putData(cart);
+                ds.putData(cart).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
             }
         }
 
