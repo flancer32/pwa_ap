@@ -1,6 +1,18 @@
 {
   "btn": {
+    "cancel": "Atcelt",
+    "clean": "Tīrīt",
+    "close": "Aizvērt",
+    "delete": "Dzēst",
+    "ok": "OK",
+    "refresh": "Atjaunot",
     "submit": "Nosūtīt"
+  },
+  "pub": {
+    "navig": {
+      "cart": "Grozs",
+      "sales": "Pasūtījumi"
+    }
   },
   "route": {
     "signIn": {

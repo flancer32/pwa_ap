@@ -19,8 +19,6 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$'];    // instance singleton
     /** @type {TeqFw_Di_Container} */
     const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
-    /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION];  // named singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton
     const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
     /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
@@ -48,12 +46,20 @@ function Factory(spec) {
         path: DEF.REALM_PUB_ROUTE_cart,
     });
     router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Cfg$'),
+        path: DEF.REALM_PUB_ROUTE_cfg,
+    });
+    router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Cfg_Clean$'),
         path: DEF.REALM_PUB_ROUTE_cfg_clean,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Home$'),
         path: DEF.REALM_PUB_ROUTE_home,
+    });
+    router.addRoute({
+        component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Logout$'),
+        path: DEF.REALM_PUB_ROUTE_logout,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Realm_Pub_Route_Sales$'),

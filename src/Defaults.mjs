@@ -64,8 +64,10 @@ export default class Fl32_Ap_Defaults {
     REALM_ADM_ROUTE_user_invite = '/user/invite';
     REALM_PUB = 'pub';
     REALM_PUB_ROUTE_cart = '/cart';
+    REALM_PUB_ROUTE_cfg = '/cfg';
     REALM_PUB_ROUTE_cfg_clean = '/cfg/clean';
     REALM_PUB_ROUTE_home = '/';
+    REALM_PUB_ROUTE_logout = '/logout';
     REALM_PUB_ROUTE_sales = '/sales';
     REALM_PUB_ROUTE_signIn_codeCheck = 'WILL BE SET IN CONSTRUCTOR BELOW';
     REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';

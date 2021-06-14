@@ -26,10 +26,10 @@ function Factory(spec) {
             <q-btn flat round icon="home" to="/" />
         </div>
         <div>
-            <q-btn flat round icon="settings" to="/cfg/clean"/>
+            <q-btn flat round icon="settings" to="/cfg" />
         </div>
         <div>
-            <q-btn flat round icon="power_settings_new"/>
+            <q-btn flat round icon="power_settings_new" to="/logout" />
         </div>
     </div>
     <q-list bordered padding class="rounded-borders text-primary">
