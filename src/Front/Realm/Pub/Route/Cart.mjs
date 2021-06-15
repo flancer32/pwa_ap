@@ -29,7 +29,7 @@ function Factory(spec) {
     const cartItem = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Cart_Submit.vueCompTmpl} */
     const dialogSubmit = spec['Fl32_Ap_Front_Realm_Pub_Widget_Cart_Submit$']; // vue comp tmpl
-    /** @function {@type Fl32_Ap_Front_Gate_Sale_Add.gate} */
+    /** @type {Function|Fl32_Ap_Front_Gate_Sale_Add.gate} */
     const gateAdd = spec['Fl32_Ap_Front_Gate_Sale_Add$']; // function singleton
     /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
     const ReqAdd = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Request']; // class

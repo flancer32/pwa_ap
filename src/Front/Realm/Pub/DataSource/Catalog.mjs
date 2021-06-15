@@ -12,7 +12,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Catalog {
         const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
         /** @type {Fl32_Ap_Front_Idb} */
         const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
-        /** @function {@type Fl32_Ap_Front_Gate_Product_List.gate} */
+        /** @type {Function|Fl32_Ap_Front_Gate_Product_List.gate} */
         const gate = spec['Fl32_Ap_Front_Gate_Product_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Request} */
         const Req = spec['Fl32_Ap_Shared_Service_Route_Product_List#Request']; // class

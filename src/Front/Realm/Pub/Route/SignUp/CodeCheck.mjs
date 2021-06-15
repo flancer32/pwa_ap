@@ -21,7 +21,7 @@ function Factory(spec) {
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
-    /** @function {@type Fl32_Ap_User_Front_Gate_SignUp_Code_Check.gate} */
+    /** @type {Function|Fl32_Ap_User_Front_Gate_SignUp_Code_Check.gate} */
     const gate = spec['Fl32_Ap_User_Front_Gate_SignUp_Code_Check$']; // function singleton
     /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Request} */
     const Request = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check#Request']; // class

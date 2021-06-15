@@ -22,7 +22,7 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$'];
     /** @type {TeqFw_Core_App_Front_Data_Config} */
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
-    /** @function {@type Fl32_Ap_User_Front_Gate_SignIn_Code_Send.gate} */
+    /** @type {Function|Fl32_Ap_User_Front_Gate_SignIn_Code_Send.gate} */
     const gateSend = spec['Fl32_Ap_User_Front_Gate_SignIn_Code_Send$']; // function singleton
     /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Request} */
     const ReqSend = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send#Request']; // class

@@ -1,4 +1,5 @@
 /**
+ * Command to recreate database structure and fill it with demo data.
  * @namespace Fl32_Ap_Back_Cli_Db_Reset
  */
 // MODULE'S IMPORT
@@ -26,6 +27,8 @@ function Factory(spec) {
     /** @type {TeqFw_Core_App_Logger} */
     const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
     const {isPostgres} = spec['TeqFw_Core_App_Back_Util_RDb']; // ES6 destruct
+    /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
+    const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$']; // instance singleton
     /** @type {Fl32_Ap_Plugin_Store_RDb_Setup} */
     const setupApp = spec['Fl32_Ap_Plugin_Store_RDb_Setup$']; // instance singleton
     /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
@@ -98,25 +101,10 @@ function Factory(spec) {
         }
 
         // MAIN FUNCTIONALITY
-        const knex = await connector.getKnex();
+        // recreate DB structure
+        await actRestruct();
         const trx = await connector.startTransaction();
         try {
-            // compose queries to recreate DB structure
-            /** @type {SchemaBuilder} */
-            const builder = connector.getSchemaBuilder();
-
-            // drop tables considering relations (1) then drop base registries (0)
-            setupApp.dropTables1(builder);
-            setupUser.dropTables1(builder);
-            //
-            setupApp.dropTables0(builder);
-            setupUser.dropTables0(builder);
-            // create tables
-            setupUser.createStructure(knex, builder);
-            setupApp.createStructure(knex, builder);
-            // perform queries to recreate DB structure
-            await builder;
-
             // perform queries to insert data into created tables
             await populateWithData(trx);
             // perform queries to insert data and commit changes

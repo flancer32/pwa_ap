@@ -23,9 +23,9 @@ class Fl32_Ap_Back_Service_Product_List {
         const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
         /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Factory} */
         const frProdList = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$']; // instance singleton
-        /** @function {@type Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List.queryBuilder} */
+        /** @type {Function|Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List.queryBuilder} */
         const qProdCardList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List$']; // function singleton
-        /** @function {@type Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List.queryBuilder} */
+        /** @type {Function|Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List.queryBuilder} */
         const qProdUnitList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
         const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class

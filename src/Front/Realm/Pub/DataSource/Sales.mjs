@@ -13,7 +13,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
         const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Realm_Pub_Dto_Cart#Factory$']; // instance singleton
-        /** @function {@type Fl32_Ap_Front_Gate_Sale_List.gate} */
+        /** @type {Function|Fl32_Ap_Front_Gate_Sale_List.gate} */
         const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
         const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request']; // class

@@ -11,6 +11,7 @@ export default class Fl32_Ap_Plugin_Init {
         this.getCommands = function () {
             return [
                 'Fl32_Ap_Back_Cli_Db_Reset$',
+                'Fl32_Ap_Back_Cli_Db_Upgrade$',
             ];
         };
         // TODO: move it to teqfw.json
