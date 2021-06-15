@@ -112,7 +112,7 @@ function Factory(spec) {
             result[EUser.ENTITY] = await itemsSelect(trx, tables, EUser.ENTITY);
             // serials for Postgres
             const isPg = isPostgres(trx.client);
-            if (!isPg) {
+            if (isPg) {
                 const knex = await connector.getKnex();
                 const schema = knex.schema;
                 const serials = [
