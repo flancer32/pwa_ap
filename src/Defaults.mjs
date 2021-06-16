@@ -76,6 +76,7 @@ export default class Fl32_Ap_Defaults {
     // SERVICES ROUTES
     SERV_product_list = '/product/list';
     SERV_profile_get = '/profile/get';
+    SERV_profile_update = '/profile/update';
     SERV_sale_add = '/sale/add';
     SERV_sale_list = '/sale/list';
 

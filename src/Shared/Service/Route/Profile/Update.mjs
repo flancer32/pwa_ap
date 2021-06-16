@@ -1,28 +1,31 @@
 /**
- * Request and response for service to get user profile.
+ * Request and response for service to update user profile.
  *
- * @namespace Fl32_Ap_Shared_Service_Route_Profile_Get
+ * @namespace Fl32_Ap_Shared_Service_Route_Profile_Update
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Shared_Service_Route_Profile_Get';
+const NS = 'Fl32_Ap_Shared_Service_Route_Profile_Update';
 
 // MODULE'S CLASSES
 /**
- * @memberOf Fl32_Ap_Shared_Service_Route_Profile_Get
+ * @memberOf Fl32_Ap_Shared_Service_Route_Profile_Update
  */
-class Request {}
-
-/**
- * @memberOf Fl32_Ap_Shared_Service_Route_Profile_Get
- */
-class Response {
+class Request {
     /** @type {Fl32_Ap_Shared_Service_Dto_Profile} */
     profile;
 }
 
 /**
+ * @memberOf Fl32_Ap_Shared_Service_Route_Profile_Update
+ */
+class Response {
+    /** @type {boolean} */
+    success;
+}
+
+/**
  * Factory to create new DTOs.
- * @memberOf Fl32_Ap_Shared_Service_Route_Profile_Get
+ * @memberOf Fl32_Ap_Shared_Service_Route_Profile_Update
  */
 class Factory {
     constructor(spec) {
@@ -32,18 +35,20 @@ class Factory {
 
         /**
          * @param {Object|null} data
-         * @return {Fl32_Ap_Shared_Service_Route_Profile_Get.Request}
+         * @return {Fl32_Ap_Shared_Service_Route_Profile_Update.Request}
          */
         this.createReq = function (data = null) {
-            return new Request();
+            const result = new Request();
+            result.profile = fProfile.create(data?.profile);
+            return result;
         }
         /**
          * @param {Object|null} data
-         * @return {Fl32_Ap_Shared_Service_Route_Profile_Get.Response}
+         * @return {Fl32_Ap_Shared_Service_Route_Profile_Update.Response}
          */
         this.createRes = function (data = null) {
             const result = new Response();
-            result.profile = fProfile.create(data?.profile);
+            result.success = data?.success;
             return result;
         }
     }
