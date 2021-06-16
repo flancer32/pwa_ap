@@ -5,6 +5,7 @@
     "close": "Закрыть",
     "delete": "Удалить",
     "ok": "OK",
+    "picked": "Собран",
     "refresh": "Обновить",
     "submit": "Отправить"
   },
@@ -47,6 +48,12 @@
     },
     "wg": {
       "sale": {
+        "edit": {
+          "dateReceiving": "Время получения",
+          "saleId": "#",
+          "info": "Позиций / Литров / Бутылок",
+          "totalAmount": "Сумма"
+        },
         "list": {
           "item": {
             "dateCreated": "Дата создания",

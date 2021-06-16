@@ -5,6 +5,7 @@
  */
 // MODULE'S VARS
 const NS = 'Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item';
+const EVT_EDIT = 'edit';
 
 // MODULE'S CLASSES
 
@@ -23,7 +24,7 @@ function Factory(spec) {
 
     // DEFINE WORKING VARS
     const template = `
-<q-card>
+<q-card @click="$emit('${EVT_EDIT}', sale)">
     <q-card-section class="t-grid rows">
         <div class="t-grid cols">
             <q-input v-model="sale.id"
@@ -52,14 +53,14 @@ function Factory(spec) {
                 input-style="font-size: larger; color: var(--color-darker); text-align:center;"
                 readonly
             />
-            <q-input v-model="totalBottles"
-                :label="$t('admin.wg.sale.list.item.totalBottles')"
+            <q-input v-model="totalLiters"
+                :label="$t('admin.wg.sale.list.item.totalLiters')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker); text-align:center;"
                 readonly
             />
-            <q-input v-model="totalLiters"
-                :label="$t('admin.wg.sale.list.item.totalLiters')"
+            <q-input v-model="totalBottles"
+                :label="$t('admin.wg.sale.list.item.totalBottles')"
                 borderless
                 input-style="font-size: larger; color: var(--color-darker); text-align:center;"
                 readonly
@@ -142,6 +143,9 @@ function Factory(spec) {
                 result = Number.parseFloat(result).toFixed(1);
                 return `${result} L`
             },
+        },
+        emits: {
+            [EVT_EDIT]: () => true, // event with validation function (use 'null' if no function)
         },
     };
 }

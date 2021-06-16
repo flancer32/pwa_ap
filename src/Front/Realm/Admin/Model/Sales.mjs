@@ -38,6 +38,14 @@ class Fl32_Ap_Front_Realm_Admin_Model_Sales {
             return modelData;
         }
         /**
+         * @param {number} saleId
+         * @return {Fl32_Ap_Front_Realm_Admin_Dto_Sale}
+         */
+        this.getSale = function (saleId) {
+            return modelData[saleId];
+        }
+
+        /**
          * Convert service DTO to model DTO and make it reactive.
          *
          * @param {Fl32_Ap_Shared_Service_Route_Sale_List.Response} data

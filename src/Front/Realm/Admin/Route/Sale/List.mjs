@@ -21,6 +21,8 @@ function Factory(spec) {
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item.vueCompTmpl} */
     const saleItem = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_List_Item$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Admin_Widget_Sale_Edit} */
+    const saleEdit = spec['Fl32_Ap_Front_Realm_Admin_Widget_Sale_Edit$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Realm_Admin_Model_Sales} */
     const mSales = spec['Fl32_Ap_Front_Realm_Admin_Model_Sales$']; // instance singleton
 
@@ -33,13 +35,18 @@ function Factory(spec) {
                 <q-card-actions align="center">
                     <q-btn
                             color="primary"
-                            v-on:click="onRefresh"
+                            @click="onRefresh"
                     >{{$t('btn.refresh')}}</q-btn>
                 </q-card-actions>
             </q-card-section>
         </q-card>
-        <sale-item v-for="sale in sales" :sale="sale"/>
+        <sale-item v-for="sale in sales" :sale="sale" @edit="onCardEdit" />
     </div>
+    <sale-edit
+         :display="dialogEditDisplay" 
+         :saleId="dialogEditSaleId"
+          @onHide="dialogEditDisplay=false"
+    />
 </layout-base>
 `;
 
@@ -57,10 +64,12 @@ function Factory(spec) {
     return {
         name: NS,
         template,
-        components: {saleItem},
+        components: {saleItem, saleEdit},
         data: function () {
             return {
                 saleList: {}, // reactive DTO from model
+                dialogEditDisplay: false,
+                dialogEditSaleId: null,
             };
         },
         computed: {
@@ -76,6 +85,11 @@ function Factory(spec) {
             async onRefresh() {
                 await mSales.reload();
             },
+            async onCardEdit(sale) {
+                this.dialogEditDisplay = true;
+                this.dialogEditSaleId = sale.id;
+
+            }
         },
         beforeCreate() {
             // redirect anonymous to sign-in route
