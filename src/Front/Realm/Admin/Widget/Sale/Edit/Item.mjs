@@ -24,8 +24,8 @@ export default class Fl32_Ap_Front_Realm_Admin_Widget_Sale_Edit_Item {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-        /** @type {Fl32_Ap_Front_Realm_Pub_Model_Catalog} */
-        const mCatalog = spec['Fl32_Ap_Front_Realm_Pub_Model_Catalog$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Shared_Model_Catalog} */
+        const mCatalog = spec['Fl32_Ap_Front_Realm_Shared_Model_Catalog$']; // instance singleton
 
         // COMPOSE RESULT (template for component's new instances)
         return {
@@ -40,13 +40,13 @@ export default class Fl32_Ap_Front_Realm_Admin_Widget_Sale_Edit_Item {
             },
             computed: {
                 card() {
-                    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit} */
+                    /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit} */
                     const unit = this.unit;
                     const cardId = unit.cardId;
                     return mCatalog?.getCardData(cardId);
                 },
                 imageUrl() {
-                    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Card} */
+                    /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Product_Card} */
                     const card = this.card;
                     return '../pub/img/product/card/' + card?.attrs[DEF.ATTR.PROD.CARD.IMAGE];
                 },

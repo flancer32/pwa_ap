@@ -19,8 +19,8 @@ const EVT_EDIT = 'edit';
 function Factory(spec) {
     // EXTRACT DEPS
     const {formatAmount, formatDateTime} = spec['TeqFw_Core_App_Shared_Util']; // ES6 destruct
-    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Catalog} */
-    const mCatalog = spec['Fl32_Ap_Front_Realm_Pub_Model_Catalog$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Shared_Model_Catalog} */
+    const mCatalog = spec['Fl32_Ap_Front_Realm_Shared_Model_Catalog$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `

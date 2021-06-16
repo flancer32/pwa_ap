@@ -77,32 +77,6 @@
                     });
                 }
 
-                /**
-                 * Init Vuex store and add it to Vue application.
-                 *
-                 * @param {Object} app
-                 * @param {TeqFw_Di_Container} container
-                 * @param {Fl32_Ap_Defaults} DEF
-                 * @param {Object} Vuex
-                 */
-                async function initVuex(app, container, DEF, Vuex) {
-                    /** @type {Fl32_Ap_Front_Realm_Pub_State} */
-                    const state = await container.get('Fl32_Ap_Front_Realm_Pub_State$'); // object singleton
-                    const store = Vuex.createStore(state);
-                    container.set(DEF.DI_STORE, store);
-                    app.use(store);
-                    //
-                    // TODO: init app state somewhere else
-                    //
-                    // const {reactive} = await container.get(DEF.MOD_VUE.DI_VUE);
-                    // const items = reactive({});
-                    // const totals = reactive({liters: 0, amount: 0});
-                    // const cart = reactive({items, totals});
-                    // container.set(DEF.DI.SHOPPING_CART, cart);
-                    //
-                    // const model = container.get('Fl32_Ap_Front_Model_Cart$');
-                }
-
                 // MAIN FUNCTIONALITY
 
                 // create vue application, init router, i18n, vuex, ...
@@ -116,7 +90,6 @@
                 result.use(self.Quasar, {config: {}});
                 self.Quasar.iconSet.set(self.Quasar.iconSet.svgMaterialIcons);
                 container.set(DEF.MOD_CORE.DI_QUASAR, self.Quasar);
-                await initVuex(result, container, DEF, self.Vuex);
                 return result;
             }
 
@@ -260,7 +233,6 @@
 <!-- These scripts are not ESM ready for loading with ES6 'import'. Use old style loading.  -->
 <script type="application/javascript" src="./src/vue/vue.global.js"></script>
 <script type="application/javascript" src="./src/vue-router/vue-router.global.js"></script>
-<script type="application/javascript" src="./src/vuex/vuex.global.js"></script>
 <script type="application/javascript" src="./src/i18next/i18next.min.js"></script>
 <script type="application/javascript" src="./src/i18next-detect/i18nextBrowserLanguageDetector.js"></script>
 <script type="application/javascript" src="./src/quasar/quasar.umd.prod.js"></script>

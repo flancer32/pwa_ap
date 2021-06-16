@@ -21,8 +21,8 @@ function Factory(spec) {
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
-    /** @type {Fl32_Ap_Front_Widget_Sign_In_Code_Get.vueCompTmpl} */
-    const codeGet = spec['Fl32_Ap_Front_Widget_Sign_In_Code_Get$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get.vueCompTmpl} */
+    const codeGet = spec['Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `

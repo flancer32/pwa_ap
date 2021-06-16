@@ -1,10 +1,10 @@
 /**
  * Widget to enter email to get sign-in link.
  *
- * @namespace Fl32_Ap_Front_Widget_Sign_In_Code_Get
+ * @namespace Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Widget_Sign_In_Code_Get';
+const NS = 'Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get';
 const TIMEOUT = 3000;
 
 // MODULE'S CLASSES
@@ -13,8 +13,8 @@ const TIMEOUT = 3000;
 /**
  * Factory to create template for new Vue component instances.
  *
- * @memberOf Fl32_Ap_Front_Widget_Sign_In_Code_Get
- * @returns {Fl32_Ap_Front_Widget_Sign_In_Code_Get.vueCompTmpl}
+ * @memberOf Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get
+ * @returns {Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get.vueCompTmpl}
  */
 function Factory(spec) {
     // EXTRACT DEPS
@@ -63,7 +63,7 @@ function Factory(spec) {
      * Template to create new component instances using Vue.
      *
      * @const {Object} vueCompTmpl
-     * @memberOf Fl32_Ap_Front_Widget_Sign_In_Code_Get
+     * @memberOf Fl32_Ap_Front_Realm_Shared_Widget_Sign_In_Code_Get
      */
     return {
         name: NS,

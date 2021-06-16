@@ -25,8 +25,8 @@ function Factory(spec) {
     const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base} */
     const layoutBase = spec['Fl32_Ap_Front_Realm_Pub_Widget_Layout_Base$']; // vue comp tmpl
-    /** @type {Fl32_Ap_Front_Widget_Layout_Blank} */
-    const layoutBlank = spec['Fl32_Ap_Front_Widget_Layout_Blank$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Realm_Shared_Widget_Layout_Blank} */
+    const layoutBlank = spec['Fl32_Ap_Front_Realm_Shared_Widget_Layout_Blank$']; // vue comp tmpl
 
     // DEFINE WORKING VARS
     const template = `

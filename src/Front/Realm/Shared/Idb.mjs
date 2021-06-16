@@ -1,25 +1,23 @@
 /**
  * Application level connector to Indexed DB. Contains db name and version and code to upgrade IDB stores.
+ * The same IDB structure is used both for admin & pub realms.
  *
- * @namespace Fl32_Ap_Front_Idb
+ * @namespace Fl32_Ap_Front_Realm_Shared_Idb
  */
 // MODULE'S VARS
-const NS = 'Fl32_Ap_Front_Idb';
+const NS = 'Fl32_Ap_Front_Realm_Shared_Idb';
 const IDB_NAME = NS;
 const IDB_VERSION = 1;
 
 // MODULE'S CLASSES
-/**
- * Data source for products cards.
- */
-class Fl32_Ap_Front_Idb {
+class Fl32_Ap_Front_Realm_Shared_Idb {
 
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {TeqFw_Core_App_Front_Idb_Connect} */
         const conn = spec['TeqFw_Core_App_Front_Idb_Connect$$']; // new instance
-        /** @type {typeof Fl32_Ap_Front_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
+        /** @type {typeof Fl32_Ap_Front_Realm_Shared_Idb_Store_DataSource} */
+        const EDataSource = spec['Fl32_Ap_Front_Realm_Shared_Idb_Store_DataSource#']; // class
 
         // DEFINE INNER FUNCTIONS
 
@@ -78,4 +76,4 @@ class Fl32_Ap_Front_Idb {
 }
 
 // MODULE'S EXPORT
-export default Fl32_Ap_Front_Idb;
+export default Fl32_Ap_Front_Realm_Shared_Idb;

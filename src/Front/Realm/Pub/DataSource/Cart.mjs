@@ -7,10 +7,10 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Idb} */
-        const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
-        /** @type {typeof Fl32_Ap_Front_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
+        /** @type {Fl32_Ap_Front_Realm_Shared_Idb} */
+        const idb = spec['Fl32_Ap_Front_Realm_Shared_Idb$']; // instance singleton
+        /** @type {typeof Fl32_Ap_Front_Realm_Shared_Idb_Store_DataSource} */
+        const EDataSource = spec['Fl32_Ap_Front_Realm_Shared_Idb_Store_DataSource#']; // class
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Realm_Pub_Dto_Cart#Factory$']; // instance singleton
 

@@ -1,11 +1,11 @@
 /**
  * Model object for products catalog in 'pub' realm.
  *
- * @namespace Fl32_Ap_Front_Realm_Pub_Model_Catalog
+ * @namespace Fl32_Ap_Front_Realm_Shared_Model_Catalog
  */
 
 // MODULE'S CLASSES
-class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
+class Fl32_Ap_Front_Realm_Shared_Model_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
@@ -13,17 +13,17 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
         const DEF = spec['Fl32_Ap_Defaults$'];
         const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
-        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Card.Factory} */
-        const fCard = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Card#Factory$']; // instance singleton
-        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit.Factory} */
-        const fUnit = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit#Factory$']; // instance singleton
-        /** @type {Fl32_Ap_Front_Realm_Pub_DataSource_Catalog} */
-        const ds = spec['Fl32_Ap_Front_Realm_Pub_DataSource_Catalog$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Product_Card.Factory} */
+        const fCard = spec['Fl32_Ap_Front_Realm_Shared_Dto_Product_Card#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit.Factory} */
+        const fUnit = spec['Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Shared_DataSource_Catalog} */
+        const ds = spec['Fl32_Ap_Front_Realm_Shared_DataSource_Catalog$']; // instance singleton
 
         // DEFINE WORKING VARS
-        /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Card>} */
+        /** @type {Object<number, Fl32_Ap_Front_Realm_Shared_Dto_Product_Card>} */
         let modelData = reactive({});
-        /** @type {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit>} */
+        /** @type {Object<number, Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit>} */
         let mapUnits = {};
         const me = this;
 
@@ -38,7 +38,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
         /**
          * Return model data as reactive DTO.
          *
-         * @return {Object<number, Fl32_Ap_Front_Realm_Pub_Dto_Product_Card>}
+         * @return {Object<number, Fl32_Ap_Front_Realm_Shared_Dto_Product_Card>}
          */
         this.getData = function () {
             return modelData;
@@ -84,7 +84,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
 
         /**
          * @param {number} cardId
-         * @return {Fl32_Ap_Front_Realm_Pub_Dto_Product_Card}
+         * @return {Fl32_Ap_Front_Realm_Shared_Dto_Product_Card}
          */
         this.getCardData = function (cardId) {
             return modelData[cardId];
@@ -92,7 +92,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
 
         /**
          * @param {number} unitId
-         * @return {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit}
+         * @return {Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit}
          */
         this.getUnitData = function (unitId) {
             return mapUnits[unitId];
@@ -105,4 +105,4 @@ class Fl32_Ap_Front_Realm_Pub_Model_Catalog {
 }
 
 // MODULE'S EXPORT
-export default Fl32_Ap_Front_Realm_Pub_Model_Catalog;
+export default Fl32_Ap_Front_Realm_Shared_Model_Catalog;

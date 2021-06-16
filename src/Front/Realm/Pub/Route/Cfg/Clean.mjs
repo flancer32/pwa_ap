@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Route_Cfg_Clean';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Front_Idb} */
-    const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Shared_Idb} */
+    const idb = spec['Fl32_Ap_Front_Realm_Shared_Idb$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
 

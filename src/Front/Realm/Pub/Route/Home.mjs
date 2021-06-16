@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Route_Home';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Catalog} */
-    const mCatalog = spec['Fl32_Ap_Front_Realm_Pub_Model_Catalog$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Shared_Model_Catalog} */
+    const mCatalog = spec['Fl32_Ap_Front_Realm_Shared_Model_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Widget_Product_Card.vueCompTmpl} */
     const productCard = spec['Fl32_Ap_Front_Realm_Pub_Widget_Product_Card$']; // vue comp tmpl
 

@@ -1,26 +1,26 @@
 /**
  * Data source for products catalog.
  *
- * @namespace Fl32_Ap_Front_Realm_Pub_DataSource_Catalog
+ * @namespace Fl32_Ap_Front_Realm_Shared_DataSource_Catalog
  */
-class Fl32_Ap_Front_Realm_Pub_DataSource_Catalog {
+class Fl32_Ap_Front_Realm_Shared_DataSource_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
         const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-        /** @type {Fl32_Ap_Front_Idb} */
-        const idb = spec['Fl32_Ap_Front_Idb$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Shared_Idb} */
+        const idb = spec['Fl32_Ap_Front_Realm_Shared_Idb$']; // instance singleton
         /** @type {Function|Fl32_Ap_Front_Gate_Product_List.gate} */
         const gate = spec['Fl32_Ap_Front_Gate_Product_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Request} */
         const Req = spec['Fl32_Ap_Shared_Service_Route_Product_List#Request']; // class
-        /** @type {typeof Fl32_Ap_Front_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Idb_Store_DataSource#']; // class
+        /** @type {typeof Fl32_Ap_Front_Realm_Shared_Idb_Store_DataSource} */
+        const EDataSource = spec['Fl32_Ap_Front_Realm_Shared_Idb_Store_DataSource#']; // class
 
         // DEFINE WORKING VARS
-        const TYPE = Fl32_Ap_Front_Realm_Pub_DataSource_Catalog.TYPE;
+        const TYPE = Fl32_Ap_Front_Realm_Shared_DataSource_Catalog.TYPE;
 
         // DEFINE INSTANCE METHODS
 
@@ -70,7 +70,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Catalog {
     }
 }
 
-Fl32_Ap_Front_Realm_Pub_DataSource_Catalog.TYPE = 'product/card';
+Fl32_Ap_Front_Realm_Shared_DataSource_Catalog.TYPE = 'catalog';
 
 // MODULE'S EXPORT
-export default Fl32_Ap_Front_Realm_Pub_DataSource_Catalog;
+export default Fl32_Ap_Front_Realm_Shared_DataSource_Catalog;

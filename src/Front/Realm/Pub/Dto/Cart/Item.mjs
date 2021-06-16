@@ -7,7 +7,7 @@ const NS = 'Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item';
 class Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item {
     /** @type {number} */
     count = 0;
-    /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit} */
+    /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit} */
     unit;
 }
 
@@ -22,8 +22,8 @@ Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item.UNIT = 'unit';
 class Factory {
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit.Factory} */
-        const fUnit = spec['Fl32_Ap_Front_Realm_Pub_Dto_Product_Unit#Factory$']; // instance singleton
+        /** @type {Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit.Factory} */
+        const fUnit = spec['Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit#Factory$']; // instance singleton
 
         /**
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Cart_Item}
