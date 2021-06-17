@@ -25,7 +25,6 @@ function Factory(spec) {
     const gate = spec['Fl32_Ap_User_Front_Gate_SignUp_Code_Check$']; // function singleton
     /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check.Request} */
     const Request = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Check#Request']; // class
-    const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX]; // ES6 module
 
     // DEFINE WORKING VARS
     const template = `

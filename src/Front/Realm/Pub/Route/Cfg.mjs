@@ -24,6 +24,8 @@ function Factory(spec) {
     const idb = spec['Fl32_Ap_Front_Realm_Shared_Idb$']; // instance singleton
     /** @type {Fl32_Ap_Front_Realm_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Realm_Pub_Model_Cart$']; // instance singleton
+    /** @type {Fl32_Ap_Front_Realm_Pub_Model_Profile} */
+    const mProfile = spec['Fl32_Ap_Front_Realm_Pub_Model_Profile$']; // instance singleton
 
     // DEFINE WORKING VARS
     const template = `
@@ -31,18 +33,25 @@ function Factory(spec) {
     <div class="q-pa-xs q-gutter-xs">
         <q-card>
             <q-card-section class="t-grid rows gutter-xs">
-                <q-input v-model="fldName"
+                <q-input v-model="profile.name"
                          :label="$t('pub.route.cfg.user.name.label')"
                          :hint="$t('pub.route.cfg.user.name.hint')"
                          input-style="font-size: larger; color: var(--color-darker)"
                          outlined
                 />
-                <q-input v-model="fldEmail"
+                <q-input v-model="profile.email"
                          :label="$t('pub.route.cfg.user.email.label')"
                          :hint="$t('pub.route.cfg.user.email.hint')"
                          input-style="font-size: larger; color: var(--color-darker)"
                          outlined
                 />
+                <q-card-actions align="center">
+                    <q-btn 
+                        color="primary"
+                        :loading="btnSaveLoad"
+                        v-on:click="onProfileSave"
+                    >{{$t('btn.save')}}</q-btn>
+                </q-card-actions>
             </q-card-section>
         </q-card>
         <q-card>
@@ -92,10 +101,11 @@ function Factory(spec) {
         components: {},
         data: function () {
             return {
-                fldEmail: null,
-                fldLang: null,
-                fldName: null,
+                btnSaveLoad: false,
                 cleanIsActive: false, // true - if cleaning process is active
+                fldLang: null,
+                /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Profile} */
+                profile: null,
             };
         },
         computed: {
@@ -118,7 +128,12 @@ function Factory(spec) {
                 await mCart.clean();
                 this.cleanIsActive = true;
                 setTimeout(() => this.cleanIsActive = false, 2000);
-            }
+            },
+            async onProfileSave() {
+                this.btnSaveLoad = true;
+                await mProfile.update(this.profile);
+                this.btnSaveLoad = false;
+            },
         },
         watch: {
             fldLang(current, old) {
@@ -126,6 +141,9 @@ function Factory(spec) {
                     i18n.changeLanguage(current);
                 }
             }
+        },
+        async created() {
+            this.profile = mProfile.getData();
         },
         mounted() {
             this.fldLang = i18n.language;

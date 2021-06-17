@@ -72,7 +72,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Cart {
     }
 }
 
-Fl32_Ap_Front_Realm_Pub_DataSource_Cart.TYPE = 'cart';
+Fl32_Ap_Front_Realm_Pub_DataSource_Cart.TYPE = 'pub/cart';
 
 // MODULE'S EXPORT
 export default Fl32_Ap_Front_Realm_Pub_DataSource_Cart;

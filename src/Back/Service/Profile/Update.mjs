@@ -128,8 +128,14 @@ class Fl32_Ap_Back_Service_Profile_Update {
                     // don't start transaction if not required
                     const trx = await rdb.startTransaction();
                     try {
-                        if (apiReq.profile.name) await updateUserName(trx, user.id, apiReq.profile.name);
-                        if (apiReq.profile.email) await updateUserEmail(trx, user.id, apiReq.profile.email);
+                        if (apiReq.profile.name) {
+                            await updateUserName(trx, user.id, apiReq.profile.name);
+                            user.name = apiReq.profile.name;
+                        }
+                        if (apiReq.profile.email) {
+                            await updateUserEmail(trx, user.id, apiReq.profile.email);
+                            user.emails[0] = apiReq.profile.email
+                        }
                         response.success = true;
                         await trx.commit();
                     } catch (error) {

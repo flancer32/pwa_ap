@@ -71,7 +71,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Sales {
             this.parseDataSource(res);
         }
         // MAIN FUNCTIONALITY
-        // init as empty model then load data from DataSource
+        // load data from DataSource to the empty model
         this.reload().catch(function (e) {
             debugger
             logger.error('Cannot reload sales list: ' + e);

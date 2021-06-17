@@ -58,11 +58,7 @@ function Factory(spec) {
         },
         methods: {},
         async created() {
-            // const lang = i18n.language;
-            // /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
-            // const products = await dsCatalog.getData({lang});
             this.catalog = mCatalog.getData();
-            // this.cards = Object.values(products.cards);
         },
     };
 }

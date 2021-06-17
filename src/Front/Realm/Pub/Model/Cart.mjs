@@ -26,7 +26,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
 
         // DEFINE WORKING VARS
         /** @type {Fl32_Ap_Front_Realm_Pub_Dto_Cart} */
-        let cart;
+        let modelData = reactive({});
 
         // DEFINE INNER FUNCTIONS
 
@@ -37,8 +37,9 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
          * @return {Fl32_Ap_Front_Realm_Pub_Dto_Cart}
          */
         this.getData = function () {
-            return cart;
+            return modelData;
         }
+
         /**
          * Set DTO to model and make it reactive.
          *
@@ -46,10 +47,10 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
          */
         this.setData = function (data) {
             const cartDto = fCart.create();
-            cart = reactive(cartDto);
+            modelData = reactive(cartDto);
             // reactivate 'totals'
             const totalsDto = Object.assign(cartDto.totals, data?.totals);
-            cart.totals = reactive(totalsDto);
+            modelData.totals = reactive(totalsDto);
             // reactivate 'items'
             const items = reactive({});
             if (typeof data?.items === 'object') {
@@ -58,7 +59,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
                     items[key] = reactive(itemDto);
                 }
             }
-            cart.items = items;
+            modelData.items = items;
         }
 
         this.idbGet = async function () {
@@ -71,24 +72,24 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
          */
         this.hasUnit = function (unit) {
             const unitId = unit.id;
-            return !!(cart.items[unitId]);
+            return !!(modelData.items[unitId]);
         }
         /**
          * Clean current cart.
          */
         this.clean = async function () {
-            const keys = Object.keys(cart.items);
-            for (const key of keys) delete cart.items[key];
-            cart.totals.liters = 0;
-            cart.totals.amount = 0;
-            await ds.putData(cart);
+            const keys = Object.keys(modelData.items);
+            for (const key of keys) delete modelData.items[key];
+            modelData.totals.liters = 0;
+            modelData.totals.amount = 0;
+            await ds.putData(modelData);
         }
         /**
          * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
          */
         this.unitAdd = function (unit) {
-            const items = cart.items;
-            const totals = cart.totals;
+            const items = modelData.items;
+            const totals = modelData.totals;
             const unitId = unit.id;
             if (!items[unitId]) {
                 items[unitId] = fItem.create();
@@ -99,14 +100,14 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
             }
             totals.liters += Number.parseFloat(unit.attrs[DEF.ATTR.PROD.UNIT.VOLUME]);
             totals.amount += Number.parseFloat(unit.price.value);
-            ds.putData(cart).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
+            ds.putData(modelData).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
         }
         /**
          * @param {Fl32_Ap_Shared_Service_Dto_Product_Unit} unit
          */
         this.unitRemove = function (unit) {
-            const items = cart.items;
-            const totals = cart.totals;
+            const items = modelData.items;
+            const totals = modelData.totals;
             const unitId = unit.id;
             if (items[unitId]) {
                 if ((items[unitId].count) <= 1) {
@@ -119,7 +120,7 @@ class Fl32_Ap_Front_Realm_Pub_Model_Cart {
                 // prevent "-0.00"
                 if (totals.liters < 0.000001) totals.liters = 0;
                 if (totals.amount < 0.000001) totals.amount = 0;
-                ds.putData(cart).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
+                ds.putData(modelData).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
             }
         }
 

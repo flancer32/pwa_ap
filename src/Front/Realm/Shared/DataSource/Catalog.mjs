@@ -24,10 +24,6 @@ class Fl32_Ap_Front_Realm_Shared_DataSource_Catalog {
 
         // DEFINE INSTANCE METHODS
 
-        this.clearCache = async function ({}) {
-            // delete cached data from IDB
-            return {}
-        }
         /**
          * Get data from IDB or load it from remote server.
          * @param {string} lang
@@ -70,7 +66,7 @@ class Fl32_Ap_Front_Realm_Shared_DataSource_Catalog {
     }
 }
 
-Fl32_Ap_Front_Realm_Shared_DataSource_Catalog.TYPE = 'catalog';
+Fl32_Ap_Front_Realm_Shared_DataSource_Catalog.TYPE = 'shared/catalog';
 
 // MODULE'S EXPORT
 export default Fl32_Ap_Front_Realm_Shared_DataSource_Catalog;

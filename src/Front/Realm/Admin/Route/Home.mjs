@@ -13,12 +13,8 @@ const NS = 'Fl32_Ap_Front_Realm_Admin_Route_Home';
  * @memberOf Fl32_Ap_Front_Realm_Admin_Route_Home
  * @returns {Fl32_Ap_Front_Realm_Admin_Route_Home.vueCompTmpl}
  */
-function Factory(spec) {
+function Factory() {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-
-    const {mapMutations, mapState} = spec[DEF.MOD_VUE.DI_VUEX];
 
     // DEFINE WORKING VARS
     const template = `

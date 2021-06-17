@@ -77,7 +77,7 @@ class Fl32_Ap_Front_Realm_Pub_DataSource_Sales {
     }
 }
 
-Fl32_Ap_Front_Realm_Pub_DataSource_Sales.TYPE = 'sales';
+Fl32_Ap_Front_Realm_Pub_DataSource_Sales.TYPE = 'pub/sales';
 
 // MODULE'S EXPORT
 export default Fl32_Ap_Front_Realm_Pub_DataSource_Sales;

@@ -1,5 +1,5 @@
 /**
- * Product unit DTO for the 'pub' realm.
+ * Product unit DTO used on the front (all realms).
  */
 // MODULE'S VARS
 const NS = 'Fl32_Ap_Front_Realm_Shared_Dto_Product_Unit';
