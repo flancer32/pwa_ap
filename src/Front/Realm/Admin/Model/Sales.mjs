@@ -46,7 +46,7 @@ class Fl32_Ap_Front_Realm_Admin_Model_Sales {
         }
 
         /**
-         * Convert service DTO to model DTO and make it reactive.
+         * Convert service response DTO to model DTO and make it reactive.
          *
          * @param {Fl32_Ap_Shared_Service_Route_Sale_List.Response} data
          */

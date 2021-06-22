@@ -45,7 +45,7 @@ class Fl32_Ap_Front_Realm_Shared_Model_Catalog {
         }
 
         /**
-         * Convert service DTO to model DTO and make it reactive.
+         * Convert service response DTO to model DTO and make it reactive.
          *
          * @param {Fl32_Ap_Shared_Service_Route_Product_List.Response} data
          */
