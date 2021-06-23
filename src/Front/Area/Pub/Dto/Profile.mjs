@@ -37,7 +37,7 @@ class Factory {
 
 // freeze class to deny attributes changes then export class
 Object.freeze(Fl32_Ap_Front_Area_Pub_Dto_Profile);
-Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.name}`});
+Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.constructor.name}`});
 export {
     Fl32_Ap_Front_Area_Pub_Dto_Profile as default,
     Factory
