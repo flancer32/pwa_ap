@@ -20,8 +20,8 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Defaults$'];   // instance singleton
     /** @type {typeof TeqFw_Core_Back_Cli_Command_Data} */
     const DCommand = spec['TeqFw_Core_Back_Cli_Command#Data'];    // class constructor
-    /** @type {TeqFw_Core_Db_Connector} */
-    const connector = spec['TeqFw_Core_Db_Connector$']; // instance singleton
+    /** @type {TeqFw_Core_Back_RDb_Connector} */
+    const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
     /** @type {TeqFw_Core_Logger} */
     const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore.action} */

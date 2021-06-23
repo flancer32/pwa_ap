@@ -18,8 +18,8 @@ class Fl32_Ap_Back_Service_Profile_Update {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-        /** @type {TeqFw_Core_Db_Connector} */
-        const rdb = spec['TeqFw_Core_Db_Connector$'];  // instance singleton
+        /** @type {TeqFw_Core_Back_RDb_Connector} */
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
         const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Update.Factory} */

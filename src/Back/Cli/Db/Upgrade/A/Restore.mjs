@@ -16,8 +16,8 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore';
  */
 function Factory(spec) {
     // PARSE INPUT & DEFINE WORKING VARS
-    /** @type {TeqFw_Core_Db_Connector} */
-    const connector = spec['TeqFw_Core_Db_Connector$']; // instance singleton
+    /** @type {TeqFw_Core_Back_RDb_Connector} */
+    const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
     /** @type {TeqFw_Core_Logger} */
     const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
     /** @type {Function|TeqFw_Core_Back_Util_RDb.serialsSet} */
