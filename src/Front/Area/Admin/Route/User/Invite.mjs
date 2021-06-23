@@ -25,7 +25,7 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    /** @type {TeqFw_Core_App_Front_Data_Config} */
+    /** @type {TeqFw_Core_Front_Data_Config} */
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // named singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton

@@ -12,7 +12,7 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Reset';
  * Factory class to create CLI command to reset database structures and initialize test data.
  *
  * @param {TeqFw_Di_SpecProxy} spec
- * @returns {TeqFw_Core_App_Back_Cli_Command_Data}
+ * @returns {TeqFw_Core_Back_Cli_Command_Data}
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Reset
  */
@@ -20,13 +20,13 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$'];   // instance singleton
-    /** @type {typeof TeqFw_Core_App_Back_Cli_Command_Data} */
-    const DCommand = spec['TeqFw_Core_App_Back_Cli_Command#Data'];    // class constructor
-    /** @type {TeqFw_Core_App_Db_Connector} */
-    const connector = spec['TeqFw_Core_App_Db_Connector$']; // instance singleton
-    /** @type {TeqFw_Core_App_Logger} */
-    const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
-    const {isPostgres} = spec['TeqFw_Core_App_Back_Util_RDb']; // ES6 destruct
+    /** @type {typeof TeqFw_Core_Back_Cli_Command_Data} */
+    const DCommand = spec['TeqFw_Core_Back_Cli_Command#Data'];    // class constructor
+    /** @type {TeqFw_Core_Db_Connector} */
+    const connector = spec['TeqFw_Core_Db_Connector$']; // instance singleton
+    /** @type {TeqFw_Core_Logger} */
+    const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+    const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
     const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$']; // instance singleton
     /** @type {Fl32_Ap_Plugin_Store_RDb_Setup} */
@@ -48,8 +48,8 @@ function Factory(spec) {
     // DEFINE INNER FUNCTIONS
 
     /**
-     * @see TeqFw_Core_App_Back_Cli_Command.create
-     * @return {Promise<TeqFw_Core_App_Back_Cli_Command_Data>}
+     * @see TeqFw_Core_Back_Cli_Command.create
+     * @return {Promise<TeqFw_Core_Back_Cli_Command_Data>}
      */
     async function action() {
         // DEFINE INNER FUNCTIONS

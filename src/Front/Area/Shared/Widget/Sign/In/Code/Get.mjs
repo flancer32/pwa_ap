@@ -20,7 +20,7 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$'];
-    /** @type {TeqFw_Core_App_Front_Data_Config} */
+    /** @type {TeqFw_Core_Front_Data_Config} */
     const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
     /** @type {Function|Fl32_Ap_User_Front_Gate_SignIn_Code_Send.gate} */
     const gateSend = spec['Fl32_Ap_User_Front_Gate_SignIn_Code_Send$']; // function singleton

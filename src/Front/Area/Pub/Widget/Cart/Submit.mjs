@@ -19,7 +19,7 @@ const EVT_SUBMIT = 'onSubmit';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    const {formatDate, formatTime} = spec['TeqFw_Core_App_Shared_Util']; // ES6 destruct
+    const {formatDate, formatTime} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
 
     // DEFINE WORKING VARS
     const template = `

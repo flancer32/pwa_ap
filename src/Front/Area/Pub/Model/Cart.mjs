@@ -15,8 +15,8 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
         /** @type {TeqFw_Di_Container} */
         const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
-        /** @type {TeqFw_Core_App_Logger} */
-        const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
+        /** @type {TeqFw_Core_Logger} */
+        const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$']; // instance singleton
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart_Item.Factory} */

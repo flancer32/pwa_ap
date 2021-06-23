@@ -10,7 +10,7 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    const {isPostgres} = spec['TeqFw_Core_App_Back_Util_RDb']; // ES6 destruct
+    const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
     const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value} */

@@ -13,8 +13,8 @@ class Fl32_Ap_Front_Area_Admin_Model_Sales {
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
-        /** @type {TeqFw_Core_App_Logger} */
-        const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
+        /** @type {TeqFw_Core_Logger} */
+        const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
         /** @type {Function|Fl32_Ap_Front_Gate_Sale_List.gate} */
         const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$']; // function singleton
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */

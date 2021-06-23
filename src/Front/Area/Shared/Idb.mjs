@@ -14,8 +14,8 @@ class Fl32_Ap_Front_Area_Shared_Idb {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {TeqFw_Core_App_Front_Idb_Connect} */
-        const conn = spec['TeqFw_Core_App_Front_Idb_Connect$$']; // new instance
+        /** @type {TeqFw_Core_Front_Idb_Connect} */
+        const conn = spec['TeqFw_Core_Front_Idb_Connect$$']; // new instance
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
         const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#']; // class
 
@@ -47,7 +47,7 @@ class Fl32_Ap_Front_Area_Shared_Idb {
         /**
          * Connect to IDB if not connected, return Store object to handle data (get, put).
          * @param {string} name
-         * @return {Promise<TeqFw_Core_App_Front_Idb_Connect.Store>}
+         * @return {Promise<TeqFw_Core_Front_Idb_Connect.Store>}
          */
         this.store = async function (name) {
             await this.connect();
@@ -56,7 +56,7 @@ class Fl32_Ap_Front_Area_Shared_Idb {
 
         /**
          * Connect to IDB if not connected then return connection.
-         * @return {Promise<TeqFw_Core_App_Front_Idb_Connect>}
+         * @return {Promise<TeqFw_Core_Front_Idb_Connect>}
          */
         this.connect = async function () {
             if (!conn.isConnected()) await open();

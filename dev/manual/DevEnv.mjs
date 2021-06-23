@@ -28,11 +28,11 @@ export default async function init() {
      * @return {Promise<void>}
      */
     async function initConfig(container, path) {
-        /** @type {TeqFw_Core_App_Config} */
-        const config = await container.get('TeqFw_Core_App_Config$');
+        /** @type {TeqFw_Core_Config} */
+        const config = await container.get('TeqFw_Core_Config$');
         config.load({rootPath: path});  // load local configuration
-        /** @type {TeqFw_Core_App_Defaults} */
-        const DEF = await container.get('TeqFw_Core_App_Defaults$');
+        /** @type {TeqFw_Core_Defaults} */
+        const DEF = await container.get('TeqFw_Core_Defaults$');
         container.set(DEF.DI_CONFIG, config.get());
     }
 
@@ -43,8 +43,8 @@ export default async function init() {
      * @return {Promise<void>}
      */
     async function initDb(container) {
-        /** @type {TeqFw_Core_App_Db_Connector} */
-        const rdb = await container.get('TeqFw_Core_App_Db_Connector$');  // singleton instance
+        /** @type {TeqFw_Core_Db_Connector} */
+        const rdb = await container.get('TeqFw_Core_Db_Connector$');  // singleton instance
         await rdb.init();
         // const finalizer = function (boo) {
         //     debugger
@@ -78,10 +78,10 @@ export default async function init() {
      * @return {Promise<void>}
      */
     async function initLogger(container) {
-        /** @type {TeqFw_Core_App_Logger} */
-        const logger = await container.get('TeqFw_Core_App_Logger$');
-        /** @type {TeqFw_Core_App_Logger_Transport_Console} */
-        const logTransport = await container.get('TeqFw_Core_App_Logger_Transport_Console$');
+        /** @type {TeqFw_Core_Logger} */
+        const logger = await container.get('TeqFw_Core_Logger$');
+        /** @type {TeqFw_Core_Logger_Transport_Console} */
+        const logTransport = await container.get('TeqFw_Core_Logger_Transport_Console$');
         logger.addTransport(logTransport);
     }
 

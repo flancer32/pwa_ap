@@ -12,8 +12,8 @@ class Fl32_Ap_Front_Area_Pub_Model_Sales {
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
-        /** @type {TeqFw_Core_App_Logger} */
-        const logger = spec['TeqFw_Core_App_Logger$'];  // instance singleton
+        /** @type {TeqFw_Core_Logger} */
+        const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
         /** @type {Fl32_Ap_Front_Area_Pub_DataSource_Sales} */
         const ds = spec['Fl32_Ap_Front_Area_Pub_DataSource_Sales$']; // instance singleton
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Sale.Factory} */

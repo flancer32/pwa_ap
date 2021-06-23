@@ -18,7 +18,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     const i18n = spec[DEF.MOD_CORE.DI_I18N]; // named singleton
-    const {round} = spec['TeqFw_Core_App_Shared_Util']; // ES6 destruct
+    const {round} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
     /** @type {Fl32_Ap_Front_Area_Shared_DataSource_Catalog} */
     const dsProd = spec['Fl32_Ap_Front_Area_Shared_DataSource_Catalog$']; // instance singleton
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */

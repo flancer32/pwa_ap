@@ -21,8 +21,8 @@ function Factory(spec) {
     const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton
     const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
-    /** @type {TeqFw_Core_App_Front_Widget_Layout_Centered} */
-    const layoutCentered = spec['TeqFw_Core_App_Front_Widget_Layout_Centered$']; // vue comp tmpl
+    /** @type {TeqFw_Core_Front_Widget_Layout_Centered} */
+    const layoutCentered = spec['TeqFw_Core_Front_Widget_Layout_Centered$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Admin_Layout_Base} */
     const layoutBase = spec['Fl32_Ap_Front_Area_Admin_Layout_Base$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Shared_Widget_Layout_Blank} */

@@ -18,9 +18,9 @@ class Fl32_Ap_Back_Service_Sale_Add {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-        /** @type {TeqFw_Core_App_Db_Connector} */
-        const rdb = spec['TeqFw_Core_App_Db_Connector$'];  // instance singleton
-        const {isPostgres} = spec['TeqFw_Core_App_Back_Util_RDb']; // ES6 destruct
+        /** @type {TeqFw_Core_Db_Connector} */
+        const rdb = spec['TeqFw_Core_Db_Connector$'];  // instance singleton
+        const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
         const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
         const {
