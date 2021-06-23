@@ -1,38 +1,32 @@
 /**
- * Command to recreate database structure and fill it with demo data.
+ * Recreate database structure and fill it with demo data.
  * @namespace Fl32_Ap_Back_Cli_Db_Reset
  */
-// MODULE'S IMPORT
-
 // DEFINE WORKING VARS
 const NS = 'Fl32_Ap_Back_Cli_Db_Reset';
 
 // DEFINE MODULE'S FUNCTIONS
 /**
- * Factory class to create CLI command to reset database structures and initialize test data.
+ * Factory to create CLI command.
  *
  * @param {TeqFw_Di_SpecProxy} spec
- * @returns {TeqFw_Core_Back_Cli_Command_Data}
+ * @returns {TeqFw_Core_Back_Api_Dto_Command}
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Reset
  */
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$'];   // instance singleton
-    /** @type {typeof TeqFw_Core_Back_Cli_Command_Data} */
-    const DCommand = spec['TeqFw_Core_Back_Cli_Command#Data'];    // class constructor
+    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Function|TeqFw_Core_Back_Api_Dto_Command.Factory} */
+    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$']; // singleton
     /** @type {TeqFw_Core_Back_RDb_Connector} */
     const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
     /** @type {TeqFw_Core_Logger} */
-    const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+    const logger = spec['TeqFw_Core_Logger$']; // instance singleton
     const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
     const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$']; // instance singleton
-    /** @type {Fl32_Ap_Plugin_Store_RDb_Setup} */
-    const setupApp = spec['Fl32_Ap_Plugin_Store_RDb_Setup$']; // instance singleton
-    /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
-    const setupUser = spec['Fl32_Ap_User_Plugin_Store_RDb_Setup$']; // instance singleton
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
     const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
@@ -48,12 +42,12 @@ function Factory(spec) {
     // DEFINE INNER FUNCTIONS
 
     /**
-     * @see TeqFw_Core_Back_Cli_Command.create
-     * @return {Promise<TeqFw_Core_Back_Cli_Command_Data>}
+     * Command action.
+     * @returns {Promise<void>}
+     * @memberOf Fl32_Ap_Back_Cli_Db_Reset
      */
     async function action() {
         // DEFINE INNER FUNCTIONS
-
         /**
          * Compose queries to insert data into the tables.
          * @param trx
@@ -116,9 +110,10 @@ function Factory(spec) {
         await connector.disconnect();
     }
 
-    // COMPOSE RESULT
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
-    const result = new DCommand();
+
+    // COMPOSE RESULT
+    const result = fCommand.create();
     result.ns = DEF.BACK_REALM;
     result.name = 'db-reset';
     result.desc = 'Reset database structures and initialize test data.';

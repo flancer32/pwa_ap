@@ -7,23 +7,23 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade';
 
 // DEFINE MODULE'S FUNCTIONS
 /**
- * Factory class to create CLI command to reset database structures and initialize test data.
+ * Factory to create CLI command.
  *
  * @param {TeqFw_Di_SpecProxy} spec
- * @returns {TeqFw_Core_Back_Cli_Command_Data}
+ * @returns {TeqFw_Core_Back_Api_Dto_Command}
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Upgrade
  */
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$'];   // instance singleton
-    /** @type {typeof TeqFw_Core_Back_Cli_Command_Data} */
-    const DCommand = spec['TeqFw_Core_Back_Cli_Command#Data'];    // class constructor
+    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Function|TeqFw_Core_Back_Api_Dto_Command.Factory} */
+    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$']; // singleton
     /** @type {TeqFw_Core_Back_RDb_Connector} */
     const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
     /** @type {TeqFw_Core_Logger} */
-    const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+    const logger = spec['TeqFw_Core_Logger$']; // instance singleton
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore.action} */
     const actRestore = spec['Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore$']; // instance singleton
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump.action} */
@@ -34,8 +34,9 @@ function Factory(spec) {
     // DEFINE INNER FUNCTIONS
 
     /**
-     * @see TeqFw_Core_Back_Cli_Command.create
-     * @return {Promise<TeqFw_Core_Back_Cli_Command_Data>}
+     * Command action.
+     * @returns {Promise<void>}
+     * @memberOf Fl32_Ap_Back_Cli_Db_Upgrade
      */
     async function action() {
         // dump data
@@ -53,9 +54,10 @@ function Factory(spec) {
         await connector.disconnect();
     }
 
-    // COMPOSE RESULT
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
-    const result = new DCommand();
+
+    // COMPOSE RESULT
+    const result = fCommand.create();
     result.ns = DEF.BACK_REALM;
     result.name = 'db-upgrade';
     result.desc = 'Backup data, drop-create tables then restore data.';
