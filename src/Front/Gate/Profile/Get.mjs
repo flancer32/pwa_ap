@@ -15,8 +15,8 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
-    /** @type {TeqFw_Core_App_Front_Gate_Connect} */
-    const conn = spec['TeqFw_Core_App_Front_Gate_Connect$']; // instance singleton
+    /** @type {TeqFw_Http2_Front_Gate_Connect} */
+    const conn = spec['TeqFw_Http2_Front_Gate_Connect$']; // instance singleton
     /** @type {Fl32_Ap_Shared_Service_Route_Profile_Get.Factory} */
     const factory = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$']; // instance singleton
 
