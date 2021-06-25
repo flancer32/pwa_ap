@@ -56,6 +56,6 @@ npm link \
   "@teqfw/http2" \
   "@teqfw/i18n" \
   "@teqfw/ui-quasar" \
-  "@teqfw/vue" \
+  "@teqfw/vue"
 
 echo "Done."
