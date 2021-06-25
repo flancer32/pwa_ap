@@ -21,7 +21,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$'];
     /** @type {TeqFw_Core_Front_Data_Config} */
-    const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
+    const config = spec['TeqFw_Core_Front_Data_Config$']; // instance singleton
     /** @type {Function|Fl32_Ap_User_Front_Gate_SignIn_Code_Send.gate} */
     const gateSend = spec['Fl32_Ap_User_Front_Gate_SignIn_Code_Send$']; // function singleton
     /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Request} */
@@ -81,7 +81,7 @@ function Factory(spec) {
                 this.loading = true;
                 const req = new ReqSend();
                 req.email = this.fldEmail;
-                req.realm = config.realm;
+                req.realm = config.area;
                 /** @type {Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Response} */
                 const res = await gateSend(req);
                 this.loading = false;

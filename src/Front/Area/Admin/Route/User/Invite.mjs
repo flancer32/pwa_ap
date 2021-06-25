@@ -26,7 +26,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     /** @type {TeqFw_Core_Front_Data_Config} */
-    const config = spec[DEF.MOD_CORE.DI_CONFIG]; // named singleton
+    const config = spec['TeqFw_Core_Front_Data_Config$']; // named singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     /** @type {Function|Fl32_Ap_User_Front_Gate_SignUp_Code_Create.gate} */

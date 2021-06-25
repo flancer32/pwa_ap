@@ -18,7 +18,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     /** @type {TeqFw_Core_Front_Data_Config} */
-    const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
+    const config = spec['TeqFw_Core_Front_Data_Config$']; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     /** @type {Fl32_Ap_Front_Area_Shared_Widget_Sign_In_Code_Get.vueCompTmpl} */
@@ -45,7 +45,7 @@ function Factory(spec) {
         beforeCreate() {
             // redirect to home route if user is authenticated
             if (session.getUser() !== null) {
-                const route = (config.realm === DEF.REALM_ADM)
+                const route = (config.area === DEF.REALM_ADM)
                     ? DEF.REALM_ADM_ROUTE_home
                     : DEF.REALM_PUB_ROUTE_home;
                 this.$router.push(route);

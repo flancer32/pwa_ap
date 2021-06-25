@@ -3,6 +3,10 @@
     "ns": "Fl32_Ap",
     "path": "./src"
   },
+  "commands": [
+    "Fl32_Ap_Back_Cli_Db_Reset",
+    "Fl32_Ap_Back_Cli_Db_Upgrade"
+  ],
   "http2": {
     "realm": "app",
     "services": [

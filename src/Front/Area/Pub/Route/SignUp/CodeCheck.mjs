@@ -18,7 +18,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Defaults} */
     const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
     /** @type {TeqFw_Core_Front_Data_Config} */
-    const config = spec[DEF.MOD_CORE.DI_CONFIG]; // instance singleton
+    const config = spec['TeqFw_Core_Front_Data_Config$']; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     /** @type {Function|Fl32_Ap_User_Front_Gate_SignUp_Code_Check.gate} */
@@ -63,7 +63,7 @@ function Factory(spec) {
         async mounted() {
             const req = new Request();
             req.code = this.code;
-            req.realm = config.realm;
+            req.realm = config.area;
             /** @type {Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Check.Response} */
             const res = await gate(req);
             if (res.constructor.name === 'TeqFw_Http2_Front_Gate_Response_Error') {

@@ -13,7 +13,7 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
         /** @type {Fl32_Ap_Defaults} */
         const DEF = spec['Fl32_Ap_Defaults$'];
         /** @type {TeqFw_Di_Container} */
-        const container = spec[DEF.MOD_CORE.DI_CONTAINER]; // named singleton
+        const container = spec['TeqFw_Di_Container$']; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
         /** @type {TeqFw_Core_Logger} */
         const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
