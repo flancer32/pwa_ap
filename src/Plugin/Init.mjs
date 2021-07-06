@@ -5,8 +5,8 @@
 export default class Fl32_Ap_Plugin_Init {
 
     constructor(spec) {
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$'];    // instance singleton
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];    // instance singleton
 
         this.getCommands = function () {
             return [

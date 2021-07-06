@@ -22,8 +22,8 @@ export default class Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit_Item {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
         /** @type {Fl32_Ap_Front_Area_Shared_Model_Catalog} */
         const mCatalog = spec['Fl32_Ap_Front_Area_Shared_Model_Catalog$']; // instance singleton
 

@@ -17,8 +17,8 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Widget_Cart_Mini';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$']; // instance singleton
 

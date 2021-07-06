@@ -16,28 +16,28 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Reset';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Function|TeqFw_Core_Back_Api_Dto_Command.Factory} */
-    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$']; // singleton
+    const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$'];
     /** @type {TeqFw_Core_Back_RDb_Connector} */
-    const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
+    const connector = spec['TeqFw_Core_Back_RDb_Connector$'];
     /** @type {TeqFw_Core_Logger} */
-    const logger = spec['TeqFw_Core_Logger$']; // instance singleton
-    const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
+    const logger = spec['TeqFw_Core_Logger$'];
+    const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
-    const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$']; // instance singleton
+    const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
-    const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+    const EIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
-    const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class
+    const ESession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Tree} */
-    const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
+    const ETree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
 
-    const {addAttributes} = spec['Fl32_Ap_Back_Cli_Db_Reset_A_Attrs$']; // destruct of factory's returned result
-    const {addProducts} = spec['Fl32_Ap_Back_Cli_Db_Reset_A_Prods$']; // destruct of factory's returned result
+    const {addAttributes} = spec['Fl32_Ap_Back_Cli_Db_Reset_A_Attrs$'];
+    const {addProducts} = spec['Fl32_Ap_Back_Cli_Db_Reset_A_Prods$'];
 
     // DEFINE INNER FUNCTIONS
 
@@ -122,5 +122,5 @@ function Factory(spec) {
 }
 
 // MODULE'S EXPORT
-Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.constructor.name}`});
+Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.name}`});
 export default Factory;

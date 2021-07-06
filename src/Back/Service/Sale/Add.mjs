@@ -16,8 +16,8 @@ class Fl32_Ap_Back_Service_Sale_Add {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
         const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct

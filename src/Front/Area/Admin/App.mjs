@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Area_Admin_App';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$'];    // instance singleton
+    /** @type {Fl32_Ap_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];    // instance singleton
     /** @type {TeqFw_Di_Container} */
     const container = spec['TeqFw_Di_Container$']; // singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton

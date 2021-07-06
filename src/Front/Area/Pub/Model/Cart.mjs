@@ -10,8 +10,8 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$'];
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Di_Container} */
         const container = spec['TeqFw_Di_Container$']; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring

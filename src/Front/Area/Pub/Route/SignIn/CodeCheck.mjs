@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Route_SignIn_CodeCheck';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
     /** @type {TeqFw_Core_Front_Data_Config} */
     const config = spec['TeqFw_Core_Front_Data_Config$']; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */

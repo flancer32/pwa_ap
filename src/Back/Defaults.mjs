@@ -1,7 +1,7 @@
 /**
  * Application level constants (hardcoded configuration).
  */
-export default class Fl32_Ap_Defaults {
+export default class Fl32_Ap_Back_Defaults {
     ATTR = {
         PROD: {
             CARD: {
@@ -47,13 +47,13 @@ export default class Fl32_Ap_Defaults {
 
     I18N = {LOCALE: {RU: 'ru'}};
 
-    /** @type {TeqFw_Core_Defaults} */
+    /** @type {TeqFw_Core_Back_Defaults} */
     MOD_CORE;
     /** @type {TeqFw_I18n_Defaults} */
     MOD_I18N;
     /** @type {TeqFw_Ui_Quasar_Defaults} */
     MOD_QUASAR;
-    /** @type {Fl32_Ap_User_Defaults} */
+    /** @type {Fl32_Ap_User_Back_Defaults} */
     MOD_USER;
     /** @type {TeqFw_Vue_Defaults} */
     MOD_VUE;
@@ -83,11 +83,11 @@ export default class Fl32_Ap_Defaults {
 
     constructor(spec) {
         // EXTRACT DEPS
-        this.MOD_CORE = spec['TeqFw_Core_Defaults$']; // instance singleton
-        this.MOD_I18N = spec['TeqFw_I18n_Defaults$']; // instance singleton
-        this.MOD_QUASAR = spec['TeqFw_Ui_Quasar_Defaults$']; // instance singleton
-        this.MOD_USER = spec['Fl32_Ap_User_Defaults$']; // instance singleton
-        this.MOD_VUE = spec['TeqFw_Vue_Defaults$']; // instance singleton
+        this.MOD_CORE = spec['TeqFw_Core_Back_Defaults$'];
+        this.MOD_I18N = spec['TeqFw_I18n_Defaults$'];
+        this.MOD_QUASAR = spec['TeqFw_Ui_Quasar_Defaults$'];
+        this.MOD_USER = spec['Fl32_Ap_User_Back_Defaults$'];
+        this.MOD_VUE = spec['TeqFw_Vue_Defaults$'];
 
         // INIT PROPS, DEFINE WORKING VARS
         this.REALM_ADM_ROUTE_signIn_codeCheck = this.MOD_USER.REALM_DEF_ROUTE_signIn_codeCheck;

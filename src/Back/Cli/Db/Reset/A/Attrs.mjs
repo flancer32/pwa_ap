@@ -8,8 +8,8 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Reset_A_Attrs';
 
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
     const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
     const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class

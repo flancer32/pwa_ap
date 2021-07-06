@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Area_Admin_Route_Sale_List';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Defaults} */
-    const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+    /** @type {Fl32_Ap_Back_Defaults} */
+    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
     /** @type {Fl32_Ap_Front_Area_Admin_Widget_Sale_List_Item.vueCompTmpl} */

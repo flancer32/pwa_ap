@@ -18,14 +18,16 @@
     "db-reset": "node ./bin/tequila.mjs app-db-reset",
     "db-upgrade": "node ./bin/tequila.mjs app-db-upgrade",
     "docs": "./node_modules/jsdoc/jsdoc.js --debug -p -c ./jsdoc.conf.json",
+    "help": "node ./bin/tequila.mjs help",
     "rebuild": "rm -fr node_modules package-lock.json && npm install",
-    "start": "node ./bin/tequila.mjs http2-start",
-    "stop": "node ./bin/tequila.mjs http2-stop",
+    "start": "node ./bin/tequila.mjs http2-server-start",
+    "stop": "node ./bin/tequila.mjs http2-server-stop",
     "test": "./node_modules/mocha/bin/mocha --recursive './test/**/*.test.mjs'",
     "version": "node ./bin/tequila.mjs core-version"
   },
   "dependencies": {
     "@flancer32/mod_ap_user": "github:flancer32/mod_ap_user",
+    "@teqfw/http2": "github:teqfw/http2",
     "@teqfw/i18n": "github:teqfw/i18n",
     "mysql2": "*",
     "pg": "*"

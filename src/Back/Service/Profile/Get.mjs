@@ -16,8 +16,8 @@ class Fl32_Ap_Back_Service_Profile_Get {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */

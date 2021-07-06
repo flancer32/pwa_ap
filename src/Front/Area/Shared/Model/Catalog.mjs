@@ -9,8 +9,8 @@ class Fl32_Ap_Front_Area_Shared_Model_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$'];
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         const i18n = spec[DEF.MOD_I18N.DI.I18N]; // named singleton
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Card.Factory} */

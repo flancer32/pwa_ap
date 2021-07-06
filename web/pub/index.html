@@ -19,7 +19,7 @@
 
             /**
              * @param {TeqFw_Di_Container} container
-             * @param {Fl32_Ap_Defaults} DEF
+             * @param {Fl32_Ap_Back_Defaults} DEF
              * @return Object
              */
             async function initApp(container, DEF) {
@@ -99,7 +99,7 @@
              * Load frontend configuration from API using simple 'fetch' and place it into DI container.
              *
              * @param {TeqFw_Di_Container} container
-             * @param {Fl32_Ap_Defaults} DEF
+             * @param {Fl32_Ap_Back_Defaults} DEF
              */
             async function initConfig(container, DEF) {
                 // load frontend configuration and user profile
@@ -117,7 +117,7 @@
              * Import code, create and setup Dependency Injection container for frontend,
              * place old-style loaded JS object inside.
              *
-             * @returns {Promise<{container: TeqFw_Di_Container, DEF: Fl32_Ap_Defaults}>}
+             * @returns {Promise<{container: TeqFw_Di_Container, DEF: Fl32_Ap_Back_Defaults}>}
              */
             async function initDiContainer() {
 
@@ -146,8 +146,8 @@
                     }
                 }
                 // get hardcoded config for the application
-                /** @type {Fl32_Ap_Defaults} */
-                const DEF = await container.get('Fl32_Ap_Defaults$');
+                /** @type {Fl32_Ap_Back_Defaults} */
+                const DEF = await container.get('Fl32_Ap_Back_Defaults$');
                 // save old-style loaded JS objects into DI container (see <script src="..."> at the end of HTML)
                 container.set(DEF.MOD_VUE.DI_VUE, self.Vue);
                 container.set(DEF.MOD_VUE.DI_VUEX, self.Vuex);
@@ -156,7 +156,7 @@
 
             /**
              * @param {TeqFw_Di_Container} container
-             * @param {Fl32_Ap_Defaults} DEF
+             * @param {Fl32_Ap_Back_Defaults} DEF
              */
             async function initSession(container, DEF) {
                 // setup session (load user permissions from server)

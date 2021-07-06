@@ -7,8 +7,8 @@ class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Defaults} */
-        const DEF = spec['Fl32_Ap_Defaults$']; // instance singleton
+        /** @type {Fl32_Ap_Back_Defaults} */
+        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
         const i18n = spec[DEF.MOD_I18N.DI.I18N]; // named singleton
         /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
         const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$']; // instance singleton

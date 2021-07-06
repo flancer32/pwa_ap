@@ -31,8 +31,8 @@ export default async function init() {
         /** @type {TeqFw_Core_Config} */
         const config = await container.get('TeqFw_Core_Config$');
         config.load({rootPath: path});  // load local configuration
-        /** @type {TeqFw_Core_Defaults} */
-        const DEF = await container.get('TeqFw_Core_Defaults$');
+        /** @type {TeqFw_Core_Back_Defaults} */
+        const DEF = await container.get('TeqFw_Core_Back_Defaults$');
         container.set(DEF.DI_CONFIG, config.get());
     }
 
