@@ -105,12 +105,12 @@
                 // load frontend configuration and user profile
                 const res = await fetch(API_LOAD_CFG);
                 const json = await res.json();
-                /** @type {TeqFw_Core_Front_Data_Config.Factory} */
-                const fConfig = await container.get('TeqFw_Core_Front_Data_Config#Factory$'); // singleton
-                /** @type {TeqFw_Core_Front_Data_Config} */
+                /** @type {TeqFw_Web_Front_Api_Dto_Config.Factory} */
+                const fConfig = await container.get('TeqFw_Web_Front_Api_Dto_Config#Factory$'); // singleton
+                /** @type {TeqFw_Web_Front_Api_Dto_Config} */
                 const result = fConfig.create(json.data);
                 result.area = AREA;
-                container.set('TeqFw_Core_Front_Data_Config$', result);
+                container.set('TeqFw_Web_Front_Api_Dto_Config$', result);
             }
 
             /**
@@ -161,7 +161,7 @@
             async function initSession(container, DEF) {
                 // setup session (load user permissions from server)
                 /** @type {Fl32_Ap_User_Front_Model_Session} */
-                const session = await container.get('Fl32_Ap_User_Front_Model_Session$'); // instance singleton
+                const session = await container.get('Fl32_Ap_User_Front_Model_Session$');
                 session.setRouteToSignIn(DEF.REALM_ADM_ROUTE_signIn_emailGet);
                 await session.init();
                 container.set(DEF.MOD_USER.DI_SESSION, session);    // TMP: put into container as singleton

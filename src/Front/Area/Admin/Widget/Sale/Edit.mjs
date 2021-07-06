@@ -58,9 +58,9 @@ export default class Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit {
         /** @type {Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit_Item} */
         const saleItem = spec['Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit_Item$']; // vue comp tmpl
         /** @type {Fl32_Ap_Front_Area_Shared_Model_Catalog} */
-        const mCatalog = spec['Fl32_Ap_Front_Area_Shared_Model_Catalog$']; // instance singleton
+        const mCatalog = spec['Fl32_Ap_Front_Area_Shared_Model_Catalog$'];
         /** @type {Fl32_Ap_Front_Area_Admin_Model_Sales} */
-        const mSales = spec['Fl32_Ap_Front_Area_Admin_Model_Sales$']; // instance singleton
+        const mSales = spec['Fl32_Ap_Front_Area_Admin_Model_Sales$'];
 
         // COMPOSE RESULT (template for component's new instances)
         return {

@@ -17,9 +17,9 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {TeqFw_Core_Back_RDb_Connector} */
-    const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
+    const connector = spec['TeqFw_Core_Back_RDb_Connector$'];
     /** @type {TeqFw_Core_Logger} */
-    const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+    const logger = spec['TeqFw_Core_Logger$'];
     /** @type {Function|TeqFw_Core_Back_Util_RDb.serialsGet} */
     const serialsGet = spec['TeqFw_Core_Back_Util_RDb#serialsGet']; // function
     /** @type {Function|TeqFw_Core_Back_Util_RDb.getTables} */
@@ -30,50 +30,50 @@ function Factory(spec) {
     const itemsSelect = spec['TeqFw_Core_Back_Util_RDb#itemsSelect']; // function
     // APP Entities
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
-    const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class
+    const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value} */
-    const EAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value#']; // class
+    const EAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime} */
-    const EAttrValDatetime = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime#']; // class
+    const EAttrValDatetime = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec} */
-    const EAttrValDec = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec#']; // class
+    const EAttrValDec = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int} */
-    const EAttrValInt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int#']; // class
+    const EAttrValInt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text} */
-    const EAttrValText = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#']; // class
+    const EAttrValText = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n} */
-    const EAttrValTextI18n = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n#']; // class
+    const EAttrValTextI18n = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
-    const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
+    const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card} */
-    const EProdCard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#']; // class
+    const EProdCard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value} */
-    const EProdCardAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#']; // class
+    const EProdCardAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit} */
-    const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#']; // class
+    const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value} */
-    const EProdUnitAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value#']; // class
+    const EProdUnitAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
-    const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
+    const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
-    const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
+    const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
-    const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#']; // class
+    const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#'];
     // USER entities
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
-    const EUserIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+    const EUserIdEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone} */
-    const EUserIdPhone = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone#']; // class
+    const EUserIdPhone = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Phone#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Session} */
-    const EUserSession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#']; // class
+    const EUserSession = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Session#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signin} */
-    const EUserSignin = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#']; // class
+    const EUserSignin = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signin#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Signup} */
-    const EUserSignup = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#']; // class
+    const EUserSignup = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Signup#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Tree} */
-    const EUserTree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#']; // class
+    const EUserTree = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Tree#'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+    const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
 
     // DEFINE INNER FUNCTIONS
     /**

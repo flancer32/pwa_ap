@@ -18,7 +18,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Sales_Item.vueCompTmpl} */
     const saleItem = spec['Fl32_Ap_Front_Area_Pub_Widget_Sales_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Sales} */
-    const mSaleList = spec['Fl32_Ap_Front_Area_Pub_Model_Sales$']; // instance singleton
+    const mSaleList = spec['Fl32_Ap_Front_Area_Pub_Model_Sales$'];
 
     // DEFINE WORKING VARS
     const template = `

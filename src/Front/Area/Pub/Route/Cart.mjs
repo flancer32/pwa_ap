@@ -16,27 +16,27 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Route_Cart';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
-    const i18n = spec[DEF.MOD_I18N.DI.I18N]; // named singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    const i18n = spec[DEF.MOD_I18N.DI.I18N];
     const {round} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
     /** @type {Fl32_Ap_Front_Area_Shared_DataSource_Catalog} */
-    const dsProd = spec['Fl32_Ap_Front_Area_Shared_DataSource_Catalog$']; // instance singleton
+    const dsProd = spec['Fl32_Ap_Front_Area_Shared_DataSource_Catalog$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */
-    const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$']; // instance singleton
+    const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Sales} */
-    const mSales = spec['Fl32_Ap_Front_Area_Pub_Model_Sales$']; // instance singleton
+    const mSales = spec['Fl32_Ap_Front_Area_Pub_Model_Sales$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Cart_Item.vueCompTmpl} */
     const cartItem = spec['Fl32_Ap_Front_Area_Pub_Widget_Cart_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Cart_Submit.vueCompTmpl} */
     const dialogSubmit = spec['Fl32_Ap_Front_Area_Pub_Widget_Cart_Submit$']; // vue comp tmpl
     /** @type {Function|Fl32_Ap_Front_Gate_Sale_Add.gate} */
-    const gateAdd = spec['Fl32_Ap_Front_Gate_Sale_Add$']; // function singleton
+    const gateAdd = spec['Fl32_Ap_Front_Gate_Sale_Add$'];
     /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
-    const ReqAdd = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Request']; // class
+    const ReqAdd = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Request'];
     /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
-    const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#']; // class
+    const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#'];
     /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
-    const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#']; // class
+    const DSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#'];
 
     // DEFINE WORKING VARS
     const template = `

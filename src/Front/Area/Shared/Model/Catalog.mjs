@@ -11,14 +11,15 @@ class Fl32_Ap_Front_Area_Shared_Model_Catalog {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
-        const i18n = spec[DEF.MOD_I18N.DI.I18N]; // named singleton
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        const i18n = spec[DEF.MOD_I18N.DI.I18N];
+        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
+        destructuring
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Card.Factory} */
-        const fCard = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Card#Factory$']; // instance singleton
+        const fCard = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Card#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Unit.Factory} */
-        const fUnit = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Unit#Factory$']; // instance singleton
+        const fUnit = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Unit#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Shared_DataSource_Catalog} */
-        const ds = spec['Fl32_Ap_Front_Area_Shared_DataSource_Catalog$']; // instance singleton
+        const ds = spec['Fl32_Ap_Front_Area_Shared_DataSource_Catalog$'];
 
         // DEFINE WORKING VARS
         /** @type {Object<number, Fl32_Ap_Front_Area_Shared_Dto_Product_Card>} */

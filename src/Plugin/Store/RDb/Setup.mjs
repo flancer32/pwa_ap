@@ -10,37 +10,37 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
         } = spec['TeqFw_Core_Back_Util_RDb']; // ES6 module destructing
 
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
-        const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class
+        const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value} */
-        const EAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value#']; // class
+        const EAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime} */
-        const EAttrValueDatetime = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime#']; // class
+        const EAttrValueDatetime = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec} */
-        const EAttrValueDec = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec#']; // class
+        const EAttrValueDec = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int} */
-        const EAttrValueInt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int#']; // class
+        const EAttrValueInt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text} */
-        const EAttrValueText = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#']; // class
+        const EAttrValueText = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n} */
-        const EAttrValueTextI18n = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n#']; // class
+        const EAttrValueTextI18n = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card} */
-        const EProdCard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#']; // class
+        const EProdCard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value} */
-        const EProdCardAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#']; // class
+        const EProdCardAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit} */
-        const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#']; // class
+        const EProdUnit = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value} */
-        const EProdUnitAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value#']; // class
+        const EProdUnitAttrValue = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Attr_Value#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
-        const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
+        const EProdUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
-        const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
+        const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
-        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
+        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
-        const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#']; // class
+        const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
 
 
         /**

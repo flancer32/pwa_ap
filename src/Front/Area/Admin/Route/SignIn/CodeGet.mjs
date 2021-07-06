@@ -16,11 +16,11 @@ const NS = 'Fl32_Ap_Front_Area_Admin_Route_SignIn_CodeGet';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
-    /** @type {TeqFw_Core_Front_Data_Config} */
-    const config = spec['TeqFw_Core_Front_Data_Config$']; // instance singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {TeqFw_Web_Front_Api_Dto_Config} */
+    const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
+    const session = spec[DEF.MOD_USER.DI_SESSION];
     /** @type {Fl32_Ap_Front_Area_Shared_Widget_Sign_In_Code_Get.vueCompTmpl} */
     const codeGet = spec['Fl32_Ap_Front_Area_Shared_Widget_Sign_In_Code_Get$']; // vue comp tmpl
 

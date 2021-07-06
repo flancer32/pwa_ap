@@ -11,15 +11,16 @@ class Fl32_Ap_Front_Area_Pub_Model_Sales {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
+        destructuring
         /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+        const logger = spec['TeqFw_Core_Logger$'];
         /** @type {Fl32_Ap_Front_Area_Pub_DataSource_Sales} */
-        const ds = spec['Fl32_Ap_Front_Area_Pub_DataSource_Sales$']; // instance singleton
+        const ds = spec['Fl32_Ap_Front_Area_Pub_DataSource_Sales$'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Sale.Factory} */
-        const fSale = spec['Fl32_Ap_Front_Area_Pub_Dto_Sale#Factory$']; // instance singleton
+        const fSale = spec['Fl32_Ap_Front_Area_Pub_Dto_Sale#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Sale_Item.Factory} */
-        const fSaleItem = spec['Fl32_Ap_Front_Area_Pub_Dto_Sale_Item#Factory$']; // instance singleton
+        const fSaleItem = spec['Fl32_Ap_Front_Area_Pub_Dto_Sale_Item#Factory$'];
 
         // DEFINE WORKING VARS
         /** @type {Object<number, Fl32_Ap_Front_Area_Pub_Dto_Sale>} */

@@ -17,13 +17,13 @@ class Fl32_Ap_Back_Service_Profile_Get {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
+        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Get.Factory} */
-        const factRoute = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$']; // instance singleton
+        const factRoute = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$'];
 
         // DEFINE INSTANCE METHODS
 

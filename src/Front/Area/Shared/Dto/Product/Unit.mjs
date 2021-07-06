@@ -32,7 +32,7 @@ Fl32_Ap_Front_Area_Shared_Dto_Product_Unit.SKU = 'sku';
 class Factory {
     constructor(spec) {
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Amount.Factory} */
-        const fAmount = spec['Fl32_Ap_Front_Area_Pub_Dto_Amount#Factory$']; // instance singleton
+        const fAmount = spec['Fl32_Ap_Front_Area_Pub_Dto_Amount#Factory$'];
         /**
          * @return {Fl32_Ap_Front_Area_Shared_Dto_Product_Unit}
          */

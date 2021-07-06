@@ -28,7 +28,7 @@ class Factory {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Shared_Service_Dto_Profile.Factory} */
-        const fProfile = spec['Fl32_Ap_Shared_Service_Dto_Profile#Factory$']; // instance singleton
+        const fProfile = spec['Fl32_Ap_Shared_Service_Dto_Profile#Factory$'];
 
         /**
          * @param {Object|null} data

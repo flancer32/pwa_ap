@@ -33,7 +33,7 @@ class Factory {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
-        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$']; // instance singleton
+        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$'];
         /**
          * @param {Object|null} data
          * @return {Fl32_Ap_Shared_Service_Dto_Product_Unit}

@@ -8,16 +8,16 @@ class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
-        const i18n = spec[DEF.MOD_I18N.DI.I18N]; // named singleton
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
+        const i18n = spec[DEF.MOD_I18N.DI.I18N];
         /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
-        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$']; // instance singleton
+        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
         /** @type {Function|Fl32_Ap_Front_Gate_Product_List.gate} */
-        const gate = spec['Fl32_Ap_Front_Gate_Product_List$']; // function singleton
+        const gate = spec['Fl32_Ap_Front_Gate_Product_List$'];
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Request} */
-        const Req = spec['Fl32_Ap_Shared_Service_Route_Product_List#Request']; // class
+        const Req = spec['Fl32_Ap_Shared_Service_Route_Product_List#Request'];
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#']; // class
+        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
 
         // DEFINE WORKING VARS
         const TYPE = Fl32_Ap_Front_Area_Shared_DataSource_Catalog.TYPE;

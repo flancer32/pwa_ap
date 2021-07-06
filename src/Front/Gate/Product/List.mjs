@@ -14,11 +14,11 @@ const NS = 'Fl32_Ap_Front_Gate_Product_List';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {TeqFw_Http2_Front_Gate_Connect} */
-    const backConnect = spec['TeqFw_Http2_Front_Gate_Connect$']; // instance singleton
+    const backConnect = spec['TeqFw_Http2_Front_Gate_Connect$'];
     /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Factory} */
-    const factory = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$']; // instance singleton
+    const factory = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$'];
 
     // DEFINE INNER FUNCTIONS
     /**

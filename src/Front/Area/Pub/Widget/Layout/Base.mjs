@@ -20,8 +20,9 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Back_Defaults} */
     const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
-    const {ref} = spec[DEF.MOD_VUE.DI_VUE];    // named singleton destructuring
+    const session = spec[DEF.MOD_USER.DI_SESSION];
+    const {ref} = spec[DEF.MOD_VUE.DI_VUE];
+    destructuring
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Cart_Mini.vueCompTmpl} */
     const miniCart = spec['Fl32_Ap_Front_Area_Pub_Widget_Cart_Mini$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Layout_Navigator.vueCompTmpl} */

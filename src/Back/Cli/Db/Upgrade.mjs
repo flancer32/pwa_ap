@@ -17,19 +17,19 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Function|TeqFw_Core_Back_Api_Dto_Command.Factory} */
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$']; // singleton
     /** @type {TeqFw_Core_Back_RDb_Connector} */
-    const connector = spec['TeqFw_Core_Back_RDb_Connector$']; // instance singleton
+    const connector = spec['TeqFw_Core_Back_RDb_Connector$'];
     /** @type {TeqFw_Core_Logger} */
-    const logger = spec['TeqFw_Core_Logger$']; // instance singleton
+    const logger = spec['TeqFw_Core_Logger$'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore.action} */
-    const actRestore = spec['Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore$']; // instance singleton
+    const actRestore = spec['Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore$'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump.action} */
-    const actDump = spec['Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump$']; // instance singleton
+    const actDump = spec['Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump$'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
-    const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$']; // instance singleton
+    const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$'];
 
     // DEFINE INNER FUNCTIONS
 

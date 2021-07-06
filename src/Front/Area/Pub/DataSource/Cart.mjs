@@ -8,11 +8,11 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Cart {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
-        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$']; // instance singleton
+        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#']; // class
+        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart.Factory} */
-        const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$']; // instance singleton
+        const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$'];
 
         // DEFINE WORKING VARS
         const TYPE = Fl32_Ap_Front_Area_Pub_DataSource_Cart.TYPE;

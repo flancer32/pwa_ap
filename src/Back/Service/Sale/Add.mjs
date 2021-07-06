@@ -17,12 +17,12 @@ class Fl32_Ap_Back_Service_Sale_Add {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
         const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
+        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
         const {
             /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
             Request,
@@ -30,13 +30,13 @@ class Fl32_Ap_Back_Service_Sale_Add {
             Response
         } = spec['Fl32_Ap_Shared_Service_Route_Sale_Add']; // ES6 module
         /** @type {Fl32_Ap_Shared_Service_Dto_Sale.Factory} */
-        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$']; // instance singleton
+        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$'];
         /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
-        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$']; // instance singleton
+        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
-        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
+        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
-        const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#']; // class
+        const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#'];
 
         // DEFINE INNER FUNCTIONS
 

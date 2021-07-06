@@ -23,7 +23,7 @@ class Factory {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Unit.Factory} */
-        const fUnit = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Unit#Factory$']; // instance singleton
+        const fUnit = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Unit#Factory$'];
 
         /**
          * @return {Fl32_Ap_Front_Area_Pub_Dto_Cart_Item}

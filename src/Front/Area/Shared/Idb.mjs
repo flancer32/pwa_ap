@@ -17,7 +17,7 @@ class Fl32_Ap_Front_Area_Shared_Idb {
         /** @type {TeqFw_Core_Front_Idb_Connect} */
         const conn = spec['TeqFw_Core_Front_Idb_Connect$$']; // new instance
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#']; // class
+        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
 
         // DEFINE INNER FUNCTIONS
 

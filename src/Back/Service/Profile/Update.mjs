@@ -17,17 +17,17 @@ class Fl32_Ap_Back_Service_Profile_Update {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
+        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Update.Factory} */
-        const factRoute = spec['Fl32_Ap_Shared_Service_Route_Profile_Update#Factory$']; // instance singleton
+        const factRoute = spec['Fl32_Ap_Shared_Service_Route_Profile_Update#Factory$'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */
-        const EUserEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#']; // class
+        const EUserEmail = spec['Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email#'];
 
         // DEFINE INSTANCE METHODS
 

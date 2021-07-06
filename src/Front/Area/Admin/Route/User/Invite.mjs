@@ -24,17 +24,15 @@ Object.freeze(LifeTimeValues);
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
-    /** @type {TeqFw_Core_Front_Data_Config} */
-    const config = spec['TeqFw_Core_Front_Data_Config$']; // named singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {TeqFw_Web_Front_Api_Dto_Config} */
+    const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
-    /** @type {Function|Fl32_Ap_User_Front_Gate_SignUp_Code_Create.gate} */
-    const gateCodeCreate = spec['Fl32_Ap_User_Front_Gate_SignUp_Code_Create$']; // function singleton
-    /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Request} */
-    const ReqCodeCreate = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create#Request']; // class
-    /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Response} */
-    const ResCodeCreate = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create#Response']; // class
+    const session = spec[DEF.MOD_USER.DI_SESSION];
+    /** @type {TeqFw_Web_Front_Service_Gate} */
+    const gate = spec['TeqFw_Web_Front_Service_Gate$'];
+    /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Factory} */
+    const route = spec['Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create#Factory$'];
 
     // DEFINE WORKING VARS
     const template = `
@@ -115,7 +113,7 @@ function Factory(spec) {
         methods: {
             async onSubmit() {
                 this.loading = true;
-                const req = new ReqCodeCreate();
+                const req = route.createReq();
                 req.onetime = (this.lifeCount === LifeCountValues.ONE);
                 const date = new Date();
                 if (this.lifeTime === LifeTimeValues.HOUR) {
@@ -126,10 +124,11 @@ function Factory(spec) {
                     date.setMinutes(date.getMinutes() + 5); // 5 min by default
                 }
                 req.dateExpired = date;
+                // noinspection JSValidateTypes
                 /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Response} */
-                const res = await gateCodeCreate(req);
+                const res = await gate.send(req, route);
                 this.loading = false;
-                if (res instanceof ResCodeCreate) {
+                if (res) {
                     try {
                         // compose URL to sign up
                         const host = `https://${config.urlBase}`;

@@ -15,23 +15,23 @@ const NS = 'Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
-    const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class
+    const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value} */
-    const EAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value#']; // class
+    const EAttrVal = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec} */
-    const EValDec = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec#']; // class
+    const EValDec = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Dec#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime} */
-    const EValDt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime#']; // class
+    const EValDt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Datetime#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int} */
-    const EValInt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int#']; // class
+    const EValInt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Int#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text} */
-    const EValTxt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#']; // class
+    const EValTxt = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n} */
-    const EValTxtI18n = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n#']; // class
+    const EValTxtI18n = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card} */
-    const ECard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#']; // class
+    const ECard = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card#'];
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value} */
-    const ECardAV = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#']; // class
+    const ECardAV = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Card_Attr_Value#'];
 
 
     // DEFINE INNER FUNCTIONS

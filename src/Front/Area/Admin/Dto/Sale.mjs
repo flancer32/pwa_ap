@@ -39,11 +39,11 @@ class Factory {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {typeof Fl32_Ap_Front_Area_Admin_Dto_Sale_Item} */
-        const DItem = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale_Item#']; // class
+        const DItem = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale_Item#'];
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Amount.Factory} */
-        const fAmount = spec['Fl32_Ap_Front_Area_Shared_Dto_Amount#Factory$']; // instance singleton
+        const fAmount = spec['Fl32_Ap_Front_Area_Shared_Dto_Amount#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Admin_Dto_Sale_Item.Factory} */
-        const fItem = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale_Item#Factory$']; // instance singleton
+        const fItem = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale_Item#Factory$'];
 
         /**
          * @param {Object|null} data

@@ -22,9 +22,9 @@ class Fl32_Ap_Back_Store_RDb_Query_Sale_List {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
-        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
+        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#'];
         /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_User} */
-        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#']; // class
+        const EUser = spec['Fl32_Ap_User_Back_Store_RDb_Schema_User#'];
 
         // DEFINE INSTANCE METHODS
 

@@ -13,16 +13,17 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Di_Container} */
-        const container = spec['TeqFw_Di_Container$']; // named singleton
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        const container = spec['TeqFw_Di_Container$'];
+        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
+        destructuring
         /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+        const logger = spec['TeqFw_Core_Logger$'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart.Factory} */
-        const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$']; // instance singleton
+        const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart_Item.Factory} */
-        const fItem = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart_Item#Factory$']; // instance singleton
+        const fItem = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart_Item#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Pub_DataSource_Cart} */
-        const ds = spec['Fl32_Ap_Front_Area_Pub_DataSource_Cart$']; // instance singleton
+        const ds = spec['Fl32_Ap_Front_Area_Pub_DataSource_Cart$'];
 
         // DEFINE WORKING VARS
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart} */

@@ -16,15 +16,15 @@ const NS = 'Fl32_Ap_Front_Area_Admin_Route_Sale_List';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION]; // named singleton
+    const session = spec[DEF.MOD_USER.DI_SESSION];
     /** @type {Fl32_Ap_Front_Area_Admin_Widget_Sale_List_Item.vueCompTmpl} */
     const saleItem = spec['Fl32_Ap_Front_Area_Admin_Widget_Sale_List_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit} */
     const saleEdit = spec['Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Admin_Model_Sales} */
-    const mSales = spec['Fl32_Ap_Front_Area_Admin_Model_Sales$']; // instance singleton
+    const mSales = spec['Fl32_Ap_Front_Area_Admin_Model_Sales$'];
 
     // DEFINE WORKING VARS
     const template = `

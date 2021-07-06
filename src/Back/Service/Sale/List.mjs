@@ -17,11 +17,11 @@ class Fl32_Ap_Back_Service_Sale_List {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
+        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
         const {
             /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
             Request,
@@ -29,15 +29,15 @@ class Fl32_Ap_Back_Service_Sale_List {
             Response
         } = spec['Fl32_Ap_Shared_Service_Route_Sale_List']; // ES6 module
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_List} */
-        const qbSaleList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_List$']; // instance singleton
+        const qbSaleList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_List$'];
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List} */
-        const qbSaleItemList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List$']; // instance singleton
+        const qbSaleItemList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List$'];
         /** @type {Fl32_Ap_Shared_Service_Dto_Sale.Factory} */
-        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$']; // instance singleton
+        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$'];
         /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
-        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$']; // instance singleton
+        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
-        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#']; // class
+        const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#'];
 
         // DEFINE INSTANCE METHODS
 

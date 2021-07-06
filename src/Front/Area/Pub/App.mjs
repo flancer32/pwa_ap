@@ -16,11 +16,11 @@ const NS = 'Fl32_Ap_Front_Area_Pub_App';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];    // instance singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {TeqFw_Di_Container} */
     const container = spec['TeqFw_Di_Container$']; // singleton
-    const router = spec[DEF.MOD_VUE.DI_ROUTER];  // named singleton
-    const app = spec[DEF.MOD_VUE.DI_APP];  // named singleton
+    const router = spec[DEF.MOD_VUE.DI_ROUTER];
+    const app = spec[DEF.MOD_VUE.DI_APP];
     /** @type {TeqFw_Core_Front_Widget_Layout_Centered} */
     const layoutCentered = spec['TeqFw_Core_Front_Widget_Layout_Centered$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Layout_Base} */

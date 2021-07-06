@@ -18,14 +18,14 @@ const LANG_RU = 'ru';
 function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
-    const i18n = spec[DEF.MOD_I18N.DI.I18N]; // named singleton
+    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    const i18n = spec[DEF.MOD_I18N.DI.I18N];
     /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
-    const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$']; // instance singleton
+    const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */
-    const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$']; // instance singleton
+    const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Profile} */
-    const mProfile = spec['Fl32_Ap_Front_Area_Pub_Model_Profile$']; // instance singleton
+    const mProfile = spec['Fl32_Ap_Front_Area_Pub_Model_Profile$'];
 
     // DEFINE WORKING VARS
     const template = `

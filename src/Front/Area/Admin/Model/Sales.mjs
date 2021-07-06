@@ -12,17 +12,18 @@ class Fl32_Ap_Front_Area_Admin_Model_Sales {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE]; // named singleton destructuring
+        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
+        destructuring
         /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];  // instance singleton
+        const logger = spec['TeqFw_Core_Logger$'];
         /** @type {Function|Fl32_Ap_Front_Gate_Sale_List.gate} */
-        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$']; // function singleton
+        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$'];
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
-        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request']; // class
+        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request'];
         /** @type {Fl32_Ap_Front_Area_Admin_Dto_Sale.Factory} */
-        const fSale = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale#Factory$']; // instance singleton
+        const fSale = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Admin_Dto_Sale_Item.Factory} */
-        const fSaleItem = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale_Item#Factory$']; // instance singleton
+        const fSaleItem = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale_Item#Factory$'];
 
         // DEFINE WORKING VARS
         /** @type {Object<number, Fl32_Ap_Front_Area_Admin_Dto_Sale>} */

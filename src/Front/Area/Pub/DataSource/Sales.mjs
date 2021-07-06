@@ -8,15 +8,15 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Sales {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
-        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$']; // instance singleton
+        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#']; // class
+        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart.Factory} */
-        const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$']; // instance singleton
+        const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$'];
         /** @type {Function|Fl32_Ap_Front_Gate_Sale_List.gate} */
-        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$']; // function singleton
+        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$'];
         /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
-        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request']; // class
+        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request'];
 
         // DEFINE WORKING VARS
         const TYPE = Fl32_Ap_Front_Area_Pub_DataSource_Sales.TYPE;

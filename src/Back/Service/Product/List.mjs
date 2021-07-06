@@ -16,29 +16,29 @@ class Fl32_Ap_Back_Service_Product_List {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$']; // instance singleton
+        const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];  // instance singleton
+        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
         /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result']; // class
+        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
         /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Factory} */
-        const frProdList = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$']; // instance singleton
+        const frProdList = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$'];
         /** @type {Function|Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List.queryBuilder} */
-        const qProdCardList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List$']; // function singleton
+        const qProdCardList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List$'];
         /** @type {Function|Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List.queryBuilder} */
-        const qProdUnitList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List$']; // function singleton
+        const qProdUnitList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List$'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
-        const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#']; // class
+        const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Price_List} */
-        const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#']; // class
+        const EPriceList = spec['Fl32_Ap_Back_Store_RDb_Schema_Price_List#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price} */
-        const EUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#']; // class
+        const EUnitPrice = spec['Fl32_Ap_Back_Store_RDb_Schema_Product_Unit_Price#'];
         /** @type {Fl32_Ap_Shared_Service_Dto_Product_Card.Factory} */
-        const fCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#Factory$']; // instance singleton
+        const fCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#Factory$'];
         /** @type {Fl32_Ap_Shared_Service_Dto_Product_Unit.Factory} */
-        const fUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#Factory$']; // instance singleton
+        const fUnit = spec['Fl32_Ap_Shared_Service_Dto_Product_Unit#Factory$'];
         /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
-        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$']; // instance singleton
+        const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$'];
 
         // DEFINE INNER FUNCTIONS
 

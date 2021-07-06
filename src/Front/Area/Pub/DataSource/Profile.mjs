@@ -9,19 +9,19 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Profile {
     constructor(spec) {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
-        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$']; // instance singleton
+        const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
-        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#']; // class
+        const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Profile.Factory} */
-        const fProfile = spec['Fl32_Ap_Front_Area_Pub_Dto_Profile#Factory$']; // instance singleton
+        const fProfile = spec['Fl32_Ap_Front_Area_Pub_Dto_Profile#Factory$'];
         /** @function {@type Fl32_Ap_Front_Gate_Profile_Get.gate} */
-        const gateGet = spec['Fl32_Ap_Front_Gate_Profile_Get$']; // function singleton
+        const gateGet = spec['Fl32_Ap_Front_Gate_Profile_Get$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Get.Factory} */
-        const fRouteGet = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$']; // instance singleton
+        const fRouteGet = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$'];
         /** @function {@type Fl32_Ap_Front_Gate_Profile_Update.gate} */
-        const gateUpdate = spec['Fl32_Ap_Front_Gate_Profile_Update$']; // function singleton
+        const gateUpdate = spec['Fl32_Ap_Front_Gate_Profile_Update$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Update.Factory} */
-        const fRouteUpdate = spec['Fl32_Ap_Shared_Service_Route_Profile_Update#Factory$']; // instance singleton
+        const fRouteUpdate = spec['Fl32_Ap_Shared_Service_Route_Profile_Update#Factory$'];
 
         // DEFINE WORKING VARS
         const TYPE = Fl32_Ap_Front_Area_Pub_DataSource_Profile.TYPE;
