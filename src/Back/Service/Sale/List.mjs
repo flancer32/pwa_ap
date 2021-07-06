@@ -1,5 +1,5 @@
 /**
- * Service to get list of sale orders.
+ * Get list of sale orders.
  *
  * @namespace Fl32_Ap_Back_Service_Sale_List
  */
@@ -10,9 +10,9 @@ import {constants as H2} from 'http2';
 const NS = 'Fl32_Ap_Back_Service_Sale_List';
 
 /**
- * @implements TeqFw_Http2_Api_Back_Service_Factory
+ * @implements TeqFw_Web_Back_Api_Service_IFactory
  */
-class Fl32_Ap_Back_Service_Sale_List {
+export default class Fl32_Ap_Back_Service_Sale_List {
 
     constructor(spec) {
         // EXTRACT DEPS
@@ -20,14 +20,8 @@ class Fl32_Ap_Back_Service_Sale_List {
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
-        /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
-        const {
-            /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
-            Request,
-            /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Response} */
-            Response
-        } = spec['Fl32_Ap_Shared_Service_Route_Sale_List']; // ES6 module
+        /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Factory} */
+        const route = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Factory$'];
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_List} */
         const qbSaleList = spec['Fl32_Ap_Back_Store_RDb_Query_Sale_List$'];
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_Item_List} */
@@ -41,48 +35,22 @@ class Fl32_Ap_Back_Service_Sale_List {
 
         // DEFINE INSTANCE METHODS
 
-        this.getRoute = () => DEF.SERV_sale_list;
+        this.getRouteFactory = () => route;
 
-        /**
-         * Factory to create function to validate and structure incoming data.
-         * @returns {function(TeqFw_Http2_Back_Server_Stream_Context): Fl32_Ap_Shared_Service_Route_Sale_List.Request}
-         */
-        this.createInputParser = function () {
+        this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Http2_Back_Server_Stream_Context} context
-             * @returns {Fl32_Ap_Shared_Service_Route_Sale_List.Request}
-             * @memberOf Fl32_Ap_Back_Service_Sale_List
+             * @param {TeqFw_Web_Back_Api_Service_IContext} context
+             * @return Promise<void>
              */
-            function parse(context) {
-                const body = JSON.parse(context.body);
-                return Object.assign(new Request(), body.data);
-            }
-
-            // COMPOSE RESULT
-            Object.defineProperty(parse, 'name', {value: `${NS}.${parse.name}`});
-            return parse;
-        };
-
-        /**
-         * Factory to create service (handler to process HTTP API request).
-         * @returns {function(TeqFw_Http2_Plugin_Handler_Service.Context): TeqFw_Http2_Plugin_Handler_Service.Result}
-         */
-        this.createService = function () {
-            // DEFINE INNER FUNCTIONS
-            /**
-             * @param {TeqFw_Http2_Plugin_Handler_Service.Context} apiCtx
-             * @returns {Promise<TeqFw_Http2_Plugin_Handler_Service.Result>}
-             * @memberOf Fl32_Ap_Back_Service_Sale_List
-             */
-            async function service(apiCtx) {
+            async function service(context) {
                 // DEFINE INNER FUNCTIONS
 
                 /**
                  * @param trx
                  * @param {number} userId
                  * @param {boolean} isAdmin
-                 * @return {Promise<unknown[]>}
+                 * @return {Promise<Fl32_Ap_Shared_Service_Dto_Sale[]>}
                  */
                 async function selectItems(trx, userId, isAdmin = false) {
                     const registry = {};
@@ -125,37 +93,31 @@ class Fl32_Ap_Back_Service_Sale_List {
                 }
 
                 // MAIN FUNCTIONALITY
-                const result = new ApiResult();
-                const response = new Response();
-                result.response = response;
                 /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
-                    // const apiReq = apiCtx.request;
-                const shared = apiCtx.sharedContext;
-                /** @type {Fl32_Ap_User_Shared_Service_Data_User} */
-                const user = shared[DEF.MOD_USER.HTTP_SHARED_CTX_USER];
+                // const req = context.getInData();
+                /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Response} */
+                const res = context.getOutData();
+                const shared = context.getHandlersShare();
+                //
+                const user = shared[DEF.MOD_USER.HTTP_SHARE_CTX_USER];
                 if (user) {
                     // don't start transaction if not required
                     const trx = await rdb.startTransaction();
                     try {
-                        response.items = await selectItems(trx, user.id, user.isAdmin);
+                        res.items = await selectItems(trx, user.id, user.isAdmin);
                         await trx.commit();
                     } catch (error) {
                         await trx.rollback();
                         throw error;
                     }
                 } else {
-                    result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
+                    context.setOutHeader(DEF.MOD_WEB.HTTP.HEADER.STATUS, H2.HTTP_STATUS_UNAUTHORIZED);
                 }
-                return result;
             }
 
-            // COMPOSE RESULT
+            // MAIN FUNCTIONALITY
             Object.defineProperty(service, 'name', {value: `${NS}.${service.name}`});
             return service;
-        };
+        }
     }
-
-    // DEFINE PROTO METHODS
 }
-
-export default Fl32_Ap_Back_Service_Sale_List;

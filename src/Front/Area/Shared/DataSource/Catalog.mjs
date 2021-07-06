@@ -3,7 +3,7 @@
  *
  * @namespace Fl32_Ap_Front_Area_Shared_DataSource_Catalog
  */
-class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
+export default class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
@@ -12,10 +12,10 @@ class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
         const i18n = spec[DEF.MOD_I18N.DI.I18N];
         /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
         const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
-        /** @type {Function|Fl32_Ap_Front_Gate_Product_List.gate} */
-        const gate = spec['Fl32_Ap_Front_Gate_Product_List$'];
-        /** @type {typeof Fl32_Ap_Shared_Service_Route_Product_List.Request} */
-        const Req = spec['Fl32_Ap_Shared_Service_Route_Product_List#Request'];
+        /** @type {TeqFw_Web_Front_Service_Gate} */
+        const gate = spec['TeqFw_Web_Front_Service_Gate$'];
+        /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Factory} */
+        const route = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$'];
         /** @type {typeof Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource} */
         const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
 
@@ -50,9 +50,11 @@ class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
          */
         this.loadData = async function ({lang}) {
             // load data from remote server
-            const req = new Req();
+            const req = route.createReq();
             req.lang = lang;
-            const res = await gate(req);
+            // noinspection JSValidateTypes
+            /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
+            const res = await gate.send(req, route);
             // save data to IDB
             const store = await idb.store(EDataSource.ENTITY);
             const item = new EDataSource();
@@ -67,6 +69,3 @@ class Fl32_Ap_Front_Area_Shared_DataSource_Catalog {
 }
 
 Fl32_Ap_Front_Area_Shared_DataSource_Catalog.TYPE = 'shared/catalog';
-
-// MODULE'S EXPORT
-export default Fl32_Ap_Front_Area_Shared_DataSource_Catalog;

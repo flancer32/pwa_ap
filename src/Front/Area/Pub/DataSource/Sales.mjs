@@ -13,10 +13,10 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Sales {
         const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Area_Pub_Dto_Cart#Factory$'];
-        /** @type {Function|Fl32_Ap_Front_Gate_Sale_List.gate} */
-        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$'];
-        /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
-        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request'];
+        /** @type {TeqFw_Web_Front_Service_Gate} */
+        const gate = spec['TeqFw_Web_Front_Service_Gate$'];
+        /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Factory} */
+        const route = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Factory$'];
 
         // DEFINE WORKING VARS
         const TYPE = Fl32_Ap_Front_Area_Pub_DataSource_Sales.TYPE;
@@ -58,9 +58,9 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Sales {
          */
         this.loadData = async function ({}) {
             // load data from remote server
-            const req = new ReqList();
+            // noinspection JSValidateTypes
             /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Response} */
-            const res = await gateList(req);
+            const res = await gate.send(route.createReq(), route);
             // save data to IDB
             // TODO: remove 'await' someday
             await this.putData(res);

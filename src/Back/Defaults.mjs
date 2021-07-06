@@ -57,6 +57,8 @@ export default class Fl32_Ap_Back_Defaults {
     MOD_USER;
     /** @type {TeqFw_Vue_Defaults} */
     MOD_VUE;
+    /** @type {TeqFw_Web_Back_Defaults} */
+    MOD_WEB;
 
     REALM_ADM = 'admin';
     REALM_ADM_ROUTE_home = '/';
@@ -74,13 +76,6 @@ export default class Fl32_Ap_Back_Defaults {
     REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';
     REALM_PUB_ROUTE_signUp_codeCheck = '/signUp/codeCheck/:code';
 
-    // SERVICES ROUTES
-    SERV_product_list = '/product/list';
-    SERV_profile_get = '/profile/get';
-    SERV_profile_update = '/profile/update';
-    SERV_sale_add = '/sale/add';
-    SERV_sale_list = '/sale/list';
-
     constructor(spec) {
         // EXTRACT DEPS
         this.MOD_CORE = spec['TeqFw_Core_Back_Defaults$'];
@@ -88,6 +83,7 @@ export default class Fl32_Ap_Back_Defaults {
         this.MOD_QUASAR = spec['TeqFw_Ui_Quasar_Defaults$'];
         this.MOD_USER = spec['Fl32_Ap_User_Back_Defaults$'];
         this.MOD_VUE = spec['TeqFw_Vue_Defaults$'];
+        this.MOD_WEB = spec['TeqFw_Web_Back_Defaults$'];
 
         // INIT PROPS, DEFINE WORKING VARS
         this.REALM_ADM_ROUTE_signIn_codeCheck = this.MOD_USER.REALM_DEF_ROUTE_signIn_codeCheck;

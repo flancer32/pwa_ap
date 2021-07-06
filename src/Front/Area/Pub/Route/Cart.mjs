@@ -29,10 +29,10 @@ function Factory(spec) {
     const cartItem = spec['Fl32_Ap_Front_Area_Pub_Widget_Cart_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Pub_Widget_Cart_Submit.vueCompTmpl} */
     const dialogSubmit = spec['Fl32_Ap_Front_Area_Pub_Widget_Cart_Submit$']; // vue comp tmpl
-    /** @type {Function|Fl32_Ap_Front_Gate_Sale_Add.gate} */
-    const gateAdd = spec['Fl32_Ap_Front_Gate_Sale_Add$'];
-    /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
-    const ReqAdd = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Request'];
+    /** @type {TeqFw_Web_Front_Service_Gate} */
+    const gate = spec['TeqFw_Web_Front_Service_Gate$'];
+    /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Factory} */
+    const route = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Factory$'];
     /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale} */
     const DSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#'];
     /** @type {typeof Fl32_Ap_Shared_Service_Dto_Sale_Item} */
@@ -69,10 +69,6 @@ function Factory(spec) {
 </layout-base>
 `;
 
-    // DEFINE INNER FUNCTIONS
-
-    // MAIN FUNCTIONALITY
-
     // COMPOSE RESULT
     /**
      * Template to create new component instances using Vue.
@@ -104,7 +100,7 @@ function Factory(spec) {
             },
             async onDialogSubmit(date) {
                 const cart = mCart.getData();
-                const req = new ReqAdd();
+                const req = route.createReq();
                 const sale = new DSale();
                 sale.dateReceiving = date;
                 sale.currency = cart.totals.currency;
@@ -123,8 +119,9 @@ function Factory(spec) {
                 }
                 sale.items = items;
                 req.sale = sale;
+                // noinspection JSValidateTypes
                 /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
-                const res = await gateAdd(req);
+                const res = await gate.send(req, route);
                 if (res.success) {
                     await mCart.clean();
                     await mSales.reload();

@@ -1,17 +1,15 @@
 /**
- * Service to get list of products.
+ * Get list of products.
  *
  * @namespace Fl32_Ap_Back_Service_Product_List
  */
-// MODULE'S IMPORT
-
 // MODULE'S VARS
 const NS = 'Fl32_Ap_Back_Service_Product_List';
 
 /**
- * @implements TeqFw_Http2_Api_Back_Service_Factory
+ * @implements TeqFw_Web_Back_Api_Service_IFactory
  */
-class Fl32_Ap_Back_Service_Product_List {
+export default class Fl32_Ap_Back_Service_Product_List {
 
     constructor(spec) {
         // EXTRACT DEPS
@@ -19,10 +17,8 @@ class Fl32_Ap_Back_Service_Product_List {
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
-        /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
         /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Factory} */
-        const frProdList = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$'];
+        const route = spec['Fl32_Ap_Shared_Service_Route_Product_List#Factory$'];
         /** @type {Function|Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List.queryBuilder} */
         const qProdCardList = spec['Fl32_Ap_Back_Store_RDb_Query_Product_Card_Attr_List$'];
         /** @type {Function|Fl32_Ap_Back_Store_RDb_Query_Product_Unit_Attr_List.queryBuilder} */
@@ -40,47 +36,19 @@ class Fl32_Ap_Back_Service_Product_List {
         /** @type {Fl32_Ap_Shared_Service_Dto_Price.Factory} */
         const fPrice = spec['Fl32_Ap_Shared_Service_Dto_Price#Factory$'];
 
-        // DEFINE INNER FUNCTIONS
-
         // DEFINE INSTANCE METHODS
 
-        this.getRoute = () => DEF.SERV_product_list;
+        this.getRouteFactory = () => route;
 
-        /**
-         * Factory to create function to validate and structure incoming data.
-         * @returns {function(TeqFw_Http2_Back_Server_Stream_Context): Fl32_Ap_Shared_Service_Route_Product_List.Request}
-         */
-        this.createInputParser = function () {
+        this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Http2_Back_Server_Stream_Context} context
-             * @returns {Fl32_Ap_Shared_Service_Route_Product_List.Request}
-             * @memberOf Fl32_Ap_Back_Service_Product_List
+             * @param {TeqFw_Web_Back_Api_Service_IContext} context
+             * @return Promise<void>
              */
-            function parse(context) {
-                const body = JSON.parse(context.body);
-                return frProdList.createReq(body.data);
-            }
-
-            // COMPOSE RESULT
-            Object.defineProperty(parse, 'name', {value: `${NS}.${parse.name}`});
-            return parse;
-        };
-
-        /**
-         * Factory to create service (handler to process HTTP API request).
-         * @returns {function(TeqFw_Http2_Plugin_Handler_Service.Context): TeqFw_Http2_Plugin_Handler_Service.Result}
-         */
-        this.createService = function () {
-            // DEFINE INNER FUNCTIONS
-            /**
-             * @param {TeqFw_Http2_Plugin_Handler_Service.Context} apiCtx
-             * @returns {Promise<TeqFw_Http2_Plugin_Handler_Service.Result>}
-             * @memberOf Fl32_Ap_Back_Service_Product_List
-             */
-            async function service(apiCtx) {
-
+            async function service(context) {
                 // DEFINE INNER FUNCTIONS
+
                 /**
                  * @param trx
                  * @param {string} lang
@@ -230,34 +198,29 @@ class Fl32_Ap_Back_Service_Product_List {
                 }
 
                 // MAIN FUNCTIONALITY
-                const result = new ApiResult();
-                const response = frProdList.createRes();
-                result.response = response;
                 /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Request} */
-                const apiReq = apiCtx.request;
-                // const shared = apiCtx.sharedContext;
-                // don't start transaction if not required
+                const req = context.getInData();
+                /** @type {Fl32_Ap_Shared_Service_Route_Product_List.Response} */
+                const res = context.getOutData();
+                // const shared = context.getHandlersShare();
+                //
                 const trx = await rdb.startTransaction();
                 try {
-                    const lang = apiReq.lang;
+                    const lang = req.lang;
                     const cards = await selectCards(trx, lang);
                     const units = await selectUnits(trx, lang);
                     const prices = await selectPrices(trx);
-                    response.cards = placeUnitsToCards(cards, units, prices);
+                    res.cards = placeUnitsToCards(cards, units, prices);
                     await trx.commit();
                 } catch (error) {
                     await trx.rollback();
                     throw error;
                 }
-                return result;
             }
 
-            // COMPOSE RESULT
+            // MAIN FUNCTIONALITY
             Object.defineProperty(service, 'name', {value: `${NS}.${service.name}`});
             return service;
-        };
+        }
     }
-
 }
-
-export default Fl32_Ap_Back_Service_Product_List;

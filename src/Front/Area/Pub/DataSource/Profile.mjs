@@ -14,14 +14,12 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Profile {
         const EDataSource = spec['Fl32_Ap_Front_Area_Shared_Idb_Store_DataSource#'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Profile.Factory} */
         const fProfile = spec['Fl32_Ap_Front_Area_Pub_Dto_Profile#Factory$'];
-        /** @function {@type Fl32_Ap_Front_Gate_Profile_Get.gate} */
-        const gateGet = spec['Fl32_Ap_Front_Gate_Profile_Get$'];
+        /** @type {TeqFw_Web_Front_Service_Gate} */
+        const gate = spec['TeqFw_Web_Front_Service_Gate$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Get.Factory} */
-        const fRouteGet = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$'];
-        /** @function {@type Fl32_Ap_Front_Gate_Profile_Update.gate} */
-        const gateUpdate = spec['Fl32_Ap_Front_Gate_Profile_Update$'];
+        const routeGet = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Update.Factory} */
-        const fRouteUpdate = spec['Fl32_Ap_Shared_Service_Route_Profile_Update#Factory$'];
+        const routeUpdate = spec['Fl32_Ap_Shared_Service_Route_Profile_Update#Factory$'];
 
         // DEFINE WORKING VARS
         const TYPE = Fl32_Ap_Front_Area_Pub_DataSource_Profile.TYPE;
@@ -64,8 +62,10 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Profile {
          */
         this.loadData = async function (opts = null) {
             // load data from the server
-            const req = fRouteGet.createReq();
-            const res = await gateGet(req);
+            const req = routeGet.createReq();
+            // noinspection JSValidateTypes
+            /** @type {Fl32_Ap_Shared_Service_Route_Profile_Get.Response} */
+            const res = await gate.send(req, routeGet);
             // save data to IDB
             await this.putData(res, opts);
             // return data from the server
@@ -73,9 +73,9 @@ class Fl32_Ap_Front_Area_Pub_DataSource_Profile {
         }
 
         this.saveData = async function (data) {
-            const req = fRouteUpdate.createReq();
+            const req = routeUpdate.createReq();
             req.profile = data;
-            await gateUpdate(req);
+            await gate.send(req, routeUpdate);
         }
     }
 }

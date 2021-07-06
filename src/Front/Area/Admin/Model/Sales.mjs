@@ -13,13 +13,12 @@ class Fl32_Ap_Front_Area_Admin_Model_Sales {
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        destructuring
         /** @type {TeqFw_Core_Logger} */
         const logger = spec['TeqFw_Core_Logger$'];
-        /** @type {Function|Fl32_Ap_Front_Gate_Sale_List.gate} */
-        const gateList = spec['Fl32_Ap_Front_Gate_Sale_List$'];
-        /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_List.Request} */
-        const ReqList = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Request'];
+        /** @type {TeqFw_Web_Front_Service_Gate} */
+        const gate = spec['TeqFw_Web_Front_Service_Gate$'];
+        /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Factory} */
+        const route = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Admin_Dto_Sale.Factory} */
         const fSale = spec['Fl32_Ap_Front_Area_Admin_Dto_Sale#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Admin_Dto_Sale_Item.Factory} */
@@ -79,9 +78,9 @@ class Fl32_Ap_Front_Area_Admin_Model_Sales {
         }
 
         this.reload = async function () {
-            const req = new ReqList();
+            // noinspection JSValidateTypes
             /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Response} */
-            const res = await gateList(req);
+            const res = await gate.send(route.createReq(), route);
             if (res) {
                 // order sales descending by saleId.
                 this.sales = res.items.sort((a, b) => b.id - a.id);

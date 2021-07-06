@@ -1,5 +1,5 @@
 /**
- * Service to add new sale order.
+ * Add new sale order.
  *
  * @namespace Fl32_Ap_Back_Service_Sale_Add
  */
@@ -10,9 +10,9 @@ import {constants as H2} from 'http2';
 const NS = 'Fl32_Ap_Back_Service_Sale_Add';
 
 /**
- * @implements TeqFw_Http2_Api_Back_Service_Factory
+ * @implements TeqFw_Web_Back_Api_Service_IFactory
  */
-class Fl32_Ap_Back_Service_Sale_Add {
+export default class Fl32_Ap_Back_Service_Sale_Add {
 
     constructor(spec) {
         // EXTRACT DEPS
@@ -20,80 +20,25 @@ class Fl32_Ap_Back_Service_Sale_Add {
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         /** @type {TeqFw_Core_Back_RDb_Connector} */
         const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
-        const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb']; // ES6 destruct
-        /** @type {typeof TeqFw_Http2_Plugin_Handler_Service.Result} */
-        const ApiResult = spec['TeqFw_Http2_Plugin_Handler_Service#Result'];
-        const {
-            /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
-            Request,
-            /** @type {typeof Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
-            Response
-        } = spec['Fl32_Ap_Shared_Service_Route_Sale_Add']; // ES6 module
-        /** @type {Fl32_Ap_Shared_Service_Dto_Sale.Factory} */
-        const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$'];
-        /** @type {Fl32_Ap_Shared_Service_Dto_Sale_Item.Factory} */
-        const fSaleItem = spec['Fl32_Ap_Shared_Service_Dto_Sale_Item#Factory$'];
+        const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb'];
+        /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Factory} */
+        const route = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Factory$'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */
         const ESale = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale#'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale_Item} */
         const ESaleItem = spec['Fl32_Ap_Back_Store_RDb_Schema_Sale_Item#'];
 
-        // DEFINE INNER FUNCTIONS
-
         // DEFINE INSTANCE METHODS
 
-        this.getRoute = () => DEF.SERV_sale_add;
+        this.getRouteFactory = () => route;
 
-        /**
-         * Factory to create function to validate and structure incoming data.
-         * @returns {function(TeqFw_Http2_Back_Server_Stream_Context): Fl32_Ap_Shared_Service_Route_Sale_Add.Request}
-         */
-        this.createInputParser = function () {
+        this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Http2_Back_Server_Stream_Context} context
-             * @returns {Fl32_Ap_Shared_Service_Route_Sale_Add.Request}
-             * @memberOf Fl32_Ap_Back_Service_Sale_Add
+             * @param {TeqFw_Web_Back_Api_Service_IContext} context
+             * @return Promise<void>
              */
-            function parse(context) {
-                const body = JSON.parse(context.body);
-                // clone HTTP body into API request object and cast nested objects
-                /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
-                const result = Object.assign(new Request(), body.data);
-                result.sale = fSale.create(result.sale);
-                result.sale.dateCreated = (result.sale.dateCreated)
-                    ? new Date(result.sale.dateCreated)
-                    : new Date();
-                result.sale.dateReceiving = new Date(result.sale.dateReceiving);
-                const items = [];
-                if (Array.isArray(result.sale.items)) {
-                    for (const one of result.sale.items) {
-                        const item = fSaleItem.create(one);
-                        items.push(item);
-                    }
-                } else {
-                    result.sale.items = items;
-                }
-                return result;
-            }
-
-            // COMPOSE RESULT
-            Object.defineProperty(parse, 'name', {value: `${NS}.${parse.name}`});
-            return parse;
-        };
-
-        /**
-         * Factory to create service (handler to process HTTP API request).
-         * @returns {function(TeqFw_Http2_Plugin_Handler_Service.Context): TeqFw_Http2_Plugin_Handler_Service.Result}
-         */
-        this.createService = function () {
-            // DEFINE INNER FUNCTIONS
-            /**
-             * @param {TeqFw_Http2_Plugin_Handler_Service.Context} apiCtx
-             * @returns {Promise<TeqFw_Http2_Plugin_Handler_Service.Result>}
-             * @memberOf Fl32_Ap_Back_Service_Sale_Add
-             */
-            async function service(apiCtx) {
+            async function service(context) {
                 // DEFINE INNER FUNCTIONS
 
                 /**
@@ -140,19 +85,19 @@ class Fl32_Ap_Back_Service_Sale_Add {
                 }
 
                 // MAIN FUNCTIONALITY
-                const result = new ApiResult();
-                const response = new Response();
-                result.response = response;
                 /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Request} */
-                const apiReq = apiCtx.request;
-                const shared = apiCtx.sharedContext;
+                const req = context.getInData();
+                /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Response} */
+                const res = context.getOutData();
+                const shared = context.getHandlersShare();
+                //
                 /** @type {Fl32_Ap_User_Shared_Service_Data_User} */
-                const user = shared[DEF.MOD_USER.HTTP_SHARED_CTX_USER];
+                const user = shared[DEF.MOD_USER.HTTP_SHARE_CTX_USER];
                 if (user) {
                     // don't start transaction if not required
                     const trx = await rdb.startTransaction();
                     try {
-                        const sale = apiReq.sale;
+                        const sale = req.sale;
                         sale.userId = user.id;
                         sale.state = ESale.DATA_STATE_NEW;
                         const isPg = isPostgres(trx.client);
@@ -161,25 +106,20 @@ class Fl32_Ap_Back_Service_Sale_Add {
                             item.saleId = saleId;
                             await insertSaleItem(trx, item, isPg);
                         }
-                        response.success = true;
+                        res.success = true;
                         await trx.commit();
                     } catch (error) {
                         await trx.rollback();
                         throw error;
                     }
                 } else {
-                    result.headers[H2.HTTP2_HEADER_STATUS] = H2.HTTP_STATUS_UNAUTHORIZED;
+                    context.setOutHeader(DEF.MOD_WEB.HTTP.HEADER.STATUS, H2.HTTP_STATUS_UNAUTHORIZED);
                 }
-                return result;
             }
 
-            // COMPOSE RESULT
+            // MAIN FUNCTIONALITY
             Object.defineProperty(service, 'name', {value: `${NS}.${service.name}`});
             return service;
-        };
+        }
     }
-
-    // DEFINE PROTO METHODS
 }
-
-export default Fl32_Ap_Back_Service_Sale_Add;
