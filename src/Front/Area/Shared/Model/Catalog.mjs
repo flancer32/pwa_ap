@@ -13,7 +13,6 @@ class Fl32_Ap_Front_Area_Shared_Model_Catalog {
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         const i18n = spec[DEF.MOD_I18N.DI.I18N];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        destructuring
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Card.Factory} */
         const fCard = spec['Fl32_Ap_Front_Area_Shared_Dto_Product_Card#Factory$'];
         /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Unit.Factory} */

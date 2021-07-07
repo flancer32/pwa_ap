@@ -13,7 +13,6 @@ class Fl32_Ap_Front_Area_Pub_Model_Profile {
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        destructuring
         /** @type {TeqFw_Core_Logger} */
         const logger = spec['TeqFw_Core_Logger$'];
         /** @type {Fl32_Ap_Front_Area_Pub_DataSource_Profile} */

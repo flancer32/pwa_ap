@@ -15,7 +15,6 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
         /** @type {TeqFw_Di_Container} */
         const container = spec['TeqFw_Di_Container$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        destructuring
         /** @type {TeqFw_Core_Logger} */
         const logger = spec['TeqFw_Core_Logger$'];
         /** @type {Fl32_Ap_Front_Area_Pub_Dto_Cart.Factory} */

@@ -57,7 +57,7 @@ class Factory {
             result.currency = data?.currency;
             result.dateCreated = data?.dateCreated
                 ? (data.dateCreated instanceof Date) ? data.dateCreated : new Date(data.dateCreated)
-                : null;
+                : new Date();
             result.dateReceiving = data?.dateReceiving
                 ? (data.dateReceiving instanceof Date) ? data.dateReceiving : new Date(data.dateReceiving)
                 : null;

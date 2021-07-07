@@ -21,9 +21,8 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec[DEF.MOD_USER.DI_SESSION];
-    const navigator = spec['Fl32_Ap_Front_Area_Admin_Layout_Navigator$']; // vue comp tmpl
+    const navigator = spec['Fl32_Ap_Front_Area_Admin_Layout_Navigator$'];
     const {ref} = spec[DEF.MOD_VUE.DI_VUE];
-    destructuring
 
     // DEFINE WORKING VARS
     const template = `
