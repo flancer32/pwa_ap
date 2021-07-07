@@ -34,7 +34,7 @@ class Factory {
         const fProfile = spec['Fl32_Ap_Shared_Service_Dto_Profile#Factory$'];
 
         // DEFINE INSTANCE METHODS
-        this.getRoute = () => `/${DEF.NAME}${DEF.SERV_profile_get}`;
+        this.getRoute = () => `/${DEF.NAME}${DEF.WEB_PROFILE_GET}`;
 
         /**
          * @param {Object|null} data

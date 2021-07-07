@@ -15,10 +15,8 @@ const NS = 'Fl32_Ap_Front_Area_Admin_Route_Sale_List';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION];
+    const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     /** @type {Fl32_Ap_Front_Area_Admin_Widget_Sale_List_Item.vueCompTmpl} */
     const saleItem = spec['Fl32_Ap_Front_Area_Admin_Widget_Sale_List_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit} */

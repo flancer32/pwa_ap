@@ -120,7 +120,7 @@ export default class Fl32_Ap_Back_Service_Product_List {
                         {[AS_PRICE]: `${T_UP}.${EUnitPrice.A_PRICE}`},
                     ]);
                     // WHERE
-                    query.where(`${T_PL}.${EPriceList.A_NAME}`, DEF.DATA.PRICE.LIST.DEFAULT);
+                    query.where(`${T_PL}.${EPriceList.A_NAME}`, DEF.DATA_PRICE_LIST_DEFAULT);
                     //
                     /** @type {Array} */
                     const rs = await query;

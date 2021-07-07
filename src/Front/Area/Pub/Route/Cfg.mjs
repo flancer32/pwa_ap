@@ -17,9 +17,9 @@ const LANG_RU = 'ru';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
-    const i18n = spec[DEF.MOD_I18N.DI.I18N];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
+    const i18n = spec[DEF.MOD_I18N.DI_I18N];
     /** @type {Fl32_Ap_Front_Area_Shared_Idb} */
     const idb = spec['Fl32_Ap_Front_Area_Shared_Idb$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */

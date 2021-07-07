@@ -18,16 +18,12 @@ const TIMEOUT = 3000;
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {TeqFw_Web_Front_Api_Dto_Config} */
     const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {TeqFw_Web_Front_Service_Gate} */
     const gate = spec['TeqFw_Web_Front_Service_Gate$'];
     /** @type {Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Factory} */
     const route = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send#Factory$'];
-    /** @type {typeof Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send.Request} */
-    const ReqSend = spec['Fl32_Ap_User_Shared_Service_Route_SignIn_Code_Send#Request'];
 
     // DEFINE WORKING VARS
     const template = `

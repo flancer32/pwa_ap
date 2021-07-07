@@ -17,11 +17,12 @@ const NS = 'Fl32_Ap_Front_Area_Admin_Layout_Base';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION];
+    const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     const navigator = spec['Fl32_Ap_Front_Area_Admin_Layout_Navigator$'];
+    // TODO: fix it
     const {ref} = spec[DEF.MOD_VUE.DI_VUE];
 
     // DEFINE WORKING VARS

@@ -2,92 +2,49 @@
  * Application level constants (hardcoded configuration).
  */
 export default class Fl32_Ap_Back_Defaults {
-    ATTR = {
-        PROD: {
-            CARD: {
-                ALCOHOL_PERCENT: 'alcoholPercent',
-                BEER_TYPE: 'beerType',
-                IMAGE: 'image',
-                LIQUID_TYPE: 'liquidType',
-                NAME: 'name',
-            },
-            UNIT: {
-                VOLUME: 'volume',
-            },
+
+    CLI_PREFIX = 'app'; // prefix in CLI commands
+
+    DATA_PRICE_LIST_DEFAULT = 'default';
+    DATA_PROD_TYPE = {
+        BEER: {
+            LIGHT: 'light',
+            DARK: 'dark',
         },
-    };
-
-    BACK_REALM = 'app';  // realm for API services ('/api/app/...') and CLI commands ('app-...')
-
-    DATA_USER_ADMIN_EMAIL = 'flancer64@gmail.com'; // app's sample data
-    DATA_USER_ADMIN_ID = 1;
-    DATA_USER_ADMIN_SESS_ID = 'sessIdForAdmin';
-    DATA_USER_ADMIN_NAME = 'El Jefe';
-    DATA = {
-        PRICE: {LIST: {DEFAULT: 'default'}},
-        PROD: {
-            TYPE: {
-                BEER: {
-                    LIGHT: 'light',
-                    DARK: 'dark',
-                },
-                LIQUID: {
-                    BEER: 'beer',
-                    KVAS: 'kvas',
-                    CIDER: 'cider',
-                    VINE: 'vine',
-                }
-            }
+        LIQUID: {
+            BEER: 'beer',
+            KVAS: 'kvas',
+            CIDER: 'cider',
+            VINE: 'vine',
         }
     };
+    DATA_USER_ADMIN_EMAIL = 'flancer64@gmail.com';
+    DATA_USER_ADMIN_ID = 1;
+    DATA_USER_ADMIN_NAME = 'El Jefe';
+    DATA_USER_ADMIN_SESS_ID = 'sessIdForAdmin';
 
-    DI = {
-        SHOPPING_CART: 'appShoppingCart'
-    };
+    DOOR_ADM_ROUTE_SIGNIN_CODE_CHECK;
+    DOOR_PUB_ROUTE_SIGNIN_CODE_CHECK;
 
-    I18N = {LOCALE: {RU: 'ru'}};
+    I18N_LOCALE_RU = 'ru';
 
-    /** @type {TeqFw_Core_Back_Defaults} */
-    MOD_CORE;
-    /** @type {TeqFw_I18n_Defaults} */
-    MOD_I18N;
-    /** @type {TeqFw_Ui_Quasar_Defaults} */
-    MOD_QUASAR;
     /** @type {Fl32_Ap_User_Back_Defaults} */
     MOD_USER;
-    /** @type {TeqFw_Vue_Defaults} */
-    MOD_VUE;
     /** @type {TeqFw_Web_Back_Defaults} */
     MOD_WEB;
 
-    REALM_ADM = 'admin';
-    REALM_ADM_ROUTE_home = '/';
-    REALM_ADM_ROUTE_sale_list = '/sale/list';
-    REALM_ADM_ROUTE_signIn_codeCheck = 'WILL BE SET IN CONSTRUCTOR BELOW';
-    REALM_ADM_ROUTE_signIn_emailGet = '/signIn/emailGet';
-    REALM_ADM_ROUTE_user_invite = '/user/invite';
-    REALM_PUB = 'pub';
-    REALM_PUB_ROUTE_cart = '/cart';
-    REALM_PUB_ROUTE_cfg = '/cfg';
-    REALM_PUB_ROUTE_home = '/';
-    REALM_PUB_ROUTE_logout = '/logout';
-    REALM_PUB_ROUTE_sales = '/sales';
-    REALM_PUB_ROUTE_signIn_codeCheck = 'WILL BE SET IN CONSTRUCTOR BELOW';
-    REALM_PUB_ROUTE_signIn_emailGet = '/signIn/emailGet';
-    REALM_PUB_ROUTE_signUp_codeCheck = '/signUp/codeCheck/:code';
+    /** @type {Fl32_Ap_Shared_Defaults} */
+    SHARED;
 
     constructor(spec) {
         // EXTRACT DEPS
-        this.MOD_CORE = spec['TeqFw_Core_Back_Defaults$'];
-        this.MOD_I18N = spec['TeqFw_I18n_Defaults$'];
-        this.MOD_QUASAR = spec['TeqFw_Ui_Quasar_Defaults$'];
         this.MOD_USER = spec['Fl32_Ap_User_Back_Defaults$'];
-        this.MOD_VUE = spec['TeqFw_Vue_Defaults$'];
         this.MOD_WEB = spec['TeqFw_Web_Back_Defaults$'];
+        this.SHARED = spec['Fl32_Ap_Shared_Defaults$'];
 
         // INIT PROPS, DEFINE WORKING VARS
-        this.REALM_ADM_ROUTE_signIn_codeCheck = this.MOD_USER.REALM_DEF_ROUTE_signIn_codeCheck;
-        this.REALM_PUB_ROUTE_signIn_codeCheck = this.MOD_USER.REALM_DEF_ROUTE_signIn_codeCheck;
+        this.DOOR_ADM_ROUTE_SIGNIN_CODE_CHECK = this.MOD_USER.DOOR_DEF_ROUTE_SIGNIN_CODE_CHECK;
+        this.DOOR_PUB_ROUTE_SIGNIN_CODE_CHECK = this.MOD_USER.DOOR_DEF_ROUTE_SIGNIN_CODE_CHECK;
 
         // MAIN FUNCTIONALITY
         Object.freeze(this);

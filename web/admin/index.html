@@ -19,7 +19,7 @@
 
             /**
              * @param {TeqFw_Di_Container} container
-             * @param {Fl32_Ap_Back_Defaults} DEF
+             * @param {Fl32_Ap_Front_Defaults} DEF
              * @return Object
              */
             async function initApp(container, DEF) {
@@ -90,7 +90,7 @@
                 const router = initRouter(self.VueRouter);
                 container.set(DEF.MOD_VUE.DI_ROUTER, router);
                 const i18next = await initI18n(container, result);
-                container.set(DEF.MOD_I18N.DI.I18N, i18next);
+                container.set(DEF.MOD_I18N.DI_I18N, i18next);
                 // init quasar framework
                 result.use(self.Quasar, {config: {}});
                 self.Quasar.iconSet.set(self.Quasar.iconSet.svgMaterialIcons);
@@ -102,7 +102,7 @@
              * Load frontend configuration from API using simple 'fetch' and place it into DI container.
              *
              * @param {TeqFw_Di_Container} container
-             * @param {Fl32_Ap_Back_Defaults} DEF
+             * @param {Fl32_Ap_Front_Defaults} DEF
              */
             async function initConfig(container, DEF) {
                 // load frontend configuration and user profile
@@ -120,7 +120,7 @@
              * Import code, create and setup Dependency Injection container for frontend,
              * place old-style loaded JS object inside.
              *
-             * @returns {Promise<{container: TeqFw_Di_Container, DEF: Fl32_Ap_Back_Defaults}>}
+             * @returns {Promise<{container: TeqFw_Di_Container, DEF: Fl32_Ap_Front_Defaults}>}
              */
             async function initDiContainer() {
 
@@ -153,26 +153,25 @@
                 container.set('TeqFw_Web_Front_Api_Gate_IAjaxLed$', theAjaxLed);
                 const theErrHandler = await container.get('TeqFw_Web_Front_Model_Gate_ErrorHandler$');
                 container.set('TeqFw_Web_Front_Api_Gate_IErrorHandler$', theErrHandler);
+
                 // get hardcoded config for the application
-                /** @type {Fl32_Ap_Back_Defaults} */
-                const DEF = await container.get('Fl32_Ap_Back_Defaults$');
+                /** @type {Fl32_Ap_Front_Defaults} */
+                const DEF = await container.get('Fl32_Ap_Front_Defaults$');
                 // save old-style loaded JS objects into DI container (see <script src="..."> at the end of HTML)
                 container.set(DEF.MOD_VUE.DI_VUE, self.Vue);
-                container.set(DEF.MOD_VUE.DI_VUEX, self.Vuex);
                 return {container, DEF};
             }
 
             /**
              * @param {TeqFw_Di_Container} container
-             * @param {Fl32_Ap_Back_Defaults} DEF
+             * @param {Fl32_Ap_Front_Defaults} DEF
              */
             async function initSession(container, DEF) {
                 // setup session (load user permissions from server)
                 /** @type {Fl32_Ap_User_Front_Model_Session} */
                 const session = await container.get('Fl32_Ap_User_Front_Model_Session$');
-                session.setRouteToSignIn(DEF.REALM_ADM_ROUTE_signIn_emailGet);
+                session.setRouteToSignIn(DEF.DOOR_ADM_ROUTE_SIGN_IN_EMAIL_GET);
                 await session.init();
-                container.set(DEF.MOD_USER.DI_SESSION, session);    // TMP: put into container as singleton
             }
 
             // MAIN FUNCTIONALITY

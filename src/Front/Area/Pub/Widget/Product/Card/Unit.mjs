@@ -17,8 +17,8 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Widget_Product_Card_Unit';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$'];
 
@@ -83,7 +83,7 @@ function Factory(spec) {
             },
 
             volume() {
-                const val = this.unit?.attrs[DEF.ATTR.PROD.UNIT.VOLUME];
+                const val = this.unit?.attrs[DEF.SHARED.ATTR.PROD.UNIT.VOLUME];
                 return Number.parseFloat(val).toFixed(1);
             }
         },

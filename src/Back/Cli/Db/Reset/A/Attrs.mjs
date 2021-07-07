@@ -23,9 +23,9 @@ function Factory(spec) {
     async function addAttributes({trx}) {
         // PARSE INPUT & DEFINE WORKING VARS
         const isPg = isPostgres(trx.client);
-        const ATTR = DEF.ATTR.PROD; // link to product attributes codes
-        const DATA = DEF.DATA.PROD.TYPE; // link to test data
-        const RU = DEF.I18N.LOCALE.RU; // link to language code
+        const ATTR = DEF.SHARED.ATTR.PROD; // link to product attributes codes
+        const DATA = DEF.DATA_PROD_TYPE; // link to test data
+        const RU = DEF.I18N_LOCALE_RU; // link to language code
 
         // DEFINE INNER FUNCTIONS
         async function loadAttrIds(trx) {

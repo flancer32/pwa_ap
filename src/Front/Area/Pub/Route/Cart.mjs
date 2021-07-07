@@ -15,9 +15,9 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Route_Cart';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
-    const i18n = spec[DEF.MOD_I18N.DI.I18N];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
+    const i18n = spec[DEF.MOD_I18N.DI_I18N];
     const {round} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
     /** @type {Fl32_Ap_Front_Area_Shared_DataSource_Catalog} */
     const dsProd = spec['Fl32_Ap_Front_Area_Shared_DataSource_Catalog$'];
@@ -125,7 +125,7 @@ function Factory(spec) {
                 if (res.success) {
                     await mCart.clean();
                     await mSales.reload();
-                    this.$router.push(DEF.REALM_PUB_ROUTE_sales);
+                    this.$router.push(DEF.DOOR_PUB_ROUTE_SALES);
                 }
             },
         },

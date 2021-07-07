@@ -39,7 +39,7 @@ class Factory {
         const fCard = spec['Fl32_Ap_Shared_Service_Dto_Product_Card#Factory$'];
 
         // DEFINE INSTANCE METHODS
-        this.getRoute = () => `/${DEF.NAME}${DEF.SERV_product_list}`;
+        this.getRoute = () => `/${DEF.NAME}${DEF.WEB_PRODUCT_LIST}`;
 
         /**
          * @param {Fl32_Ap_Shared_Service_Route_Product_List.Request|null} data

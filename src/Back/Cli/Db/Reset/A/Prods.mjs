@@ -36,8 +36,8 @@ function Factory(spec) {
     async function addProducts({trx}) {
         // PARSE INPUT & DEFINE WORKING VARS
         const isPg = isPostgres(trx.client);
-        const ATTR = DEF.ATTR.PROD; // link to product attributes codes
-        const TYPE = DEF.DATA.PROD.TYPE; // link to test data (product types)
+        const ATTR = DEF.SHARED.ATTR.PROD; // link to product attributes codes
+        const TYPE = DEF.DATA_PROD_TYPE; // link to test data (product types)
         let attrs; // attributes code-to-id map
         let options; // options code-to-object map
         let priceListId;
@@ -46,7 +46,7 @@ function Factory(spec) {
         async function addPriceList(trx) {
             const query = trx(EPriceList.ENTITY)
                 .insert({
-                    [EPriceList.A_NAME]: DEF.DATA.PRICE.LIST.DEFAULT,
+                    [EPriceList.A_NAME]: DEF.DATA_PRICE_LIST_DEFAULT,
                     [EPriceList.A_CURRENCY]: 'EUR',
                 });
             if (isPg) query.returning(EPriceList.A_ID);

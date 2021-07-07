@@ -17,8 +17,8 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Widget_Cart_Mini';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$'];
 
@@ -72,7 +72,7 @@ function Factory(spec) {
         },
         methods: {
             gotoCart() {
-                this.$router.push(DEF.REALM_PUB_ROUTE_cart);
+                this.$router.push(DEF.DOOR_PUB_ROUTE_CART);
             }
         },
         mounted() { },

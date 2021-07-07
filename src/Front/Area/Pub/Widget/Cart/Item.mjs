@@ -17,8 +17,8 @@ const NS = 'Fl32_Ap_Front_Area_Pub_Widget_Cart_Item';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Area_Pub_Model_Cart} */
     const mCart = spec['Fl32_Ap_Front_Area_Pub_Model_Cart$'];
     /** @type {Fl32_Ap_Front_Area_Shared_Model_Catalog} */
@@ -99,7 +99,7 @@ function Factory(spec) {
                 return `${formatted} ${cur}`;
             },
             volume() {
-                const val = this.item?.unit?.attrs[DEF.ATTR.PROD.UNIT.VOLUME];
+                const val = this.item?.unit?.attrs[DEF.SHARED.ATTR.PROD.UNIT.VOLUME];
                 return Number.parseFloat(val).toFixed(1);
             },
         },

@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Area_Admin_App';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Di_Container} */
     const container = spec['TeqFw_Di_Container$']; // singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];
@@ -43,24 +43,24 @@ function Factory(spec) {
     // setup application routes
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Admin_Route_Home$'),
-        path: DEF.REALM_ADM_ROUTE_home,
+        path: DEF.DOOR_ADM_ROUTE_HOME,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Admin_Route_Sale_List$'),
-        path: DEF.REALM_ADM_ROUTE_sale_list,
+        path: DEF.DOOR_ADM_ROUTE_SALE_LIST,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Admin_Route_SignIn_CodeCheck$'),
-        path: DEF.REALM_ADM_ROUTE_signIn_codeCheck,
+        path: DEF.DOOR_ADM_ROUTE_SIGN_IN_CODE_CHECK,
         props: true,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Admin_Route_SignIn_CodeGet$'),
-        path: DEF.REALM_ADM_ROUTE_signIn_emailGet,
+        path: DEF.DOOR_ADM_ROUTE_SIGN_IN_EMAIL_GET,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Admin_Route_User_Invite$'),
-        path: DEF.REALM_ADM_ROUTE_user_invite,
+        path: DEF.DOOR_ADM_ROUTE_USER_INVITE,
     });
     app.use(router);
 

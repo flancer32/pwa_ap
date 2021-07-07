@@ -10,8 +10,8 @@ class Fl32_Ap_Front_Area_Pub_Model_Profile {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$'];
+        /** @type {Fl32_Ap_Front_Defaults} */
+        const DEF = spec['Fl32_Ap_Front_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
         /** @type {TeqFw_Core_Logger} */
         const logger = spec['TeqFw_Core_Logger$'];

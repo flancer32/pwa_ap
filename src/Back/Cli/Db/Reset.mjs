@@ -114,7 +114,7 @@ function Factory(spec) {
 
     // COMPOSE RESULT
     const result = fCommand.create();
-    result.realm = DEF.BACK_REALM;
+    result.realm = DEF.CLI_PREFIX;
     result.name = 'db-reset';
     result.desc = 'Reset database structures and initialize test data.';
     result.action = action;

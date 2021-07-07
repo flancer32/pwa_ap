@@ -22,8 +22,8 @@ export default class Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit_Item {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$'];
+        /** @type {Fl32_Ap_Front_Defaults} */
+        const DEF = spec['Fl32_Ap_Front_Defaults$'];
         /** @type {Fl32_Ap_Front_Area_Shared_Model_Catalog} */
         const mCatalog = spec['Fl32_Ap_Front_Area_Shared_Model_Catalog$'];
 
@@ -48,14 +48,16 @@ export default class Fl32_Ap_Front_Area_Admin_Widget_Sale_Edit_Item {
                 imageUrl() {
                     /** @type {Fl32_Ap_Front_Area_Shared_Dto_Product_Card} */
                     const card = this.card;
-                    return '../pub/img/product/card/' + card?.attrs[DEF.ATTR.PROD.CARD.IMAGE];
+                    const door = DEF.SHARED.DOOR_PUB;
+                    const img = card?.attrs[DEF.SHARED.ATTR.PROD.CARD.IMAGE];
+                    return `../${door}/img/product/card/${img}`;
                 },
                 unit() {
                     const unitId = this.item?.unitId;
                     return mCatalog?.getUnitData(unitId);
                 },
                 volume() {
-                    const val = this.unit?.attrs[DEF.ATTR.PROD.UNIT.VOLUME];
+                    const val = this.unit?.attrs[DEF.SHARED.ATTR.PROD.UNIT.VOLUME];
                     return Number.parseFloat(val).toFixed(1);
                 }
             },

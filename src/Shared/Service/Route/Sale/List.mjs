@@ -36,7 +36,7 @@ class Factory {
         const fSale = spec['Fl32_Ap_Shared_Service_Dto_Sale#Factory$'];
 
         // DEFINE INSTANCE METHODS
-        this.getRoute = () => `/${DEF.NAME}${DEF.SERV_sale_list}`;
+        this.getRoute = () => `/${DEF.NAME}${DEF.WEB_SALE_LIST}`;
 
         /**
          * @param {Fl32_Ap_Shared_Service_Route_Sale_List.Request|null} data

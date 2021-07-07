@@ -15,8 +15,8 @@ const NS = 'Fl32_Ap_Front_Area_Pub_App';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Di_Container} */
     const container = spec['TeqFw_Di_Container$']; // singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];
@@ -43,36 +43,36 @@ function Factory(spec) {
     // setup application routes
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_Cart$'),
-        path: DEF.REALM_PUB_ROUTE_cart,
+        path: DEF.DOOR_PUB_ROUTE_CART,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_Cfg$'),
-        path: DEF.REALM_PUB_ROUTE_cfg,
+        path: DEF.DOOR_PUB_ROUTE_CFG,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_Home$'),
-        path: DEF.REALM_PUB_ROUTE_home,
+        path: DEF.DOOR_PUB_ROUTE_HOME,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_Logout$'),
-        path: DEF.REALM_PUB_ROUTE_logout,
+        path: DEF.DOOR_PUB_ROUTE_LOGOUT,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_Sales$'),
-        path: DEF.REALM_PUB_ROUTE_sales,
+        path: DEF.DOOR_PUB_ROUTE_SALES,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_SignIn_CodeCheck$'),
-        path: DEF.REALM_PUB_ROUTE_signIn_codeCheck,
+        path: DEF.DOOR_PUB_ROUTE_SIGN_IN_CODE_CHECK,
         props: true,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_SignIn_CodeGet$'),
-        path: DEF.REALM_PUB_ROUTE_signIn_emailGet,
+        path: DEF.DOOR_PUB_ROUTE_SIGN_IN_EMAIL_GET,
     });
     router.addRoute({
         component: () => container.get('Fl32_Ap_Front_Area_Pub_Route_SignUp_CodeCheck$'),
-        path: DEF.REALM_PUB_ROUTE_signUp_codeCheck,
+        path: DEF.DOOR_PUB_ROUTE_sign_Up_code_Check,
         props: true,
     });
     // add routes before this line

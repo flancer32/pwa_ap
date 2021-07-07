@@ -15,12 +15,12 @@ const NS = 'Fl32_Ap_Front_Area_Admin_Route_SignIn_CodeGet';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Web_Front_Api_Dto_Config} */
     const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION];
+    const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     /** @type {Fl32_Ap_Front_Area_Shared_Widget_Sign_In_Code_Get.vueCompTmpl} */
     const codeGet = spec['Fl32_Ap_Front_Area_Shared_Widget_Sign_In_Code_Get$']; // vue comp tmpl
 
@@ -45,9 +45,9 @@ function Factory(spec) {
         beforeCreate() {
             // redirect to home route if user is authenticated
             if (session.getUser() !== null) {
-                const route = (config.area === DEF.REALM_ADM)
-                    ? DEF.REALM_ADM_ROUTE_home
-                    : DEF.REALM_PUB_ROUTE_home;
+                const route = (config.door === DEF.SHARED.DOOR_ADMIN)
+                    ? DEF.DOOR_ADM_ROUTE_HOME
+                    : DEF.DOOR_PUB_ROUTE_HOME;
                 this.$router.push(route);
             }
         },

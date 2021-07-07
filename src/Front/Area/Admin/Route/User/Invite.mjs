@@ -23,12 +23,12 @@ Object.freeze(LifeTimeValues);
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Back_Defaults} */
-    const DEF = spec['Fl32_Ap_Back_Defaults$'];
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Web_Front_Api_Dto_Config} */
     const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
-    const session = spec[DEF.MOD_USER.DI_SESSION];
+    const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     /** @type {TeqFw_Web_Front_Service_Gate} */
     const gate = spec['TeqFw_Web_Front_Service_Gate$'];
     /** @type {Fl32_Ap_User_Shared_Service_Route_SignUp_Code_Create.Factory} */
@@ -132,9 +132,9 @@ function Factory(spec) {
                     try {
                         // compose URL to sign up
                         const host = `https://${config.urlBase}`;
-                        const realm = `/${DEF.REALM_PUB}/#`;
-                        const route = DEF.REALM_PUB_ROUTE_signUp_codeCheck.replace(':code', res.code);
-                        const url = `${host}${realm}${route}`;
+                        const door = `/${DEF.SHARED.DOOR_PUB}/#`;
+                        const route = DEF.DOOR_PUB_ROUTE_sign_Up_code_Check.replace(':code', res.code);
+                        const url = `${host}${door}${route}`;
                         // open sharing options or print out sign up link to console
                         if (self.navigator.share) {
                             // smartphone mode

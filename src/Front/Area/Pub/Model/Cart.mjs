@@ -10,8 +10,8 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Back_Defaults} */
-        const DEF = spec['Fl32_Ap_Back_Defaults$'];
+        /** @type {Fl32_Ap_Front_Defaults} */
+        const DEF = spec['Fl32_Ap_Front_Defaults$'];
         /** @type {TeqFw_Di_Container} */
         const container = spec['TeqFw_Di_Container$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
@@ -98,7 +98,7 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
             } else {
                 items[unitId].count += 1;
             }
-            totals.liters += Number.parseFloat(unit.attrs[DEF.ATTR.PROD.UNIT.VOLUME]);
+            totals.liters += Number.parseFloat(unit.attrs[DEF.SHARED.ATTR.PROD.UNIT.VOLUME]);
             totals.amount += Number.parseFloat(unit.price.value);
             ds.putData(modelData).catch((e) => logger.error('Cannot save cart to IDB on unitAdd: ' + e));
         }
@@ -115,7 +115,7 @@ class Fl32_Ap_Front_Area_Pub_Model_Cart {
                 } else {
                     items[unitId].count -= 1;
                 }
-                totals.liters -= Number.parseFloat(unit.attrs[DEF.ATTR.PROD.UNIT.VOLUME]);
+                totals.liters -= Number.parseFloat(unit.attrs[DEF.SHARED.ATTR.PROD.UNIT.VOLUME]);
                 totals.amount -= Number.parseFloat(unit.price.value);
                 // prevent "-0.00"
                 if (totals.liters < 0.000001) totals.liters = 0;
