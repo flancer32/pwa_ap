@@ -12,8 +12,8 @@ class Fl32_Ap_Front_Door_Pub_Model_Cart {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Defaults} */
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
-        /** @type {TeqFw_Di_Container} */
-        const container = spec['TeqFw_Di_Container$'];
+        /** @type {TeqFw_Di_Shared_Container} */
+        const container = spec['TeqFw_Di_Shared_Container$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
         /** @type {TeqFw_Core_Logger} */
         const logger = spec['TeqFw_Core_Logger$'];

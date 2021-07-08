@@ -10,7 +10,7 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore';
 /**
  * Factory to setup execution context and to create the action.
  *
- * @param {TeqFw_Di_SpecProxy} spec
+ * @param {TeqFw_Di_Shared_SpecProxy} spec
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore
  */

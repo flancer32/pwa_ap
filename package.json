@@ -29,17 +29,18 @@
     "@flancer32/mod_ap_user": "github:flancer32/mod_ap_user",
     "@teqfw/http2": "github:teqfw/http2",
     "@teqfw/i18n": "github:teqfw/i18n",
+    "@teqfw/di": "github:teqfw/di",
     "mysql2": "*",
     "pg": "*"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/eslint-parser": "^7.12.1",
-    "@babel/eslint-plugin": "^7.12.1",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "eslint": "^7.13.0",
-    "esm": "^3.2.25",
+    "@babel/core": "*",
+    "@babel/eslint-parser": "*",
+    "@babel/eslint-plugin": "*",
+    "@babel/plugin-proposal-class-properties": "*",
+    "@babel/preset-env": "*",
+    "eslint": "*",
+    "esm": "*",
     "jest": "*",
     "jsdoc": "*"
   }

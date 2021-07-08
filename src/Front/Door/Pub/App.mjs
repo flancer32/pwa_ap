@@ -17,8 +17,8 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
-    /** @type {TeqFw_Di_Container} */
-    const container = spec['TeqFw_Di_Container$']; // singleton
+    /** @type {TeqFw_Di_Shared_Container} */
+    const container = spec['TeqFw_Di_Shared_Container$']; // singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];
     const app = spec[DEF.MOD_VUE.DI_APP];
     /** @type {TeqFw_Core_Front_Widget_Layout_Centered} */
