@@ -13,8 +13,8 @@ class Fl32_Ap_Front_Door_Admin_Model_Sales {
         /** @type {Fl32_Ap_Front_Defaults} */
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];
+        /** @type {TeqFw_Core_Shared_Logger} */
+        const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {TeqFw_Web_Front_Service_Gate} */
         const gate = spec['TeqFw_Web_Front_Service_Gate$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Factory} */

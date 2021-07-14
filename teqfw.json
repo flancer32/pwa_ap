@@ -8,18 +8,10 @@
       {"orig": "TeqFw_Web_Front_Api_Gate_IAjaxLed", "alter": "Fl32_Ap_Front_Rewrite_Web_Gate_AjaxLed", "area": "front"}
     ]
   },
-  "commands": [
-    "Fl32_Ap_Back_Cli_Db_Reset",
-    "Fl32_Ap_Back_Cli_Db_Upgrade"
-  ],
-  "http2": {
-    "realm": "app",
-    "services": [
-      "Fl32_Ap_Back_Service_Product_List$",
-      "Fl32_Ap_Back_Service_Profile_Get$",
-      "Fl32_Ap_Back_Service_Profile_Update$",
-      "Fl32_Ap_Back_Service_Sale_Add$",
-      "Fl32_Ap_Back_Service_Sale_List$"
+  "core": {
+    "commands": [
+      "Fl32_Ap_Back_Cli_Db_Reset",
+      "Fl32_Ap_Back_Cli_Db_Upgrade"
     ]
   },
   "web": {

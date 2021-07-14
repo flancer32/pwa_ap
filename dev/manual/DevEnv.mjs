@@ -24,16 +24,13 @@ export default async function init() {
      * Load local configuration (/cfg/local.json).
      *
      * @param {TeqFw_Di_Shared_Container} container
-     * @param {String} path
+     * @param {String} rootPath
      * @return {Promise<void>}
      */
-    async function initConfig(container, path) {
-        /** @type {TeqFw_Core_Config} */
-        const config = await container.get('TeqFw_Core_Config$');
-        config.load({rootPath: path});  // load local configuration
-        /** @type {TeqFw_Core_Back_Defaults} */
-        const DEF = await container.get('TeqFw_Core_Back_Defaults$');
-        container.set(DEF.DI_CONFIG, config.get());
+    async function initConfig(container, rootPath) {
+        /** @type {TeqFw_Core_Back_Config} */
+        const config = await container.get('TeqFw_Core_Back_Config$');
+        config.load({rootPath});  // load local configuration
     }
 
     /**
@@ -78,11 +75,9 @@ export default async function init() {
      * @return {Promise<void>}
      */
     async function initLogger(container) {
-        /** @type {TeqFw_Core_Logger} */
-        const logger = await container.get('TeqFw_Core_Logger$');
-        /** @type {TeqFw_Core_Logger_Transport_Console} */
-        const logTransport = await container.get('TeqFw_Core_Logger_Transport_Console$');
-        logger.addTransport(logTransport);
+        /** @type {TeqFw_Core_Shared_Logger} */
+        const logger = await container.get('TeqFw_Core_Shared_Logger$');
+        logger.pause(false);
     }
 
     // MAIN FUNCTIONALITY

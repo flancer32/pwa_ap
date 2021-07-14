@@ -12,8 +12,8 @@ class Fl32_Ap_Front_Door_Pub_Model_Sales {
         /** @type {Fl32_Ap_Front_Defaults} */
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];
+        /** @type {TeqFw_Core_Shared_Logger} */
+        const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {Fl32_Ap_Front_Door_Pub_DataSource_Sales} */
         const ds = spec['Fl32_Ap_Front_Door_Pub_DataSource_Sales$'];
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Sale.Factory} */

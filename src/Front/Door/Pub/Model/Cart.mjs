@@ -15,8 +15,8 @@ class Fl32_Ap_Front_Door_Pub_Model_Cart {
         /** @type {TeqFw_Di_Shared_Container} */
         const container = spec['TeqFw_Di_Shared_Container$'];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
-        /** @type {TeqFw_Core_Logger} */
-        const logger = spec['TeqFw_Core_Logger$'];
+        /** @type {TeqFw_Core_Shared_Logger} */
+        const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Cart.Factory} */
         const fCart = spec['Fl32_Ap_Front_Door_Pub_Dto_Cart#Factory$'];
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Cart_Item.Factory} */
