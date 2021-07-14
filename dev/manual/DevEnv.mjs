@@ -30,7 +30,8 @@ export default async function init() {
     async function initConfig(container, rootPath) {
         /** @type {TeqFw_Core_Back_Config} */
         const config = await container.get('TeqFw_Core_Back_Config$');
-        config.load({rootPath});  // load local configuration
+        config.setBoot(rootPath, 'dev-env');
+        config.loadLocal(rootPath);  // load local configuration
     }
 
     /**
