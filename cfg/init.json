@@ -24,10 +24,8 @@
   "i18n": {
     "devMode": false
   },
-  "server": {
-    "port": 3000
-  },
   "web": {
+    "server": {"port": 3000},
     "urlBase": "project.com"
   }
 }
