@@ -15,15 +15,14 @@
     ]
   },
   "web": {
-    "api": {
-      "services": [
-        "Fl32_Ap_Back_Service_Product_List",
-        "Fl32_Ap_Back_Service_Profile_Get",
-        "Fl32_Ap_Back_Service_Profile_Update",
-        "Fl32_Ap_Back_Service_Sale_Add",
-        "Fl32_Ap_Back_Service_Sale_List"
-      ]
-    },
-    "doors": ["admin", "pub"]
+    "doors": ["admin", "pub"],
+    "services": [
+      "Fl32_Ap_Back_Service_Product_List",
+      "Fl32_Ap_Back_Service_Profile_Get",
+      "Fl32_Ap_Back_Service_Profile_Update",
+      "Fl32_Ap_Back_Service_Sale_Add",
+      "Fl32_Ap_Back_Service_Sale_List",
+      "Fl32_Ap_Back_Service_Test_Get_Id"
+    ]
   }
 }

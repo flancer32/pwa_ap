@@ -21,6 +21,7 @@
     "help": "node ./bin/tequila.mjs help",
     "rebuild": "rm -fr node_modules package-lock.json && npm install",
     "start": "node ./bin/tequila.mjs http2-server-start",
+    "startup-logs": "node ./bin/tequila.mjs core-startup-logs",
     "stop": "node ./bin/tequila.mjs http2-server-stop",
     "test": "./node_modules/mocha/bin/mocha --recursive './test/**/*.test.mjs'",
     "version": "node ./bin/tequila.mjs core-version"
@@ -31,7 +32,8 @@
     "@teqfw/i18n": "github:teqfw/i18n",
     "knex": "*",
     "mysql2": "*",
-    "pg": "*"
+    "pg": "*",
+    "path-to-regexp": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

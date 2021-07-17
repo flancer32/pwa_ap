@@ -35,6 +35,7 @@ export default class Fl32_Ap_Shared_Defaults {
     WEB_PROFILE_UPDATE = '/profile/update';
     WEB_SALE_ADD = '/sale/add';
     WEB_SALE_LIST = '/sale/list';
+    WEB_TEST_GET_BY_ID = '/test/get/:id';
 
     constructor(spec) {
         // EXTRACT DEPS
