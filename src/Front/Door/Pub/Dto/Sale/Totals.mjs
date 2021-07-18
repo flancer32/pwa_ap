@@ -29,7 +29,7 @@ class Factory {
 
 }
 
-// freeze class to deny attributes changes then export class
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Front_Door_Pub_Dto_Sale_Totals);
 Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.constructor.name}`});
 

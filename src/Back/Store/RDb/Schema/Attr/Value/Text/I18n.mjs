@@ -13,6 +13,6 @@ Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n.A_TRANSLATION = 'translation'
 Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n.A_VALUE_REF = 'value_ref';
 Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n.ENTITY = 'attr_value_text_i18n';
 
-// freeze class to deny attributes changes and export
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n);
 export default Fl32_Ap_Back_Store_RDb_Schema_Attr_Value_Text_I18n;

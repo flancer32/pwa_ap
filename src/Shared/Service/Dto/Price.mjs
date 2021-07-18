@@ -35,7 +35,7 @@ class Factory {
     }
 }
 
-// freeze class to deny attributes changes then export class
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Shared_Service_Dto_Price);
 Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.constructor.name}`});
 export {

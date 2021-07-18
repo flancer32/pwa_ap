@@ -25,6 +25,6 @@ Fl32_Ap_Back_Store_RDb_Schema_Sale.DATA_STATE_COMPLETE = 'complete';
 Fl32_Ap_Back_Store_RDb_Schema_Sale.DATA_STATE_NEW = 'new';
 Fl32_Ap_Back_Store_RDb_Schema_Sale.ENTITY = 'sale';
 
-// freeze class to deny attributes changes and export
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Back_Store_RDb_Schema_Sale);
 export default Fl32_Ap_Back_Store_RDb_Schema_Sale;

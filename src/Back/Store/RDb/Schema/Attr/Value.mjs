@@ -11,6 +11,6 @@ Fl32_Ap_Back_Store_RDb_Schema_Attr_Value.A_ATTR_REF = 'attr_ref';
 Fl32_Ap_Back_Store_RDb_Schema_Attr_Value.A_ID = 'id';
 Fl32_Ap_Back_Store_RDb_Schema_Attr_Value.ENTITY = 'attr_value';
 
-// freeze class to deny attributes changes and export
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Back_Store_RDb_Schema_Attr_Value);
 export default Fl32_Ap_Back_Store_RDb_Schema_Attr_Value;

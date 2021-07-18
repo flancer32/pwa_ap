@@ -20,6 +20,6 @@ Fl32_Ap_Back_Store_RDb_Schema_Attr.DATA_TYPE_OPTION = 'option';
 Fl32_Ap_Back_Store_RDb_Schema_Attr.DATA_TYPE_TEXT = 'text';
 Fl32_Ap_Back_Store_RDb_Schema_Attr.ENTITY = 'attr';
 
-// freeze class to deny attributes changes and export
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Back_Store_RDb_Schema_Attr);
 export default Fl32_Ap_Back_Store_RDb_Schema_Attr;

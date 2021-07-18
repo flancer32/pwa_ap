@@ -22,7 +22,7 @@ export default class Fl32_Ap_Back_Service_Test_Get_Id {
         this.getService = function () {
             // DEFINE INNER FUNCTIONS
             /**
-             * @param {TeqFw_Web_Back_Api_Service_IContext} context
+             * @param {TeqFw_Web_Back_Api_Service_Context} context
              * @return Promise<void>
              */
             async function service(context) {
@@ -30,10 +30,10 @@ export default class Fl32_Ap_Back_Service_Test_Get_Id {
 
                 // MAIN FUNCTIONALITY
                 /** @type {Fl32_Ap_Shared_Service_Route_Test_Get_Id.Request} */
-                const req = context.getInData();
+                // const req = context.getInData();
                 /** @type {Fl32_Ap_Shared_Service_Route_Test_Get_Id.Response} */
                 const res = context.getOutData();
-                const shared = context.getHandlersShare();
+                // const shared = context.getHandlersShare();
                 const params = context.getRouteParams();
                 //
                 const data = {id: params?.id};

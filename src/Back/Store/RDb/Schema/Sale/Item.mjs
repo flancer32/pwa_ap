@@ -19,6 +19,6 @@ Fl32_Ap_Back_Store_RDb_Schema_Sale_Item.A_UNIT_PRICE = 'unit_price';
 Fl32_Ap_Back_Store_RDb_Schema_Sale_Item.A_UNIT_REF = 'unit_ref';
 Fl32_Ap_Back_Store_RDb_Schema_Sale_Item.ENTITY = 'sale_item';
 
-// freeze class to deny attributes changes and export
+// finalize code components for this es6-module
 Object.freeze(Fl32_Ap_Back_Store_RDb_Schema_Sale_Item);
 export default Fl32_Ap_Back_Store_RDb_Schema_Sale_Item;
