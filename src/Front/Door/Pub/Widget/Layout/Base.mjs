@@ -17,7 +17,7 @@ const NS = 'Fl32_Ap_Front_Door_Pub_Widget_Layout_Base';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {Fl32_Ap_Front_Door_Pub_Widget_Layout_Base} */
+    /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec['Fl32_Ap_User_Front_Model_Session$'];
@@ -66,6 +66,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Widget_Layout_Base
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {miniCart, navigator},

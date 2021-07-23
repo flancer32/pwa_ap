@@ -19,6 +19,8 @@ const EVT_SUBMIT = 'onSubmit';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     const {formatDate, formatTime} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
 
     // DEFINE WORKING VARS
@@ -82,6 +84,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Widget_Cart_Submit
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},

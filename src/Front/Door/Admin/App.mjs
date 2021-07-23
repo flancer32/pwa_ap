@@ -72,6 +72,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Admin_App
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},

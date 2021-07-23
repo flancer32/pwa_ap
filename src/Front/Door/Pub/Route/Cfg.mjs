@@ -19,7 +19,8 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
-    const i18n = spec[DEF.MOD_I18N.DI_I18N];
+    /** @type {TeqFw_I18n_Front_Model} */
+    const i18n = spec['TeqFw_I18n_Front_Model$'];
     /** @type {Fl32_Ap_Front_Door_Shared_Idb} */
     const idb = spec['Fl32_Ap_Front_Door_Shared_Idb$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Cart} */
@@ -96,6 +97,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Route_Cfg
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},
@@ -138,7 +140,7 @@ function Factory(spec) {
         watch: {
             fldLang(current, old) {
                 if (current !== old && (current === LANG_RU || current === LANG_LV)) {
-                    i18n.changeLanguage(current);
+                    i18n.getI18n().changeLanguage(current);
                 }
             }
         },
@@ -146,7 +148,7 @@ function Factory(spec) {
             this.profile = mProfile.getData();
         },
         mounted() {
-            this.fldLang = i18n.language;
+            this.fldLang = i18n.getLang();
         },
     };
 }

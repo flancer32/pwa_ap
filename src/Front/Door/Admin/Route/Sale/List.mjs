@@ -15,6 +15,8 @@ const NS = 'Fl32_Ap_Front_Door_Admin_Route_Sale_List';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     /** @type {Fl32_Ap_Front_Door_Admin_Widget_Sale_List_Item.vueCompTmpl} */
@@ -60,6 +62,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Admin_Route_Sale_List
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {saleItem, saleEdit},

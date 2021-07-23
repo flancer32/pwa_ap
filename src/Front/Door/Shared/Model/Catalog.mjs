@@ -11,8 +11,9 @@ class Fl32_Ap_Front_Door_Shared_Model_Catalog {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Front_Defaults} */
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
-        const i18n = spec[DEF.MOD_I18N.DI_I18N];
         const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
+        /** @type {TeqFw_I18n_Front_Model} */
+        const i18n = spec['TeqFw_I18n_Front_Model$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Dto_Product_Card.Factory} */
         const fCard = spec['Fl32_Ap_Front_Door_Shared_Dto_Product_Card#Factory$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Dto_Product_Unit.Factory} */
@@ -29,7 +30,7 @@ class Fl32_Ap_Front_Door_Shared_Model_Catalog {
 
         // DEFINE INNER FUNCTIONS
         async function init() {
-            const lang = i18n.language;
+            const lang = i18n.getLang();
             const res = await ds.loadData({lang});
             me.parseDataSource(res);
         }

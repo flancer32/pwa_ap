@@ -39,6 +39,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Route_SignIn_CodeGet
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {codeGet},

@@ -15,6 +15,8 @@ const NS = 'Fl32_Ap_Front_Door_Pub_Route_Sales';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Sales_Item.vueCompTmpl} */
     const saleItem = spec['Fl32_Ap_Front_Door_Pub_Widget_Sales_Item$']; // vue comp tmpl
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Sales} */
@@ -53,6 +55,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Route_Sales
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {saleItem},

@@ -18,6 +18,8 @@ const TIMEOUT = 3000;
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Web_Front_Api_Dto_Config} */
     const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {TeqFw_Web_Front_Service_Gate} */
@@ -64,6 +66,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Shared_Widget_Sign_In_Code_Get
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         data() {

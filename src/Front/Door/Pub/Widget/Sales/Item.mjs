@@ -17,6 +17,8 @@ const NS = 'Fl32_Ap_Front_Door_Pub_Widget_Sales_Item';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     const {formatAmount, formatDateTime} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
     /** @type {Fl32_Ap_Front_Door_Shared_Model_Catalog} */
     const mCatalog = spec['Fl32_Ap_Front_Door_Shared_Model_Catalog$'];
@@ -81,6 +83,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Widget_Sales_Item
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},

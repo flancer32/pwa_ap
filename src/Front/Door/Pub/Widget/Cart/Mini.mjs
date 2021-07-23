@@ -47,6 +47,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Widget_Cart_Mini
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},

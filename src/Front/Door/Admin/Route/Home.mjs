@@ -13,8 +13,10 @@ const NS = 'Fl32_Ap_Front_Door_Admin_Route_Home';
  * @memberOf Fl32_Ap_Front_Door_Admin_Route_Home
  * @returns {Fl32_Ap_Front_Door_Admin_Route_Home.vueCompTmpl}
  */
-function Factory() {
+function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
 
     // DEFINE WORKING VARS
     const template = `
@@ -33,6 +35,7 @@ function Factory() {
      * @memberOf Fl32_Ap_Front_Door_Admin_Route_Home
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},

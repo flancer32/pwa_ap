@@ -17,8 +17,9 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
-    const i18n = spec[DEF.MOD_I18N.DI_I18N];
     const {round} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
+    /** @type {TeqFw_I18n_Front_Model} */
+    const i18n = spec['TeqFw_I18n_Front_Model$'];
     /** @type {Fl32_Ap_Front_Door_Shared_DataSource_Catalog} */
     const dsProd = spec['Fl32_Ap_Front_Door_Shared_DataSource_Catalog$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Cart} */
@@ -77,6 +78,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Route_Cart
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {cartItem, dialogSubmit},
@@ -130,7 +132,7 @@ function Factory(spec) {
             },
         },
         async created() {
-            const lang = i18n.language;
+            const lang = i18n.getLang();
             await dsProd.getData({lang}); // load product data to use in items widgets
             this.cart = mCart.getData();
         },

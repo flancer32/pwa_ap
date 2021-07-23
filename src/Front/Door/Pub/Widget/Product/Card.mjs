@@ -17,6 +17,8 @@ const NS = 'Fl32_Ap_Front_Door_Pub_Widget_Product_Card';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Product_Card_Unit.vueCompTmpl} */
     const unit = spec['Fl32_Ap_Front_Door_Pub_Widget_Product_Card_Unit$']; // vue comp tmpl
 
@@ -64,6 +66,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Pub_Widget_Product_Card
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {unit},

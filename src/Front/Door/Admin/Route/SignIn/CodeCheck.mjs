@@ -15,6 +15,8 @@ const NS = 'Fl32_Ap_Front_Door_Admin_Route_SignIn_CodeCheck';
  */
 function Factory(spec) {
     // EXTRACT DEPS
+    /** @type {Fl32_Ap_Front_Defaults} */
+    const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Web_Front_Api_Dto_Config} */
     const config = spec['TeqFw_Web_Front_Api_Dto_Config$'];
     /** @type {Fl32_Ap_User_Front_Model_Session} */
@@ -46,6 +48,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Admin_Route_SignIn_CodeCheck
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {},

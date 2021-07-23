@@ -7,9 +7,8 @@ export default class Fl32_Ap_Front_Door_Shared_DataSource_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Defaults} */
-        const DEF = spec['Fl32_Ap_Front_Defaults$'];
-        const i18n = spec[DEF.MOD_I18N.DI_I18N];
+        /** @type {TeqFw_I18n_Front_Model} */
+        const i18n = spec['TeqFw_I18n_Front_Model$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Idb} */
         const idb = spec['Fl32_Ap_Front_Door_Shared_Idb$'];
         /** @type {TeqFw_Web_Front_Service_Gate} */
@@ -31,7 +30,7 @@ export default class Fl32_Ap_Front_Door_Shared_DataSource_Catalog {
          */
         this.getData = async function ({lang}) {
             let result;
-            if (!lang) lang = i18n.language;
+            if (!lang) lang = i18n.getLang();
             const store = await idb.store(EDataSource.ENTITY);
             const found = await store.getByKey(TYPE);
             if (found && (found.request.lang === lang)) {

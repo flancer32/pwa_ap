@@ -29,6 +29,7 @@ export default class Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit_Item {
 
         // COMPOSE RESULT (template for component's new instances)
         return {
+            teq: {package: DEF.SHARED.NAME},
             name: NS,
             template,
             data() {
