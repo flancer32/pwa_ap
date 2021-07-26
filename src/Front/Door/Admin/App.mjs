@@ -21,12 +21,12 @@ function Factory(spec) {
     const container = spec['TeqFw_Di_Shared_Container$']; // singleton
     const router = spec[DEF.MOD_VUE.DI_ROUTER];
     const app = spec[DEF.MOD_VUE.DI_APP];
-    /** @type {TeqFw_Core_Front_Widget_Layout_Centered} */
-    const layoutCentered = spec['TeqFw_Core_Front_Widget_Layout_Centered$']; // vue comp tmpl
+    /** @type {Fl32_Ap_Front_Door_Shared_Widget_Layout_Centered} */
+    const layoutCentered = spec['Fl32_Ap_Front_Door_Shared_Widget_Layout_Centered$'];
     /** @type {Fl32_Ap_Front_Door_Admin_Layout_Base} */
-    const layoutBase = spec['Fl32_Ap_Front_Door_Admin_Layout_Base$']; // vue comp tmpl
+    const layoutBase = spec['Fl32_Ap_Front_Door_Admin_Layout_Base$'];
     /** @type {Fl32_Ap_Front_Door_Shared_Widget_Layout_Blank} */
-    const layoutBlank = spec['Fl32_Ap_Front_Door_Shared_Widget_Layout_Blank$']; // vue comp tmpl
+    const layoutBlank = spec['Fl32_Ap_Front_Door_Shared_Widget_Layout_Blank$'];
 
     // DEFINE WORKING VARS
     const template = `

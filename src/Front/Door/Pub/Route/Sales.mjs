@@ -18,7 +18,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Sales_Item.vueCompTmpl} */
-    const saleItem = spec['Fl32_Ap_Front_Door_Pub_Widget_Sales_Item$']; // vue comp tmpl
+    const saleItem = spec['Fl32_Ap_Front_Door_Pub_Widget_Sales_Item$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Sales} */
     const mSaleList = spec['Fl32_Ap_Front_Door_Pub_Model_Sales$'];
 

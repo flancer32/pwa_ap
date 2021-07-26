@@ -20,7 +20,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Front_Door_Shared_Model_Catalog} */
     const mCatalog = spec['Fl32_Ap_Front_Door_Shared_Model_Catalog$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Product_Card.vueCompTmpl} */
-    const productCard = spec['Fl32_Ap_Front_Door_Pub_Widget_Product_Card$']; // vue comp tmpl
+    const productCard = spec['Fl32_Ap_Front_Door_Pub_Widget_Product_Card$'];
 
     // DEFINE WORKING VARS
     const template = `

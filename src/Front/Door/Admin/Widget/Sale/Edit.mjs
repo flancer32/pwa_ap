@@ -58,7 +58,7 @@ export default class Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit {
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
         const {formatAmount, formatDateTime} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
         /** @type {Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit_Item} */
-        const saleItem = spec['Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit_Item$']; // vue comp tmpl
+        const saleItem = spec['Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit_Item$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Model_Catalog} */
         const mCatalog = spec['Fl32_Ap_Front_Door_Shared_Model_Catalog$'];
         /** @type {Fl32_Ap_Front_Door_Admin_Model_Sales} */

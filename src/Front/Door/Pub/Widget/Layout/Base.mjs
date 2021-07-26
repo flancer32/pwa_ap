@@ -23,9 +23,9 @@ function Factory(spec) {
     const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     const {ref} = spec[DEF.MOD_VUE.DI_VUE];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Cart_Mini.vueCompTmpl} */
-    const miniCart = spec['Fl32_Ap_Front_Door_Pub_Widget_Cart_Mini$']; // vue comp tmpl
+    const miniCart = spec['Fl32_Ap_Front_Door_Pub_Widget_Cart_Mini$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Layout_Navigator.vueCompTmpl} */
-    const navigator = spec['Fl32_Ap_Front_Door_Pub_Widget_Layout_Navigator$']; // vue comp tmpl
+    const navigator = spec['Fl32_Ap_Front_Door_Pub_Widget_Layout_Navigator$'];
 
     // DEFINE WORKING VARS
     const template = `

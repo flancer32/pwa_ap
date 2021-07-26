@@ -1,4 +1,4 @@
-@import "web/@teqfw/vue/styles.css";
+@import "../css/vue/styles.css";
 @import "web/@teqfw/ui-quasar/styles.css";
 @import "css/vars.css";
 @import "css/layout.css";

@@ -20,7 +20,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Product_Card_Unit.vueCompTmpl} */
-    const unit = spec['Fl32_Ap_Front_Door_Pub_Widget_Product_Card_Unit$']; // vue comp tmpl
+    const unit = spec['Fl32_Ap_Front_Door_Pub_Widget_Product_Card_Unit$'];
 
     // DEFINE WORKING VARS
     const template = `

@@ -22,7 +22,7 @@ function Factory(spec) {
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     /** @type {Fl32_Ap_Front_Door_Shared_Widget_Sign_In_Code_Get.vueCompTmpl} */
-    const codeGet = spec['Fl32_Ap_Front_Door_Shared_Widget_Sign_In_Code_Get$']; // vue comp tmpl
+    const codeGet = spec['Fl32_Ap_Front_Door_Shared_Widget_Sign_In_Code_Get$'];
 
     // DEFINE WORKING VARS
     const template = `

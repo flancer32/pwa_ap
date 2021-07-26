@@ -20,9 +20,9 @@ function Factory(spec) {
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     /** @type {Fl32_Ap_Front_Door_Admin_Widget_Sale_List_Item.vueCompTmpl} */
-    const saleItem = spec['Fl32_Ap_Front_Door_Admin_Widget_Sale_List_Item$']; // vue comp tmpl
+    const saleItem = spec['Fl32_Ap_Front_Door_Admin_Widget_Sale_List_Item$'];
     /** @type {Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit} */
-    const saleEdit = spec['Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit$']; // vue comp tmpl
+    const saleEdit = spec['Fl32_Ap_Front_Door_Admin_Widget_Sale_Edit$'];
     /** @type {Fl32_Ap_Front_Door_Admin_Model_Sales} */
     const mSales = spec['Fl32_Ap_Front_Door_Admin_Model_Sales$'];
 

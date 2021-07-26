@@ -14,7 +14,6 @@
             const API = './api';
             const API_LOAD_CFG = `${API}/@teqfw/web/load/config`;
             const API_LOAD_NS = `${API}/@teqfw/web/load/namespaces`;
-            const API_LOAD_I18N = `${API}/@teqfw/i18n/load`;
 
             // DEFINE INNER FUNCTIONS
 
@@ -163,7 +162,7 @@
                 await initSession(container, DEF);
                 // create Vue app, load root component and mount application to DOM
                 const app = await initApp(container, DEF);
-                const appRoot = await container.get('Fl32_Ap_Front_Door_Admin_App$'); // vue comp tmpl
+                const appRoot = await container.get('Fl32_Ap_Front_Door_Admin_App$');
                 app.component('appRoot', appRoot);
                 // mount Vue application to the page
                 app.mount('BODY > DIV');

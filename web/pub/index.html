@@ -162,7 +162,7 @@
                 await initSession(container, DEF);
                 // create Vue app, load root component and mount application to DOM
                 const app = await initApp(container, DEF);
-                const appRoot = await container.get('Fl32_Ap_Front_Door_Pub_App$'); // vue comp tmpl
+                const appRoot = await container.get('Fl32_Ap_Front_Door_Pub_App$');
                 app.component('appRoot', appRoot);
                 // mount Vue application to the page
                 app.mount('BODY > DIV');

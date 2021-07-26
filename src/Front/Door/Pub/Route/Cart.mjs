@@ -27,9 +27,9 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Sales} */
     const mSales = spec['Fl32_Ap_Front_Door_Pub_Model_Sales$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Cart_Item.vueCompTmpl} */
-    const cartItem = spec['Fl32_Ap_Front_Door_Pub_Widget_Cart_Item$']; // vue comp tmpl
+    const cartItem = spec['Fl32_Ap_Front_Door_Pub_Widget_Cart_Item$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Cart_Submit.vueCompTmpl} */
-    const dialogSubmit = spec['Fl32_Ap_Front_Door_Pub_Widget_Cart_Submit$']; // vue comp tmpl
+    const dialogSubmit = spec['Fl32_Ap_Front_Door_Pub_Widget_Cart_Submit$'];
     /** @type {TeqFw_Web_Front_Service_Gate} */
     const gate = spec['TeqFw_Web_Front_Service_Gate$'];
     /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Factory} */

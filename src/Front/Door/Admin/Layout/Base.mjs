@@ -64,6 +64,7 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Front_Door_Admin_Layout_Base
      */
     return {
+        teq: {package: DEF.SHARED.NAME},
         name: NS,
         template,
         components: {navigator},
