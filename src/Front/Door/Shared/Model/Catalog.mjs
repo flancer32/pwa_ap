@@ -9,8 +9,8 @@ class Fl32_Ap_Front_Door_Shared_Model_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {TeqFw_I18n_Front_Model} */
-        const i18n = spec['TeqFw_I18n_Front_Model$'];
+        /** @type {TeqFw_I18n_Front_Lib} */
+        const i18n = spec['TeqFw_I18n_Front_Lib$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Dto_Product_Card.Factory} */
         const fCard = spec['Fl32_Ap_Front_Door_Shared_Dto_Product_Card#Factory$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Dto_Product_Unit.Factory} */

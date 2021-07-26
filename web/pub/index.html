@@ -37,8 +37,8 @@
                 async function initI18n(container, app) {
                     const supportedLngs = ['lv', 'ru'];
                     const fallbackLng = 'ru';
-                    /** @type {TeqFw_I18n_Front_Model} */
-                    const model = await container.get('TeqFw_I18n_Front_Model$');
+                    /** @type {TeqFw_I18n_Front_Lib} */
+                    const model = await container.get('TeqFw_I18n_Front_Lib$');
                     await model.init(supportedLngs, fallbackLng);
                     // config options after 'init'
                     // add '$t' translation function to Vue app

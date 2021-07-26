@@ -11,8 +11,10 @@ export default class Fl32_Ap_Front_Door_Admin_App {
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
         /** @type {TeqFw_Vue_Front_Lib} */
         const VueLib = spec['TeqFw_Vue_Front_Lib$'];
-        /** @type {TeqFw_I18n_Front_Model} */
-        const I18nLib = spec['TeqFw_I18n_Front_Model$'];
+        /** @type {TeqFw_I18n_Front_Lib} */
+        const I18nLib = spec['TeqFw_I18n_Front_Lib$'];
+        /** @type {TeqFw_Quasar_Front_Lib} */
+        const QuasarLib = spec['TeqFw_Quasar_Front_Lib$'];
         /** @type {TeqFw_Di_Shared_Container} */
         const container = spec['TeqFw_Di_Shared_Container$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Widget_Layout_Centered} */
@@ -62,8 +64,9 @@ export default class Fl32_Ap_Front_Door_Admin_App {
             }
 
             function initQuasarUi(app) {
-                app.use(self.Quasar, {config: {}});
-                self.Quasar.iconSet.set(self.Quasar.iconSet.svgMaterialIcons);
+                const quasar = QuasarLib.getQuasar()
+                app.use(quasar, {config: {}});
+                quasar.iconSet.set(quasar.iconSet.svgMaterialIcons);
             }
 
             function initRouter() {

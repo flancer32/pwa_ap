@@ -17,8 +17,6 @@ export default class Fl32_Ap_Front_Defaults {
     DOOR_PUB_ROUTE_SIGN_IN_EMAIL_GET = '/signIn/emailGet';
     DOOR_PUB_ROUTE_sign_Up_code_Check = '/signUp/codeCheck/:code';
 
-    /** @type {TeqFw_Ui_Quasar_Front_Defaults} */
-    MOD_QUASAR;
     /** @type {TeqFw_Web_Front_Defaults} */
     MOD_WEB;
 
@@ -27,7 +25,6 @@ export default class Fl32_Ap_Front_Defaults {
 
     constructor(spec) {
         // EXTRACT DEPS
-        this.MOD_QUASAR = spec['TeqFw_Ui_Quasar_Front_Defaults$'];
         this.MOD_WEB = spec['TeqFw_Web_Front_Defaults$'];
         this.SHARED = spec['Fl32_Ap_Shared_Defaults$'];
 

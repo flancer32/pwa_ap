@@ -18,8 +18,8 @@ function Factory(spec) {
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
     const {round} = spec['TeqFw_Core_Shared_Util']; // ES6 destruct
-    /** @type {TeqFw_I18n_Front_Model} */
-    const i18n = spec['TeqFw_I18n_Front_Model$'];
+    /** @type {TeqFw_I18n_Front_Lib} */
+    const i18n = spec['TeqFw_I18n_Front_Lib$'];
     /** @type {Fl32_Ap_Front_Door_Shared_DataSource_Catalog} */
     const dsProd = spec['Fl32_Ap_Front_Door_Shared_DataSource_Catalog$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Cart} */

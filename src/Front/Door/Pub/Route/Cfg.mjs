@@ -19,8 +19,8 @@ function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Front_Defaults} */
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
-    /** @type {TeqFw_I18n_Front_Model} */
-    const i18n = spec['TeqFw_I18n_Front_Model$'];
+    /** @type {TeqFw_I18n_Front_Lib} */
+    const i18n = spec['TeqFw_I18n_Front_Lib$'];
     /** @type {Fl32_Ap_Front_Door_Shared_Idb} */
     const idb = spec['Fl32_Ap_Front_Door_Shared_Idb$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Model_Cart} */
