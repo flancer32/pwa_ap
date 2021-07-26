@@ -68,9 +68,9 @@
 
                 // create vue application, init router, i18n, vuex, ...
                 const result = self.Vue.createApp({});
-                container.set(DEF.MOD_VUE.DI_APP, result);
+                // container.set(DEF.MOD_VUE.DI_APP, result);
                 const router = initRouter(self.VueRouter);
-                container.set(DEF.MOD_VUE.DI_ROUTER, router);
+                // container.set(DEF.MOD_VUE.DI_ROUTER, router);
                 await initI18n(container, result);
                 // init quasar framework
                 result.use(self.Quasar, {config: {}});
@@ -137,7 +137,7 @@
                 /** @type {Fl32_Ap_Front_Defaults} */
                 const DEF = await container.get('Fl32_Ap_Front_Defaults$');
                 // save old-style loaded JS objects into DI container (see <script src="..."> at the end of HTML)
-                container.set(DEF.MOD_VUE.DI_VUE, self.Vue);
+                // container.set(DEF.MOD_VUE.DI_VUE, self.Vue);
                 return {container, DEF};
             }
 

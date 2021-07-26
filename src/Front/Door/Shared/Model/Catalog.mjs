@@ -9,9 +9,6 @@ class Fl32_Ap_Front_Door_Shared_Model_Catalog {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Defaults} */
-        const DEF = spec['Fl32_Ap_Front_Defaults$'];
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
         /** @type {TeqFw_I18n_Front_Model} */
         const i18n = spec['TeqFw_I18n_Front_Model$'];
         /** @type {Fl32_Ap_Front_Door_Shared_Dto_Product_Card.Factory} */
@@ -20,8 +17,11 @@ class Fl32_Ap_Front_Door_Shared_Model_Catalog {
         const fUnit = spec['Fl32_Ap_Front_Door_Shared_Dto_Product_Unit#Factory$'];
         /** @type {Fl32_Ap_Front_Door_Shared_DataSource_Catalog} */
         const ds = spec['Fl32_Ap_Front_Door_Shared_DataSource_Catalog$'];
+        /** @type {TeqFw_Vue_Front_Lib} */
+        const VueLib = spec['TeqFw_Vue_Front_Lib$'];
 
         // DEFINE WORKING VARS
+        const {reactive} = VueLib.getVue();
         /** @type {Object<number, Fl32_Ap_Front_Door_Shared_Dto_Product_Card>} */
         let modelData = reactive({});
         /** @type {Object<number, Fl32_Ap_Front_Door_Shared_Dto_Product_Unit>} */

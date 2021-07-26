@@ -10,17 +10,17 @@ class Fl32_Ap_Front_Door_Pub_Model_Profile {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Defaults} */
-        const DEF = spec['Fl32_Ap_Front_Defaults$'];
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
         /** @type {TeqFw_Core_Shared_Logger} */
         const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {Fl32_Ap_Front_Door_Pub_DataSource_Profile} */
         const ds = spec['Fl32_Ap_Front_Door_Pub_DataSource_Profile$'];
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Profile.Factory} */
         const fProfile = spec['Fl32_Ap_Front_Door_Pub_Dto_Profile#Factory$'];
+        /** @type {TeqFw_Vue_Front_Lib} */
+        const VueLib = spec['TeqFw_Vue_Front_Lib$'];
 
         // DEFINE WORKING VARS
+        const {reactive} = VueLib.getVue();
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Profile} */
         let modelData = reactive(fProfile.create());
 

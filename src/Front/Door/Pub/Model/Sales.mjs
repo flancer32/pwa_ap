@@ -9,9 +9,6 @@ class Fl32_Ap_Front_Door_Pub_Model_Sales {
 
     constructor(spec) {
         // EXTRACT DEPS
-        /** @type {Fl32_Ap_Front_Defaults} */
-        const DEF = spec['Fl32_Ap_Front_Defaults$'];
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
         /** @type {TeqFw_Core_Shared_Logger} */
         const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {Fl32_Ap_Front_Door_Pub_DataSource_Sales} */
@@ -20,8 +17,11 @@ class Fl32_Ap_Front_Door_Pub_Model_Sales {
         const fSale = spec['Fl32_Ap_Front_Door_Pub_Dto_Sale#Factory$'];
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Sale_Item.Factory} */
         const fSaleItem = spec['Fl32_Ap_Front_Door_Pub_Dto_Sale_Item#Factory$'];
+        /** @type {TeqFw_Vue_Front_Lib} */
+        const VueLib = spec['TeqFw_Vue_Front_Lib$'];
 
         // DEFINE WORKING VARS
+        const {reactive} = VueLib.getVue();
         /** @type {Object<number, Fl32_Ap_Front_Door_Pub_Dto_Sale>} */
         let modelData = reactive({});
 

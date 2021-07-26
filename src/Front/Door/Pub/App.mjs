@@ -19,8 +19,8 @@ function Factory(spec) {
     const DEF = spec['Fl32_Ap_Front_Defaults$'];
     /** @type {TeqFw_Di_Shared_Container} */
     const container = spec['TeqFw_Di_Shared_Container$']; // singleton
-    const router = spec[DEF.MOD_VUE.DI_ROUTER];
-    const app = spec[DEF.MOD_VUE.DI_APP];
+    // const router = spec[DEF.MOD_VUE.DI_ROUTER];
+    // const app = spec[DEF.MOD_VUE.DI_APP];
     /** @type {Fl32_Ap_Front_Door_Shared_Widget_Layout_Centered} */
     const layoutCentered = spec['Fl32_Ap_Front_Door_Shared_Widget_Layout_Centered$'];
     /** @type {Fl32_Ap_Front_Door_Pub_Widget_Layout_Base} */

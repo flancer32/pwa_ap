@@ -22,10 +22,11 @@ function Factory(spec) {
     /** @type {Fl32_Ap_User_Front_Model_Session} */
     const session = spec['Fl32_Ap_User_Front_Model_Session$'];
     const navigator = spec['Fl32_Ap_Front_Door_Admin_Layout_Navigator$'];
-    // TODO: fix it
-    const {ref} = spec[DEF.MOD_VUE.DI_VUE];
+    /** @type {TeqFw_Vue_Front_Lib} */
+    const VueLib = spec['TeqFw_Vue_Front_Lib$'];
 
     // DEFINE WORKING VARS
+    const {ref} = VueLib.getVue();
     const template = `
 <q-layout class="layoutBase" view="hHh lpR fFf" v-if="isAuthenticated">
 

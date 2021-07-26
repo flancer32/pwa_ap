@@ -14,7 +14,6 @@ class Fl32_Ap_Front_Door_Pub_Model_Cart {
         const DEF = spec['Fl32_Ap_Front_Defaults$'];
         /** @type {TeqFw_Di_Shared_Container} */
         const container = spec['TeqFw_Di_Shared_Container$'];
-        const {reactive} = spec[DEF.MOD_VUE.DI_VUE];
         /** @type {TeqFw_Core_Shared_Logger} */
         const logger = spec['TeqFw_Core_Shared_Logger$'];
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Cart.Factory} */
@@ -23,8 +22,11 @@ class Fl32_Ap_Front_Door_Pub_Model_Cart {
         const fItem = spec['Fl32_Ap_Front_Door_Pub_Dto_Cart_Item#Factory$'];
         /** @type {Fl32_Ap_Front_Door_Pub_DataSource_Cart} */
         const ds = spec['Fl32_Ap_Front_Door_Pub_DataSource_Cart$'];
+        /** @type {TeqFw_Vue_Front_Lib} */
+        const VueLib = spec['TeqFw_Vue_Front_Lib$'];
 
         // DEFINE WORKING VARS
+        const {reactive} = VueLib.getVue();
         /** @type {Fl32_Ap_Front_Door_Pub_Dto_Cart} */
         let modelData = reactive({});
 
