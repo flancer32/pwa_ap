@@ -18,8 +18,8 @@ export default class Fl32_Ap_Back_Service_Sale_List {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_Connect$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Sale_List.Factory} */
         const route = spec['Fl32_Ap_Shared_Service_Route_Sale_List#Factory$'];
         /** @type {Fl32_Ap_Back_Store_RDb_Query_Sale_List} */

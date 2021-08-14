@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "@flancer32/mod_ap_user": "github:flancer32/mod_ap_user",
+    "@teqfw/core": "github:teqfw/core",
+    "@teqfw/db": "github:teqfw/db",
     "@teqfw/http2": "github:teqfw/http2",
     "@teqfw/i18n": "github:teqfw/i18n",
     "knex": "*",

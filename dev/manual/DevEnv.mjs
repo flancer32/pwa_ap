@@ -41,8 +41,8 @@ export default async function init() {
      * @return {Promise<void>}
      */
     async function initDb(container) {
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = await container.get('TeqFw_Core_Back_RDb_Connector$');  // singleton instance
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = await container.get('TeqFw_Db_Back_RDb_Connect$');  // singleton instance
         await rdb.init();
         // const finalizer = function (boo) {
         //     debugger

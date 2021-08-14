@@ -18,9 +18,9 @@ export default class Fl32_Ap_Back_Service_Sale_Add {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
-        /** @type {TeqFw_Core_Back_RDb_Connector} */
-        const rdb = spec['TeqFw_Core_Back_RDb_Connector$'];
-        const {isPostgres} = spec['TeqFw_Core_Back_Util_RDb'];
+        /** @type {TeqFw_Db_Back_RDb_Connect} */
+        const rdb = spec['TeqFw_Db_Back_RDb_Connect$'];
+        const {isPostgres} = spec['TeqFw_Db_Back_Util'];
         /** @type {Fl32_Ap_Shared_Service_Route_Sale_Add.Factory} */
         const route = spec['Fl32_Ap_Shared_Service_Route_Sale_Add#Factory$'];
         /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Sale} */

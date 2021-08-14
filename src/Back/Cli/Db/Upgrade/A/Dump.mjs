@@ -16,18 +16,18 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {TeqFw_Core_Back_RDb_Connector} */
-    const connector = spec['TeqFw_Core_Back_RDb_Connector$'];
+    /** @type {TeqFw_Db_Back_RDb_Connect} */
+    const connector = spec['TeqFw_Db_Back_RDb_Connect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
-    /** @type {Function|TeqFw_Core_Back_Util_RDb.serialsGet} */
-    const serialsGet = spec['TeqFw_Core_Back_Util_RDb#serialsGet']; // function
-    /** @type {Function|TeqFw_Core_Back_Util_RDb.getTables} */
-    const getTables = spec['TeqFw_Core_Back_Util_RDb#getTables']; // function
-    /** @type {Function|TeqFw_Core_Back_Util_RDb.isPostgres} */
-    const isPostgres = spec['TeqFw_Core_Back_Util_RDb#isPostgres']; // function
-    /** @type {Function|TeqFw_Core_Back_Util_RDb.itemsSelect} */
-    const itemsSelect = spec['TeqFw_Core_Back_Util_RDb#itemsSelect']; // function
+    /** @type {Function|TeqFw_Db_Back_Util.serialsGet} */
+    const serialsGet = spec['TeqFw_Db_Back_Util#serialsGet']; // function
+    /** @type {Function|TeqFw_Db_Back_Util.getTables} */
+    const getTables = spec['TeqFw_Db_Back_Util#getTables']; // function
+    /** @type {Function|TeqFw_Db_Back_Util.isPostgres} */
+    const isPostgres = spec['TeqFw_Db_Back_Util#isPostgres']; // function
+    /** @type {Function|TeqFw_Db_Back_Util.itemsSelect} */
+    const itemsSelect = spec['TeqFw_Db_Back_Util#itemsSelect']; // function
     // APP Entities
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
     const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#'];
