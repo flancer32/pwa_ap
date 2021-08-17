@@ -13,8 +13,10 @@
     ]
   },
   "core": {
-    "onInit": "Fl32_Ap_Back_Plugin_Init",
-    "onStop": "Fl32_Ap_Back_Plugin_Stop",
+    "back": {
+      "onInit": "Fl32_Ap_Back_Plugin_Init",
+      "onStop": "Fl32_Ap_Back_Plugin_Stop"
+    },
     "commands": [
       "Fl32_Ap_Back_Cli_Db_Reset",
       "Fl32_Ap_Back_Cli_Db_Upgrade"
