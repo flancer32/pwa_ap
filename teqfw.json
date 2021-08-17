@@ -13,7 +13,7 @@
     ]
   },
   "core": {
-    "back": {
+    "plugin": {
       "onInit": "Fl32_Ap_Back_Plugin_Init",
       "onStop": "Fl32_Ap_Back_Plugin_Stop"
     },
