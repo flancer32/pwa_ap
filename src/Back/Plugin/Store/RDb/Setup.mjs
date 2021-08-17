@@ -1,4 +1,4 @@
-class Fl32_Ap_Plugin_Store_RDb_Setup {
+class Fl32_Ap_Back_Plugin_Store_RDb_Setup {
     constructor(spec) {
         const {
             /** @type {Function|TeqFw_Db_Back_Util.nameFK} */
@@ -391,4 +391,4 @@ class Fl32_Ap_Plugin_Store_RDb_Setup {
     }
 }
 
-export default Fl32_Ap_Plugin_Store_RDb_Setup;
+export default Fl32_Ap_Back_Plugin_Store_RDb_Setup;

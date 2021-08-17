@@ -23,6 +23,8 @@ export default class Fl32_Ap_Back_Defaults {
     DATA_USER_ADMIN_NAME = 'El Jefe';
     DATA_USER_ADMIN_SESS_ID = 'sessIdForAdmin';
 
+    DESC_NODE = 'app'; // plugin's node in './cfg/local.json'
+
     DOOR_ADM_ROUTE_SIGNIN_CODE_CHECK;
     DOOR_PUB_ROUTE_SIGNIN_CODE_CHECK;
 

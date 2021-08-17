@@ -18,14 +18,14 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Z_Restruct';
  */
 function Factory(spec) {
     // PARSE INPUT & DEFINE WORKING VARS
-    /** @type {TeqFw_Db_Back_RDb_Connect} */
-    const connector = spec['TeqFw_Db_Back_RDb_Connect$'];
+    /** @type {TeqFw_Db_Back_Api_IConnect} */
+    const connector = spec['TeqFw_Db_Back_Api_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
     /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
     const setupUser = spec['Fl32_Ap_User_Plugin_Store_RDb_Setup$'];
-    /** @type {Fl32_Ap_Plugin_Store_RDb_Setup} */
-    const setupApp = spec['Fl32_Ap_Plugin_Store_RDb_Setup$'];
+    /** @type {Fl32_Ap_Back_Plugin_Store_RDb_Setup} */
+    const setupApp = spec['Fl32_Ap_Back_Plugin_Store_RDb_Setup$'];
 
     // DEFINE INNER FUNCTIONS
     /**
@@ -37,7 +37,7 @@ function Factory(spec) {
         const knex = await connector.getKnex();
         // compose queries to recreate DB structure
         /** @type {SchemaBuilder} */
-        const builder = connector.getSchema();
+        const builder = connector.getSchemaBuilder();
 
         // drop tables considering relations (1) then drop base registries (0)
         // (1)
