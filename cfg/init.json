@@ -11,7 +11,7 @@
       }
     }
   },
-  "email": {
+  "@teqfw/email": {
     "host": "smtp.gmail.com",
     "port": 465,
     "secure": true,
@@ -24,7 +24,7 @@
   "i18n": {
     "devMode": false
   },
-  "web": {
+  "@teqfw/web": {
     "server": {"port": 3000},
     "urlBase": "project.com"
   }

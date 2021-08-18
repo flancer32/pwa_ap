@@ -1,5 +1,5 @@
 {
-  "di": {
+  "@teqfw/di": {
     "autoload": {
       "ns": "Fl32_Ap",
       "path": "./src"
@@ -12,7 +12,7 @@
       }
     ]
   },
-  "core": {
+  "@teqfw/core": {
     "plugin": {
       "onInit": "Fl32_Ap_Back_Plugin_Init",
       "onStop": "Fl32_Ap_Back_Plugin_Stop"
@@ -22,7 +22,7 @@
       "Fl32_Ap_Back_Cli_Db_Upgrade"
     ]
   },
-  "web": {
+  "@teqfw/web": {
     "doors": ["admin", "pub"],
     "services": [
       "Fl32_Ap_Back_Service_Product_List",
