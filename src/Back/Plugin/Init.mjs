@@ -16,11 +16,11 @@ export default function Factory(spec) {
     const connect = spec['TeqFw_Db_Back_RDb_Connect$']; // get implementation
 
     // COMPOSE RESULT
-    async function init() {
+    async function action() {
         // DEFINE INNER FUNCTIONS
         /**
          * Get local configuration and initialize DB connection.
-         * Place connection object as 'TeqFw_Db_Back_Api_IConnect' singleton to DI-container.
+         * Place connection object as 'TeqFw_Db_Back_Api_RDb_IConnect' singleton to DI-container.
          *
          * @return {Promise<void>}
          */
@@ -28,15 +28,15 @@ export default function Factory(spec) {
             /** @type {Fl32_Ap_Back_Api_Dto_Config_Local} */
             const cfg = config.getLocal(DEF.DESC_NODE);
             await connect.init(cfg.db);
-            container.set('TeqFw_Db_Back_Api_IConnect$', connect); // set as interface
+            container.set('TeqFw_Db_Back_Api_RDb_IConnect$', connect); // set as interface
         }
 
         // MAIN FUNCTIONALITY
         await initDb();
     }
 
-    Object.defineProperty(init, 'name', {value: `${NS}.${init.name}`});
-    return init;
+    Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
+    return action;
 }
 
 // finalize code components for this es6-module

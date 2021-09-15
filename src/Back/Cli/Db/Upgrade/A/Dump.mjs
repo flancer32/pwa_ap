@@ -16,8 +16,8 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump';
  */
 function Factory(spec) {
     // EXTRACT DEPS
-    /** @type {TeqFw_Db_Back_Api_IConnect} */
-    const connector = spec['TeqFw_Db_Back_Api_IConnect$'];
+    /** @type {TeqFw_Db_Back_Api_RDb_IConnect} */
+    const connector = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
     /** @type {Function|TeqFw_Db_Back_Util.serialsGet} */

@@ -3,12 +3,8 @@
  *
  * @namespace Fl32_Ap_Back_Cli_Db_Z_Restruct
  */
-// MODULE'S IMPORT
-
-// DEFINE WORKING VARS
 const NS = 'Fl32_Ap_Back_Cli_Db_Z_Restruct';
 
-// DEFINE MODULE'S FUNCTIONS
 /**
  * Factory to setup context and to create the action.
  *
@@ -16,16 +12,16 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Z_Restruct';
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Z_Restruct
  */
-function Factory(spec) {
+export default function Factory(spec) {
     // PARSE INPUT & DEFINE WORKING VARS
-    /** @type {TeqFw_Db_Back_Api_IConnect} */
-    const connector = spec['TeqFw_Db_Back_Api_IConnect$'];
+    /** @type {TeqFw_Db_Back_Api_RDb_IConnect} */
+    const conn = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
-    /** @type {Fl32_Ap_User_Plugin_Store_RDb_Setup} */
-    const setupUser = spec['Fl32_Ap_User_Plugin_Store_RDb_Setup$'];
-    /** @type {Fl32_Ap_Back_Plugin_Store_RDb_Setup} */
-    const setupApp = spec['Fl32_Ap_Back_Plugin_Store_RDb_Setup$'];
+    /** @type {TeqFw_Core_Back_Config} */
+    const config = spec['TeqFw_Core_Back_Config$'];
+    /** @type {TeqFw_Db_Back_Api_RDb_ISchema} */
+    const dbSchema = spec['TeqFw_Db_Back_Api_RDb_ISchema$'];
 
     // DEFINE INNER FUNCTIONS
     /**
@@ -34,36 +30,18 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Back_Cli_Db_Z_Restruct
      */
     async function action() {
-        const knex = await connector.getKnex();
-        // compose queries to recreate DB structure
-        /** @type {SchemaBuilder} */
-        const builder = connector.getSchemaBuilder();
-
-        // drop tables considering relations (1) then drop base registries (0)
-        // (1)
-        setupApp.dropTables1(builder);
-        setupUser.dropTables1(builder);
-        // (0)
-        setupApp.dropTables0(builder);
-        setupUser.dropTables0(builder);
-        // create tables
-        setupUser.createStructure(knex, builder);
-        setupApp.createStructure(knex, builder);
-        // perform queries to recreate DB structure
-        await builder;
+        // load DEMs then drop/create all tables
+        const path = config.getBoot().projectRoot;
+        await dbSchema.loadDem({path});
+        await dbSchema.dropAllTables({conn});
+        await dbSchema.createAllTables({conn});
         logger.info('Database structure is recreated.');
     }
 
-    // MAIN FUNCTIONALITY
-    Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
-
     // COMPOSE RESULT
+    Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
     return action;
 }
 
-
-// MODULE'S FUNCTIONALITY
+// finalize code components for this es6-module
 Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.name}`});
-
-// MODULE'S EXPORT
-export default Factory;

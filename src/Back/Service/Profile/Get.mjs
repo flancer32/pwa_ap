@@ -18,8 +18,8 @@ export default class Fl32_Ap_Back_Service_Profile_Get {
         // EXTRACT DEPS
         /** @type {Fl32_Ap_Back_Defaults} */
         const DEF = spec['Fl32_Ap_Back_Defaults$'];
-        /** @type {TeqFw_Db_Back_Api_IConnect} */
-        const rdb = spec['TeqFw_Db_Back_Api_IConnect$'];
+        /** @type {TeqFw_Db_Back_Api_RDb_IConnect} */
+        const rdb = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
         /** @type {Fl32_Ap_Shared_Service_Route_Profile_Get.Factory} */
         const route = spec['Fl32_Ap_Shared_Service_Route_Profile_Get#Factory$'];
 
