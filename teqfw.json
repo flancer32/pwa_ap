@@ -4,13 +4,9 @@
       "ns": "Fl32_Ap",
       "path": "./src"
     },
-    "replace": [
-      {
-        "orig": "TeqFw_Web_Front_Api_Gate_IAjaxLed",
-        "alter": "Fl32_Ap_Front_Rewrite_Web_Gate_AjaxLed",
-        "area": "front"
-      }
-    ]
+    "replace": {
+      "TeqFw_Web_Front_Api_Gate_IAjaxLed": {"ns": "Fl32_Ap_Front_Rewrite_Web_Gate_AjaxLed", "area": "front"}
+    }
   },
   "@teqfw/core": {
     "plugin": {
