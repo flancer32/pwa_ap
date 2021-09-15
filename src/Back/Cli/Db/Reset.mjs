@@ -24,7 +24,7 @@ function Factory(spec) {
     const connector = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
-    const {isPostgres} = spec['TeqFw_Db_Back_Util'];
+    const {isPostgres} = spec['TeqFw_Db_Back_Api_Util'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
     const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$'];
     /** @type {typeof Fl32_Ap_User_Back_Store_RDb_Schema_Id_Email} */

@@ -20,12 +20,12 @@ function Factory(spec) {
     const connector = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
-    /** @type {Function|TeqFw_Db_Back_Util.serialsSet} */
-    const serialsSet = spec['TeqFw_Db_Back_Util#serialsSet']; // function
-    /** @type {Function|TeqFw_Db_Back_Util.isPostgres} */
-    const isPostgres = spec['TeqFw_Db_Back_Util#isPostgres']; // function
-    /** @type {Function|TeqFw_Db_Back_Util.itemsInsert} */
-    const itemsInsert = spec['TeqFw_Db_Back_Util#itemsInsert']; // function
+    /** @type {Function|TeqFw_Db_Back_Api_Util.serialsSet} */
+    const serialsSet = spec['TeqFw_Db_Back_Api_Util#serialsSet']; // function
+    /** @type {Function|TeqFw_Db_Back_Api_Util.isPostgres} */
+    const isPostgres = spec['TeqFw_Db_Back_Api_Util#isPostgres']; // function
+    /** @type {Function|TeqFw_Db_Back_Api_Util.itemsInsert} */
+    const itemsInsert = spec['TeqFw_Db_Back_Api_Util#itemsInsert']; // function
     // APP Entities
     /** @type {typeof Fl32_Ap_Back_Store_RDb_Schema_Attr} */
     const EAttr = spec['Fl32_Ap_Back_Store_RDb_Schema_Attr#'];

@@ -1,0 +1,409 @@
+{
+  "entity": {
+    "attr": {
+      "comment": "Attributes registry.",
+      "attr": {
+        "id": {"type": "id"},
+        "code": {"type": "string", "comment": "Unique code for attribute."},
+        "date_created": {
+          "comment": "Date-time for registration of the attribute.",
+          "type": "datetime",
+          "default": "current"
+        },
+        "type": {
+          "comment": "Attribute type (decimal, string, option, ...).",
+          "type": "enum",
+          "options": {"values": ["datetime", "decimal", "integer", "option", "text"]}
+        }
+      },
+      "index": {
+        "uq_code": {"type": "unique", "attrs": ["code"]}
+      }
+    },
+    "sale": {
+      "comment": "Registry for sales orders.",
+      "attr": {
+        "id": {"type": "id"},
+        "user_ref": {"type": "ref", "comment": "Reference to user that created the sale."},
+        "date_created": {
+          "comment": "Date-time for sale registration.",
+          "type": "datetime",
+          "default": "current"
+        },
+        "date_receiving": {
+          "comment": "Date-time for sale receiving.",
+          "type": "datetime",
+          "default": "current"
+        },
+        "state": {
+          "comment": "Current state of the sale order.",
+          "type": "enum",
+          "options": {"values": ["new", "collected", "complete", "cancelled"]}
+        },
+        "amount_total": {
+          "comment": "Total amount of the sale order.",
+          "type": "number",
+          "options": {"precision": 20, "scale": 6}
+        },
+        "currency": {"type": "string", "comment": "Currency for the sale order."}
+      },
+      "relation": {
+        "user": {
+          "attrs": ["user_ref"],
+          "ref": {
+            "path": "/user",
+            "attrs": ["id"],
+            "action": {"delete": "cascade", "update": "cascade"}
+          }
+        }
+      }
+    }
+  },
+  "package": {
+    "attr": {
+      "entity": {
+        "value": {
+          "comment": "Registry for attribute values.",
+          "attr": {
+            "id": {"type": "id"},
+            "attr_ref": {"type": "ref", "comment": "Reference to attribute."}
+          },
+          "relation": {
+            "attr": {
+              "attrs": ["attr_ref"],
+              "ref": {
+                "path": "/attr",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        }
+      },
+      "package": {
+        "value": {
+          "entity": {
+            "datetime": {
+              "comment": "Values for datetime attributes.",
+              "attr": {
+                "value_ref": {"type": "ref", "comment": "Reference to value."},
+                "value": {"type": "text", "comment": "Value for datetime attribute."}
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["value_ref"]}
+              },
+              "relation": {
+                "value": {
+                  "attrs": ["value_ref"],
+                  "ref": {
+                    "path": "/attr/value",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            },
+            "dec": {
+              "comment": "Values for decimal attributes.",
+              "attr": {
+                "value_ref": {"type": "ref", "comment": "Reference to value."},
+                "value": {"type": "text", "comment": "Value for decimal attribute."}
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["value_ref"]}
+              },
+              "relation": {
+                "value": {
+                  "attrs": ["value_ref"],
+                  "ref": {
+                    "path": "/attr/value",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            },
+            "int": {
+              "comment": "Values for integer attributes.",
+              "attr": {
+                "value_ref": {"type": "ref", "comment": "Reference to value."},
+                "value": {"type": "text", "comment": "Value for integer attribute."}
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["value_ref"]}
+              },
+              "relation": {
+                "name": {
+                  "attrs": ["value_ref"],
+                  "ref": {
+                    "path": "/attr/value",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            },
+            "text": {
+              "comment": "Text attributes values (defaults).",
+              "attr": {
+                "value_ref": {"type": "ref", "comment": "Reference to value."},
+                "value": {"type": "text", "comment": "Default value for text attribute."}
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["value_ref"]}
+              },
+              "relation": {
+                "value": {
+                  "attrs": ["value_ref"],
+                  "ref": {
+                    "path": "/attr/value",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            }
+          },
+          "package": {
+            "text": {
+              "entity": {
+                "i18n": {
+                  "comment": "Translations for default values of text attributes.",
+                  "attr": {
+                    "lang": {"type": "string", "comment": "Language code by IANA registry (az-Latn)."},
+                    "value_ref": {"type": "ref", "comment": "Reference to default value."},
+                    "translation": {"type": "text", "comment": "Translation for default value."}
+                  },
+                  "index": {
+                    "pk": {"type": "primary", "attrs": ["lang", "value_ref"]}
+                  },
+                  "relation": {
+                    "text_default": {
+                      "attrs": ["value_ref"],
+                      "ref": {
+                        "path": "/attr/value/text",
+                        "attrs": ["value_ref"],
+                        "action": {"delete": "cascade", "update": "cascade"}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "price": {
+      "entity": {
+        "list": {
+          "comment": "Price list can be bound to group, store, date range, etc.",
+          "attr": {
+            "id": {"type": "id"},
+            "name": {"type": "string", "comment": "Name for the price list."},
+            "currency": {"type": "string", "comment": "Currency for the price list."}
+          },
+          "index": {
+            "uq_name": {"type": "unique", "attrs": ["name"]}
+          }
+        }
+      }
+    },
+    "prod": {
+      "entity": {
+        "card": {
+          "comment": "Product cards registry.",
+          "attr": {
+            "id": {"type": "id"},
+            "date_created": {
+              "comment": "Date-time for registration of the product card.",
+              "type": "datetime",
+              "default": "current"
+            },
+            "type": {
+              "comment": "Product type (simple, grouped, configurable, ...).",
+              "type": "enum",
+              "options": {"values": ["draft", "simple"]},
+              "default": "simple"
+            }
+          }
+        },
+        "unit": {
+          "comment": "Simple product with unique SKU.",
+          "attr": {
+            "id": {"type": "id"},
+            "card_ref": {"type": "ref", "comment": "Reference to product card with name & description."},
+            "sku": {"type": "string", "comment": "Stock-keeping unit number."}
+          },
+          "index": {
+            "uq_sku": {"type": "unique", "attrs": ["sku"]}
+          },
+          "relation": {
+            "card": {
+              "attrs": ["card_ref"],
+              "ref": {
+                "path": "/prod/card",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        }
+      },
+      "package": {
+        "card": {
+          "package": {
+            "attr": {
+              "entity": {
+                "value": {
+                  "comment": "Relations between product card and its attributes values.",
+                  "attr": {
+                    "card_ref": {"type": "ref", "comment": "Reference to the product card."},
+                    "value_ref": {"type": "ref", "comment": "Reference to the attribute value."}
+                  },
+                  "index": {
+                    "pk": {"type": "primary", "attrs": ["card_ref", "value_ref"]}
+                  },
+                  "relation": {
+                    "card": {
+                      "attrs": ["card_ref"],
+                      "ref": {
+                        "path": "/prod/card",
+                        "attrs": ["id"],
+                        "action": {"delete": "cascade", "update": "cascade"}
+                      }
+                    },
+                    "value": {
+                      "attrs": ["value_ref"],
+                      "ref": {
+                        "path": "/attr/value",
+                        "attrs": ["id"],
+                        "action": {"delete": "cascade", "update": "cascade"}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "unit": {
+          "entity": {
+            "price": {
+              "comment": "Price for the product unit in the list of prices.",
+              "attr": {
+                "unit_ref": {"type": "ref", "comment": "Reference to the product unit."},
+                "list_ref": {"type": "ref", "comment": "Reference to the price list."},
+                "price": {
+                  "comment": "Price value in the currency of the price list.",
+                  "type": "number",
+                  "options": {"precision": 20, "scale": 6}
+                }
+              },
+              "index": {
+                "pk": {"type": "primary", "attrs": ["list_ref", "unit_ref"]}
+              },
+              "relation": {
+                "price": {
+                  "attrs": ["list_ref"],
+                  "ref": {
+                    "path": "/price/list",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                },
+                "unit": {
+                  "attrs": ["unit_ref"],
+                  "ref": {
+                    "path": "/prod/unit",
+                    "attrs": ["id"],
+                    "action": {"delete": "cascade", "update": "cascade"}
+                  }
+                }
+              }
+            }
+          },
+          "package": {
+            "attr": {
+              "entity": {
+                "value": {
+                  "comment": "Relations between product unit and its attributes values.",
+                  "attr": {
+                    "unit_ref": {"type": "ref", "comment": "Reference to the product unit."},
+                    "value_ref": {"type": "ref", "comment": "Reference to the attribute value."}
+                  },
+                  "index": {
+                    "pk": {"type": "primary", "attrs": ["unit_ref", "value_ref"]}
+                  },
+                  "relation": {
+                    "unit": {
+                      "attrs": ["unit_ref"],
+                      "ref": {
+                        "path": "/prod/unit",
+                        "attrs": ["id"],
+                        "action": {"delete": "cascade", "update": "cascade"}
+                      }
+                    },
+                    "value": {
+                      "attrs": ["value_ref"],
+                      "ref": {
+                        "path": "/attr/value",
+                        "attrs": ["id"],
+                        "action": {"delete": "cascade", "update": "cascade"}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sale": {
+      "entity": {
+        "item": {
+          "comment": "Registry for sales orders items.",
+          "attr": {
+            "id": {"type": "id"},
+            "sale_ref": {"type": "ref", "comment": "Reference to the sale."},
+            "unit_ref": {"type": "ref", "comment": "Reference to the product unit."},
+            "qty": {
+              "comment": "Product unit quantity.",
+              "type": "number",
+              "options": {"unsigned": true}
+            },
+            "unit_price": {
+              "comment": "Product unit price.",
+              "type": "number",
+              "options": {"precision": 20, "scale": 6, "unsigned": true}
+            },
+            "amount_total": {
+              "comment": "Total amount of the sale item.",
+              "type": "number",
+              "options": {"precision": 20, "scale": 6, "unsigned": true}
+            }
+          },
+          "relation": {
+            "sale": {
+              "attrs": ["sale_ref"],
+              "ref": {
+                "path": "/sale",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            },
+            "unit": {
+              "attrs": ["unit_ref"],
+              "ref": {
+                "path": "/prod/unit",
+                "attrs": ["id"],
+                "action": {"delete": "cascade", "update": "cascade"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
