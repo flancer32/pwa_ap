@@ -14,16 +14,16 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Upgrade';
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Upgrade
  */
-function Factory(spec) {
+export default function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
     const DEF = spec['Fl32_Ap_Back_Defaults$'];
     /** @type {Function|TeqFw_Core_Back_Api_Dto_Command.Factory} */
     const fCommand = spec['TeqFw_Core_Back_Api_Dto_Command#Factory$']; // singleton
-    /** @type {TeqFw_Db_Back_Api_RDb_IConnect} */
-    const connector = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
+    /** @type {TeqFw_Core_Back_App} */
+    const app = spec['TeqFw_Core_Back_App$'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore.action} */
     const actRestore = spec['Fl32_Ap_Back_Cli_Db_Upgrade_A_Restore$'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Upgrade_A_Dump.action} */
@@ -39,19 +39,23 @@ function Factory(spec) {
      * @memberOf Fl32_Ap_Back_Cli_Db_Upgrade
      */
     async function action() {
-        // dump data
-        const dump = await actDump();
-        if (dump) {
-            // recreate DB structure
-            await actRestruct();
-            // restore data from dump
-            await actRestore(dump);
-            logger.info('Upgrade actions are done.');
-        } else {
-            logger.info('Dump is failed. Abort action.');
+        try {
+            logger.pause(false);
+            // dump data
+            const dump = await actDump();
+            if (dump) {
+                // recreate DB structure
+                await actRestruct();
+                // restore data from dump
+                await actRestore(dump);
+                logger.info('Upgrade actions are done.');
+            } else {
+                logger.info('Dump is failed. Abort action.');
+            }
+        } catch (e) {
+            logger.error(`${e.toString()}`);
         }
-        // close DB connections
-        await connector.disconnect();
+        await app.stop();
     }
 
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
@@ -67,4 +71,3 @@ function Factory(spec) {
 
 // MODULE'S EXPORT
 Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.name}`});
-export default Factory;

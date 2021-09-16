@@ -14,7 +14,7 @@ const NS = 'Fl32_Ap_Back_Cli_Db_Reset';
  * @constructor
  * @memberOf Fl32_Ap_Back_Cli_Db_Reset
  */
-function Factory(spec) {
+export default function Factory(spec) {
     // EXTRACT DEPS
     /** @type {Fl32_Ap_Back_Defaults} */
     const DEF = spec['Fl32_Ap_Back_Defaults$'];
@@ -24,6 +24,8 @@ function Factory(spec) {
     const connector = spec['TeqFw_Db_Back_Api_RDb_IConnect$'];
     /** @type {TeqFw_Core_Shared_Logger} */
     const logger = spec['TeqFw_Core_Shared_Logger$'];
+    /** @type {TeqFw_Core_Back_App} */
+    const app = spec['TeqFw_Core_Back_App$'];
     const {isPostgres} = spec['TeqFw_Db_Back_Api_Util'];
     /** @type {Function|Fl32_Ap_Back_Cli_Db_Z_Restruct.action} */
     const actRestruct = spec['Fl32_Ap_Back_Cli_Db_Z_Restruct$'];
@@ -95,10 +97,11 @@ function Factory(spec) {
         }
 
         // MAIN FUNCTIONALITY
-        // recreate DB structure
-        await actRestruct();
         const trx = await connector.startTransaction();
         try {
+            logger.pause(false);
+            // recreate DB structure
+            await actRestruct();
             // perform queries to insert data into created tables
             await populateWithData(trx);
             // perform queries to insert data and commit changes
@@ -107,7 +110,7 @@ function Factory(spec) {
             trx.rollback();
             logger.error(`${e.toString()}`);
         }
-        await connector.disconnect();
+        await app.stop();
     }
 
     Object.defineProperty(action, 'name', {value: `${NS}.${action.name}`});
@@ -123,4 +126,3 @@ function Factory(spec) {
 
 // MODULE'S EXPORT
 Object.defineProperty(Factory, 'name', {value: `${NS}.${Factory.name}`});
-export default Factory;
